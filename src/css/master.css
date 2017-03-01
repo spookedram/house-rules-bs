@@ -1,0 +1,47 @@
+/*
+House Rules RPG (Bootstrap)
+Author: Zach Allen
+
+~ Index ~
+- Basic Page Styles
+- Utilities
+- Media Queries
+*/
+/* ---------- Basic Page Styles ---------- */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* ---------- Utilities ---------- */
+.n-mb {
+    margin-bottom: 0;
+}
+
+/* ---------- Media Queries ---------- */
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    
+}
