@@ -34,10 +34,149 @@ footer {
     width: 100%;
 }
 
+.form-control {
+  margin-bottom: 16px;
+}
+
+.inline {
+  display: inline-block;
+  width: 72px;
+}
+
+.short-input {
+  width: 240px;
+}
+
+#name {
+  margin-top: 20px;
+}
+
+#loadCharTable * {
+  vertical-align: middle;
+}
+
+#loadCharTable th:last-of-type,
+#loadCharTable td:last-of-type {
+  text-align: right;
+}
+
+.center-children *{
+  text-align: center;
+}
+
+/*#spmov-table-view th:first-of-type,
+#spmov-table-view td:first-of-type,
+#spmov-table-edit th:first-of-type,
+#spmov-table-edit td:first-of-type {
+  padding-left: 0;
+}*/
+
+#spmov-table-edit th:first-of-type,
+#spmov-table-edit td:first-of-type {
+  padding-right: 0;
+}
+
+#titleLabel {
+  margin-top: 0;
+}
+
+.tab-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-links {
+  display: inline-block;
+  padding: 0.5em 1em;
+}
+
+.tab-links:focus, .tab-links:hover {
+  text-decoration: none;
+  background-color: #e5e5e5;
+}
+
+.tab-links.disabled {
+  color: #636c72;
+  cursor: not-allowed;
+}
+
+.tab-list .tab-links {
+  margin-bottom: -1px;
+  border: 1px solid transparent;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.tab-list .tab-links:focus, .tab-list .tab-links:hover {
+  border-color: #eceeef #eceeef #ddd;
+}
+
+.tab-list .tab-links.disabled {
+  color: #636c72;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.tab-list .tab-links.active,
+.tab-list .tab-item.show .tab-links {
+  color: #464a4c;
+  background-color: #fff;
+  border-color: #ddd #ddd #fff;
+}
+
+.tab-list .dropdown-menu {
+  margin-top: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+#edit {
+  display: none;
+}
+
+.ability {
+  text-align: center;
+  padding: 2px;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .ability {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+#wpn1type, #wpn2type, #armorType {
+  width: 150px;
+}
 
 /* ---------- Utilities ---------- */
 .n-mb {
     margin-bottom: 0;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  .pba {
+    page-break-after: always;
+  }
+  [class*="col-sm"] {
+    float: left;
+  }
+  [class*="col-sm-6"],
+  [class*="col-sm-8"] {
+    width: 50%;
+  }
 }
 
 /* ---------- Media Queries ---------- */

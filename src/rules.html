@@ -15,11 +15,9 @@
     <link rel="stylesheet" href="css/master.css" type="text/css" />
 
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <script src="https://cdn.jsdelivr.net/bootstrap.native/2.0.6/polyfill.min.js"> </script>
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <![endif]-->
   </head>
   <body>
@@ -56,339 +54,337 @@
       <p class="lead text-center"><i>"...the code is more what you'd call 'guidelines' than actual rules." - Captain Barbossa</i></p>
 
       <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab">Gameplay</a></li>
-        <li role="presentation"><a href="#players" aria-controls="players" role="tab" data-toggle="tab">Players</a></li>
-        <li role="presentation"><a href="#architect" aria-controls="architect" role="tab" data-toggle="tab">Architect</a></li>
-      </ul>
+      <div id="rulesTabs" class="tab-list">
+        <a href="javascript:void(0)" class="tab-links active" onclick="openTab(event,'gameplay')">Gameplay</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'players')">Players</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'gameMaster')">Game Master</a>
+      </div>
 
       <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="rules">
-          <h2>General Rules</h2>
-          <div class="row">
-            <div class="col-sm-3">
-              <h4>Index</h4>
-              <ol>
-                <li><a href="#start">Getting started</a></li>
-                <li><a href="#actions">Taking actions</a></li>
-                <li><a href="#abScores">Ability Scores</a></li>
-                <li><a href="#critRolls">Critical Rolls</a></li>
-                <li><a href="#combat">Combat</a></li>
-                <li><a href="#health">Health</a></li>
-                <li><a href="#death">Death</a></li>
-              </ol>
-            </div>
-            <div class="col-sm-9">
-              <h3 id="start">Getting Started</h3>
-              <p>Before you can start playing <b>House Rules RPG</b>, you'll need:</p>
-              <ul>
-                <li>an Architect</li>
-                <li>a Quest</li>
-                <li>1 or more Players</li>
-                <li>with at least 1 character each</li>
-                <li>An understanding of the rules</li>
-                <li>a dice set or an RNG</li>
-              </ul>
-
-              <hr>
-
-              <h3 id="actions">Taking Actions</h3>
-
-              <h4>Free Actions</h4>
-              <p>During the game, Players will want their character to interact with the world and will do so by <b>taking an action</b>. Actions with little difficulty, such as speaking bluntly or opening an unlocked door, are <i>free actions</i>. If the action that the Player wants their character to take is more difficult then they'll need to roll a <i>difficulty check</i>.</p>
-
-              <h4>Difficulty Checks</h4>
-              <p>Throwing a knife to cut a swinging rope, disarming a ticking time bomb, and summoning an unknowable beast from another dimension are actions much more difficult than opening an unlocked door. Actions with any level of difficulty require a difficulty check. The Player will describe the action they want to attempt and the Architect decides what modifier is being checked and how difficult the action being taken is (as a number which they may or may not share with the player). Then the Player rolls a <b>d20</b> to see if they succeed or fail the action. For example:</p>
-
-              <blockquote>
-                Player: "I want to use my new lockpick on the cage."<br>
-                Architect: "Alright, roll a <b>dexterity check</b>."<br>
-                Architect (thinking): <i>Probably a DC of 14...</i><br>
-                Player: "Nice! I rolled a 16!"<br>
-                Architect: "You pick the lock. Sadly, you've also woken the circus bear inside..."
-              </blockquote>
-
-              <p>You might have noticed that the Player's action had an ability that was being checked. When an action is likely going to result from a test of a character's abilities, the difficulty check is modified by the character's score for the ability being checked.</p>
-
-              <hr>
-
-              <h3 id="abScores">Ability Scores</h3>
-              <p>Every character and creature in <b>House Rules RPG</b> has 6 ability scores, represented by a number between 1 and 20. The abilities cover a wide variety of character attributes and actions that can be taken. These 6 abilities are:</p>
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <th>Strength</th>
-                    <td>Represents muscle and physical power</td>
-                  </tr>
-                  <tr>
-                    <th>Dexterity</th>
-                    <td>Represents agility, reflexes, and balance</td>
-                  </tr>
-                  <tr>
-                    <th>Constitution</th>
-                    <td>Represents health, stamina, and endurance</td>
-                  </tr>
-                  <tr>
-                    <th>Intelligence</th>
-                    <td>Represents critical thinking, learning, and logic</td>
-                  </tr>
-                  <tr>
-                    <th>Wisdom</th>
-                    <td>Represents willpower, common sense, and intuition</td>
-                  </tr>
-                  <tr>
-                    <th>Charisma</th>
-                    <td>Represents personality, likability, and ability to lead</td>
-                  </tr>
-                </tbody>
-              </table>
-              <p>Characters start with 10 points on each score, because 10 points means 0 modifier. Each number greater or less than 10 adds a modifier to ability checks. For example:</p>
-
-              <blockquote>
-                Player: "Does Killgrog understand the hieroglyphs?"<br>
-                Architect: "Go ahead and make an intelligence check."<br>
-                Player: "Uh oh, he's isn't exactly a genius..."<br>
-                Architect: "You can try and roll anyway."<br>
-                Player: "I rolled a 10, but his INT score is 7, so minus 3..."<br>
-                Architect: "Yeah, that failed."<br>
-                Killgrog: "It's a butterscotch recipe!"
-              </blockquote>
-
-              <p>When you make your character, consider taking points from areas where they are weak and placing theose points on abilities where they are strong. That way, when your character makes difficulty checks, they're more likely to succeed at actions they're good at and more likely to fail at actions they're bad at like in real life. Of course, the odd critical roll can always happen.</p>
-
-              <hr>
-
-              <h3 id="critRolls">Critical Rolls</h3>
-              <p>If you roll for a difficulty check or an attack and it lands on 1, the result is a <b>critical miss</b>. The action or attack you were trying to make fails instantly and often dramatically, and can even end up causing damage to your character depending on the situation. On the other hand, if you roll a <i>natural 20</i>, that is, a 20 without modifiers, it's known as a <b>critical hit</b> and it means that the action or attack is an instant success, sometimes even resulting in a one-hit-kill. The intensity of the action or attack is between you and the Architect to decide, the Player narrating the action and the Architect narrating the result of the action.</p>
-
-              <h4>Advantage and Disadvantage</h4>
-              <p>Some special moves, teamwork, and situations will grant the person rolling a dice something called <i>advantage</i> or <i>disadvantage</i>. When a Player has advantage on a roll, they roll twice and keep the higher roll as their result. In the case of disadvantage, the Player keeps the lower roll. Advantage and disadvantage can come from a character's special moves, environmental effects, curses, or just plain dumb luck courtesy of the Architect.</p>
-
-              <hr>
-
-              <h3 id="combat">Combat</h3>
-              <p>Eventually the heroes of the story will be met with obstacles that can only be moved by force. It's the easiest, most visceral way to add tension, excitement, and investment to the narrative. Combat is represented in-game by <b>encounters</b>, when the Players are <i>encountering</i> a challenge. It doesn't always have to be physical violence, but it must be a true test of the characters' abilities and the Player's problem solving skills.</p>
-
-              <h4>Initiative</h4>
-              <p>When an encounter begins, the Players will roll <b>dexterity checks</b> for each character they command and the Architect will do the same for each type of enemy involved in the encounter. The highest roll goes first, followed by second highest, etc. When the order is set, the character or creature with the highest roll get to take their turn by attacking or taking an action, whatever they want. If a character or creature has the element of surprise, they can attack <i>before</i> the initiative roll.</p>
-
-              <h3>Attacking</h3>
-              <p>Attacks can be done with unarmed strikes, weapons, spells, curses, summoned creatures, thrown objects... whatever the character or creature pleases. There are different conditions depending on the nature of the attack, however. First the attacker will make an attack roll using a d20, applying their appropriate ability score modifier.</p>
-
-              <h4>Physical Strikes</h4>
-              <p>If the attack is close to medium range and a physical strike with a sword, club, staff, pole, dagger, wrench, etc. then the attacker compares their attaack roll against the defender's armor class (AC). If the result is higher than their AC, then the attack hits and the attacker rolls their weapon's dice to see how much damage the defender will take. If the result is lower than their AC then the attack fails and play continues to the next character or creature in the order.</p>
-
-              <h4>Saving Throws</h4>
-              <p>Successful physical strikes cannot be defended against, but ranged attacks like arrows, spells, or bullets require the defender to roll what is called a saving throw, basically a dodge, using the appropriate ability score modifier. If their saving throw is higher than the attack roll, the defender successfully evades the attack. Saving throws can also be used to avoid environmental dangers and traps, set in place by the Architect.</p>
-
-              <h3>Combat Table</h3>
-              <p>The following are examples of different ability score modifiers an attacker would apply and saving throws a defender would roll, depending on the kind of attack being made:</p>
-              <table class="table">
-    						<thead>
-    							<th>Type</th>
-    							<th>Examples</th>
-    							<th>AS Mod</th>
-    							<th>Saving Throw</th>
-    						</thead>
-    						<tbody>
-    							<tr>
-    								<td>Physical Strike</td>
-    								<td>Punching, kicking, swinging a sword</td>
-    								<td>Str</td>
-    								<td>N/A</td>
-    							</tr>
-    							<tr>
-    								<td>Ranged</td>
-    								<td>Throwing knives, shooting an arrow or bullets</td>
-    								<td>Str/Dex</td>
-    								<td>Dex</td>
-    							</tr>
-    							<tr>
-    								<td>Physical Spell</td>
-    								<td>Fireballs, ice spikes, jets of scalding water</td>
-    								<td>Int/Wis</td>
-    								<td>Dex</td>
-    							</tr>
-    							<tr>
-    								<td>Mental/Psychic</td>
-    								<td>Illusionary attacks, mind control</td>
-    								<td>Int/Wis</td>
-    								<td>Int/Wis</td>
-    							</tr>
-    							<tr>
-    								<td>Poison/Disease</td>
-    								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
-    								<td>Dex/Int</td>
-    								<td>Con</td>
-    							</tr>
-    						</tbody>
-    					</table>
-
-              <hr>
-
-              <h3 id="health">Health</h3>
-              <p>All characters and creatures have another number representing their health, their life, called <b>hit points</b>. They represent the amount of damage your character can sustain before going unconcious and eventually dying. When an attack lands successfully the attacker will roll the damage die for the weapon or magic or whatever that was used. Weapons of different sizes have different damage dice, which is explained on the Character tab.</p>
-              <p>Characters can also revive hit points for themselves and/or others with special moves, first aid kits, health potions, or good old rest (outside of combat, of course).</p>
-
-              <hr>
-
-              <h3 id="death">Death</h3>
-              <p>When a character's HP is reduced to zero the character is <b>unconcious</b>. The Player has 3 <i>death saving throws</i> as a way for their character to cling to life and give their party members a chance to heal them and bring them back from the brink. Healing may or may not wake them, but the character will no longer be dying. If the Player manages to roll 3 saves (3 rolls higher than 10) the character wakes with 1HP. If they fail all 3 saving throws before their party can stabilize them, they die.</p>
-
-              <p>Some Architects may allow for an afterlife of some kind as a way to keep the Player in the game or allow the Player to create a new character to bring in on the next quest, but it's recommended that ghost characters not be given corporeal power or a means to speak with the party unless a party member has a special move that allows them to do so. If death isn't a punishment then there's no risk in combat!</p>
-
-              <p>Architects: Make character death satisfying or temporary if you want to keep an amicable relationship with your Players.</p>
-            </div>
+      <div class="tab-pane" id="gameplay">
+        <h2>General Rules</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>Index</h4>
+            <ol>
+              <li><a href="#start">Getting started</a></li>
+              <li><a href="#actions">Taking actions</a></li>
+              <li><a href="#abScores">Ability Scores</a></li>
+              <li><a href="#critRolls">Critical Rolls</a></li>
+              <li><a href="#combat">Combat</a></li>
+              <li><a href="#health">Health</a></li>
+              <li><a href="#death">Death</a></li>
+            </ol>
           </div>
+          <div class="col-sm-9">
+            <h3 id="start">Getting Started</h3>
+            <p>Before you can start playing <b>House Rules RPG</b>, you'll need:</p>
+            <ul>
+              <li>a Game Master</li>
+              <li>a Quest</li>
+              <li>1 or more Players</li>
+              <li>with at least 1 character each</li>
+              <li>An understanding of the rules</li>
+              <li>a dice set or an RNG</li>
+            </ul>
 
-        </div>
+            <hr>
 
-        <div role="tabpanel" class="tab-pane" id="players">
-          <h2>Character Sheet</h2>
-          <div class="row">
-            <div class="col-sm-3">
-              <h4>Index</h4>
-              <ol>
-                <li><a href="#">Name and Title</a></li>
-                <li><a href="#">Level</a></li>
-                <li><a href="#">Ability Scores</a></li>
-                <li><a href="#">Hit Points</a></li>
-                <li><a href="#">Equipment</a></li>
-                <li><a href="#">Details</a></li>
-                <li><a href="#">Special Moves</a></li>
-                <li><a href="#">Leveling Up</a></li>
-              </ol>
-            </div>
-            <div class="col-sm-9">
-              <h3 id="nameTitle">Name and Title</h3>
-              <p></p>
+            <h3 id="actions">Taking Actions</h3>
 
-              <hr>
+            <h4>Free Actions</h4>
+            <p>During the game, Players will want their character to interact with the world and will do so by <b>taking an action</b>. Actions of little difficulty, such as speaking bluntly or opening an unlocked door, are <b>free actions</b>. If an action is more difficult then the Player will need to roll a <b>difficulty check</b>.</p>
 
-              <h3 id="level">Level</h3>
-              <p></p>
+            <h4>Difficulty Checks</h4>
+            <p>Throwing a knife to cut a swinging rope, disarming a ticking time bomb, and summoning an unknowable beast from another dimension are actions much more difficult than opening an unlocked door. Actions with any level of difficulty require a difficulty check. The Player will describe the action they want to attempt and the Game Master decides what modifier is being checked and how difficult the action being taken is (as a number which they may or may not share with the player). Then the Player rolls a <b>d20</b> to see if they succeed or fail the action. For example:</p>
 
-              <hr>
+            <blockquote>
+              Player: "I want to use my new lockpick on the cage."<br>
+              GM: "Alright, roll a <b>dexterity check</b>."<br>
+              GM (thinking): <i>Probably a DC of 14...</i><br>
+              Player: "Nice! I rolled a 16!"<br>
+              GM: "You pick the lock. Sadly, you've also woken the circus bear inside..."
+            </blockquote>
 
-              <h3 id="charScores">Ability Scores</h3>
-              <p></p>
+            <p>You might have noticed that the Player's action had an ability that was being checked. When an action is likely going to result from a test of a character's abilities, the difficulty check is modified by the character's score for the ability being checked.</p>
 
-              <hr>
+            <hr>
 
-              <h3 id="hitPoints">Hit Points</h3>
-              <p></p>
+            <h3 id="abScores">Ability Scores</h3>
+            <p>Every character and creature in <b>House Rules RPG</b> has 6 ability scores, represented by a number between 1 and 20. The abilities cover a wide variety of character attributes and actions that can be taken. These 6 abilities are:</p>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>Strength</th>
+                  <td>Represents muscle and physical power</td>
+                </tr>
+                <tr>
+                  <th>Dexterity</th>
+                  <td>Represents agility, reflexes, and balance</td>
+                </tr>
+                <tr>
+                  <th>Constitution</th>
+                  <td>Represents health, stamina, and endurance</td>
+                </tr>
+                <tr>
+                  <th>Intelligence</th>
+                  <td>Represents critical thinking, learning, and logic</td>
+                </tr>
+                <tr>
+                  <th>Wisdom</th>
+                  <td>Represents willpower, common sense, and intuition</td>
+                </tr>
+                <tr>
+                  <th>Charisma</th>
+                  <td>Represents personality, likability, and ability to lead</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Characters start with 10 points on each score, because 10 points means 0 modifier. Each number greater or less than 10 adds a modifier to ability checks. For example:</p>
 
-              <hr>
+            <blockquote>
+              Player: "Does Killgrog understand the hieroglyphs?"<br>
+              GM: "Go ahead and make an intelligence check."<br>
+              Player: "Uh oh, he's isn't exactly a genius..."<br>
+              GM: "You can try and roll anyway."<br>
+              Player: "I rolled a 10, but his INT score is 7, so minus 3..."<br>
+              GM: "Yeah, that failed."<br>
+              Killgrog: "It's a butterscotch recipe!"
+            </blockquote>
 
-              <h3 id="equip">Equipment</h3>
-              <p></p>
+            <p>When you make your character, consider taking points from areas where they are weak and placing theose points on abilities where they are strong. That way, when your character makes difficulty checks, they're more likely to succeed at actions they're good at and more likely to fail at actions they're bad at like in real life. Of course, the odd critical roll can always happen.</p>
 
-              <h4>Main Weapon</h4>
-              <p></p>
+            <hr>
 
-              <h4>Sub Weapon</h4>
-              <p></p>
+            <h3 id="critRolls">Critical Rolls</h3>
+            <p>If you roll for a difficulty check or an attack and it lands on 1, the result is a <b>critical miss</b>. The action or attack you were trying to make fails instantly and often dramatically, and can even end up causing damage to your character depending on the situation. On the other hand, if you roll a <i>natural 20</i>, that is, a 20 without modifiers, it's known as a <b>critical hit</b> and it means that the action or attack is an instant success, sometimes even resulting in a one-hit-kill. The intensity of the action or attack is between you and the Game Master to decide, the Player narrating the action and the Game Master narrating the result of the action.</p>
 
-              <h4>Armor</h4>
-              <p></p>
+            <h4>Advantage and Disadvantage</h4>
+            <p>Some special moves, teamwork, and situations will grant the person rolling a dice something called <i>advantage</i> or <i>disadvantage</i>. When a Player has advantage on a roll, they roll twice and keep the higher roll as their result. In the case of disadvantage, the Player keeps the lower roll. Advantage and disadvantage can come from a character's special moves, environmental effects, curses, or just plain dumb luck courtesy of the Game Master.</p>
 
-              <h4>Gear</h4>
-              <p></p>
+            <hr>
 
-              <hr>
+            <h3 id="combat">Combat</h3>
+            <p>Eventually the heroes of the story will be met with obstacles that can only be moved by force. It's the easiest, most visceral way to add tension, excitement, and investment to the narrative. Combat is represented in-game by <b>encounters</b>, when the Players are <i>encountering</i> a challenge. It doesn't always have to be physical violence, but it must be a true test of the characters' abilities and the Player's problem solving skills.</p>
 
-              <h3 id="details">Details</h3>
-              <p></p>
+            <h4>Initiative</h4>
+            <p>When an encounter begins, the Players will roll <b>dexterity checks</b> for each character they command and the Game Master will do the same for each type of enemy involved in the encounter. The highest roll goes first, followed by second highest, etc. When the order is set, the character or creature with the highest roll get to take their turn by attacking or taking an action, whatever they want. If a character or creature has the element of surprise, they can attack <i>before</i> the initiative roll.</p>
 
-              <h4>Appearance</h4>
-              <p></p>
+            <h3>Attacking</h3>
+            <p>Attacks can be done with unarmed strikes, weapons, spells, curses, summoned creatures, thrown objects... whatever the character or creature pleases.  First the attacker will make an attack roll using a d20, applying their appropriate ability score modifier. There are different conditions depending on the nature of the attack, however.</p>
 
-              <h4>Personality</h4>
-              <p></p>
+            <h4>Physical Strikes</h4>
+            <p>If the attack is a close to medium range physical strike with a sword, club, staff, pole, dagger, wrench, etc. then the attacker compares their attack roll against the target's armor class (AC). If the result is higher than their AC, then the attack hits and the attacker rolls their weapon's damage dice to see how much damage the target will take. If the result is lower than their AC, the attack fails and play continues to the next character or creature in the order.</p>
 
-              <h4>Backstory</h4>
-              <p></p>
+            <h4>Saving Throws</h4>
+            <p>Successful physical strikes cannot normally be defended against, but ranged attacks like arrows, spells, or bullets require the target to roll a <b>d20</b> for a saving throw, basically a dodge, and add the appropriate ability score modifier. If the resulting saving throw is higher than the attack roll, the target successfully evades the attack. Saving throws can also be used to avoid environmental dangers and traps, set in place by the Game Master.</p>
 
-              <hr>
+            <h3>Combat Table</h3>
+            <p>The following are examples of different ability score modifiers an attacker would apply and saving throws a target would roll, depending on the kind of attack being made:</p>
+            <table class="table">
+  						<thead>
+  							<th>Type</th>
+  							<th>Examples</th>
+  							<th>AS Mod</th>
+  							<th>Saving Throw</th>
+  						</thead>
+  						<tbody>
+  							<tr>
+  								<td>Physical Strike</td>
+  								<td>Punching, kicking, swinging a sword</td>
+  								<td>Str</td>
+  								<td>N/A</td>
+  							</tr>
+  							<tr>
+  								<td>Ranged</td>
+  								<td>Throwing knives, shooting an arrow or bullets</td>
+  								<td>Str / Dex</td>
+  								<td>Dex</td>
+  							</tr>
+  							<tr>
+  								<td>Physical Spell</td>
+  								<td>Fireballs, ice spikes, jets of scalding water</td>
+  								<td>Int / Wis</td>
+  								<td>Dex</td>
+  							</tr>
+  							<tr>
+  								<td>Mental / Psychic</td>
+  								<td>Illusionary attacks, mind control</td>
+  								<td>Int / Wis</td>
+  								<td>Int / Wis</td>
+  							</tr>
+  							<tr>
+  								<td>Poison / Disease</td>
+  								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
+  								<td>Dex / Int</td>
+  								<td>Con</td>
+  							</tr>
+  						</tbody>
+  					</table>
 
-              <h3 id="spMoves">Special Moves</h3>
-              <p></p>
+            <hr>
 
-              <hr>
+            <h3 id="health">Health</h3>
+            <p>All characters and creatures have another number that represents their health, called <b>hit points</b>. Your character's max hit points is the amount of damage they can sustain before going unconcious and eventually dying.</p>
+            <p>Characters lost hit points from successful enemy attacks but can also revive hit points for themselves and/or others with special moves, first aid kits, health potions, or good old rest (outside of combat, of course).</p>
 
-              <h3 id="lvlUp">Leveling Up</h3>
-              <p></p>
-            </div>
+            <hr>
+
+            <h3 id="death">Death</h3>
+            <p>When a character's HP is reduced to zero the character is <b>unconcious</b>. The Player has 3 <i>death saving throws</i> as a way for their character to cling to life and give their party members a chance to heal them and bring them back from the brink. Healing may or may not wake them, but the character will no longer be dying. If the Player manages to roll 3 saves (3 rolls higher than 10) the character wakes with 1HP. If they fail all 3 saving throws before their party can stabilize them, they die.</p>
+
+            <p>Some Game Masters may allow for an afterlife of some kind as a way to keep the Player in the game or allow the Player to create a new character to bring in on the next quest, but it's recommended that ghost characters not be given corporeal power or a means to speak with the party unless a party member has a special move that allows them to do so. If death isn't a punishment then there's no risk in combat!</p>
+
+            <p class="well">Game Masters: Make character death satisfying or temporary if you want to keep an amicable relationship with your Players.</p>
           </div>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="architect">
-          <h2>Writing a Quest</h2>
-          <div class="row">
-            <div class="col-sm-3">
-              <h4>Index</h4>
-              <ol>
-                <li><a href="#">Theme</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">NPCs</a></li>
-                <li><a href="#">Act One</a></li>
-                <li><a href="#">Act Two</a></li>
-                <li><a href="#">Act Three</a></li>
-                <li><a href="#">Act Four</a></li>
-                <li><a href="#">Cliffhanger</a></li>
-                <li><a href="#">Ending a Campaign</a></li>
-              </ol>
-            </div>
-            <div class="col-sm-9">
-              <h3 id="theme">Theme</h3>
-              <p></p>
+      </div>
 
-              <hr>
+      <div class="tab-pane" id="players" style="display: none;">
+        <h2>Character Sheet</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>Index</h4>
+            <ol>
+              <li><a href="#">Name and Title</a></li>
+              <li><a href="#">Level</a></li>
+              <li><a href="#">Ability Scores</a></li>
+              <li><a href="#">Hit Points</a></li>
+              <li><a href="#">Equipment</a></li>
+              <li><a href="#">Details</a></li>
+              <li><a href="#">Special Moves</a></li>
+              <li><a href="#">Leveling Up</a></li>
+            </ol>
+          </div>
+          <div class="col-sm-9">
+            <h3 id="nameTitle">Name and Title</h3>
+            <p></p>
 
-              <h3 id="settings">Settings</h3>
-              <p></p>
+            <hr>
 
-              <hr>
+            <h3 id="level">Level</h3>
+            <p></p>
 
-              <h3 id="npcs">Non-Player Characters (NPCs)</h3>
-              <p></p>
+            <hr>
 
-              <hr>
+            <h3 id="charScores">Ability Scores</h3>
+            <p></p>
 
-              <h3 id="eAndP">Encounters and Puzzles</h3>
-              <p></p>
+            <hr>
 
-              <hr>
+            <h3 id="hitPoints">Hit Points</h3>
+            <p></p>
 
-              <h3 id="act1">Act One</h3>
-              <p></p>
+            <hr>
 
-              <hr>
+            <h3 id="equip">Equipment</h3>
+            <p></p>
 
-              <h3 id="act2">Act Two</h3>
-              <p></p>
+            <h4>Main Weapon</h4>
+            <p></p>
 
-              <hr>
+            <h4>Sub Weapon</h4>
+            <p></p>
 
-              <h3 id="act3">Act Three</h3>
-              <p></p>
+            <h4>Armor</h4>
+            <p></p>
 
-              <hr>
+            <h4>Gear</h4>
+            <p></p>
 
-              <h3 id="act4">Act Four</h3>
-              <p></p>
+            <hr>
 
-              <hr>
+            <h3 id="details">Details</h3>
+            <p></p>
 
-              <h3 id="cliffhanger">Cliffhanger</h3>
-              <p></p>
+            <h4>Appearance</h4>
+            <p></p>
 
-              <hr>
+            <h4>Personality</h4>
+            <p></p>
 
-              <h3 id="ending">Ending a Campaign</h3>
-              <p></p>
-            </div>
+            <h4>Backstory</h4>
+            <p></p>
+
+            <hr>
+
+            <h3 id="spMoves">Special Moves</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="lvlUp">Leveling Up</h3>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="gameMaster" style="display: none;">
+        <h2>Writing a Quest</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>Index</h4>
+            <ol>
+              <li><a href="#">Theme</a></li>
+              <li><a href="#">Settings</a></li>
+              <li><a href="#">NPCs</a></li>
+              <li><a href="#">Act One</a></li>
+              <li><a href="#">Act Two</a></li>
+              <li><a href="#">Act Three</a></li>
+              <li><a href="#">Act Four</a></li>
+              <li><a href="#">Cliffhanger</a></li>
+              <li><a href="#">Ending a Campaign</a></li>
+            </ol>
+          </div>
+          <div class="col-sm-9">
+            <h3 id="theme">Theme</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="settings">Settings</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="npcs">Non-Player Characters (NPCs)</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="eAndP">Encounters and Puzzles</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="act1">Act One</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="act2">Act Two</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="act3">Act Three</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="act4">Act Four</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="cliffhanger">Cliffhanger</h3>
+            <p></p>
+
+            <hr>
+
+            <h3 id="ending">Ending a Campaign</h3>
+            <p></p>
           </div>
         </div>
       </div>
@@ -402,15 +398,6 @@
       </div>
     </footer>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="lib/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript">
-    $('#ruleTabs a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
-    </script>
+    <script src="js/tabs.js"></script>
   </body>
 </html>
