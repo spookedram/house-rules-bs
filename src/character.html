@@ -55,7 +55,7 @@
 
       <div class="row no-print">
         <div class="col-xs-7">
-          <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal">Save / Load</button>
+          <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal()">Save / Load</button>
         </div>
         <div class="col-xs-5 text-right">
           <button id="edit-btn" type="button" class="btn btn-default" onclick="toggleEdit()">Edit</button>
@@ -77,7 +77,7 @@
                 <thead>
                   <th></th>
                   <th>Name</th>
-                  <th>Action</th>
+                  <th class="text-right">Action</th>
                 </thead>
                 <tbody id="loadCharTable">
                   <tr>
@@ -87,6 +87,12 @@
                   </tr>
                 </tbody>
               </table>
+              <div id="fullAlert" class="alert alert-danger">
+                <p>Your storage is full! Please delete some characters or clear your localStorage to save this character.</p>
+                <div class="text-right" style="margin-top:16px;">
+                  <button type="button" name="button" class="btn btn-primary" onclick="showAlert('fullAlert', false)">Ok</button>
+                </div>
+              </div>
               <div id="clearAlert" class="alert alert-danger">
                 <p>This will clear all your saved characters, are you sure?</p>
                 <div class="text-right" style="margin-top:16px;">

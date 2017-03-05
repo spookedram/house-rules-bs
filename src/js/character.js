@@ -190,78 +190,74 @@ function hideModal() {
   saveLoadModal.hide();
 }
 
+function showModal() {
+  saveLoadModal.show();
+}
+
+function lsTest(){
+    var test = 'test';
+    try {
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+
+function getCharacterList() {
+  if(localStorage.characterList) {
+   characterList = JSON.parse(localStorage.getItem('characterList'));
+  } else {
+   characterList = [];
+  }
+}
+
 function Character() {
+  this.name = "";
+  this.title = "";
   this.level = "";
   this.hp = "";
-  this.abilities = {
-    strength: "",
-    dexterity: "",
-    constitution: "",
-    intelligence: "",
-    wisdom: "",
-    charisma: ""
-  };
-  this.details = {
-    name: "",
-    title: "",
-    appearance: "",
-    backstory: "",
-    personality: ""
-  };
-  this.equipment = {
-    weapons: [
-      {
-        name: "",
-        desc: "",
-        type: ""
-      },
-      {
-        name: "",
-        desc: "",
-        type: ""
-      }
-    ],
-    armor: {
-      name: "",
-      desc: "",
-      type: ""
-    },
-    gear: ""
-  };
-  this.special_moves = [
-    {
-      name: "",
-      desc: ""
-    },
-    {
-      name: "",
-      desc: ""
-    },
-    {
-      name: "",
-      desc: ""
-    },
-    {
-      name: "",
-      desc: ""
-    },
-    {
-      name: "",
-      desc: ""
-    },
-    {
-      name: "",
-      desc: ""
-    },
-    {
-      name: "",
-      desc: ""
-    },
-    {
-      name: "",
-      desc: ""
-    }
-  ];
+
+  this.strength = "";
+  this.dexterity = "";
+  this.constitution = "";
+  this.intelligence = "";
+  this.wisdom = "";
+  this.charisma = "";
+
+
+  this.appearance = "";
+  this.backstory = "";
+  this.personality = "";
+
+  this.wpn1name = "";
+  this.wpn1desc = "";
+  this.wpn1type = "";
+  this.wpn2name = "";
+  this.wpn2desc = "";
+  this.wpn2type = "";
+  this.armorTame = "";
+  this.armorTesc = "";
+  this.armorType = "";
+  this.gear = "";
+
+  this.spmov1name = "";
+  this.spmov1desc = "";
+  this.spmov2name = "";
+  this.spmov2desc = "";
+  this.spmov3name = "";
+  this.spmov3desc = "";
+  this.spmov4name = "";
+  this.spmov4desc = "";
+  this.spmov5name = "";
+  this.spmov5desc = "";
+  this.spmov6name = "";
+  this.spmov6desc = "";
+  this.spmov7name = "";
+  this.spmov7desc = "";
+  this.spmov8name = "";
+  this.spmov8desc = "";
 }
 
 function getCharData() {
@@ -270,157 +266,158 @@ function getCharData() {
   character.level = lvlLabel.innerHTML;
   character.hp = hpLabel.innerHTML;
 
-  character.abilities.strength = strLabel.innerHTML;
-  character.abilities.dexterity = dexLabel.innerHTML;
-  character.abilities.constitution = conLabel.innerHTML;
-  character.abilities.intelligence = intLabel.innerHTML;
-  character.abilities.wisdom = wisLabel.innerHTML;
-  character.abilities.charisma = chaLabel.innerHTML;
+  character.strength = strLabel.innerHTML;
+  character.dexterity = dexLabel.innerHTML;
+  character.constitution = conLabel.innerHTML;
+  character.intelligence = intLabel.innerHTML;
+  character.wisdom = wisLabel.innerHTML;
+  character.charisma = chaLabel.innerHTML;
 
-  character.details.name = nameLabel.innerHTML;
-  character.details.title = titleLabel.innerHTML;
-  character.details.appearance = appLabel.innerHTML;
-  character.details.backstory = bsLabel.innerHTML;
-  character.details.personality = persLabel.innerHTML;
+  character.name = nameLabel.innerHTML;
+  character.title = titleLabel.innerHTML;
+  character.appearance = appLabel.innerHTML;
+  character.backstory = bsLabel.innerHTML;
+  character.personality = persLabel.innerHTML;
 
-  character.equipment.weapons[0].name = wpn1nameLabel.innerHTML;
-  character.equipment.weapons[0].desc = wpn1descLabel.innerHTML;
-  character.equipment.weapons[0].type = wpn1typeLabel.innerHTML;
+  character.wpn1name = wpn1nameLabel.innerHTML;
+  character.wpn1desc = wpn1descLabel.innerHTML;
+  character.wpn1type = wpn1typeLabel.innerHTML;
 
-  character.equipment.weapons[1].name = wpn2nameLabel.innerHTML;
-  character.equipment.weapons[1].desc = wpn2descLabel.innerHTML;
-  character.equipment.weapons[1].type = wpn2typeLabel.innerHTML;
+  character.wpn2name = wpn2nameLabel.innerHTML;
+  character.wpn2desc = wpn2descLabel.innerHTML;
+  character.wpn2type = wpn2typeLabel.innerHTML;
 
-  character.equipment.armor.name = armorNameLabel.innerHTML;
-  character.equipment.armor.desc = armorDescLabel.innerHTML;
-  character.equipment.armor.type = armorTypeLabel.innerHTML;
+  character.armorName = armorNameLabel.innerHTML;
+  character.armorDesc = armorDescLabel.innerHTML;
+  character.armorType = armorTypeLabel.innerHTML;
 
-  character.equipment.gear = gearLabel.innerHTML;
+  character.gear = gearLabel.innerHTML;
 
-  character.special_moves[0].name = spmov1nameLabel.innerHTML;
-  character.special_moves[0].desc = spmov1descLabel.innerHTML;
-  character.special_moves[1].name = spmov2nameLabel.innerHTML;
-  character.special_moves[1].desc = spmov2descLabel.innerHTML;
-  character.special_moves[2].name = spmov3nameLabel.innerHTML;
-  character.special_moves[2].desc = spmov3descLabel.innerHTML;
-  character.special_moves[3].name = spmov4nameLabel.innerHTML;
-  character.special_moves[3].desc = spmov4descLabel.innerHTML;
-  character.special_moves[4].name = spmov5nameLabel.innerHTML;
-  character.special_moves[4].desc = spmov5descLabel.innerHTML;
-  character.special_moves[5].name = spmov6nameLabel.innerHTML;
-  character.special_moves[5].desc = spmov6descLabel.innerHTML;
-  character.special_moves[6].name = spmov7nameLabel.innerHTML;
-  character.special_moves[6].desc = spmov7descLabel.innerHTML;
-  character.special_moves[7].name = spmov8nameLabel.innerHTML;
-  character.special_moves[7].desc = spmov8descLabel.innerHTML;
+  character.spmov1name = spmov1nameLabel.innerHTML;
+  character.spmov1desc = spmov1descLabel.innerHTML;
+  character.spmov2name = spmov2nameLabel.innerHTML;
+  character.spmov2desc = spmov2descLabel.innerHTML;
+  character.spmov3name = spmov3nameLabel.innerHTML;
+  character.spmov3desc = spmov3descLabel.innerHTML;
+  character.spmov4name = spmov4nameLabel.innerHTML;
+  character.spmov4desc = spmov4descLabel.innerHTML;
+  character.spmov5name = spmov5nameLabel.innerHTML;
+  character.spmov5desc = spmov5descLabel.innerHTML;
+  character.spmov6name = spmov6nameLabel.innerHTML;
+  character.spmov6desc = spmov6descLabel.innerHTML;
+  character.spmov7name = spmov7nameLabel.innerHTML;
+  character.spmov7desc = spmov7descLabel.innerHTML;
+  character.spmov8name = spmov8nameLabel.innerHTML;
+  character.spmov8desc = spmov8descLabel.innerHTML;
 
-  if(localStorage.characterList) {
-   characterList = JSON.parse(localStorage.getItem('characterList'));
+  if(lsTest() === true){
+    getCharacterList();
+    characterList.push(character);
+    localStorage.setItem('characterList', JSON.stringify(characterList));
+
+         // this is how you will retrive it
+
+    var retrievedObject = localStorage.getItem('characterList');
+    console.log('retrievedObject: ', JSON.parse(retrievedObject));
+
+    return character;
   } else {
-   characterList = [];
+      showAlert("fullAlert", true);
   }
-  characterList.push(character);
-  localStorage.setItem('characterList', JSON.stringify(characterList));
 
-       // this is how you will retrive it
-
-  var retrievedObject = localStorage.getItem('characterList');
-  console.log('retrievedObject: ', JSON.parse(retrievedObject));
-
-  return character;
 }
 
 function setCharData(character) {
+  name_input.value = character.name;
+  setLabel(name_input, "nameLabel");
+  title_input.value = character.title;
+  setLabel(title_input, "titleLabel");
   lvl_input.value = Number(character.level);
   setLabel(lvl_input, "lvlLabel");
   hp_input.value = Number(character.hp);
   setLabel(hp_input, "hpLabel");
 
-  str_input.value = Number(character.abilities.strength);
+  str_input.value = Number(character.strength);
   setLabel(str_input, "strLabel");
   updateMods(str_input, "strMod");
-  dex_input.value = Number(character.abilities.dexterity);
+  dex_input.value = Number(character.dexterity);
   setLabel(dex_input, "dexLabel");
   updateMods(dex_input, "dexMod");
-  con_input.value = Number(character.abilities.constitution);
+  con_input.value = Number(character.constitution);
   setLabel(con_input, "conLabel");
   updateMods(con_input, "conMod");
-  int_input.value = Number(character.abilities.intelligence);
+  int_input.value = Number(character.intelligence);
   setLabel(int_input, "intLabel");
   updateMods(int_input, "intMod");
-  wis_input.value = Number(character.abilities.wisdom);
+  wis_input.value = Number(character.wisdom);
   setLabel(wis_input, "wisLabel");
   updateMods(wis_input, "wisMod");
-  cha_input.value = Number(character.abilities.charisma);
+  cha_input.value = Number(character.charisma);
   setLabel(cha_input, "chaLabel");
   updateMods(cha_input, "chaMod");
 
-  name_input.value = character.details.name;
-  setLabel(name_input, "nameLabel");
-  title_input.value = character.details.title;
-  setLabel(title_input, "titleLabel");
-  app_input.value = character.details.appearance;
-  setLabel(app_input, "appLabel");
-  bs_input.value = character.details.backstory;
-  setLabel(bs_input, "bsLabel");
-  pers_input.value = character.details.personality;
-  setLabel(pers_input, "persLabel");
-
-  wpn1name_input.value = character.equipment.weapons[0].name;
+  wpn1name_input.value = character.wpn1name;
   setLabel(wpn1name_input, "wpn1nameLabel");
-  wpn1desc_input.value = character.equipment.weapons[0].desc;
+  wpn1desc_input.value = character.wpn1desc;
   setLabel(wpn1desc_input, "wpn1descLabel");
-  wpn1type_input.value = character.equipment.weapons[0].type;
+  wpn1type_input.value = character.wpn1type;
   setLabel(wpn1type_input, "wpn1typeLabel");
 
-  wpn2name_input.value = character.equipment.weapons[1].name;
+  wpn2name_input.value = character.wpn2name;
   setLabel(wpn2name_input, "wpn2nameLabel");
-  wpn2desc_input.value = character.equipment.weapons[1].desc;
+  wpn2desc_input.value = character.wpn2desc;
   setLabel(wpn2desc_input, "wpn2descLabel");
-  wpn2type_input.value = character.equipment.weapons[1].type;
+  wpn2type_input.value = character.wpn2type;
   setLabel(wpn2type_input, "wpn2typeLabel");
 
-  armorName_input.value = character.equipment.armor.name;
+  armorName_input.value = character.armorName;
   setLabel(armorName_input, "armorNameLabel");
-  armorDesc_input.value = character.equipment.armor.desc;
+  armorDesc_input.value = character.armorDesc;
   setLabel(armorDesc_input, "armorDescLabel");
-  armorType_input.value = character.equipment.armor.type;
+  armorType_input.value = character.armorType;
   setLabel(armorType_input, "armorTypeLabel");
 
-  gear_input.value = character.equipment.gear;
+  gear_input.value = character.gear;
   setLabel(gear_input, "gearLabel");
 
-  spmov1name_input.value = character.special_moves[0].name;
+  app_input.value = character.appearance;
+  setLabel(app_input, "appLabel");
+  bs_input.value = character.backstory;
+  setLabel(bs_input, "bsLabel");
+  pers_input.value = character.personality;
+  setLabel(pers_input, "persLabel");
+
+  spmov1name_input.value = character.spmov1name;
   setLabel(spmov1name_input, "spmov1nameLabel");
-  spmov1desc_input.value = character.special_moves[0].desc;
+  spmov1desc_input.value = character.spmov1desc;
   setLabel(spmov1desc_input, "spmov1descLabel");
-  spmov2name_input.value = character.special_moves[1].name;
+  spmov2name_input.value = character.spmov2name;
   setLabel(spmov2name_input, "spmov2nameLabel");
-  spmov2desc_input.value = character.special_moves[1].desc;
+  spmov2desc_input.value = character.spmov2desc;
   setLabel(spmov2desc_input, "spmov2descLabel");
-  spmov3name_input.value = character.special_moves[2].name;
+  spmov3name_input.value = character.spmov3name;
   setLabel(spmov3name_input, "spmov3nameLabel");
-  spmov3desc_input.value = character.special_moves[2].desc;
+  spmov3desc_input.value = character.spmov3desc;
   setLabel(spmov3desc_input, "spmov3descLabel");
-  spmov4name_input.value = character.special_moves[3].name;
+  spmov4name_input.value = character.spmov4name;
   setLabel(spmov4name_input, "spmov4nameLabel");
-  spmov4desc_input.value = character.special_moves[3].desc;
+  spmov4desc_input.value = character.spmov4desc;
   setLabel(spmov4desc_input, "spmov4descLabel");
-  spmov5name_input.value = character.special_moves[4].name;
+  spmov5name_input.value = character.spmov5name;
   setLabel(spmov5name_input, "spmov5nameLabel");
-  spmov5desc_input.value = character.special_moves[4].desc;
+  spmov5desc_input.value = character.spmov5desc;
   setLabel(spmov5desc_input, "spmov5descLabel");
-  spmov6name_input.value = character.special_moves[5].name;
+  spmov6name_input.value = character.spmov6name;
   setLabel(spmov6name_input, "spmov6nameLabel");
-  spmov6desc_input.value = character.special_moves[5].desc;
+  spmov6desc_input.value = character.spmov6desc;
   setLabel(spmov6desc_input, "spmov6descLabel");
-  spmov7name_input.value = character.special_moves[6].name;
+  spmov7name_input.value = character.spmov7name;
   setLabel(spmov7name_input, "spmov7nameLabel");
-  spmov7desc_input.value = character.special_moves[6].desc;
+  spmov7desc_input.value = character.spmov7desc;
   setLabel(spmov7desc_input, "spmov7descLabel");
-  spmov8name_input.value = character.special_moves[7].name;
+  spmov8name_input.value = character.spmov8name;
   setLabel(spmov8name_input, "spmov8nameLabel");
-  spmov8desc_input.value = character.special_moves[7].desc;
+  spmov8desc_input.value = character.spmov8desc;
   setLabel(spmov8desc_input, "spmov8descLabel");
 }
 
@@ -428,7 +425,7 @@ function addRowToLoadTable(obj,num) {
   var table = document.getElementById("loadCharTable");
   var newHTML = "";
 
-  newHTML = "<tr><td><button type='button' class='btn btn-default' onclick='clearItem(this," + num + ")'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><td>" + String(obj.details.name) + "</td><td><button type='button' class='btn btn-default n-m-b' id='loadFile" + num + "' onclick='getNumAndGo(this.id)'>Load</button></td></tr>";
+  newHTML = "<tr><td><button type='button' class='btn btn-default' onclick='clearItem(this," + num + ")'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><td>" + String(obj.name) + "</td><td><button type='button' class='btn btn-default n-m-b' id='loadFile" + num + "' onclick='getNumAndGo(this.id)'>Load</button></td></tr>";
 
   table.innerHTML += newHTML;
 }
@@ -448,12 +445,7 @@ function refreshTable() {
   var i = 0;
 
   clearTable(table);
-
-  if(localStorage.characterList) {
-   characterList = JSON.parse(localStorage.getItem('characterList'));
-  } else {
-   characterList = [];
-  }
+  getCharacterList();
 
   for(i; i < characterList.length; i++) {
     addRowToLoadTable(characterList[i],i);
@@ -466,6 +458,9 @@ refreshTable();
 
 function getNumAndGo(str) {
   var num = str.charAt(8);
+
+  getCharacterList();
+
   setCharData(characterList[num]);
   hideModal();
   if(!editing_mode) {
@@ -475,23 +470,19 @@ function getNumAndGo(str) {
 
 function clearList() {
   localStorage.removeItem("characterList");
-  if(localStorage.characterList) {
-   characterList = JSON.parse(localStorage.getItem('characterList'));
-  } else {
-   characterList = [];
-  }
+
+  getCharacterList();
+
   characterList = [];
   localStorage.setItem('characterList', JSON.stringify(characterList));
   refreshTable();
 }
 
 function clearItem(btn, num) {
-  if(localStorage.characterList) {
-   characterList = JSON.parse(localStorage.getItem('characterList'));
-  } else {
-   characterList = [];
-  }
+  getCharacterList();
+
   characterList.splice(num,1);
+  console.log(characterList);
   localStorage.setItem('characterList', JSON.stringify(characterList));
   btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
 }
@@ -505,3 +496,4 @@ function showAlert(target, boo){
 }
 
 showAlert("clearAlert", false);
+showAlert("fullAlert", false);
