@@ -28,11 +28,11 @@ var cha_input = document.getElementById("charisma");
 var chaLabel = document.getElementById("chaLabel");
 
 var app_input = document.getElementById("appearance");
-var appLabel = document.getElementById("appearanceLabel");
+var appLabel = document.getElementById("appLabel");
 var pers_input = document.getElementById("personality");
-var persLabel = document.getElementById("personalityLabel");
+var persLabel = document.getElementById("persLabel");
 var bs_input = document.getElementById("backstory");
-var bsLabel = document.getElementById("backstoryLabel");
+var bsLabel = document.getElementById("bsLabel");
 
 var wpn1name_input = document.getElementById("wpn1name");
 var wpn1nameLabel = document.getElementById("wpn1nameLabel");
@@ -96,6 +96,99 @@ var spmov8desc_input = document.getElementById("spmov8desc");
 var spmov8descLabel = document.getElementById("spmov8descLabel");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
+
+function toggleEdit(btn) {
+  editing_mode = !editing_mode;
+
+  if(!editing_mode) {
+    editDiv.style.display = "block";
+    viewDiv.style.display = "none";
+    edit_btn.innerHTML = "View";
+  } else {
+    viewDiv.style.display = "block";
+    editDiv.style.display = "none";
+    edit_btn.innerHTML = "Edit";
+  }
+}
+
+toggleEdit();
+
+function setLabel(input, target) {
+  var label = document.getElementById(target);
+
+  if(input.value === "" || input.value === null ) {
+    return;
+  } else {
+    label.innerHTML = input.value;
+  }
+}
+
+function updateHP(con) {
+  var hp_input = document.getElementById("hp");
+  var curr = Number(hp_input.value);
+  var val = Number(con.value) - 10;
+  var newHp = curr + val;
+
+  hp_input.value = 0;
+
+  if(document.getElementById("lvl").value === "1") {
+    hp_input.value = String(val + 10);
+  } else {
+    hp_input.value = String(curr);
+  }
+  // hp_input.value = newHp.toString();
+}
+
+//Updates ability score modifier
+function updateMods(input, target) {
+  var value = input.value;
+  var modVal = value - 10;
+  var labelText = "";
+  var labels = document.getElementsByClassName(target);
+  var i = 0;
+
+  if(modVal > 0) {
+    labelText = "+ " + modVal.toString();
+  } else if(modVal < 0) {
+    modVal *= -1;
+    labelText = "- " + modVal.toString();
+  } else {
+    labelText = "0";
+  }
+
+  for(i; i < labels.length; i++) {
+    labels[i].innerHTML = labelText;
+  }
+}
+
+function setTotal() {
+  var scores = document.getElementsByClassName("ability");
+  var level = document.getElementById("lvl").value;
+  var total = Number(level) + 59;
+  var used = 0;
+  var total_label = document.getElementById("totalPoints");
+  var used_label= document.getElementById("usedPoints");
+  var i = 0;
+
+  for(i; i < scores.length; i++) {
+    used += Number(scores[i].value);
+  }
+
+  total_label.innerHTML = total.toString();
+  used_label.innerHTML = used.toString();
+
+  if(used > total) {
+    used_label.parentElement.style.color = "red";
+  } else if (used < total) {
+    used_label.parentElement.style.color = "orange";
+  } else {
+    used_label.parentElement.style.color = "black";
+  }
+}
+
+function hideModal() {
+  saveLoadModal.hide();
+}
 
 function Character() {
   this.level = "";
@@ -237,45 +330,6 @@ function getCharData() {
   return character;
 }
 
-function addRowToLoadTable(obj,num) {
-  var table = document.getElementById("loadCharTable");
-  var newHTML = "";
-
-  newHTML = "<tr><td>" + String(obj.details.name) + "</td><td><button type='button' class='btn btn-default n-m-b' id='loadFile" + num + "' onclick='getNumAndGo(this.id)'>Load</button></td></tr>";
-
-  table.innerHTML += newHTML;
-}
-
-function saveData() {
-  addRowToLoadTable(getCharData(), characterList.length + 1);
-}
-
-function fillTable() {
-  var table = document.getElementById("loadTable");
-  var newHTML = "";
-  var i = 0;
-
-  if(localStorage.characterList) {
-    var retrievedObject = localStorage.getItem('characterList');
-    characterList = JSON.parse(retrievedObject);
-    for(i; i < characterList.length; i++) {
-      addRowToLoadTable(characterList[i],i);
-    }
-  } else {
-    characterList = [];
-  }
-}
-
-fillTable();
-
-function getNumAndGo(str) {
-  var num = str.charAt(8);
-  setCharData(characterList[num]);
-  if(!editing_mode) {
-    toggleEdit();
-  }
-}
-
 function setCharData(character) {
   lvl_input.value = Number(character.level);
   setLabel(lvl_input, "lvlLabel");
@@ -370,91 +424,84 @@ function setCharData(character) {
   setLabel(spmov8desc_input, "spmov8descLabel");
 }
 
-function setLabel(input, target) {
-  var label = document.getElementById(target);
+function addRowToLoadTable(obj,num) {
+  var table = document.getElementById("loadCharTable");
+  var newHTML = "";
 
-  if(input.value === "" || input.value === null ) {
-    return;
-  } else {
-    label.innerHTML = input.value;
+  newHTML = "<tr><td><button type='button' class='btn btn-default' onclick='clearItem(this," + num + ")'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><td>" + String(obj.details.name) + "</td><td><button type='button' class='btn btn-default n-m-b' id='loadFile" + num + "' onclick='getNumAndGo(this.id)'>Load</button></td></tr>";
+
+  table.innerHTML += newHTML;
+}
+
+function saveData() {
+  addRowToLoadTable(getCharData(), characterList.length + 1);
+}
+
+function clearTable(table) {
+  while (table.children[1]) {
+    table.removeChild(table.children[1]);
   }
 }
 
-function toggleEdit(btn) {
-  editing_mode = !editing_mode;
+function refreshTable() {
+  var table = document.getElementById("loadCharTable");
+  var i = 0;
 
+  clearTable(table);
+
+  if(localStorage.characterList) {
+   characterList = JSON.parse(localStorage.getItem('characterList'));
+  } else {
+   characterList = [];
+  }
+
+  for(i; i < characterList.length; i++) {
+    addRowToLoadTable(characterList[i],i);
+  }
+
+  localStorage.setItem('characterList', JSON.stringify(characterList));
+}
+
+refreshTable();
+
+function getNumAndGo(str) {
+  var num = str.charAt(8);
+  setCharData(characterList[num]);
+  hideModal();
   if(!editing_mode) {
-    editDiv.style.display = "block";
-    viewDiv.style.display = "none";
-    edit_btn.innerHTML = "View";
-  } else {
-    viewDiv.style.display = "block";
-    editDiv.style.display = "none";
-    edit_btn.innerHTML = "Edit";
+    toggleEdit();
   }
 }
 
-toggleEdit();
-
-function updateHP(con) {
-  var hp_input = document.getElementById("hp");
-  var curr = Number(hp_input.value);
-  var val = Number(con.value) - 10;
-  var newHp = curr + val;
-
-  hp_input.value = 0;
-
-  if(document.getElementById("lvl").value === "1") {
-    hp_input.value = String(val + 10);
+function clearList() {
+  localStorage.removeItem("characterList");
+  if(localStorage.characterList) {
+   characterList = JSON.parse(localStorage.getItem('characterList'));
   } else {
-    hp_input.value = String(curr);
+   characterList = [];
   }
-  // hp_input.value = newHp.toString();
+  characterList = [];
+  localStorage.setItem('characterList', JSON.stringify(characterList));
+  refreshTable();
 }
 
-//Updates ability score modifier
-function updateMods(input, target) {
-  var value = input.value;
-  var modVal = value - 10;
-  var labelText = "";
-  var labels = document.getElementsByClassName(target);
-  var i = 0;
-
-  if(modVal > 0) {
-    labelText = "+ " + modVal.toString();
-  } else if(modVal < 0) {
-    modVal *= -1;
-    labelText = "- " + modVal.toString();
+function clearItem(btn, num) {
+  if(localStorage.characterList) {
+   characterList = JSON.parse(localStorage.getItem('characterList'));
   } else {
-    labelText = "0";
+   characterList = [];
   }
+  characterList.splice(num,1);
+  localStorage.setItem('characterList', JSON.stringify(characterList));
+  btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
+}
 
-  for(i; i < labels.length; i++) {
-    labels[i].innerHTML = labelText;
+function showAlert(target, boo){
+  if(boo) {
+    document.getElementById(target).style.display = "block";
+  } else {
+    document.getElementById(target).style.display = "none";
   }
 }
 
-function setTotal() {
-  var scores = document.getElementsByClassName("ability");
-  var level = document.getElementById("lvl").value;
-  var total = Number(level) + 59;
-  var used = 0;
-  var total_label = document.getElementById("totalPoints");
-  var used_label= document.getElementById("usedPoints");
-  var i = 0;
-
-  for(i; i < scores.length; i++) {
-    used += Number(scores[i].value);
-  }
-
-  total_label.innerHTML = total.toString();
-  used_label.innerHTML = used.toString();
-
-  if(used > total) {
-    used_label.parentElement.style.color = "red";
-  } else if (used < total) {
-    used_label.parentElement.style.color = "orange";
-  } else {
-    used_label.parentElement.style.color = "black";
-  }
-}
+showAlert("clearAlert", false);

@@ -73,20 +73,30 @@
               <h4 class="modal-title">Save or Load</h4>
             </div>
             <div class="modal-body">
-              <table id="loadCharTable" class="table">
+              <table class="table">
                 <thead>
+                  <th></th>
                   <th>Name</th>
                   <th>Action</th>
                 </thead>
-                <tbody>
+                <tbody id="loadCharTable">
                   <tr>
+                    <td></td>
                     <td>Empty Slot</td>
                     <td><button type="button" class="btn btn-default" onclick="saveData()">Save</button></td>
                   </tr>
                 </tbody>
               </table>
+              <div id="clearAlert" class="alert alert-danger">
+                <p>This will clear all your saved characters, are you sure?</p>
+                <div class="text-right" style="margin-top:16px;">
+                  <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showAlert('clearAlert', false)">Yes</button>
+                  <button type="button" name="button" class="btn btn-primary" onclick="showAlert('clearAlert', false)">Cancel</button>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
+              <button id="clearList" type="button" class="btn btn-danger pull-left" name="button" onclick="showAlert('clearAlert', true)">Clear List</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
           </div><!-- /.modal-content -->
