@@ -248,8 +248,6 @@
             <h4>Index</h4>
             <ol>
               <li><a href="#">Name and Title</a></li>
-              <li><a href="#">Level</a></li>
-              <li><a href="#">Ability Scores</a></li>
               <li><a href="#">Hit Points</a></li>
               <li><a href="#">Equipment</a></li>
               <li><a href="#">Details</a></li>
@@ -259,63 +257,91 @@
           </div>
           <div class="col-sm-9">
             <h3 id="nameTitle">Name and Title</h3>
-            <p></p>
-
-            <hr>
-
-            <h3 id="level">Level</h3>
-            <p></p>
-
-            <hr>
-
-            <h3 id="charScores">Ability Scores</h3>
-            <p></p>
+            <p>You character needs a name and a title. Below is a list of possible titles:</p>
+            <table class="table">
+              <tbody class="n-mb">
+                <tr>
+                  <th>Profession</th>
+                  <td>Wizard, Doctor, Detective, Brawler, Dancer, Mechanic, Duelist, Hunter, Chef, Healer</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td>General, High Priest, Queen, Demigod, Knight, Forsaken, Sith Lord, Mayor, Chieftain</td>
+                </tr>
+                <tr>
+                  <th>Misc</th>
+                  <td>Bard, Wanderer, Thief, Monk, Cleric, Anarchist, Pilgrim, Master, Seer, Zealot</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Make sure you try and at least loosely match your character with the world your Game Master has created!</p>
 
             <hr>
 
             <h3 id="hitPoints">Hit Points</h3>
-            <p></p>
+            <p>Your character's hit points (HP) represent the amount of damage they can take before they fall unconcious and must start to roll their death saving throws. At level 1, your character's HP will be the same as their constitution score. Every time you level up you will roll a d10, add your constitution modifier, and add the result to your max HP.</p>
 
             <hr>
 
             <h3 id="equip">Equipment</h3>
-            <p></p>
+            <p>Every character will have equipment they carry with them, mainly their weapons, armor, and other assorted gear.</p>
 
             <h4>Main Weapon</h4>
-            <p></p>
+            <p>You character's <b>main weapon</b> is their main mode of action in encounters. It can be a baseball bat, a broadsword, a healing staff, a blessed silver acoustic guitar with the name "Heather" written across it in hot-pink glitter... whatever you want. Every weapon will have a <b>name</b>, a <b>description</b> of the weapon's appearance and extra attributes, and a <b>type</b>, which determines the die you will roll should you land an attack with it.</p>
+            <p>Extra attributes are essentially the special conditions or powers of your weapon; maybe it glows when a special type of enemy is nearby, or it has advantage in certain weather. Extra attributes are also where you'll describe magical weapon's attacks, like a wand that shoots fireballs, and the special conditions created by the attack if any (+2 damage against wood and flesh, -2 damage against water-based creatures).</p>
 
             <h4>Sub Weapon</h4>
-            <p></p>
+            <p>Some characters will carry a shield, others will carry a bow or some other ranged weapon, and others still will just carry another head-basher to rush in dual-weild style. The secondary weapon, or <b>sub weapon</b> helps add an extra element to your character.</p>
 
             <h4>Armor</h4>
-            <p></p>
+            <p>The <b>armor</b> section of the character sheet describes your character's clothing and garbs. If your character decides to wear some kind of protective gear, be it steel armor or elbow pads, you'll give it a <b>name</b> and <b>description</b> here, along with giving it a <b>type</b>. Keep in mind that there are penalties to heavier armors, but the protection they provide can definitely improve your character's chances of defending against attacks. Below are the armor types and their benefits/penalties.</p>
+            <table class="table">
+              <thead>
+                <th>Type</th>
+                <th>AC</th>
+                <th>Desc</th>
+                <th>Attributes</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>None</td>
+                  <td>10</td>
+                  <td>If your character is wearing regular old clothes/robes or is stark naked, they have an armor type of <i>none</i>.</td>
+                  <td>+2 to initiative rolls</td>
+                </tr>
+                <tr>
+                  <td>Light</td>
+                  <td>12</td>
+                  <td>If your character is wearing leather armor, plastic pads, or magic cloth, they have an armor type of <i>light</i>.</td>
+                  <td>+2 to AC</td>
+                </tr>
+                <tr>
+                  <td>Medium</td>
+                  <td>14</td>
+                  <td>If your character is wearing bone armor, bulletproof gear, or gold armor, they have an armor type of <i>medium</i>.</td>
+                  <td>+4 to AC, -2 to initiative rolls</td>
+                </tr>
+                <tr>
+                  <td>Heavy</td>
+                  <td>16</td>
+                  <td>If your character is wearing dragon bones, riot gear, or full steel/iron armor, they have an armor type of <i>heavy</i>.</td>
+                  <td>+6 to AC, -4 to initiative rolls</td>
+                </tr>
+              </tbody>
+            </table>
 
             <h4>Gear</h4>
-            <p></p>
-
-            <hr>
-
-            <h3 id="details">Details</h3>
-            <p></p>
-
-            <h4>Appearance</h4>
-            <p></p>
-
-            <h4>Personality</h4>
-            <p></p>
-
-            <h4>Backstory</h4>
-            <p></p>
+            <p>Your character's <b>gear</b> is just the extra equipment or magical items they carry. It could be survival gear, research tools, thieving tools, camping gear, etc. Try to reflect your character's daily needs in the gear they carry and don't forget that you can make use of their gear during the quests. Perhaps they collected a shining ruby from a swamp cave, you'll add that to their gear. Keep track of what your character's are holding, it can come in handy.</p>
 
             <hr>
 
             <h3 id="spMoves">Special Moves</h3>
-            <p></p>
+            <p>Rather than fuss around with complicated skill trees, spells, feats, domains, and combat maneuvers, <b>House Rules RPG</b> keeps it simple by giving every character 8 <b>special moves</b>. Special moves can be spells, combat techniques, tactics, powers, abilities, attacks, or other special actions that your character can take.</p>
 
             <hr>
 
             <h3 id="lvlUp">Leveling Up</h3>
-            <p></p>
+            <p>Characters and creatures in <b>House Rules RPG</b> have a level, a score between 1 and 20 that shows their progress and their power within the world. Every time your character gains a level, usually at the end of a significant quest, they have some opportunities to strengthen their character. Firstly they receive a point to add to one of their six abilities. Second, they get to roll a d10, add their consitution modifier, and add the result to their max hit points. Your character also receives some gold that can be used to purchase equipment and items.</p>
           </div>
         </div>
       </div>
