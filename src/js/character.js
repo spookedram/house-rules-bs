@@ -97,10 +97,11 @@ var spmov8descLabel = document.getElementById("spmov8descLabel");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 
+// Shows/hides editing inputs
 function toggleEdit(btn) {
   editing_mode = !editing_mode;
 
-  if(!editing_mode) {
+  if(editing_mode) {
     editDiv.style.display = "block";
     viewDiv.style.display = "none";
     edit_btn.innerHTML = "View";
@@ -111,8 +112,7 @@ function toggleEdit(btn) {
   }
 }
 
-toggleEdit();
-
+// When input changes, updates label
 function setLabel(input, target) {
   var label = document.getElementById(target);
 
@@ -123,6 +123,7 @@ function setLabel(input, target) {
   }
 }
 
+// When constitution changes at lvl 1, update hp
 function updateHP(con) {
   var hp_input = document.getElementById("hp");
   var curr = Number(hp_input.value);
@@ -139,7 +140,7 @@ function updateHP(con) {
   // hp_input.value = newHp.toString();
 }
 
-//Updates ability score modifier
+// Updates ability score modifier
 function updateMods(input, target) {
   var value = input.value;
   var modVal = value - 10;
@@ -161,6 +162,7 @@ function updateMods(input, target) {
   }
 }
 
+// sets total points and points used
 function setTotal() {
   var scores = document.getElementsByClassName("ability");
   var level = document.getElementById("lvl").value;
@@ -194,6 +196,21 @@ function showModal() {
   saveLoadModal.show();
 }
 
+function uniqueNumber() {
+    var date = Date.now();
+
+    // If created at same millisecond as previous
+    if (date <= uniqueNumber.previous) {
+        date = ++uniqueNumber.previous;
+    } else {
+        uniqueNumber.previous = date;
+    }
+
+    return date;
+}
+uniqueNumber.previous = 0;
+
+// is localStorage empty?
 function lsTest(){
     var test = 'test';
     try {
@@ -205,6 +222,7 @@ function lsTest(){
     }
 }
 
+// returns characterList array from localStorage
 function getCharacterList() {
   if(localStorage.characterList) {
    characterList = JSON.parse(localStorage.getItem('characterList'));
@@ -213,7 +231,10 @@ function getCharacterList() {
   }
 }
 
+// init new character obj
 function Character() {
+  this.pin = 0;
+
   this.name = "";
   this.title = "";
   this.level = "";
@@ -237,8 +258,8 @@ function Character() {
   this.wpn2name = "";
   this.wpn2desc = "";
   this.wpn2type = "";
-  this.armorTame = "";
-  this.armorTesc = "";
+  this.armorName = "";
+  this.armorDesc = "";
   this.armorType = "";
   this.gear = "";
 
@@ -260,8 +281,11 @@ function Character() {
   this.spmov8desc = "";
 }
 
-function getCharData() {
+// adds new character to characterList and localStorage from current labels
+function saveCharData() {
   var character = new Character();
+
+  character.pin = uniqueNumber();
 
   character.level = lvlLabel.innerHTML;
   character.hp = hpLabel.innerHTML;
@@ -327,6 +351,7 @@ function getCharData() {
 
 }
 
+// sets labels on loading of character
 function setCharData(character) {
   name_input.value = character.name;
   setLabel(name_input, "nameLabel");
@@ -421,25 +446,53 @@ function setCharData(character) {
   setLabel(spmov8desc_input, "spmov8descLabel");
 }
 
-function addRowToLoadTable(obj,num) {
+function saveCharacter() {
+  var character = saveCharData();
+  addRowToLoadTable(character);
+}
+
+function loadData(pin) {
+  var result;
+  getCharacterList();
+
+  for(var i = 0; i < characterList.length; i++) {
+    if(characterList[i].pin == pin) {
+      result = characterList[i];
+      break;
+    }
+  }
+
+  console.log(result);
+
+  setCharData(result);
+
+  hideModal();
+  if(editing_mode) {
+    toggleEdit();
+  }
+}
+
+function addRowToLoadTable(obj) {
   var table = document.getElementById("loadCharTable");
+  var name = String(obj.name);
+  var idNum = obj.pin;
   var newHTML = "";
 
-  newHTML = "<tr><td><button type='button' class='btn btn-default' onclick='clearItem(this," + num + ")'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td><td>" + String(obj.name) + "</td><td><button type='button' class='btn btn-default n-m-b' id='loadFile" + num + "' onclick='getNumAndGo(this.id)'>Load</button></td></tr>";
+  console.log(obj);
+
+  newHTML = "<tr><td><div>" + name + "</div></td><td><div class='btn-group'><button type='button' class='btn btn-default n-m-b' onclick='clearItem(this,&quot;" + idNum + "&quot;)'>Delete</button><button type='button' class='btn btn-default n-m-b' id='" + idNum + "' onclick='loadData(this.id)'>Load</button></div></td></tr>";
 
   table.innerHTML += newHTML;
 }
 
-function saveData() {
-  addRowToLoadTable(getCharData(), characterList.length + 1);
-}
-
+// get table and set extra rows to empty
 function clearTable(table) {
   while (table.children[1]) {
     table.removeChild(table.children[1]);
   }
 }
 
+// set rows in table for each character in characterList
 function refreshTable() {
   var table = document.getElementById("loadCharTable");
   var i = 0;
@@ -448,45 +501,39 @@ function refreshTable() {
   getCharacterList();
 
   for(i; i < characterList.length; i++) {
-    addRowToLoadTable(characterList[i],i);
+    addRowToLoadTable(characterList[i]);
   }
 
   localStorage.setItem('characterList', JSON.stringify(characterList));
 }
-
 refreshTable();
 
-function getNumAndGo(str) {
-  var num = str.charAt(8);
-
-  getCharacterList();
-
-  setCharData(characterList[num]);
-  hideModal();
-  if(!editing_mode) {
-    toggleEdit();
-  }
-}
-
+// clear out characterList and refreshTable
 function clearList() {
   localStorage.removeItem("characterList");
-
   getCharacterList();
-
   characterList = [];
   localStorage.setItem('characterList', JSON.stringify(characterList));
   refreshTable();
 }
 
-function clearItem(btn, num) {
+function clearItem(btn,pin) {
   getCharacterList();
 
-  characterList.splice(num,1);
+  for(var i = 0; i < characterList.length; i++) {
+    if(characterList[i].pin == pin) {
+      characterList.splice(i, 1);
+      break;
+    }
+  }
+
   console.log(characterList);
+
   localStorage.setItem('characterList', JSON.stringify(characterList));
-  btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
+  btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
 }
 
+// toggle alert box
 function showAlert(target, boo){
   if(boo) {
     document.getElementById(target).style.display = "block";

@@ -75,15 +75,13 @@
             <div class="modal-body">
               <table class="table">
                 <thead>
-                  <th></th>
                   <th>Name</th>
                   <th class="text-right">Action</th>
                 </thead>
                 <tbody id="loadCharTable">
                   <tr>
-                    <td></td>
                     <td>Empty Slot</td>
-                    <td><button type="button" class="btn btn-default" onclick="saveData()">Save</button></td>
+                    <td><button type="button" class="btn btn-default" onclick="saveCharacter()">Save</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -94,8 +92,8 @@
                 </div>
               </div>
               <div id="clearAlert" class="alert alert-danger">
-                <p>This will clear all your saved characters, are you sure?</p>
-                <div class="text-right" style="margin-top:16px;">
+                <p class="text-center">This will clear all your saved characters, are you sure?</p>
+                <div class="text-center" style="margin-top:16px;">
                   <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showAlert('clearAlert', false)">Yes</button>
                   <button type="button" name="button" class="btn btn-primary" onclick="showAlert('clearAlert', false)">Cancel</button>
                 </div>
@@ -451,7 +449,7 @@
       </div>
     </footer>
 
-    <script src="lib\bootstrap\bootstrap-native.min.js"></script>
+    <script src="lib/bootstrap/bootstrap-native.min.js"></script>
     <script src="js/character.js"></script>
   </body>
 </html>
