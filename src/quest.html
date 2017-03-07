@@ -53,9 +53,157 @@
     <div class="container">
       <p class="lead text-center"><i>"Adventure is worthwhile in itself." - Amelia Earhart</i></p>
 
+      <!-- Nav tabs -->
+      <div id="questTabs" class="tab-list">
+        <a href="javascript:void(0)" class="tab-links active" onclick="openTab(event,'structure')">Structure</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'finish')">Finish</a>
+      </div>
+
+      <!-- Tab panes -->
+      <div class="tab-pane" id="structure">
+        <h3>Theme</h3>
+        <input type="text" id="theme-input" placeholder="The power of greed" class="form-control">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <!-- Setting
+            –––––––––––––––––––––––––––––– -->
+            <h3>Setting</h3>
+            <div class="input-group">
+              <input type="text" id="setting-input" placeholder="A dark, swampy castle" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="setting-submit"><span class="glyphicon glyphicon-plus"></span></button>
+              </span>
+            </div>
+            <table id="setting-list" class="table">
+              <!-- List goes here -->
+            </table>
+          </div>
+          <div class="col-sm-6">
+            <!-- NPCs
+            ––––––––––––––––––––––––––––––– -->
+            <h3>NPCs</h3>
+            <div class="input-group">
+              <input type="text" id="npc-input" placeholder="Kerrigan Killingspree the Half-Orc Bard" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="npc-submit"><span class="glyphicon glyphicon-plus"></span></button>
+              </span>
+            </div>
+            <table id="npc-list" class="table">
+              <!-- List goes here -->
+            </table>
+          </div>
+        </div>
+
+        <h3>Act 1</h3>
+
+        <h4>Hook</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>(Optional) A fight, a chase, a kidnapping, etc can set off the session with excitement and energy.</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+        <h4>Goal Set</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>What's the purpose of the quest? What's the end goal at the beginning of the quest?</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <h3>Act 2</h3>
+        <h4>Low - Wandering</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>What info will the Players be able to dig up on their first lull in the quest?</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+        <h4>High - Fun Fight</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>This encounter is the fun way for the Players to stretch their fightin' muscles and try out their new abilities.</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+        <h4>Low - The Twist</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>On the second lull of the quest your characters will find out that there's more going on than meets the eye. What's the twist?</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <h3>Act 3</h3>
+        <h4>High - The Test</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>The twist has changed the game and this next encounter is a doozy. Challenge your Player's skills and remind them of the cost of failure.</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <h4>Low - The Search Ends</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>Your Player's have made it up to the end of the line and the final puzzle piece is revealed. What are the last pieces of information they need?</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <h3>Act 4</h3>
+
+        <h4>High - The Climax</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>With the threat revealed and the finale upon you, this final fight will push your Players to the limit. Make the battle one to remember.</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <h4>Low - Epilogue</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>The beast is vanquished, the heroes return, and they get a chance to say their goodbyes. Who's left to say goodbye to?</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <h4>Cliffhanger</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <p>Give your party a small taste of what's to come in the next session.</p>
+          </div>
+          <div class="col-sm-9">
+            <textarea rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="finish">
+
+      </div>
 
     </div>
-
 
     <footer class="footer">
       <div class="container">
@@ -65,5 +213,7 @@
     </footer>
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/quest.js"></script>
   </body>
 </html>

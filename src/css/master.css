@@ -64,16 +64,13 @@ footer {
   text-align: center;
 }
 
-/*#spmov-table-view th:first-of-type,
-#spmov-table-view td:first-of-type,
-#spmov-table-edit th:first-of-type,
-#spmov-table-edit td:first-of-type {
-  padding-left: 0;
-}*/
-
 #spmov-table-edit th:first-of-type,
 #spmov-table-edit td:first-of-type {
   padding-right: 0;
+}
+
+#setting-list *, #npc-list *{
+  vertical-align: middle;
 }
 
 #titleLabel {
@@ -158,6 +155,10 @@ footer {
   width: 150px;
 }
 
+.show-print {
+  display: none;
+}
+
 /* ---------- Utilities ---------- */
 .n-mb {
     margin-bottom: 0;
@@ -166,6 +167,9 @@ footer {
 @media print {
   .no-print {
     display: none;
+  }
+  .show-print {
+    display: block;
   }
   .pba {
     page-break-after: always;

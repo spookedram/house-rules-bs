@@ -62,7 +62,7 @@
 
       <!-- Tab panes -->
       <div class="tab-pane" id="gameplay">
-        <h2>General Rules</h2>
+        <h2>Gameplay Rules</h2>
         <div class="row">
           <div class="col-sm-3">
             <h4>Index</h4>
@@ -242,7 +242,7 @@
       </div>
 
       <div class="tab-pane" id="players" style="display: none;">
-        <h2>Character Sheet</h2>
+        <h2>Player Rules</h2>
         <div class="row">
           <div class="col-sm-3">
             <h4>Index</h4>
@@ -291,7 +291,7 @@
             <p>Extra attributes are essentially the special conditions or powers of your weapon; maybe it glows when a special type of enemy is nearby, or it has advantage in certain weather. Extra attributes are also where you'll describe magical weapon's attacks, like a wand that shoots fireballs, and the special conditions created by the attack if any (+2 damage against wood and flesh, -2 damage against water-based creatures).</p>
 
             <h4>Sub Weapon</h4>
-            <p>Some characters will carry a shield, others will carry a bow or some other ranged weapon, and others still will just carry another head-basher to rush in dual-weild style. The secondary weapon, or <b>sub weapon</b> helps add an extra element to your character.</p>
+            <p>Some characters will carry a shield, others will carry a bow or some other ranged weapon, and others still will just carry another head-basher to rush in dual-wield style. The secondary weapon, or <b>sub weapon</b> helps add an extra element to your character.</p>
 
             <h4>Armor</h4>
             <p>The <b>armor</b> section of the character sheet describes your character's clothing and garbs. If your character decides to wear some kind of protective gear, be it steel armor or elbow pads, you'll give it a <b>name</b> and <b>description</b> here, along with giving it a <b>type</b>. Keep in mind that there are penalties to heavier armors, but the protection they provide can definitely improve your character's chances of defending against attacks. Below are the armor types and their benefits/penalties.</p>
@@ -341,49 +341,253 @@
             <table class="table">
               <thead>
                 <th>Levels</th>
-                <th>Desc</th>
-                <th>Uses per day</th>
+                <th>Description</th>
               </thead>
               <tbody>
                 <tr>
                   <td>1-3</td>
                   <td>A basic skill or spell that your character has mastered. Think small, but not insignificant. 1d8 damage/healing, 60 minute effect, and low-level profession actions are common.</td>
-                  <td>1.5 x Lvl</td>
                 </tr>
                 <tr>
                   <td>1-3</td>
                   <td>A slightly more powerful skill/spell that your character maybe just recently learned. 2d8 damage/healing, 60 minute effect, and low-level profession actions are common.</td>
-                  <td>1 x Lvl</td>
                 </tr>
                 <tr>
                   <td>4-6</td>
                   <td>Through training and study your character unlocks a new ability/spell that opens new avenues of action. Try not to simply beef up lower moves or you'll find you stop using them altogether. 3d6 damage/healing, 120 minute effect, and low-level profession actions are common.</td>
-                  <td>0.5 x Lvl</td>
                 </tr>
                 <tr>
                   <td>7-9</td>
                   <td>Your character is a rising star, staking their name in the minor leagues and proving their metal. This move shows their progress and their drive to improve. 3d8 damage/healing, 120 minute effect, and mid-level profession actions are common.</td>
-                  <td>0.25 x Lvl</td>
                 </tr>
                 <tr>
                   <td>10-12</td>
                   <td>Your character is making strides in their field and has unlocked or mastered a new technique that will turn the tide in times of need. 3d10 damage/healing, 3 hour effect, and mid-level profession actions are common.</td>
-                  <td></td>
                 </tr>
                 <tr>
                   <td>13-15</td>
                   <td>Your character is at the level of a mentor, with much left to learn but much already behind them. This move will help them take their spot in the big leagues. 5d8 damage/healing, 6 hour effect, and high-level profession actions are common.</td>
-                  <td></td>
                 </tr>
                 <tr>
                   <td>16-18</td>
                   <td>Your character is at the level of a professor, an expert, or a champion, and this move is a testament to their dedication and training. 5d12 damage/healing, 12 hour effect, and high-level profession actions are common.</td>
-                  <td></td>
                 </tr>
                 <tr>
                   <td>19-20</td>
                   <td>You character has become a renowned expert and master of their field, nigh unmatched in their expertise/strength. This move is the culmination of their training, their ultimate display of power. 6d12 damage/healing, 1 day effect, and master-level profession actions are common.</td>
-                  <td>1 per day</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Special Moves Uses Per Day Per Level Chart</h3>
+            <table class="table table-striped">
+              <thead>
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+                <th>16</th>
+                <th>17</th>
+                <th>18</th>
+                <th>19</th>
+                <th>20</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Move 1</th>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <th>Move 2</th>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                  <td>18</td>
+                  <td>19</td>
+                </tr>
+                <tr>
+                  <th>Move 3</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                </tr>
+                <tr>
+                  <th>Move 4</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <th>Move 5</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <th>Move 6</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <th>Move 7</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <th>Move 8</th>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>1</td>
+                  <td>2</td>
                 </tr>
               </tbody>
             </table>
@@ -391,13 +595,71 @@
             <hr>
 
             <h3 id="lvlUp">Leveling Up</h3>
-            <p>Characters and creatures in <b>House Rules RPG</b> have a level, a score between 1 and 20 that shows their progress and their power within the world. Every time your character gains a level, usually at the end of a significant quest, they have some opportunities to strengthen their character. Firstly they receive a point to add to one of their six abilities. Second, they get to roll a d10, add their consitution modifier, and add the result to their max hit points. Your character also receives some gold that can be used to purchase equipment and items.</p>
+            <p>Characters and creatures in <b>House Rules RPG</b> have a level, a score between 1 and 20 that shows their progress and their power within the world. Every time your character gains a level, usually at the end of a significant quest, they have some opportunities to strengthen their character. Firstly they receive an <b>ability point</b> to add to one of their six abilities. Second, they get to roll a d10, add their consitution modifier, and add the result to <b>increase their max hit points</b>. Your character also receives some <b>gold</b> that can be used to purchase equipment and items.</p>
+
+            <h4>Gold per Level</h4>
+            <table class="table table-striped center-children">
+              <tbody>
+                <tr>
+                  <th>Level</th>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                  <th>6</th>
+                  <th>7</th>
+                  <th>8</th>
+                  <th>9</th>
+                  <th>10</th>
+                </tr>
+                <tr>
+                  <th>Money</th>
+                  <td>-</td>
+                  <td>500g</td>
+                  <td>1000g</td>
+                  <td>1500g</td>
+                  <td>2100g</td>
+                  <td>2800g</td>
+                  <td>3400g</td>
+                  <td>4300g</td>
+                  <td>5300g</td>
+                  <td>6400g</td>
+                </tr>
+                <tr>
+                  <th>Level</th>
+                  <th>11</th>
+                  <th>12</th>
+                  <th>13</th>
+                  <th>14</th>
+                  <th>15</th>
+                  <th>16</th>
+                  <th>17</th>
+                  <th>18</th>
+                  <th>19</th>
+                  <th>20</th>
+                </tr>
+                <tr>
+                  <th>Money</th>
+                  <td>7600g</td>
+                  <td>8900g</td>
+                  <td>10.5kg</td>
+                  <td>13kg</td>
+                  <td>14.6kg</td>
+                  <td>16.3kg</td>
+                  <td>18.1kg</td>
+                  <td>20kg</td>
+                  <td>30kg</td>
+                  <td>40kg</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
       <div class="tab-pane" id="gameMaster" style="display: none;">
-        <h2>Writing a Quest</h2>
+        <h2>Game Master Tips</h2>
         <div class="row">
           <div class="col-sm-3">
             <h4>Index</h4>
@@ -405,62 +667,97 @@
               <li><a href="#">Theme</a></li>
               <li><a href="#">Settings</a></li>
               <li><a href="#">NPCs</a></li>
+              <li><a href="#">Rhythm and Pacing</a></li>
               <li><a href="#">Act One</a></li>
               <li><a href="#">Act Two</a></li>
               <li><a href="#">Act Three</a></li>
               <li><a href="#">Act Four</a></li>
-              <li><a href="#">Cliffhanger</a></li>
-              <li><a href="#">Ending a Campaign</a></li>
+              <li><a href="#">Transition</a></li>
             </ol>
           </div>
           <div class="col-sm-9">
             <h3 id="theme">Theme</h3>
-            <p></p>
+            <p>The theme is the core idea of the story, what the whole quest will revolve around. Think of a specific emotion or issue you want to explore, but try to keep it simple and strong. Some examples of themes include:</p>
+            <ul>
+              <li>The love between a mother and her children</li>
+              <li>The cost of immortality</li>
+              <li>The tragedy of civil war</li>
+              <li>The dangers of fundamentalism</li>
+              <li>The weight of guilt</li>
+              <li>A boy and his dog (man’s relationship with animals)</li>
+            </ul>
 
             <hr>
 
             <h3 id="settings">Settings</h3>
-            <p></p>
+            <p>A change of scenery can easily ramp up the tension or provide a lull between action, something you'll want to take advantage of, but try not to have too many conflicting environments or lots of extraneous travel in one story or you risk confusing or boring your Players. Do you drop your players into a swamp? Are they sneaking through an ancient temple trying to avoid dangerous cultists? Or maybe they're making their way through a decimated version of Manhattan? The number of settings and amount of detail will change depending on your quest, but take some time to consider each one and try to sum it up in a short, clear, descriptive way for your settings list.</p>
 
             <hr>
 
             <h3 id="npcs">Non-Player Characters (NPCs)</h3>
-            <p></p>
+            <p>Every good quest has non-player characters, controlled by the Game Master, for the Players to interact with. These are not just the townsfolk and allies, but also the enemies and secret-keepers of the game. NPCs are creatures that lurk in the shadows waiting to strike and the kindly innkeep who offers your party a respite in the midst of a dreadful journey. A good Game Master will try to breathe life into the NPCs of the quest, giving them unique personalities and voices. They'll hopefully become characters that the Players will get invested in, that they'll want to love to love or love to hate. NPCs will require character sheets as well, although you mayybe don't want spend too much time detailing the backstory and personality of a cannon-fodder enemy.</p>
 
             <hr>
 
-            <h3 id="eAndP">Encounters and Puzzles</h3>
-            <p></p>
+            <h3 id="rAndP">Rhythm and Pacing</h3>
+            <p>An engaging story has everything to do with pacing. Knowing when and how to raise the stakes and release the tension to let your Players breathe is crucial to creating a satisfying experience. Too much tension for too long and your Players will go numb waiting for a break. Not enough and your story is boring. Oscillating between moments of action and moments of rest gives your Players time to process and regroup, to seek to understand and put the stakes into proper context. The quest writing tool can help you pace out events in your quest to maintain a good rhythm of highs and lows.</p>
 
             <hr>
 
             <h3 id="act1">Act One</h3>
-            <p></p>
+            <p>When starting a quest you'll need to provide some setup or a recap of the events from the last session, both used to ready the Players for the journey ahead and get them back into their roles. Their characters have been enjoying life as normal, but something is about to happen that will set them off on a quest.</p>
+
+            <h4>Hook (Optional)</h4>
+            <p>Some quests will start off with a bang! A fast, visceral event or encounter that sets off the rest of the events in the quest like dominoes falling in a line. It's not suited for every story but if you think it's right for you, the hook can be a useful tool to bring your Players right into the action.</p>
+
+            <h4>Goal Set</h4>
+            <p>Every quest has an end goal. Whether or not the climax and resolution have anything to do with the original goal is irrelevant, what matters is that the party starts their quest with a specific purpose. This is the one-sentence call to action that sums up the reason they are playing. Are they after a large amount of treasure? Have they been contracted to stop a group of kidnappers? Maybe they must prove their innocence after being falsely (or rightly) accused of murder. Whatever it is, your Players must be given a clear goal to strive towards. Keep the theme in mind when writing the goal.</p>
 
             <hr>
 
             <h3 id="act2">Act Two</h3>
-            <p></p>
+            <p>The first act of the quest is the reaction to a change in the lives of the party. Something has changed and something or someone dear to be Players is at risk, should the quest fail. It could be as small as a delivery job or as important as stopping a war from breaking out, but what's important here is starting the first act by giving Players time to explore, investigate, and prepare.</p>
+
+            <h4>Low - Wandering</h4>
+            <p>The first real stretch of the story, the Players should be in charge. They'll be the ones deciding where to go and who to talk to, and the Game Master will be reacting by giving out small hints and subtly guiding them towards the first encounter, the first peak in tension, that will hopefully remind them of the cost of failure.</p>
+
+            <h4>High - Fun Fight</h4>
+            <p>The first (or second) encounter of the story should be a chance for Players to stretch their role playing muscles. It's gotta be higher tension than a simple investigation or traversal, but it should also be less of a challenge than what's to come. Your Players want to feel powerful, they want to use the new skills and weapons at their disposal, and this first encounter should satisfy that want.</p>
+
+            <h4>Low - The Twist</h4>
+            <p>Something about the quest is wrong. Somebody is lying, something else is brewing, and the initial threat is much more powerful or complicated than what was first thought. The twist is the moment where the Players realize that the goal isn't quite what they thought it was. Lead them into the twist or reveal it in a moment of instant revelation, but don't give away the whole secret yet.</p>
 
             <hr>
 
             <h3 id="act3">Act Three</h3>
-            <p></p>
+            <p>The stakes are slowly raising in the background as the third act shifts into gear. It becomes less about reacting to the quest and more about taking deliberate action. This is the push towards the truth and the brush with failure that will carry the Players through to the climax.</p>
+
+            <h4>High - The Test</h4>
+            <p>This encounter should be a real test of the Player’s combat and problem solving skills. It's a heightened reminder of the cost of failure but it's also a reminder that the characters have far yet to go. Make it difficult, make it hurt, but make sure that the characters will come out the other end stronger, or at least more cautious, than they were when they started.</p>
+
+            <h4>Low - The Search Ends</h4>
+            <p>This is the turning point, the beginning of the end. The characters have been stumbling around after the test and are collecting the last few clues they need to unravel the mystery. This event is the big reveal. Lead them right to the edge and drop the truth bomb, lure them in and then force them right into the last stretch running.</p>
 
             <hr>
 
             <h3 id="act4">Act Four</h3>
-            <p></p>
+            <p>The grand finale! All the cards are on the table, the mask has been peeled back and the true nature of the quest has been revealed. The gloves are off and it's all or nothing straight through to the end. This is the big finish that you've been building up to, make it juicy.<p>
+
+            <h4>High - The Climax</h4>
+            <p>The final battle, the last encounter of the quest. This will be the most difficult challenge for the Players yet, it will test their skills and push them to the limit. The risk is the highest it's been, but the payoff is huge. This is the time to pull out all the stops.<p>
+
+            <h4>Low - Epilogue</h4>
+            <p>With the threat subdued and the quest at its end, this last little valley is for the characters to collect their spoils, say their goodbyes, level up, and rest before the next quest begins. Give them time to wrap up the story and put a bow on it, time to feel the satisfaction of the win or to let the grief and loss from the quest settle in, or both.<p>
+
+            <h4>Cliffhanger (Optional)</h4>
+            <p>With the quest at its end you may wish to give your Players a taste of what's brewing on the horizon, which you can include in the form of a cliffhanger. Just enough of a morsel to get them excited for the next session.<p>
 
             <hr>
 
-            <h3 id="cliffhanger">Cliffhanger</h3>
-            <p></p>
+            <h3>Transition</h3>
+            <p>Sometimes you may want to take a session to regroup and give your Players a rest themselves. It helps to think of sessions as high points, once in awhile you need to let them breathe and adjust their course. Give them little interactions and provide moments where they can dig deeper into their characters thoughts and feelings, moments to build their characters into more complete forms.</p>
 
-            <hr>
-
-            <h3 id="ending">Ending a Campaign</h3>
-            <p></p>
+            <p>For example, you can give your characters time to visit past victories, take a trip home to see their family, or to reflect of their losses. Let it be a reminder of why they’re taking these quests. This can also be a good place to switch out party members; you can give their character a peaceful, satisfying ending rather than just letting them vanish into the aether.</p>
           </div>
         </div>
       </div>

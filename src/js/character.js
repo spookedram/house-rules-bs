@@ -194,6 +194,9 @@ function hideModal() {
 
 function showModal() {
   saveLoadModal.show();
+  if(editing_mode) {
+    toggleEdit();
+  }
 }
 
 function uniqueNumber() {
