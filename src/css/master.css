@@ -36,6 +36,21 @@ p {
     text-align: justify;
 }
 
+p:empty:before {
+  content: 'Add content here';
+  color: grey;
+}
+
+label {
+    margin-top: 16px;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    label {
+        margin-top: 0;
+    }
+}
+
 footer {
     position: absolute;
     bottom: 0;
