@@ -46,6 +46,11 @@ p {
   color: grey;
 }
 
+.enter-title:empty:before {
+  content: 'Add title here';
+  color: grey;
+}
+
 label {
     margin-top: 16px;
 }

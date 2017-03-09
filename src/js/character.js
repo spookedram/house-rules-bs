@@ -5,10 +5,8 @@ var editDiv = document.getElementsByClassName("edit");
 var viewDiv = document.getElementsByClassName("view");
 var edit_btn = document.getElementById("edit-btn");
 
-var name_input = document.getElementById("name");
-var nameLabel = document.getElementById("nameLabel");
-var title_input = document.getElementById("title");
-var titleLabel = document.getElementById("titleLabel");
+var charName = document.getElementById("charName");
+var title = document.getElementById("title");
 var lvl_input = document.getElementById("lvl");
 var lvlLabel = document.getElementById("lvlLabel");
 var hp_input = document.getElementById("hp");
@@ -27,73 +25,40 @@ var wisLabel = document.getElementById("wisLabel");
 var cha_input = document.getElementById("charisma");
 var chaLabel = document.getElementById("chaLabel");
 
-var app_input = document.getElementById("appearance");
-var appLabel = document.getElementById("appLabel");
-var pers_input = document.getElementById("personality");
-var persLabel = document.getElementById("persLabel");
-var bs_input = document.getElementById("backstory");
-var bsLabel = document.getElementById("bsLabel");
+var app = document.getElementById("appearance");
+var pers = document.getElementById("personality");
+var bs = document.getElementById("backstory");
 
-var wpn1name_input = document.getElementById("wpn1name");
-var wpn1nameLabel = document.getElementById("wpn1nameLabel");
-var wpn1desc_input = document.getElementById("wpn1desc");
-var wpn1descLabel = document.getElementById("wpn1descLabel");
-var wpn1type_input = document.getElementById("wpn1type");
+var wpn1name = document.getElementById("wpn1name");
+var wpn1desc = document.getElementById("wpn1desc");
+var wpn1type = document.getElementById("wpn1type");
 var wpn1typeLabel = document.getElementById("wpn1typeLabel");
-var wpn2name_input = document.getElementById("wpn2name");
-var wpn2nameLabel = document.getElementById("wpn2nameLabel");
-var wpn2desc_input = document.getElementById("wpn2desc");
-var wpn2descLabel = document.getElementById("wpn2descLabel");
-var wpn2type_input = document.getElementById("wpn2type");
+var wpn2name = document.getElementById("wpn2name");
+var wpn2desc = document.getElementById("wpn2desc");
+var wpn2type = document.getElementById("wpn2type");
 var wpn2typeLabel = document.getElementById("wpn2typeLabel");
-var armorName_input = document.getElementById("armorName");
-var armorNameLabel = document.getElementById("armorNameLabel");
-var armorDesc_input = document.getElementById("armorDesc");
-var armorDescLabel = document.getElementById("armorDescLabel");
-var armorType_input = document.getElementById("armorType");
+var armorName = document.getElementById("armorName");
+var armorDesc = document.getElementById("armorDesc");
+var armorType = document.getElementById("armorType");
 var armorTypeLabel = document.getElementById("armorTypeLabel");
-var gear_input = document.getElementById("gear");
-var gearLabel = document.getElementById("gearLabel");
+var gear = document.getElementById("gear");
 
-var spmov1name_input = document.getElementById("spmov1name");
-var spmov1nameLabel = document.getElementById("spmov1nameLabel");
-var spmov1desc_input = document.getElementById("spmov1desc");
-var spmov1descLabel = document.getElementById("spmov1descLabel");
-
-var spmov2name_input = document.getElementById("spmov2name");
-var spmov2nameLabel = document.getElementById("spmov2nameLabel");
-var spmov2desc_input = document.getElementById("spmov2desc");
-var spmov2descLabel = document.getElementById("spmov2descLabel");
-
-var spmov3name_input = document.getElementById("spmov3name");
-var spmov3nameLabel = document.getElementById("spmov3nameLabel");
-var spmov3desc_input = document.getElementById("spmov3desc");
-var spmov3descLabel = document.getElementById("spmov3descLabel");
-
-var spmov4name_input = document.getElementById("spmov4name");
-var spmov4nameLabel = document.getElementById("spmov4nameLabel");
-var spmov4desc_input = document.getElementById("spmov4desc");
-var spmov4descLabel = document.getElementById("spmov4descLabel");
-
-var spmov5name_input = document.getElementById("spmov5name");
-var spmov5nameLabel = document.getElementById("spmov5nameLabel");
-var spmov5desc_input = document.getElementById("spmov5desc");
-var spmov5descLabel = document.getElementById("spmov5descLabel");
-
-var spmov6name_input = document.getElementById("spmov6name");
-var spmov6nameLabel = document.getElementById("spmov6nameLabel");
-var spmov6desc_input = document.getElementById("spmov6desc");
-var spmov6descLabel = document.getElementById("spmov6descLabel");
-
-var spmov7name_input = document.getElementById("spmov7name");
-var spmov7nameLabel = document.getElementById("spmov7nameLabel");
-var spmov7desc_input = document.getElementById("spmov7desc");
-var spmov7descLabel = document.getElementById("spmov7descLabel");
-
-var spmov8name_input = document.getElementById("spmov8name");
-var spmov8nameLabel = document.getElementById("spmov8nameLabel");
-var spmov8desc_input = document.getElementById("spmov8desc");
-var spmov8descLabel = document.getElementById("spmov8descLabel");
+var spmov1name = document.getElementById("spmov1name");
+var spmov1desc = document.getElementById("spmov1desc");
+var spmov2name = document.getElementById("spmov2name");
+var spmov2desc = document.getElementById("spmov2desc");
+var spmov3name = document.getElementById("spmov3name");
+var spmov3desc = document.getElementById("spmov3desc");
+var spmov4name = document.getElementById("spmov4name");
+var spmov4desc = document.getElementById("spmov4desc");
+var spmov5name = document.getElementById("spmov5name");
+var spmov5desc = document.getElementById("spmov5desc");
+var spmov6name = document.getElementById("spmov6name");
+var spmov6desc = document.getElementById("spmov6desc");
+var spmov7name = document.getElementById("spmov7name");
+var spmov7desc = document.getElementById("spmov7desc");
+var spmov8name = document.getElementById("spmov8name");
+var spmov8desc = document.getElementById("spmov8desc");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 
@@ -296,6 +261,8 @@ function saveCharData() {
 
   character.pin = uniqueNumber();
 
+  character.name = charName.innerHTML;
+  character.title = title.innerHTML;
   character.level = lvlLabel.innerHTML;
   character.hp = hpLabel.innerHTML;
 
@@ -305,43 +272,41 @@ function saveCharData() {
   character.intelligence = intLabel.innerHTML;
   character.wisdom = wisLabel.innerHTML;
   character.charisma = chaLabel.innerHTML;
+  
+  character.appearance = app.innerHTML;
+  character.backstory = bs.innerHTML;
+  character.personality = pers.innerHTML;
 
-  character.name = nameLabel.innerHTML;
-  character.title = titleLabel.innerHTML;
-  character.appearance = appLabel.innerHTML;
-  character.backstory = bsLabel.innerHTML;
-  character.personality = persLabel.innerHTML;
-
-  character.wpn1name = wpn1nameLabel.innerHTML;
-  character.wpn1desc = wpn1descLabel.innerHTML;
+  character.wpn1name = wpn1name.innerHTML;
+  character.wpn1desc = wpn1desc.innerHTML;
   character.wpn1type = wpn1typeLabel.innerHTML;
 
-  character.wpn2name = wpn2nameLabel.innerHTML;
-  character.wpn2desc = wpn2descLabel.innerHTML;
+  character.wpn2name = wpn2name.innerHTML;
+  character.wpn2desc = wpn2desc.innerHTML;
   character.wpn2type = wpn2typeLabel.innerHTML;
 
-  character.armorName = armorNameLabel.innerHTML;
-  character.armorDesc = armorDescLabel.innerHTML;
+  character.armorName = armorName.innerHTML;
+  character.armorDesc = armorDesc.innerHTML;
   character.armorType = armorTypeLabel.innerHTML;
 
-  character.gear = gearLabel.innerHTML;
+  character.gear = gear.innerHTML;
 
-  character.spmov1name = spmov1nameLabel.innerHTML;
-  character.spmov1desc = spmov1descLabel.innerHTML;
-  character.spmov2name = spmov2nameLabel.innerHTML;
-  character.spmov2desc = spmov2descLabel.innerHTML;
-  character.spmov3name = spmov3nameLabel.innerHTML;
-  character.spmov3desc = spmov3descLabel.innerHTML;
-  character.spmov4name = spmov4nameLabel.innerHTML;
-  character.spmov4desc = spmov4descLabel.innerHTML;
-  character.spmov5name = spmov5nameLabel.innerHTML;
-  character.spmov5desc = spmov5descLabel.innerHTML;
-  character.spmov6name = spmov6nameLabel.innerHTML;
-  character.spmov6desc = spmov6descLabel.innerHTML;
-  character.spmov7name = spmov7nameLabel.innerHTML;
-  character.spmov7desc = spmov7descLabel.innerHTML;
-  character.spmov8name = spmov8nameLabel.innerHTML;
-  character.spmov8desc = spmov8descLabel.innerHTML;
+  character.spmov1name = spmov1name.innerHTML;
+  character.spmov1desc = spmov1desc.innerHTML;
+  character.spmov2name = spmov2name.innerHTML;
+  character.spmov2desc = spmov2desc.innerHTML;
+  character.spmov3name = spmov3name.innerHTML;
+  character.spmov3desc = spmov3desc.innerHTML;
+  character.spmov4name = spmov4name.innerHTML;
+  character.spmov4desc = spmov4desc.innerHTML;
+  character.spmov5name = spmov5name.innerHTML;
+  character.spmov5desc = spmov5desc.innerHTML;
+  character.spmov6name = spmov6name.innerHTML;
+  character.spmov6desc = spmov6desc.innerHTML;
+  character.spmov7name = spmov7name.innerHTML;
+  character.spmov7desc = spmov7desc.innerHTML;
+  character.spmov8name = spmov8name.innerHTML;
+  character.spmov8desc = spmov8desc.innerHTML;
 
   if(lsTest() === true){
     getCharacterList();
@@ -362,10 +327,8 @@ function saveCharData() {
 
 // sets labels on loading of character
 function setCharData(character) {
-  name_input.value = character.name;
-  setLabel(name_input, "nameLabel");
-  title_input.value = character.title;
-  setLabel(title_input, "titleLabel");
+  charName.innerHTML = character.name;
+  title.innerHTML = character.title;
   lvl_input.value = Number(character.level);
   setLabel(lvl_input, "lvlLabel");
   hp_input.value = Number(character.hp);
@@ -390,69 +353,43 @@ function setCharData(character) {
   setLabel(cha_input, "chaLabel");
   updateMods(cha_input, "chaMod");
 
-  wpn1name_input.value = character.wpn1name;
-  setLabel(wpn1name_input, "wpn1nameLabel");
-  wpn1desc_input.value = character.wpn1desc;
-  setLabel(wpn1desc_input, "wpn1descLabel");
-  wpn1type_input.value = character.wpn1type;
-  setLabel(wpn1type_input, "wpn1typeLabel");
+  wpn1name.innerHTML = character.wpn1name;
+  wpn1desc.innerHTML = character.wpn1desc;
+  wpn1type.value = character.wpn1type;
+  setLabel(wpn1type, "wpn1typeLabel");
 
-  wpn2name_input.value = character.wpn2name;
-  setLabel(wpn2name_input, "wpn2nameLabel");
-  wpn2desc_input.value = character.wpn2desc;
-  setLabel(wpn2desc_input, "wpn2descLabel");
-  wpn2type_input.value = character.wpn2type;
-  setLabel(wpn2type_input, "wpn2typeLabel");
+  wpn2name.innerHTML = character.wpn2name;
+  wpn2desc.innerHTML = character.wpn2desc;
+  wpn2type.value = character.wpn2type;
+  setLabel(wpn2type, "wpn2typeLabel");
 
-  armorName_input.value = character.armorName;
-  setLabel(armorName_input, "armorNameLabel");
-  armorDesc_input.value = character.armorDesc;
-  setLabel(armorDesc_input, "armorDescLabel");
-  armorType_input.value = character.armorType;
-  setLabel(armorType_input, "armorTypeLabel");
+  armorName.innerHTML = character.armorName;
+  armorDesc.innerHTML = character.armorDesc;
+  armorType.value = character.armorType;
+  setLabel(armorType, "armorTypeLabel");
 
-  gear_input.value = character.gear;
-  setLabel(gear_input, "gearLabel");
+  gear.innerHTML = character.gear;
 
-  app_input.value = character.appearance;
-  setLabel(app_input, "appLabel");
-  bs_input.value = character.backstory;
-  setLabel(bs_input, "bsLabel");
-  pers_input.value = character.personality;
-  setLabel(pers_input, "persLabel");
+  app.innerHTML = character.appearance;
+  bs.innerHTML = character.backstory;
+  pers.innerHTML = character.personality;
 
-  spmov1name_input.value = character.spmov1name;
-  setLabel(spmov1name_input, "spmov1nameLabel");
-  spmov1desc_input.value = character.spmov1desc;
-  setLabel(spmov1desc_input, "spmov1descLabel");
-  spmov2name_input.value = character.spmov2name;
-  setLabel(spmov2name_input, "spmov2nameLabel");
-  spmov2desc_input.value = character.spmov2desc;
-  setLabel(spmov2desc_input, "spmov2descLabel");
-  spmov3name_input.value = character.spmov3name;
-  setLabel(spmov3name_input, "spmov3nameLabel");
-  spmov3desc_input.value = character.spmov3desc;
-  setLabel(spmov3desc_input, "spmov3descLabel");
-  spmov4name_input.value = character.spmov4name;
-  setLabel(spmov4name_input, "spmov4nameLabel");
-  spmov4desc_input.value = character.spmov4desc;
-  setLabel(spmov4desc_input, "spmov4descLabel");
-  spmov5name_input.value = character.spmov5name;
-  setLabel(spmov5name_input, "spmov5nameLabel");
-  spmov5desc_input.value = character.spmov5desc;
-  setLabel(spmov5desc_input, "spmov5descLabel");
-  spmov6name_input.value = character.spmov6name;
-  setLabel(spmov6name_input, "spmov6nameLabel");
-  spmov6desc_input.value = character.spmov6desc;
-  setLabel(spmov6desc_input, "spmov6descLabel");
-  spmov7name_input.value = character.spmov7name;
-  setLabel(spmov7name_input, "spmov7nameLabel");
-  spmov7desc_input.value = character.spmov7desc;
-  setLabel(spmov7desc_input, "spmov7descLabel");
-  spmov8name_input.value = character.spmov8name;
-  setLabel(spmov8name_input, "spmov8nameLabel");
-  spmov8desc_input.value = character.spmov8desc;
-  setLabel(spmov8desc_input, "spmov8descLabel");
+  spmov1name.innerHTML = character.spmov1name;
+  spmov1desc.innerHTML = character.spmov1desc;
+  spmov2name.innerHTML = character.spmov2name;
+  spmov2desc.innerHTML = character.spmov2desc;
+  spmov3name.innerHTML = character.spmov3name;
+  spmov3desc.innerHTML = character.spmov3desc;
+  spmov4name.innerHTML = character.spmov4name;
+  spmov4desc.innerHTML = character.spmov4desc;
+  spmov5name.innerHTML = character.spmov5name;
+  spmov5desc.innerHTML = character.spmov5desc;
+  spmov6name.innerHTML = character.spmov6name;
+  spmov6desc.innerHTML = character.spmov6desc;
+  spmov7name.innerHTML = character.spmov7name;
+  spmov7desc.innerHTML = character.spmov7desc;
+  spmov8name.innerHTML = character.spmov8name;
+  spmov8desc.innerHTML = character.spmov8desc;
 }
 
 function saveCharacter() {
@@ -470,8 +407,6 @@ function loadData(pin) {
       break;
     }
   }
-
-  console.log(result);
 
   setCharData(result);
 

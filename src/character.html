@@ -120,8 +120,8 @@
 
       <div class="row">
         <div class="col-sm-4">
-          <h2 id="nameLabel" class="enter-name n-mb" contenteditable="true">Enter Name</h2>
-          <h3 id="titleLabel" class="enter-content" contenteditable="true">Enter Title</h3>
+          <h2 id="charName" class="enter-name n-mb" contenteditable="true"></h2>
+          <h3 id="title" class="enter-title" contenteditable="true"></h3>
           <div class="view">
             <h3>Level: <span id="lvlLabel">1</span></h3>
             <h3>HP: <span id="hpLabel">10</span></h3>
@@ -213,12 +213,12 @@
       <div class="row">
         <div class="col-sm-6">
           <h3>Main Weapon</h3>
-          <h4 id="wpn1nameLabel" class="enter-name" contenteditable="true"></h4>
-          <p id="wpn1descLabel" class="enter-content" contenteditable="true"></p>
+          <h4 id="wpn1name" class="enter-name" contenteditable="true"></h4>
+          <p id="wpn1desc" class="enter-content" contenteditable="true"></p>
           <select id="wpn1type" class="form-control no-print" oninput="setLabel(this,'wpn1typeLabel')">
             <option value="Small (d4)">Small (d4)</option>
             <option value="Ranged (d6)">Ranged (d6)</option>
-            <option value="Medium (d8)">Medium (d8)</option>
+            <option value="Medium (d8)" selected>Medium (d8)</option>
             <option value="Large (d10)">Large (d10)</option>
             <option value="Shield (AC +1)">Shield (AC +1)</option>
           </select>
@@ -226,11 +226,11 @@
         </div>
         <div class="col-sm-6">
           <h3>Sub Weapon</h3>
-          <h4 id="wpn2nameLabel" class="enter-name" contenteditable="true"></h4>
-          <p id="wpn2descLabel" class="enter-content" contenteditable="true"></p>
+          <h4 id="wpn2name" class="enter-name" contenteditable="true"></h4>
+          <p id="wpn2desc" class="enter-content" contenteditable="true"></p>
           <select id="wpn2type" class="form-control no-print" oninput="setLabel(this,'wpn2typeLabel')">
             <option value="Small (d4)">Small (d4)</option>
-            <option value="Ranged (d6)">Ranged (d6)</option>
+            <option value="Ranged (d6)" selected>Ranged (d6)</option>
             <option value="Medium (d8)">Medium (d8)</option>
             <option value="Large (d10)">Large (d10)</option>
             <option value="Shield (AC +1)">Shield (AC +1)</option>
@@ -242,8 +242,8 @@
       <div class="row">
         <div class="col-sm-6">
           <h3>Armor</h3>
-          <h4 id="armorNameLabel" class="enter-name" contenteditable="true"></h4>
-          <p id="armorDescLabel" class="enter-content" contenteditable="true"></p>
+          <h4 id="armorName" class="enter-name" contenteditable="true"></h4>
+          <p id="armorDesc" class="enter-content" contenteditable="true"></p>
           <select id="armorType" class="form-control no-print" oninput="setLabel(this,'armorTypeLabel')">
             <option value="None (AC 10)">None (AC 10)</option>
             <option value="Light (AC 12)">Light (AC 12)</option>
@@ -254,7 +254,7 @@
         </div>
         <div class="col-sm-6">
           <h3>Gear</h3>
-          <p id="gearLabel" class="enter-content" contenteditable="true"></p>
+          <p id="gear" class="enter-content" contenteditable="true"></p>
         </div>
       </div>
 
@@ -265,17 +265,17 @@
       <div class="row">
         <div class="col-sm-6">
           <h3>Appearance</h3>
-          <p id="appLabel" class="enter-content" contenteditable="true"></p>
+          <p id="appearance" class="enter-content" contenteditable="true"></p>
 
         </div>
         <div class="col-sm-6">
           <h3>Personality</h3>
-          <p id="persLabel" class="enter-content" contenteditable="true"></p>
+          <p id="personality" class="enter-content" contenteditable="true"></p>
         </div>
       </div>
 
       <h3>Backstory</h3>
-      <p id="bsLabel" class="enter-content" contenteditable="true"></p>
+      <p id="backstory" class="enter-content" contenteditable="true"></p>
 
       <hr class="pba">
       
@@ -299,57 +299,57 @@
           <tr>
             <td>1-3</td>
             <td>
-              <p id="spmov1nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov1descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov1name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov1desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
           <tr>
             <td>1-3</td>
             <td>
-              <p id="spmov2nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov2descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov2name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov2desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
           <tr>
             <td>4-6</td>
             <td>
-              <p id="spmov3nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov3descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov3name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov3desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
           <tr>
             <td>7-9</td>
             <td>
-              <p id="spmov4nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov4descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov4name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov4desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
           <tr>
             <td>10-12</td>
             <td>
-              <p id="spmov5nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov5descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov5name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov5desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
           <tr>
             <td>13-15</td>
             <td>
-              <p id="spmov6nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov6descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov6name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov6desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
           <tr>
             <td>16-18</td>
             <td>
-              <p id="spmov7nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov7descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov7name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov7desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
           <tr>
             <td>19-20</td>
             <td>
-              <p id="spmov8nameLabel" class="enter-name" contenteditable="true"></p>
-              <p id="spmov8descLabel" class="enter-content" contenteditable="true"></p>
+              <p id="spmov8name" class="enter-name" contenteditable="true"></p>
+              <p id="spmov8desc" class="enter-content" contenteditable="true"></p>
             </td>
           </tr>
         </tbody>
