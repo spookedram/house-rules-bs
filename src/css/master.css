@@ -92,10 +92,12 @@ footer {
   text-align: center;
 }
 
-#spmov-table-edit th:first-of-type,
-#spmov-table-edit td:first-of-type {
+#spmov-table th:first-of-type,
+#spmov-table td:first-of-type {
   padding-right: 0;
+  width: 52px;
 }
+
 
 #setting-list *, #npc-list *{
   vertical-align: middle;
@@ -109,6 +111,10 @@ footer {
     margin-top: 16px;
     float: right;
     width: 164px;
+}
+
+#hp, #lvl {
+    margin: 0;
 }
 
 .scroll-table {

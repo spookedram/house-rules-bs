@@ -1,8 +1,8 @@
 var characterList = [];
 
 var editing_mode = false;
-var editDiv = document.getElementById("edit");
-var viewDiv = document.getElementById("view");
+var editDiv = document.getElementsByClassName("edit");
+var viewDiv = document.getElementsByClassName("view");
 var edit_btn = document.getElementById("edit-btn");
 
 var name_input = document.getElementById("name");
@@ -97,18 +97,31 @@ var spmov8descLabel = document.getElementById("spmov8descLabel");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 
+function toggleArr(arr, boo) {
+  var i = 0;
+  var len = arr.length;
+  
+  for(i; i < len; i++) {
+    if(boo) {
+      arr[i].style.display = "block";
+    } else {
+      arr[i].style.display = "none";
+    }
+  }
+}
+
 // Shows/hides editing inputs
 function toggleEdit(btn) {
   editing_mode = !editing_mode;
 
   if(editing_mode) {
-    editDiv.style.display = "block";
-    viewDiv.style.display = "none";
-    edit_btn.innerHTML = "View";
+    toggleArr(editDiv, true);
+    toggleArr(viewDiv, false);
+    edit_btn.innerHTML = "View Details";
   } else {
-    viewDiv.style.display = "block";
-    editDiv.style.display = "none";
-    edit_btn.innerHTML = "Edit";
+    toggleArr(editDiv, false);
+    toggleArr(viewDiv, true);
+    edit_btn.innerHTML = "Edit Details";
   }
 }
 
@@ -124,20 +137,13 @@ function setLabel(input, target) {
 }
 
 // When constitution changes at lvl 1, update hp
-function updateHP(con) {
+function updateHP() {
   var hp_input = document.getElementById("hp");
-  var curr = Number(hp_input.value);
-  var val = Number(con.value) - 10;
-  var newHp = curr + val;
-
-  hp_input.value = 0;
-
+  var con_input = document.getElementById("constitution");
+  
   if(document.getElementById("lvl").value === "1") {
-    hp_input.value = String(val + 10);
-  } else {
-    hp_input.value = String(curr);
+    hp_input.value = con_input.value;
   }
-  // hp_input.value = newHp.toString();
 }
 
 // Updates ability score modifier
@@ -547,3 +553,15 @@ function showAlert(target, boo){
 
 showAlert("clearAlert", false);
 showAlert("fullAlert", false);
+
+function togglePerDay(chk) {
+  var perDay = document.getElementById("perDay");
+  
+  if(chk) {
+    perDay.style.display = "block";
+  } else {
+    perDay.style.display = "none";
+  }
+}
+
+togglePerDay(false);
