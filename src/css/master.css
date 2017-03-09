@@ -28,6 +28,14 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+h4 {
+    margin-top: 16px;
+}
+
+p {
+    text-align: justify;
+}
+
 footer {
     position: absolute;
     bottom: 0;
@@ -75,6 +83,10 @@ footer {
 
 #titleLabel {
   margin-top: 0;
+}
+
+.scroll-table {
+    overflow-x: scroll;
 }
 
 .tab-list {
