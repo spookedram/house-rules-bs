@@ -36,8 +36,13 @@ p {
     text-align: justify;
 }
 
-p:empty:before {
+.enter-content:empty:before {
   content: 'Add content here';
+  color: grey;
+}
+
+.enter-name:empty:before {
+  content: 'Add name here';
   color: grey;
 }
 
@@ -98,6 +103,12 @@ footer {
 
 #titleLabel {
   margin-top: 0;
+}
+
+#includeChart {
+    margin-top: 16px;
+    float: right;
+    width: 164px;
 }
 
 .scroll-table {
