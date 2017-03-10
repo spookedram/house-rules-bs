@@ -56,7 +56,7 @@
         <div class="col-xs-7">
           <div class="btn-group">
               <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal()">Save/Load</button>
-              
+
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sample</button>
               <ul class="dropdown-menu">
                 <li><a href="#">Character1</a></li>
@@ -96,13 +96,13 @@
                   </tr>
                 </tbody>
               </table>
-              <div id="fullAlert" class="alert alert-danger">
-                <p>Your storage is full! Please delete some characters or clear your localStorage to save this character.</p>
+              <div id="fullAlert" class="alert alert-danger" style="display:none;">
+                <p>Your storage is full or your browser has denied access to storing local data! Please delete some characters, clear your localStorage, or change your browser settings to save this character.</p>
                 <div class="text-right" style="margin-top:16px;">
                   <button type="button" name="button" class="btn btn-primary" onclick="showAlert('fullAlert', false)">Ok</button>
                 </div>
               </div>
-              <div id="clearAlert" class="alert alert-danger">
+              <div id="clearAlert" class="alert alert-danger" style="display:none;">
                 <p class="text-center">This will clear all your saved characters, are you sure?</p>
                 <div class="text-center" style="margin-top:16px;">
                   <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showAlert('clearAlert', false)">Yes</button>
@@ -126,15 +126,15 @@
             <h3>Level: <span id="lvlLabel">1</span></h3>
             <h3>HP: <span id="hpLabel">10</span></h3>
           </div>
-          
+
           <div class="edit" style="display:none;">
             <h3>Level: <input id="lvl" type="number" class="form-control inline" value="1" min="1" max="20" oninput="setLabel(this,'lvlLabel'), setTotal()"></h3>
             <h3>HP: <input id="hp" type="number" class="form-control inline" value="10" min="1" max="999" oninput="setLabel(this,'hpLabel')"></h3>
           </div>
-          
+
           <button id="edit-btn" type="button" class="btn btn-default no-print" onclick="toggleEdit()">Edit Details</button>
         </div>
-        
+
         <div class="col-sm-8">
           <h2>Ability Scores</h2>
           <div class="view">
@@ -168,7 +168,7 @@
   						</tbody>
   					</table>
 					</div>
-					
+
 					<div class="edit" style="display:none;">
 					  <table class="table n-mb">
   						<thead class="center-children">
@@ -278,9 +278,9 @@
       <p id="backstory" class="enter-content" contenteditable="true"></p>
 
       <hr class="pba">
-      
+
       <h2 style="margin: 0;">Special Moves</h2>
-      
+
       <div id="includeChart" class="no-print input-group">
         <span class="input-group-addon">
           Include moves per day chart?
@@ -289,7 +289,7 @@
           <input type="checkbox" class="input-group pull-right" onchange="togglePerDay(this.checked)"/>
         </span>
       </div>
-      
+
       <table id="spmov-table" class="table table-striped">
         <thead>
           <th>Lvls</th>
@@ -357,7 +357,7 @@
 
       <div id="perDay">
         <hr class="pba">
-        
+
         <h3>Special Moves Uses Per Day Per Level Chart</h3>
         <table class="table">
           <thead>

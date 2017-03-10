@@ -65,7 +65,7 @@ var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 function toggleArr(arr, boo) {
   var i = 0;
   var len = arr.length;
-  
+
   for(i; i < len; i++) {
     if(boo) {
       arr[i].style.display = "block";
@@ -105,7 +105,7 @@ function setLabel(input, target) {
 function updateHP() {
   var hp_input = document.getElementById("hp");
   var con_input = document.getElementById("constitution");
-  
+
   if(document.getElementById("lvl").value === "1") {
     hp_input.value = con_input.value;
   }
@@ -186,22 +186,26 @@ uniqueNumber.previous = 0;
 
 // is localStorage empty?
 function lsTest(){
-    var test = 'test';
-    try {
-        localStorage.setItem(test, test);
-        localStorage.removeItem(test);
-        return true;
-    } catch(e) {
-        return false;
-    }
+  var test = 'test';
+  try {
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch(e) {
+    return false;
+  }
 }
 
 // returns characterList array from localStorage
 function getCharacterList() {
-  if(localStorage.characterList) {
-   characterList = JSON.parse(localStorage.getItem('characterList'));
+  if(lsTest() === true) {
+    if(localStorage.characterList) {
+      characterList = JSON.parse(localStorage.getItem('characterList'));
+    } else {
+      characterList = [];
+    }
   } else {
-   characterList = [];
+    showAlert("fullAlert", true);
   }
 }
 
@@ -272,7 +276,7 @@ function saveCharData() {
   character.intelligence = intLabel.innerHTML;
   character.wisdom = wisLabel.innerHTML;
   character.charisma = chaLabel.innerHTML;
-  
+
   character.appearance = app.innerHTML;
   character.backstory = bs.innerHTML;
   character.personality = pers.innerHTML;
@@ -320,7 +324,7 @@ function saveCharData() {
 
     return character;
   } else {
-      showAlert("fullAlert", true);
+    showAlert("fullAlert", true);
   }
 
 }
@@ -441,14 +445,18 @@ function refreshTable() {
   var table = document.getElementById("loadCharTable");
   var i = 0;
 
-  clearTable(table);
-  getCharacterList();
+  if(lsTest() === true) {
+    clearTable(table);
+    getCharacterList();
 
-  for(i; i < characterList.length; i++) {
-    addRowToLoadTable(characterList[i]);
+    for(i; i < characterList.length; i++) {
+      addRowToLoadTable(characterList[i]);
+    }
+
+    localStorage.setItem('characterList', JSON.stringify(characterList));
+  } else {
+    showAlert("fullAlert", true);
   }
-
-  localStorage.setItem('characterList', JSON.stringify(characterList));
 }
 refreshTable();
 
@@ -486,12 +494,9 @@ function showAlert(target, boo){
   }
 }
 
-showAlert("clearAlert", false);
-showAlert("fullAlert", false);
-
 function togglePerDay(chk) {
   var perDay = document.getElementById("perDay");
-  
+
   if(chk) {
     perDay.style.display = "block";
   } else {

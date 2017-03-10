@@ -56,7 +56,7 @@
         <div class="col-xs-7">
           <div class="btn-group">
               <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal()">Save/Load</button>
-              
+
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sample</button>
               <ul class="dropdown-menu">
                 <li><a href="#">Quest1</a></li>
@@ -96,14 +96,14 @@
                   </tr>
                 </tbody>
               </table>
-              <div id="fullAlert" class="alert alert-danger">
-                <p>Your storage is full! Please delete some characters or clear your localStorage to save this character.</p>
+              <div id="fullAlert" class="alert alert-danger" style="display:none;">
+                <p>Your storage is full or your browser has denied access to storing local data! Please delete some quests, clear your localStorage, or change your browser settings to save this quest.</p>
                 <div class="text-right" style="margin-top:16px;">
                   <button type="button" name="button" class="btn btn-primary" onclick="showAlert('fullAlert', false)">Ok</button>
                 </div>
               </div>
-              <div id="clearAlert" class="alert alert-danger">
-                <p class="text-center">This will clear all your saved characters, are you sure?</p>
+              <div id="clearAlert" class="alert alert-danger" style="display:none;">
+                <p class="text-center">This will clear all your saved quests, are you sure?</p>
                 <div class="text-center" style="margin-top:16px;">
                   <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showAlert('clearAlert', false)">Yes</button>
                   <button type="button" name="button" class="btn btn-primary" onclick="showAlert('clearAlert', false)">Cancel</button>
@@ -118,7 +118,7 @@
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
 
-      
+
       <h2 id="questName" class="enter-name n-mb" contenteditable="true"></h2>
       <div class="row">
         <div class="col-sm-6">
@@ -132,13 +132,13 @@
           <p id="settingsList" class="enter-content" contenteditable="true"></p>
         </div>
       </div>
-      
+
       <hr>
-      
+
       <h3>Setup</h3>
       <p class="small">Introduce the starting elements of the quest.</p>
       <p id="setup" class="enter-content" contenteditable="true"></p>
-      
+
       <hr>
 
       <h3>Act 1</h3>
@@ -170,7 +170,7 @@
           <p id="twist" class="enter-content" contenteditable="true"></p>
         </div>
       </div>
-      
+
       <hr>
 
       <h3>Act 3</h3>
@@ -202,13 +202,13 @@
           <p id="epilogue" class="enter-content" contenteditable="true"></p>
         </div>
       </div>
-      
+
       <hr>
-      
+
       <h3>Cliffhanger</h3>
       <p class="small">(Optional) Give your party a small taste of what's to come in the next session.</p>
       <p id="cliffhanger" class="enter-content" contenteditable="true"></p>
-      
+
     </div><!-- /container -->
 
 

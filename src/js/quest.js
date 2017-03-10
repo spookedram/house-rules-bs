@@ -33,9 +33,6 @@ function showAlert(target, boo){
   }
 }
 
-showAlert("clearAlert", false);
-showAlert("fullAlert", false);
-
 function uniqueNumber() {
     var date = Date.now();
 
@@ -64,10 +61,14 @@ function lsTest(){
 
 // returns characterList array from localStorage
 function getQuestList() {
-  if(localStorage.questList) {
-   questList = JSON.parse(localStorage.getItem('questList'));
+  if(lsTest() === true) {
+    if(localStorage.questList) {
+     questList = JSON.parse(localStorage.getItem('questList'));
+    } else {
+     questList = [];
+    }
   } else {
-   questList = [];
+    showAlert("fullAlert", true);
   }
 }
 
@@ -75,20 +76,20 @@ function getQuestList() {
 function Quest() {
   this.pin = 0;
   this.questName = "";
-  
+
   this.theme = "";
   this.settingsList = "";
   this.setup = "";
-  
+
   this.goal = "";
   this.wander = "";
-  
+
   this.funFight = "";
   this.twist = "";
-  
+
   this.challenge = "";
   this.searchEnd = "";
-  
+
   this.climax = "";
   this.epilogue = "";
   this.cliffhanger = "";
@@ -96,27 +97,27 @@ function Quest() {
 
 function saveQuestData() {
   var quest = new Quest();
-  
+
   quest.pin = uniqueNumber();
   quest.questName = questName.innerHTML;
-  
+
   quest.theme = theme.innerHTML;
   quest.settingsList = settingsList.innerHTML;
   quest.setup = setup.innerHTML;
-  
+
   quest.goal = goal.innerHTML;
   quest.wander = wander.innerHTML;
-  
+
   quest.funFight = funFight.innerHTML;
   quest.twist = twist.innerHTML;
-  
+
   quest.challenge = challenge.innerHTML;
   quest.searchEnd = searchEnd.innerHTML;
-  
+
   quest.climax = climax.innerHTML;
   quest.epilogue = epilogue.innerHTML;
   quest.cliffhanger = cliffhanger.innerHTML;
-  
+
   if(lsTest() === true){
     getQuestList();
     questList.push(quest);
@@ -134,22 +135,21 @@ function saveQuestData() {
 }
 
 function setQuestData(quest) {
-  uniqueNumber() = quest.pin;
   questName.innerHTML = quest.questName;
-  
+
   theme.innerHTML = quest.theme;
   settingsList.innerHTML = quest.settingsList;
   setup.innerHTML = quest.setup;
-  
+
   goal.innerHTML = quest.goal;
   wander.innerHTML = quest.wander;
-  
+
   funFight.innerHTML = quest.funFight;
   twist.innerHTML = quest.twist;
-  
+
   challenge.innerHTML = quest.challenge;
   searchEnd.innerHTML = quest.searchEnd;
-  
+
   climax.innerHTML = quest.climax;
   epilogue.innerHTML = quest.epilogue;
   cliffhanger.innerHTML = quest.cliffhanger;
@@ -185,14 +185,18 @@ function refreshTable() {
   var table = document.getElementById("loadQuestTable");
   var i = 0;
 
-  clearTable(table);
-  getQuestList();
+  if(lsTest() === true) {
+    clearTable(table);
+    getQuestList();
 
-  for(i; i < questList.length; i++) {
-    addRowToLoadTable(questList[i]);
+    for(i; i < questList.length; i++) {
+      addRowToLoadTable(questList[i]);
+    }
+
+    localStorage.setItem('questList', JSON.stringify(questList));
+  } else {
+    showAlert("fullAlert", true);
   }
-
-  localStorage.setItem('questList', JSON.stringify(questList));
 }
 refreshTable();
 
