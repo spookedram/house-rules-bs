@@ -503,5 +503,4 @@ function togglePerDay(chk) {
     perDay.style.display = "none";
   }
 }
-
 togglePerDay(false);
