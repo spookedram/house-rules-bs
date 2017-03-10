@@ -6,12 +6,12 @@ var sampleChars = [
     "level": "",
     "hp": "",
 
-    "strength": "",
-    "dexterity": "",
-    "constitution": "",
-    "intelligence": "",
-    "wisdom": "",
-    "charisma": "",
+    "strength": "10",
+    "dexterity": "10",
+    "constitution": "10",
+    "intelligence": "10",
+    "wisdom": "10",
+    "charisma": "10",
 
     "appearance": "",
     "backstory": "",
@@ -19,13 +19,13 @@ var sampleChars = [
 
     "wpn1name": "",
     "wpn1desc": "",
-    "wpn1type": "",
+    "wpn1type": "Medium (d8)",
     "wpn2name": "",
     "wpn2desc": "",
-    "wpn2type": "",
+    "wpn2type": "Ranged (d6)",
     "armorName": "",
     "armorDesc": "",
-    "armorType": "",
+    "armorType": "None (AC 10)",
     "gear": "",
 
     "spmov1name": "",
@@ -47,7 +47,7 @@ var sampleChars = [
   },
   {
     "pin": 1,
-    "name": "",
+    "name": "Frosty",
     "title": "",
     "level": "",
     "hp": "",
@@ -93,7 +93,7 @@ var sampleChars = [
   },
   {
     "pin": 2,
-    "name": "",
+    "name": "Test1",
     "title": "",
     "level": "",
     "hp": "",
@@ -139,7 +139,7 @@ var sampleChars = [
   },
   {
     "pin": 3,
-    "name": "",
+    "name": "Goobatron",
     "title": "",
     "level": "",
     "hp": "",
@@ -301,7 +301,7 @@ var sampleQuests = [
   },
   {
     "pin": 1,
-    "questName": "",
+    "questName": "Bird Bones",
 
     "theme": "",
     "settingsList": "",

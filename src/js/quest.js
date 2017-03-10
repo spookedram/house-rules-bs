@@ -160,6 +160,26 @@ function saveQuest() {
   addRowToLoadTable(quest);
 }
 
+function loadData(pin) {
+  var result;
+  getQuestList();
+
+  for(var i = 0; i < questList.length; i++) {
+    if(questList[i].pin == pin) {
+      result = questList[i];
+      break;
+    }
+  }
+
+  setQuestData(result);
+
+  hideModal();
+}
+
+function loadSample(num) {
+  setQuestData(sampleQuests[num]);
+}
+
 function addRowToLoadTable(obj) {
   var table = document.getElementById("loadQuestTable");
   var name = String(obj.questName);

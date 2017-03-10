@@ -419,7 +419,9 @@ function loadData(pin) {
   }
 }
 
-
+function loadSample(num) {
+  setCharData(sampleChars[num]);
+}
 
 function addRowToLoadTable(obj) {
   var table = document.getElementById("loadCharTable");
