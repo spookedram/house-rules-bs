@@ -76,8 +76,8 @@ var sampleChars = [
 
     "spmov1name": "Ice Hockey Swing",
     "spmov1desc": "Frosty swings his broom in a wide arc, sweeping the leg of his enemy and, on a failed DEX saving throw, causes them to trip and lie prone.",
-    "spmov2name": "",
-    "spmov2desc": "",
+    "spmov2name": "Christmas Spirit",
+    "spmov2desc": "Frosty regains 2d8 health from the Spirit of Christmas.",
     "spmov3name": "",
     "spmov3desc": "",
     "spmov4name": "",
@@ -88,8 +88,8 @@ var sampleChars = [
     "spmov6desc": "",
     "spmov7name": "",
     "spmov7desc": "",
-    "spmov8name": "",
-    "spmov8desc": ""
+    "spmov8name": "Santa's Helper",
+    "spmov8desc": "Frosty summons Santa's sleigh, pulled by the 8 reindeer, as a ranged attack against an enemy for 6d12 damage."
   },
   {
     "pin": 2,
