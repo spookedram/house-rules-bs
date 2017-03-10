@@ -225,7 +225,6 @@ function Character() {
   this.wisdom = "";
   this.charisma = "";
 
-
   this.appearance = "";
   this.backstory = "";
   this.personality = "";
@@ -419,6 +418,8 @@ function loadData(pin) {
     toggleEdit();
   }
 }
+
+
 
 function addRowToLoadTable(obj) {
   var table = document.getElementById("loadCharTable");

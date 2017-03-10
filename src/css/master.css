@@ -39,6 +39,11 @@ nav.navbar-default {
   color: #777;
 }
 
+h1 {
+  color: white !important;
+  font-family: 'Raleway', sans-serif;
+}
+
 h4 {
     margin-top: 16px;
 }
@@ -240,6 +245,9 @@ footer a:hover {
   }
   .pba {
     page-break-after: always;
+  }
+  section {
+    page-break-inside: avoid;
   }
   [class*="col-sm"] {
     float: left;
