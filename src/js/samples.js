@@ -3,8 +3,8 @@ var sampleChars = [
     "pin": 0,
     "name": "",
     "title": "",
-    "level": "",
-    "hp": "",
+    "level": "1",
+    "hp": "10",
 
     "strength": "10",
     "dexterity": "10",
