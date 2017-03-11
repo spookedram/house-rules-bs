@@ -145,6 +145,43 @@ footer a:hover {
     margin: 0;
 }
 
+#rng {
+  position: absolute;
+  top: 52px; right: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: none;
+}
+
+#rng-container {
+  position: fixed;
+  top: 83px; right: 0;
+  width: 200px;
+  z-index: 999;
+}
+
+#rng-panel {
+  padding: 15px;
+  background-color: white;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#rng-panel input,
+#rng-panel p {
+  margin-bottom: 0;
+}
+
+#rng-panel p {
+  font-size: 1.25em;
+}
+
+#roll-result {
+  margin: 10px 0;
+}
+
 .scroll-table {
     overflow-x: scroll;
 }
