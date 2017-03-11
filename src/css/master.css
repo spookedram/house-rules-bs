@@ -26,12 +26,12 @@ html {
 }
 
 body {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    padding-bottom: 6rem;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 6rem;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 
 nav.navbar-default {
@@ -39,19 +39,46 @@ nav.navbar-default {
   color: #777;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: 'Roboto Slab', serif;
+}
+
 h1 {
   color: white !important;
-  font-family: 'Raleway', sans-serif;
 }
 
 h4 {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 p {
-    text-align: justify;
+  text-align: justify;
 }
 
+label {
+  margin-top: 16px;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  label {
+    margin-top: 0;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #777;
+}
+footer a:hover {
+  color: black;
+}
+
+/* Useful Classes */
 .enter-content:empty:before {
   content: 'Add content here';
   color: grey;
@@ -67,29 +94,6 @@ p {
   color: grey;
 }
 
-label {
-    margin-top: 16px;
-}
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    label {
-        margin-top: 0;
-    }
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-  color: #777;
-}
-footer a:hover {
-  color: black;
-}
-
 .form-control {
   margin-bottom: 16px;
 }
@@ -103,87 +107,12 @@ footer a:hover {
   width: 240px;
 }
 
-#name {
-  margin-top: 20px;
-}
-
-#loadCharTable * {
-  vertical-align: middle;
-}
-
-#loadCharTable th:last-of-type,
-#loadCharTable td:last-of-type {
-  text-align: right;
-}
-
 .center-children *{
   text-align: center;
 }
 
-#spmov-table th:first-of-type,
-#spmov-table td:first-of-type {
-  padding-right: 0;
-  width: 52px;
-}
-
-
-#setting-list *, #npc-list *{
-  vertical-align: middle;
-}
-
-#titleLabel {
-  margin-top: 0;
-}
-
-#includeChart {
-    margin-top: 16px;
-    float: right;
-    width: 164px;
-}
-
-#hp, #lvl {
-    margin: 0;
-}
-
-#rng {
-  position: absolute;
-  top: 52px; right: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border: none;
-}
-
-#rng-container {
-  position: fixed;
-  top: 83px; right: 0;
-  width: 200px;
-  z-index: 999;
-}
-
-#rng-panel {
-  padding: 15px;
-  background-color: white;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-#rng-panel input,
-#rng-panel p {
-  margin-bottom: 0;
-}
-
-#rng-panel p {
-  font-size: 1.25em;
-}
-
-#roll-result {
-  margin: 10px 0;
-}
-
 .scroll-table {
-    overflow-x: scroll;
+  overflow-x: scroll;
 }
 
 .tab-list {
@@ -245,10 +174,6 @@ footer a:hover {
   border-top-left-radius: 0;
 }
 
-#edit {
-  display: none;
-}
-
 .ability {
   text-align: center;
   padding: 2px;
@@ -260,17 +185,96 @@ footer a:hover {
   }
 }
 
+/* ID specific styles */
+#name {
+  margin-top: 20px;
+}
+
+#loadCharTable * {
+  vertical-align: middle;
+}
+
+#loadCharTable th:last-of-type,
+#loadCharTable td:last-of-type {
+  text-align: right;
+}
+
+#spmov-table th:first-of-type,
+#spmov-table td:first-of-type {
+  padding-right: 0;
+  width: 52px;
+}
+
+#setting-list *, #npc-list *{
+  vertical-align: middle;
+}
+
+#titleLabel {
+  margin-top: 0;
+}
+
+#includeChart {
+  margin-top: 16px;
+  float: right;
+  width: 164px;
+}
+
+#hp, #lvl {
+  margin: 0;
+}
+
+#rng {
+  position: absolute;
+  top: 52px; right: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border: none;
+}
+
+#rng-container {
+  position: fixed;
+  top: 83px; right: 0;
+  width: 200px;
+  z-index: 999;
+}
+
+#rng-panel {
+  padding: 15px;
+  background-color: white;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#rng-panel input,
+#rng-panel p {
+  margin-bottom: 0;
+}
+
+#rng-panel p {
+  font-size: 1.25em;
+}
+
+#roll-result {
+  margin: 10px 0;
+}
+
 #wpn1type, #wpn2type, #armorType {
   width: 150px;
 }
 
-.show-print {
+#edit {
   display: none;
 }
 
 /* ---------- Utilities ---------- */
 .n-mb {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+.show-print {
+  display: none;
 }
 
 @media print {
