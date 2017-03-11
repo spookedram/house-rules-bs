@@ -24,6 +24,8 @@ var wis_input = document.getElementById("wisdom");
 var wisLabel = document.getElementById("wisLabel");
 var cha_input = document.getElementById("charisma");
 var chaLabel = document.getElementById("chaLabel");
+var per_input = document.getElementById("perception");
+var perLabel = document.getElementById("perLabel");
 
 var app = document.getElementById("appearance");
 var pers = document.getElementById("personality");
@@ -137,7 +139,7 @@ function updateMods(input, target) {
 function setTotal() {
   var scores = document.getElementsByClassName("ability");
   var level = document.getElementById("lvl").value;
-  var total = Number(level) + 59;
+  var total = Number(level) + 69;
   var used = 0;
   var total_label = document.getElementById("totalPoints");
   var used_label= document.getElementById("usedPoints");
@@ -224,6 +226,7 @@ function Character() {
   this.intelligence = "";
   this.wisdom = "";
   this.charisma = "";
+  this.perception = "";
 
   this.appearance = "";
   this.backstory = "";
@@ -275,6 +278,7 @@ function saveCharData() {
   character.intelligence = intLabel.innerHTML;
   character.wisdom = wisLabel.innerHTML;
   character.charisma = chaLabel.innerHTML;
+  character.perception = perLabel.innerHTML;
 
   character.appearance = app.innerHTML;
   character.backstory = bs.innerHTML;
@@ -355,6 +359,9 @@ function setCharData(character) {
   cha_input.value = Number(character.charisma);
   setLabel(cha_input, "chaLabel");
   updateMods(cha_input, "chaMod");
+  per_input.value = Number(character.perception);
+  setLabel(per_input, "perLabel");
+  updateMods(per_input, "perMod");
 
   wpn1name.innerHTML = character.wpn1name;
   wpn1desc.innerHTML = character.wpn1desc;

@@ -177,6 +177,7 @@
   							<th>INT</th>
   							<th>WIS</th>
   							<th>CHA</th>
+                <th>PER</th>
   						</thead>
   						<tbody>
   							<tr class="text-center">
@@ -186,6 +187,7 @@
   								<td id="intLabel">10</td>
   								<td id="wisLabel">10</td>
   								<td id="chaLabel">10</td>
+                  <td id="perLabel">10</td>
   							</tr>
 
   							<tr class="text-center">
@@ -195,6 +197,7 @@
   								<td class="intMod">0</td>
   								<td class="wisMod">0</td>
   								<td class="chaMod">0</td>
+                  <td class="perMod">0</td>
   							</tr>
   						</tbody>
   					</table>
@@ -209,6 +212,7 @@
   							<th>INT</th>
   							<th>WIS</th>
   							<th>CHA</th>
+                <th>PER</th>
   						</thead>
   						<tbody>
                 <tr>
@@ -218,6 +222,7 @@
                   <td><input id="intelligence" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'intLabel'), updateMods(this,'intMod'), setTotal()"></td>
   								<td><input id="wisdom" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'wisLabel'), updateMods(this,'wisMod'), setTotal()"></td>
   								<td><input id="charisma" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'chaLabel'), updateMods(this,'chaMod'), setTotal()"></td>
+                  <td><input id="perception" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'perLabel'), updateMods(this,'perMod'), setTotal()"></td>
   							</tr>
   							<tr class="text-center">
   								<td class="strMod">0</td>
@@ -226,12 +231,13 @@
   								<td class="intMod">0</td>
   								<td class="wisMod">0</td>
   								<td class="chaMod">0</td>
+                  <td class="perMod">0</td>
   							</tr>
   						</tbody>
   					</table>
             <div class="pull-right">
-              <p class="n-mb"><b>Total Points:</b> <span id="totalPoints">60</span></p>
-              <p><b>Points Used:</b> <span id="usedPoints">60</span></p>
+              <p class="n-mb"><b>Total Points:</b> <span id="totalPoints">70</span></p>
+              <p><b>Points Used:</b> <span id="usedPoints">70</span></p>
             </div>
 					</div>
         </div>

@@ -12,6 +12,7 @@ var sampleChars = [
     "intelligence": "10",
     "wisdom": "10",
     "charisma": "10",
+    "perception": "10",
 
     "wpn1name": "",
     "wpn1desc": "",
@@ -58,6 +59,7 @@ var sampleChars = [
     "intelligence": "12",
     "wisdom": "6",
     "charisma": "12",
+    "perception": "10",
 
     "wpn1name": "Broom",
     "wpn1desc": "A long straw broom, given to him by the children who made him. He uses it mostly in self-defense and to scare threats away. It classifies as a large weapon but, as it is only a straw broom, it only does 1d4 damage.",
@@ -104,6 +106,7 @@ var sampleChars = [
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
+    "perception": "10",
 
     "wpn1name": "",
     "wpn1desc": "",
@@ -150,6 +153,7 @@ var sampleChars = [
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
+    "perception": "10",
 
     "wpn1name": "",
     "wpn1desc": "",
@@ -196,6 +200,7 @@ var sampleChars = [
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
+    "perception": "10",
 
     "wpn1name": "",
     "wpn1desc": "",
@@ -242,6 +247,7 @@ var sampleChars = [
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
+    "perception": "10",
 
     "wpn1name": "",
     "wpn1desc": "",
