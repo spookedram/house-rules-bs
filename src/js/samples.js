@@ -288,8 +288,8 @@ var sampleQuests = [
     "pin": 0,
     "questName": "",
 
-    "theme": "",
     "settingsList": "",
+    "npcList": "",
     "setup": "",
 
     "goal": "",
@@ -309,8 +309,8 @@ var sampleQuests = [
     "pin": 1,
     "questName": "Bird Bones",
 
-    "theme": "",
     "settingsList": "",
+    "npcList": "",
     "setup": "",
 
     "goal": "",
@@ -330,8 +330,8 @@ var sampleQuests = [
     "pin": 2,
     "questName": "",
 
-    "theme": "",
     "settingsList": "",
+    "npcList": "",
     "setup": "",
 
     "goal": "",
@@ -351,8 +351,8 @@ var sampleQuests = [
     "pin": 3,
     "questName": "",
 
-    "theme": "",
     "settingsList": "",
+    "npcList": "",
     "setup": "",
 
     "goal": "",
@@ -372,29 +372,8 @@ var sampleQuests = [
     "pin": 4,
     "questName": "",
 
-    "theme": "",
     "settingsList": "",
-    "setup": "",
-
-    "goal": "",
-    "wander": "",
-
-    "funFight": "",
-    "twist": "",
-
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
-    "epilogue": "",
-    "cliffhanger": ""
-  },
-  {
-    "pin": 4,
-    "questName": "",
-
-    "theme": "",
-    "settingsList": "",
+    "npcList": "",
     "setup": "",
 
     "goal": "",
@@ -414,8 +393,29 @@ var sampleQuests = [
     "pin": 5,
     "questName": "",
 
-    "theme": "",
     "settingsList": "",
+    "npcList": "",
+    "setup": "",
+
+    "goal": "",
+    "wander": "",
+
+    "funFight": "",
+    "twist": "",
+
+    "challenge": "",
+    "searchEnd": "",
+
+    "climax": "",
+    "epilogue": "",
+    "cliffhanger": ""
+  },
+  {
+    "pin": 6,
+    "questName": "",
+
+    "settingsList": "",
+    "npcList": "",
     "setup": "",
 
     "goal": "",

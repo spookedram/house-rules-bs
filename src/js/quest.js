@@ -1,8 +1,8 @@
 var questList = [];
 
 var questName = document.getElementById("questName");
-var theme = document.getElementById("theme");
 var settingsList = document.getElementById("settingsList");
+var npcList = document.getElementById("npcList");
 var setup = document.getElementById("setup");
 var goal = document.getElementById("goal");
 var wander = document.getElementById("wander");
@@ -77,8 +77,8 @@ function Quest() {
   this.pin = 0;
   this.questName = "";
 
-  this.theme = "";
   this.settingsList = "";
+  this.npcList = "";
   this.setup = "";
 
   this.goal = "";
@@ -101,8 +101,8 @@ function saveQuestData() {
   quest.pin = uniqueNumber();
   quest.questName = questName.innerHTML;
 
-  quest.theme = theme.innerHTML;
   quest.settingsList = settingsList.innerHTML;
+  quest.npcList = npcList.innerHTML;
   quest.setup = setup.innerHTML;
 
   quest.goal = goal.innerHTML;
@@ -137,8 +137,8 @@ function saveQuestData() {
 function setQuestData(quest) {
   questName.innerHTML = quest.questName;
 
-  theme.innerHTML = quest.theme;
   settingsList.innerHTML = quest.settingsList;
+  npcList.innerHTML = quest.npcList;
   setup.innerHTML = quest.setup;
 
   goal.innerHTML = quest.goal;
