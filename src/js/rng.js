@@ -7,3 +7,8 @@ function rollDice(){
 
   rollResult.innerHTML = Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function startRoll(){
+  rollResult.innerHTML = 0;
+  rollDice();
+}
