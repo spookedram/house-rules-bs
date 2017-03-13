@@ -105,12 +105,50 @@ function setLabel(input, target) {
 
 // When constitution changes at lvl 1, update hp
 function updateHP() {
-  var hp_input = document.getElementById("hp");
-  var con_input = document.getElementById("constitution");
+  var btn = document.getElementById("updateHP");
 
-  if(document.getElementById("lvl").value === "1") {
+  if(lvl_input.value === "1") {
+    btn.disabled = true;
     hp_input.value = con_input.value;
+    hpLabel.innerHTML = con_input.value;
+  } else {
+    btn.disabled = false;
   }
+}
+
+function addRandomHP() {
+  var levels = Number(lvl_input.value) - 1;
+  var baseHP = Number(con_input.value);
+  var mod = Number(con_input.value) - 10;
+  var i = 0;
+  var num = 0;
+
+  function rollForHP() {
+    var newHP = 0;
+    num = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    console.log("--------------");
+    console.log("Base HP: " + baseHP);
+    console.log("Rolled a " + num);
+    newHP += num;
+    newHP += mod;
+
+    if(newHP <= 0) {
+      baseHP += 1;
+    } else {
+      baseHP += newHP;
+    }
+
+    console.log("Add " + mod + " for constitution");
+    console.log("New HP: " + baseHP);
+  }
+
+  for(i; i < levels; i++) {
+    rollForHP();
+  }
+  
+  console.log("--------------------------------");
+  hp_input.value = String(baseHP);
+  hpLabel.innerHTML = hp_input.value;
 }
 
 // Updates ability score modifier
