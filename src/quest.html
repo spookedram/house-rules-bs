@@ -83,7 +83,7 @@
       <p class="lead text-center no-print"><i>"Be unpredictable, be real, be interesting. Tell a good story." - James Dashner</i></p>
 
       <div class="row no-print">
-        <div class="col-xs-7">
+        <div class="col-xs-9">
           <div class="btn-group">
               <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal()">Save/Load</button>
 
@@ -91,15 +91,19 @@
               <ul class="dropdown-menu">
                 <li><a href="#" onclick="loadSample(0)">Clear</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#" onclick="loadSample(1)">Quest2</a></li>
-                <li><a href="#" onclick="loadSample(2)">Quest3</a></li>
-                <li><a href="#" onclick="loadSample(3)">Quest4</a></li>
-                <li><a href="#" onclick="loadSample(4)">Quest5</a></li>
-                <li><a href="#" onclick="loadSample(5)">Quest6</a></li>
+                <li class="dropdown-header">Fantasy</li>
+                <li><a href="#" onclick="loadSample(1)">Quest1</a></li>
+                <li><a href="#" onclick="loadSample(2)">Quest2</a></li>
+                <li class="dropdown-header">Sci-Fi</li>
+                <li><a href="#" onclick="loadSample(3)">Quest3</a></li>
+                <li><a href="#" onclick="loadSample(4)">Quest4</a></li>
+                <li class="dropdown-header">Horror</li>
+                <li><a href="#" onclick="loadSample(5)">Quest5</a></li>
+                <li><a href="#" onclick="loadSample(6)">Quest6</a></li>
               </ul>
           </div>
         </div>
-        <div class="col-xs-5 text-right">
+        <div class="col-xs-3 text-right">
           <button id="print-btn" type="button" class="btn btn-default" aria-label="Left Align" onclick="print()">
             <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
           </button>
@@ -153,12 +157,12 @@
       <div class="row">
         <div class="col-sm-6">
           <h3>Settings List</h3>
-          <p class="small">What are the different environments involved in this quest?</p>
+          <p class="small no-print">What are the different environments involved in this quest?</p>
           <p id="settingsList" class="enter-content" contenteditable="true"></p>
         </div>
         <div class="col-sm-6">
           <h3>NPC List</h3>
-          <p class="small">Who are some of the NPCs involved in this quest?</p>
+          <p class="small no-print">Who are some of the NPCs involved in this quest?</p>
           <p id="npcList" class="enter-content" contenteditable="true"></p>
         </div>
       </div>
@@ -166,7 +170,7 @@
       <hr>
 
       <h3>Setup</h3>
-      <p class="small">Introduce the starting elements of the quest.</p>
+      <p class="small no-print">Introduce the starting elements of the quest.</p>
       <p id="setup" class="enter-content" contenteditable="true"></p>
 
       <hr>
@@ -176,12 +180,12 @@
         <div class="row">
           <div class="col-sm-6">
             <h4>High - Goal Set</h4>
-            <p class="small">What's the end goal at the beginning of the quest?</p>
+            <p class="small no-print">What's the end goal at the beginning of the quest?</p>
             <p id="goal" class="enter-content" contenteditable="true"></p>
           </div>
           <div class="col-sm-6">
             <h4>Low - Wandering</h4>
-            <p class="small">What info will the Players find early on in the quest?</p>
+            <p class="small no-print">What info will the Players find early on in the quest?</p>
             <p id="wander" class="enter-content" contenteditable="true"></p>
           </div>
         </div>
@@ -194,12 +198,12 @@
         <div class="row">
           <div class="col-sm-6">
             <h4>High - Fun Fight</h4>
-            <p class="small">An encounter for the Players to have some fun.</p>
+            <p class="small no-print">An encounter for the Players to have some fun.</p>
             <p id="funFight" class="enter-content" contenteditable="true"></p>
           </div>
           <div class="col-sm-6">
             <h4>Low - The Twist</h4>
-            <p class="small">There's more going on than meets the eye. What's the twist?</p>
+            <p class="small no-print">There's more going on than meets the eye. What's the twist?</p>
             <p id="twist" class="enter-content" contenteditable="true"></p>
           </div>
         </div>
@@ -212,12 +216,12 @@
         <div class="row">
           <div class="col-sm-6">
             <h4>High - The Challenge</h4>
-            <p class="small">An encounter to challenge your Players and remind them of the cost of failure.</p>
+            <p class="small no-print">An encounter to challenge your Players and remind them of the cost of failure.</p>
             <p id="challenge" class="enter-content" contenteditable="true"></p>
           </div>
           <div class="col-sm-6">
             <h4>Low - The Search Ends</h4>
-            <p class="small">What are the last peices of info before the final battle?</p>
+            <p class="small no-print">What are the last peices of info before the final battle?</p>
             <p id="searchEnd" class="enter-content" contenteditable="true"></p>
           </div>
         </div>
@@ -230,12 +234,12 @@
         <div class="row">
           <div class="col-sm-6">
             <h4>High - The Climax</h4>
-            <p class="small">The big finale, the final fight!</p>
+            <p class="small no-print">The big finale, the final fight!</p>
             <p id="climax" class="enter-content" contenteditable="true"></p>
           </div>
           <div class="col-sm-6">
             <h4>Low - Epilogue</h4>
-            <p class="small">The heroes get a chance to say goodbyes and collect their spoils.</p>
+            <p class="small no-print">The heroes get a chance to say goodbyes and collect their spoils.</p>
             <p id="epilogue" class="enter-content" contenteditable="true"></p>
           </div>
         </div>
@@ -244,7 +248,7 @@
       <hr>
 
       <h3>Cliffhanger</h3>
-      <p class="small">(Optional) Give your party a small taste of what's to come in the next session.</p>
+      <p class="small no-print">(Optional) Give your party a small taste of what's to come in the next session.</p>
       <p id="cliffhanger" class="enter-content" contenteditable="true"></p>
 
     </div><!-- /container -->
@@ -263,8 +267,8 @@
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
     <script src="lib/odometer/odometer.js"></script>
+    <script src="js/rng.js"></script>
     <script src="js/samples.js"></script>
     <script src="js/quest.js"></script>
-    <script src="js/rng.js"></script>
   </body>
 </html>

@@ -63,6 +63,46 @@ var spmov8name = document.getElementById("spmov8name");
 var spmov8desc = document.getElementById("spmov8desc");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
+var randomAbilityArr = permutator([7,8,10,10,11,12,12]);
+
+function uniqueNumber() {
+    var date = Date.now();
+
+    // If created at same millisecond as previous
+    if (date <= uniqueNumber.previous) {
+        date = ++uniqueNumber.previous;
+    } else {
+        uniqueNumber.previous = date;
+    }
+
+    return date;
+}
+uniqueNumber.previous = 0;
+
+// is localStorage empty?
+function lsTest(){
+  var test = 'test';
+  try {
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+// returns characterList array from localStorage
+function getCharacterList() {
+  if(lsTest() === true) {
+    if(localStorage.characterList) {
+      characterList = JSON.parse(localStorage.getItem('characterList'));
+    } else {
+      characterList = [];
+    }
+  } else {
+    showAlert("fullAlert", true);
+  }
+}
 
 function toggleArr(arr, boo) {
   var i = 0;
@@ -125,7 +165,7 @@ function addRandomHP() {
 
   function rollForHP() {
     var newHP = 0;
-    num = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    num = getRandomRange(10, 1);
     console.log("--------------");
     console.log("Base HP: " + baseHP);
     console.log("Rolled a " + num);
@@ -145,7 +185,7 @@ function addRandomHP() {
   for(i; i < levels; i++) {
     rollForHP();
   }
-  
+
   console.log("--------------------------------");
   hp_input.value = String(baseHP);
   hpLabel.innerHTML = hp_input.value;
@@ -173,29 +213,74 @@ function updateMods(input, target) {
   }
 }
 
-// sets total points and points used
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+function randomizeAbilityScores() {
+  var i = 0;
+  var idx = 0;
+  var total = Number(document.getElementById("totalPoints").innerHTML);
+  var abilities = document.getElementsByClassName("ability");
+  var scores = [];
+
+  scores = randomAbilityArr[getRandomRange(randomAbilityArr.length, 0)];
+
+  str_input.value = scores[0];
+  strLabel.innerHTML = str_input.value;
+  updateMods(str_input, "strMod");
+  dex_input.value = scores[1];
+  dexLabel.innerHTML = dex_input.value;
+  updateMods(dex_input, "dexMod");
+  con_input.value = scores[2];
+  conLabel.innerHTML = con_input.value;
+  updateMods(con_input, "conMod");
+  int_input.value = scores[3];
+  intLabel.innerHTML = int_input.value;
+  updateMods(int_input, "intMod");
+  wis_input.value = scores[4];
+  wisLabel.innerHTML = wis_input.value;
+  updateMods(wis_input, "wisMod");
+  cha_input.value = scores[5];
+  chaLabel.innerHTML = cha_input.value;
+  updateMods(cha_input, "chaMod");
+  per_input.value = scores[6];
+  perLabel.innerHTML = per_input.value;
+  updateMods(per_input, "perMod");
+}
+
+// sets total points and points left
 function setTotal() {
   var scores = document.getElementsByClassName("ability");
   var level = document.getElementById("lvl").value;
   var total = Number(level) + 69;
   var used = 0;
+  var left = 0;
   var total_label = document.getElementById("totalPoints");
-  var used_label= document.getElementById("usedPoints");
+  var left_label= document.getElementById("pointsLeft");
   var i = 0;
 
   for(i; i < scores.length; i++) {
     used += Number(scores[i].value);
   }
 
+  left = total - used;
+
   total_label.innerHTML = total.toString();
-  used_label.innerHTML = used.toString();
+  left_label.innerHTML = left.toString();
 
   if(used > total) {
-    used_label.parentElement.style.color = "red";
+    left_label.parentElement.style.color = "red";
   } else if (used < total) {
-    used_label.parentElement.style.color = "orange";
+    left_label.parentElement.style.color = "orange";
   } else {
-    used_label.parentElement.style.color = "black";
+    left_label.parentElement.style.color = "black";
   }
 }
 
@@ -207,45 +292,6 @@ function showModal() {
   saveLoadModal.show();
   if(editing_mode) {
     toggleEdit();
-  }
-}
-
-function uniqueNumber() {
-    var date = Date.now();
-
-    // If created at same millisecond as previous
-    if (date <= uniqueNumber.previous) {
-        date = ++uniqueNumber.previous;
-    } else {
-        uniqueNumber.previous = date;
-    }
-
-    return date;
-}
-uniqueNumber.previous = 0;
-
-// is localStorage empty?
-function lsTest(){
-  var test = 'test';
-  try {
-    localStorage.setItem(test, test);
-    localStorage.removeItem(test);
-    return true;
-  } catch(e) {
-    return false;
-  }
-}
-
-// returns characterList array from localStorage
-function getCharacterList() {
-  if(lsTest() === true) {
-    if(localStorage.characterList) {
-      characterList = JSON.parse(localStorage.getItem('characterList'));
-    } else {
-      characterList = [];
-    }
-  } else {
-    showAlert("fullAlert", true);
   }
 }
 
@@ -466,6 +512,7 @@ function loadData(pin) {
 
 function loadSample(num) {
   setCharData(sampleChars[num]);
+  setTotal();
 }
 
 function addRowToLoadTable(obj) {
