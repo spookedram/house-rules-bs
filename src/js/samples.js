@@ -164,11 +164,11 @@ var sampleChars = [
     "armorName": "Coat of Cold",
     "armorDesc": "Orion wears a large, heavy, navy blue coat, decorated with emroidered snowflakes on the sleeves and tail. It's thick material is always slightly chilly and gives Orion +1 AC against fire-based attacks.",
     "armorType": "Light (AC 12)",
-    "gear": "",
+    "gear": "Orion carries with him some old charts and maps, a quill and ink set, a small telescope, and some basic survival equipment (cord, a lantern, a compass, knives). He also has a small box that opens up into a 20 square foot portable observatory, where he works charting the cosmos. ",
 
-    "appearance": "",
-    "personality": "",
-    "backstory": "",
+    "appearance": "Orion is a hefty, 7ft tall half-orc man. He's built like a bear with a wide torso and smaller limbs, his dark skin covered in bristly grey-white hair. His fashion is elegantly but functional, crafted from expensive, durable materials but also finely tailored for his frame. Small silver accessories shine against the dark navy colors of his coat, like the stars in the night sky. He wears his Coat of Cold wherever he goes, and uses his Polar Staff as a walking cane.",
+    "personality": "Orion is a boisterous, hearty fellow with a heart of gold and an eye for the extravagant. He's fine at small talk but he's also restless in social situations, preferring instead to be working in his portable observatory. When combat arises, Orion enjoys the chance to stretch his magical abilities, but prefers to fight from a distance and is wary of putting his life on the line.",
+    "backstory": "Orion North was born in a small village at the base of a mountain range in the north called the Sky's Teeth. His mother was an orc scientist and his father was a human wizard, both studying the stars. Orion grew up learning about science and astronomy from his mother and magic from his father. One day they left on an expedition high up into the Teeth, and a week after they left a terrible blizzard swept over the mountains and they never returned. Orion spent a year searching all over the mountains for his parents and eventually stumbled across a campsite buried in the snow, but with no sign of his parents. Orion swore to the sky that he'd finish the work they started, that he would immortalize them and make the North name known across the world. He found work in various palaces and temples, making good money on his mathematical expertise and magical ability, but his motivation is still to make the North name famous by finishing the most accurate map of the stars ever seen.",
 
     "spmov1name": "Freeze Still Water",
     "spmov1desc": "The Wizard freezes non-moving water or similar liquid in a 5ft square cube",
