@@ -74,10 +74,10 @@ var sampleChars = [
 
     "appearance": "Joan is a 5ft 6in tall human woman with dark eyes and bright hair. She's strong and sturdy but beautiful, though she chooses to dress simply when not in her combat gear. She has sharp features and a long scar running across her shoulder-blades.",
     "personality": "Joan is stern and serious most of the time, with a dark past and an anger she can't escape from, but even deeper down she's a kind-hearted girl who wants to find peace and who loves to have fun with her friends when she can find the time to really wind down.",
-    "backstory": "Joan Richmont was born in the city of Wesper to a nobleman and his wife. Her father died fighting in a war to protect the city when Joan was a preteen, which made her want to join the army; she wanted to learn how to protect what was left of her family. She trained hard and by the time she was 16 she'd already seen combat on the field. A few years later her mother contracted a strange illness that passed through Wesper, and Joan was sent by her lord to find a cure.",
+    "backstory": "Joan Richmont was born in the city of Wesper to a nobleman and his wife. Her father died fighting in a war to protect the city when Joan was a preteen, which made her want to join the army; she wanted to learn how to protect what was left of her family. She trained hard and by the time she was 16 she'd already seen combat on the field. A few years later her mother contracted a strange illness that passed through Wesper, and Joan was sent by her commanding officer to find a cure.",
 
     "spmov1name": "Dodge Roll",
-    "spmov1desc": "If an attack lands and there is room to move around, the Warrior can roll a dexterity check to attempt a dodge.<br>Higher than 10 and the attack misses, lower and the attack still lands.",
+    "spmov1desc": "If an attack lands and there is room to move around, the Warrior can try to dodge the attack with a dexterity check.",
     "spmov2name": "Recovery Strike",
     "spmov2desc": "If the Warrior makes an attack and it misses, they can use this move to roll the attack again.",
     "spmov3name": "Fortify Defenses",

@@ -298,7 +298,7 @@ footer a:hover {
   .pba {
     page-break-after: always;
   }
-  section {
+  section, .pbi {
     page-break-inside: avoid;
   }
   [class*="col-sm"] {

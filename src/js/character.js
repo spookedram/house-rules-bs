@@ -34,15 +34,12 @@ var bs = document.getElementById("backstory");
 var wpn1name = document.getElementById("wpn1name");
 var wpn1desc = document.getElementById("wpn1desc");
 var wpn1type = document.getElementById("wpn1type");
-var wpn1typeLabel = document.getElementById("wpn1typeLabel");
 var wpn2name = document.getElementById("wpn2name");
 var wpn2desc = document.getElementById("wpn2desc");
 var wpn2type = document.getElementById("wpn2type");
-var wpn2typeLabel = document.getElementById("wpn2typeLabel");
 var armorName = document.getElementById("armorName");
 var armorDesc = document.getElementById("armorDesc");
 var armorType = document.getElementById("armorType");
-var armorTypeLabel = document.getElementById("armorTypeLabel");
 var gear = document.getElementById("gear");
 
 var spmov1name = document.getElementById("spmov1name");
@@ -313,8 +310,8 @@ function Character() {
   this.perception = "";
 
   this.appearance = "";
-  this.backstory = "";
   this.personality = "";
+  this.backstory = "";
 
   this.wpn1name = "";
   this.wpn1desc = "";
@@ -365,20 +362,20 @@ function saveCharData() {
   character.perception = perLabel.innerHTML;
 
   character.appearance = app.innerHTML;
-  character.backstory = bs.innerHTML;
   character.personality = pers.innerHTML;
+  character.backstory = bs.innerHTML;
 
   character.wpn1name = wpn1name.innerHTML;
   character.wpn1desc = wpn1desc.innerHTML;
-  character.wpn1type = wpn1typeLabel.innerHTML;
+  character.wpn1type = wpn1type.value;
 
   character.wpn2name = wpn2name.innerHTML;
   character.wpn2desc = wpn2desc.innerHTML;
-  character.wpn2type = wpn2typeLabel.innerHTML;
+  character.wpn2type = wpn2type.value;
 
   character.armorName = armorName.innerHTML;
   character.armorDesc = armorDesc.innerHTML;
-  character.armorType = armorTypeLabel.innerHTML;
+  character.armorType = armorType.value;
 
   character.gear = gear.innerHTML;
 
@@ -450,23 +447,20 @@ function setCharData(character) {
   wpn1name.innerHTML = character.wpn1name;
   wpn1desc.innerHTML = character.wpn1desc;
   wpn1type.value = character.wpn1type;
-  setLabel(wpn1type, "wpn1typeLabel");
 
   wpn2name.innerHTML = character.wpn2name;
   wpn2desc.innerHTML = character.wpn2desc;
   wpn2type.value = character.wpn2type;
-  setLabel(wpn2type, "wpn2typeLabel");
 
   armorName.innerHTML = character.armorName;
   armorDesc.innerHTML = character.armorDesc;
   armorType.value = character.armorType;
-  setLabel(armorType, "armorTypeLabel");
 
   gear.innerHTML = character.gear;
 
   app.innerHTML = character.appearance;
-  bs.innerHTML = character.backstory;
   pers.innerHTML = character.personality;
+  bs.innerHTML = character.backstory;
 
   spmov1name.innerHTML = character.spmov1name;
   spmov1desc.innerHTML = character.spmov1desc;

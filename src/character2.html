@@ -164,20 +164,28 @@
         <div class="col-sm-4">
           <h2 id="charName" class="enter-name n-mb" contenteditable="true"></h2>
           <h3 id="title" class="enter-title" contenteditable="true"></h3>
-          <div class="view">
-            <h3>Level: <span id="lvlLabel">1</span></h3>
-            <h3>HP: <span id="hpLabel">10</span></h3>
-          </div>
+          <div class="row" style="margin-bottom:18px;">
+            <div class="col-xs-6">
+              <h3 class="view">LVL: <span id="lvlLabel">1</span></h3>
+              <h3 class="edit" style="display:none;">LVL: <input id="lvl" type="number" class="form-control inline" value="1" min="1" max="20" oninput="setLabel(this,'lvlLabel'), setTotal(), updateHP()"></h3>
+            </div>
+            <div class="col-xs-6">
+              <h3 class="view">HP: <span id="hpLabel">10</span></h3>
+              <h3 class="edit" style="display:none;">HP: <input id="hp" type="number" class="form-control inline" value="10" min="1" max="999" onchange="setLabel(this,'hpLabel')">
 
-          <div class="edit" style="display:none;">
-            <h3>Level: <input id="lvl" type="number" class="form-control inline" value="1" min="1" max="20" oninput="setLabel(this,'lvlLabel'), setTotal(), updateHP()"></h3>
-            <h3>HP: <input id="hp" type="number" class="form-control inline" value="10" min="1" max="999" onchange="setLabel(this,'hpLabel')"> <button id="updateHP" type="button" class="btn btn-default" style="display:inline-block" onclick="addRandomHP()" disabled="true">Update HP</button></h3>
+            </div>
           </div>
-
-          <button id="edit-btn" type="button" class="btn btn-default no-print" onclick="toggleEdit()">Edit Details</button>
+          <div class="row">
+            <div class="col-xs-6">
+              <button id="edit-btn" type="button" class="btn btn-default no-print pull-left" onclick="toggleEdit()">Edit Details</button>
+            </div>
+            <div class="col-xs-6">
+              <button id="updateHP" type="button" class="edit btn btn-default" onclick="addRandomHP()" disabled="true" style="display:none;">Update HP</button></h3>
+            </div>
+          </div>
         </div>
 
-        <div class="col-sm-8">
+        <div class="col-sm-8 text-center">
           <h2>Ability Scores</h2>
           <div class="view">
             <table class="table n-mb">
@@ -246,12 +254,16 @@
   							</tr>
   						</tbody>
   					</table>
-            <div class="pull-left">
-              <button id="randomAS" type="button" class="btn btn-default" onclick="randomizeAbilityScores(), setTotal()">Randomize</button>
-            </div>
-            <div class="pull-right">
-              <p class="n-mb"><b>Total Points:</b> <span id="totalPoints">70</span></p>
-              <p><b>Points Left:</b> <span id="pointsLeft">0</span></p>
+            <div class="row">
+              <div class="col-xs-6 text-left">
+                <button id="randomAS" type="button" class="btn btn-default" onclick="randomizeAbilityScores(), setTotal()">Randomize</button>
+              </div>
+              <div class="col-xs-6">
+                <div class="pull-right">
+                  <p class="n-mb"><b>Total Points:</b> <span id="totalPoints">70</span></p>
+                  <p><b>Points Left:</b> <span id="pointsLeft">0</span></p>
+                </div>
+              </div>
             </div>
 					</div>
         </div>
@@ -264,147 +276,205 @@
       <div class="row">
         <div class="col-sm-6">
           <h3>Main Weapon</h3>
-          <h4 id="wpn1name" class="enter-name" contenteditable="true"></h4>
-          <p id="wpn1desc" class="enter-content" contenteditable="true"></p>
-          <select id="wpn1type" class="form-control no-print" oninput="setLabel(this,'wpn1typeLabel')">
-            <option value="Small (d4)">Small (d4)</option>
-            <option value="Ranged (d6)">Ranged (d6)</option>
-            <option value="Medium (d8)" selected>Medium (d8)</option>
-            <option value="Large (d10)">Large (d10)</option>
-            <option value="Shield (AC +1)">Shield (AC +1)</option>
-          </select>
-          <p class="text-right show-print"><b>Type:</b> <span id="wpn1typeLabel">Medium (d8)</span></p>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 id="wpn1name" class="enter-name" contenteditable="true"></h4>
+            </div>
+            <div class="panel-body">
+              <p id="wpn1desc" class="enter-content" contenteditable="true"></p>
+              <div class="text-right">
+                <select id="wpn1type" class="form-control n-mb pull-right">
+                  <option value="Small (d4)">Small (d4)</option>
+                  <option value="Ranged (d6)">Ranged (d6)</option>
+                  <option value="Medium (d8)" selected>Medium (d8)</option>
+                  <option value="Large (d10)">Large (d10)</option>
+                  <option value="Shield (AC +1)">Shield (AC +1)</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-sm-6">
           <h3>Sub Weapon</h3>
-          <h4 id="wpn2name" class="enter-name" contenteditable="true"></h4>
-          <p id="wpn2desc" class="enter-content" contenteditable="true"></p>
-          <select id="wpn2type" class="form-control no-print" oninput="setLabel(this,'wpn2typeLabel')">
-            <option value="Small (d4)">Small (d4)</option>
-            <option value="Ranged (d6)" selected>Ranged (d6)</option>
-            <option value="Medium (d8)">Medium (d8)</option>
-            <option value="Large (d10)">Large (d10)</option>
-            <option value="Shield (AC +1)">Shield (AC +1)</option>
-          </select>
-          <p class="text-right show-print"><b>Type:</b> <span id="wpn2typeLabel">Ranged (d6)</span></p>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 id="wpn2name" class="enter-name" contenteditable="true"></h4>
+            </div>
+            <div class="panel-body">
+              <p id="wpn2desc" class="enter-content" contenteditable="true"></p>
+              <div class="text-right">
+                <select id="wpn2type" class="form-control n-mb pull-right">
+                  <option value="Small (d4)">Small (d4)</option>
+                  <option value="Ranged (d6)" selected>Ranged (d6)</option>
+                  <option value="Medium (d8)">Medium (d8)</option>
+                  <option value="Large (d10)">Large (d10)</option>
+                  <option value="Shield (AC +1)">Shield (AC +1)</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-6">
           <h3>Armor</h3>
-          <h4 id="armorName" class="enter-name" contenteditable="true"></h4>
-          <p id="armorDesc" class="enter-content" contenteditable="true"></p>
-          <select id="armorType" class="form-control no-print" oninput="setLabel(this,'armorTypeLabel')">
-            <option value="None (AC 10)">None (AC 10)</option>
-            <option value="Light (AC 12)">Light (AC 12)</option>
-            <option value="Medium (AC 14)">Medium (AC 14)</option>
-            <option value="Heavy (AC 16)">Heavy (AC 16)</option>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 id="armorName" class="enter-name" contenteditable="true"></h4>
+            </div>
+            <div class="panel-body">
+              <p id="armorDesc" class="enter-content" contenteditable="true"></p>
+              <div class="text-right">
+                <select id="armorType" class="form-control n-mb pull-right">
+                  <option value="None (AC 10)">None (AC 10)</option>
+                  <option value="Light (AC 12)">Light (AC 12)</option>
+                  <option value="Medium (AC 14)">Medium (AC 14)</option>
+                  <option value="Heavy (AC 16)">Heavy (AC 16)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
           </select>
-          <p class="text-right show-print"><b>Type:</b> <span id="armorTypeLabel">None (AC 10)</span></p>
         </div>
         <div class="col-sm-6">
           <h3>Gear</h3>
-          <p id="gear" class="enter-content" contenteditable="true"></p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="gear" class="enter-content n-mb" contenteditable="true"></p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <hr class="pba">
 
       <h2>Details</h2>
 
       <div class="row">
         <div class="col-sm-6">
           <h3>Appearance</h3>
-          <p id="appearance" class="enter-content" contenteditable="true"></p>
-
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="appearance" class="enter-content n-mb" contenteditable="true"></p>
+            </div>
+          </div>
         </div>
+
         <div class="col-sm-6">
           <h3>Personality</h3>
-          <p id="personality" class="enter-content" contenteditable="true"></p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="personality" class="enter-content n-mb" contenteditable="true"></p>
+            </div>
+          </div>
         </div>
       </div>
 
       <h3>Backstory</h3>
-      <p id="backstory" class="enter-content" contenteditable="true"></p>
-
-      <hr class="pba">
-
-      <h2 style="margin: 0;">Special Moves</h2>
-
-      <div id="includeChart" class="no-print input-group">
-        <span class="input-group-addon">
-          Include moves per day chart?
-        </span>
-        <span class="input-group-addon">
-          <input type="checkbox" class="input-group pull-right" onchange="togglePerDay(this.checked)"/>
-        </span>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p id="backstory" class="enter-content n-mb" contenteditable="true"></p>
+        </div>
       </div>
 
-      <table id="spmov-table" class="table table-striped">
-        <thead>
-          <th>Lvls</th>
-          <th>Name &#38; Desc</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1-3</td>
-            <td>
-              <p id="spmov1name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov1desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>1-3</td>
-            <td>
-              <p id="spmov2name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov2desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>4-6</td>
-            <td>
-              <p id="spmov3name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov3desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>7-9</td>
-            <td>
-              <p id="spmov4name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov4desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>10-12</td>
-            <td>
-              <p id="spmov5name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov5desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>13-15</td>
-            <td>
-              <p id="spmov6name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov6desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>16-18</td>
-            <td>
-              <p id="spmov7name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov7desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>19-20</td>
-            <td>
-              <p id="spmov8name" class="enter-name" contenteditable="true"></p>
-              <p id="spmov8desc" class="enter-content" contenteditable="true"></p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="row">
+        <div class="col-sm-6">
+          <h2 class="n-mb">Special Moves</h2>
+        </div>
+
+        <div class="col-sm-6">
+          <div id="includeChart" class="input-group n-mb no-print" style="margin-top:20px;">
+            <span class="input-group-addon">
+              Include moves per day chart?
+            </span>
+            <span class="input-group-addon">
+              <input type="checkbox" class="input-group" onchange="togglePerDay(this.checked)"/>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov1name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov1desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 1</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov2name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov2desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 1</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov3name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov3desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 4</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov4name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov4desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 7</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov5name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov5desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 10</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov6name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov6desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 13</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov7name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov7desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 16</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default pbi">
+        <div class="panel-heading">
+          <h4 id="spmov8name" class="enter-name" contenteditable="true"></h4>
+        </div>
+        <div class="panel-body">
+          <p id="spmov8desc" class="enter-content" contenteditable="true"></p>
+          <p class="n-mb text-right" style="color:#bababa;">Unlocked at level 19</p>
+        </div>
+      </div>
 
       <div id="perDay">
         <hr class="pba">
