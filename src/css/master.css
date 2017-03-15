@@ -78,6 +78,10 @@ footer a:hover {
   color: black;
 }
 
+section h4 {
+  margin: 6px 0;
+}
+
 /* Useful Classes */
 .enter-content:empty:before {
   content: 'Add content here';
@@ -112,7 +116,7 @@ footer a:hover {
 }
 
 .scroll-table {
-  overflow-x: scroll;
+  overflow-x: scroll !important;
 }
 
 .tab-list {
@@ -194,6 +198,12 @@ footer a:hover {
   .ability {
     padding: 0.5rem 0.75rem;
   }
+}
+
+.unlocked {
+  margin-bottom: 0;
+  float: right;
+  color: #a1a1a1;
 }
 
 /* ID specific styles */
