@@ -146,7 +146,31 @@
                   <button type="button" name="button" class="btn btn-primary" onclick="showAlert('clearAlert', false)">Cancel</button>
                 </div>
               </div>
+
+              <div style="margin: 0 auto;max-width: 268px;">
+                <h4>Sample Quests</h4>
+                <div class="input-group">
+                  <select id="sampleQuestList" class="form-control">
+                    <option value="0">Custom</option>
+                    <option disabled="true">FANTASY</option>
+                    <option value="1">Quest1</option>
+                    <option value="2">Quest2</option>
+                    <option disabled="true"></option>
+                    <option disabled="true">SCI-FI</option>
+                    <option value="3">Quest3</option>
+                    <option value="4">Quest4</option>
+                    <option disabled="true"></option>
+                    <option disabled="true">HORROR</option>
+                    <option value="5">Quest5</option>
+                    <option value="6">Quest6</option>
+                  </select>
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" onclick="hideModal(), loadSample(document.getElementById('sampleQuestList').value)">Load</button>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div class="modal-footer">
               <button id="clearList" type="button" class="btn btn-danger pull-left" name="button" onclick="showAlert('clearAlert', true)">Clear List</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
