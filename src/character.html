@@ -95,7 +95,7 @@
                 <li><a href="#" onclick="loadSample(1)">Warrior</a></li>
                 <li><a href="#" onclick="loadSample(2)">Thief</a></li>
                 <li><a href="#" onclick="loadSample(3)">Ice Mage</a></li>
-                <li><a href="#" onclick="loadSample(4)">Healer</a></li>
+                <li><a href="#" onclick="loadSample(4)">Cleric</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Sci-Fi</li>
                 <li><a href="#" onclick="loadSample(5)">Hacker</a></li>
@@ -390,7 +390,7 @@
       <section>
         <div class="row">
           <div class="col-sm-6">
-            <h2 class="n-mb">Special Moves</h2>
+            <h2 class="n-mb">Perks</h2>
           </div>
 
           <div class="col-sm-6">
@@ -409,13 +409,14 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="spmov1name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk1name" class="enter-name" contenteditable="true"></h4>
               </div>
               <div class="panel-body">
-                <p id="spmov1desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk1desc" class="enter-content" contenteditable="true"></p>
                 <div class="row">
                   <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 1</p>
+                    <p class="unlocked">Unlocked at level 1<br>
+                      2d12 : 1 round : DC 12</p>
                   </div>
                 </div>
               </div>
@@ -425,47 +426,14 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="spmov2name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk2name" class="enter-name" contenteditable="true"></h4>
               </div>
               <div class="panel-body">
-                <p id="spmov2desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk2desc" class="enter-content" contenteditable="true"></p>
                 <div class="row">
                   <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 1</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 id="spmov3name" class="enter-name" contenteditable="true"></h4>
-              </div>
-              <div class="panel-body">
-                <p id="spmov3desc" class="enter-content" contenteditable="true"></p>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 4</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 id="spmov4name" class="enter-name" contenteditable="true"></h4>
-              </div>
-              <div class="panel-body">
-                <p id="spmov4desc" class="enter-content" contenteditable="true"></p>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 7</p>
+                    <p class="unlocked">Unlocked at level 1<br>
+                      3d8 : 2 rounds : DC 13</p>
                   </div>
                 </div>
               </div>
@@ -477,13 +445,14 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="spmov5name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk3name" class="enter-name" contenteditable="true"></h4>
               </div>
               <div class="panel-body">
-                <p id="spmov5desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk3desc" class="enter-content" contenteditable="true"></p>
                 <div class="row">
                   <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 10</p>
+                    <p class="unlocked">Unlocked at level 4<br>
+                      4d12 : 3 rounds : DC 14</p>
                   </div>
                 </div>
               </div>
@@ -493,13 +462,14 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="spmov6name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk4name" class="enter-name" contenteditable="true"></h4>
               </div>
               <div class="panel-body">
-                <p id="spmov6desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk4desc" class="enter-content" contenteditable="true"></p>
                 <div class="row">
                   <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 13</p>
+                    <p class="unlocked">Unlocked at level 7<br>
+                      6d12 : 4 rounds : DC 15</p>
                   </div>
                 </div>
               </div>
@@ -511,13 +481,50 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="spmov7name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk5name" class="enter-name" contenteditable="true"></h4>
               </div>
               <div class="panel-body">
-                <p id="spmov7desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk5desc" class="enter-content" contenteditable="true"></p>
                 <div class="row">
                   <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 16</p>
+                    <p class="unlocked">Unlocked at level 10<br>
+                      10d8 : 5 rounds : DC 16</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 id="perk6name" class="enter-name" contenteditable="true"></h4>
+              </div>
+              <div class="panel-body">
+                <p id="perk6desc" class="enter-content" contenteditable="true"></p>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="unlocked">Unlocked at level 13<br>
+                      10d10 : 6 rounds : DC 17</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 id="perk7name" class="enter-name" contenteditable="true"></h4>
+              </div>
+              <div class="panel-body">
+                <p id="perk7desc" class="enter-content" contenteditable="true"></p>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="unlocked">Unlocked at level 16<br>
+                      10d12 : 7 rounds : DC 18</p>
                   </div>
                 </div>
               </div>
@@ -527,13 +534,14 @@
           <div class="col-sm-6">
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="spmov8name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk8name" class="enter-name" contenteditable="true"></h4>
               </div>
               <div class="panel-body">
-                <p id="spmov8desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk8desc" class="enter-content" contenteditable="true"></p>
                 <div class="row">
                   <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 19</p>
+                    <p class="unlocked">Unlocked at level 19<br>
+                      12d12 : 8 rounds : DC 19</p>
                   </div>
                 </div>
               </div>

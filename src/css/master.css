@@ -203,6 +203,7 @@ section h4 {
 .unlocked {
   margin-bottom: 0;
   float: right;
+  text-align: right;
   color: #a1a1a1;
 }
 

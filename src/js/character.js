@@ -42,22 +42,22 @@ var armorDesc = document.getElementById("armorDesc");
 var armorType = document.getElementById("armorType");
 var gear = document.getElementById("gear");
 
-var spmov1name = document.getElementById("spmov1name");
-var spmov1desc = document.getElementById("spmov1desc");
-var spmov2name = document.getElementById("spmov2name");
-var spmov2desc = document.getElementById("spmov2desc");
-var spmov3name = document.getElementById("spmov3name");
-var spmov3desc = document.getElementById("spmov3desc");
-var spmov4name = document.getElementById("spmov4name");
-var spmov4desc = document.getElementById("spmov4desc");
-var spmov5name = document.getElementById("spmov5name");
-var spmov5desc = document.getElementById("spmov5desc");
-var spmov6name = document.getElementById("spmov6name");
-var spmov6desc = document.getElementById("spmov6desc");
-var spmov7name = document.getElementById("spmov7name");
-var spmov7desc = document.getElementById("spmov7desc");
-var spmov8name = document.getElementById("spmov8name");
-var spmov8desc = document.getElementById("spmov8desc");
+var perk1name = document.getElementById("perk1name");
+var perk1desc = document.getElementById("perk1desc");
+var perk2name = document.getElementById("perk2name");
+var perk2desc = document.getElementById("perk2desc");
+var perk3name = document.getElementById("perk3name");
+var perk3desc = document.getElementById("perk3desc");
+var perk4name = document.getElementById("perk4name");
+var perk4desc = document.getElementById("perk4desc");
+var perk5name = document.getElementById("perk5name");
+var perk5desc = document.getElementById("perk5desc");
+var perk6name = document.getElementById("perk6name");
+var perk6desc = document.getElementById("perk6desc");
+var perk7name = document.getElementById("perk7name");
+var perk7desc = document.getElementById("perk7desc");
+var perk8name = document.getElementById("perk8name");
+var perk8desc = document.getElementById("perk8desc");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 var randomAbilityArr = permutator([7,8,10,10,11,12,12]);
@@ -325,22 +325,22 @@ function Character() {
   this.armorType = "";
   this.gear = "";
 
-  this.spmov1name = "";
-  this.spmov1desc = "";
-  this.spmov2name = "";
-  this.spmov2desc = "";
-  this.spmov3name = "";
-  this.spmov3desc = "";
-  this.spmov4name = "";
-  this.spmov4desc = "";
-  this.spmov5name = "";
-  this.spmov5desc = "";
-  this.spmov6name = "";
-  this.spmov6desc = "";
-  this.spmov7name = "";
-  this.spmov7desc = "";
-  this.spmov8name = "";
-  this.spmov8desc = "";
+  this.perk1name = "";
+  this.perk1desc = "";
+  this.perk2name = "";
+  this.perk2desc = "";
+  this.perk3name = "";
+  this.perk3desc = "";
+  this.perk4name = "";
+  this.perk4desc = "";
+  this.perk5name = "";
+  this.perk5desc = "";
+  this.perk6name = "";
+  this.perk6desc = "";
+  this.perk7name = "";
+  this.perk7desc = "";
+  this.perk8name = "";
+  this.perk8desc = "";
 }
 
 // adds new character to characterList and localStorage from current labels
@@ -380,22 +380,22 @@ function saveCharData() {
 
   character.gear = gear.innerHTML;
 
-  character.spmov1name = spmov1name.innerHTML;
-  character.spmov1desc = spmov1desc.innerHTML;
-  character.spmov2name = spmov2name.innerHTML;
-  character.spmov2desc = spmov2desc.innerHTML;
-  character.spmov3name = spmov3name.innerHTML;
-  character.spmov3desc = spmov3desc.innerHTML;
-  character.spmov4name = spmov4name.innerHTML;
-  character.spmov4desc = spmov4desc.innerHTML;
-  character.spmov5name = spmov5name.innerHTML;
-  character.spmov5desc = spmov5desc.innerHTML;
-  character.spmov6name = spmov6name.innerHTML;
-  character.spmov6desc = spmov6desc.innerHTML;
-  character.spmov7name = spmov7name.innerHTML;
-  character.spmov7desc = spmov7desc.innerHTML;
-  character.spmov8name = spmov8name.innerHTML;
-  character.spmov8desc = spmov8desc.innerHTML;
+  character.perk1name = perk1name.innerHTML;
+  character.perk1desc = perk1desc.innerHTML;
+  character.perk2name = perk2name.innerHTML;
+  character.perk2desc = perk2desc.innerHTML;
+  character.perk3name = perk3name.innerHTML;
+  character.perk3desc = perk3desc.innerHTML;
+  character.perk4name = perk4name.innerHTML;
+  character.perk4desc = perk4desc.innerHTML;
+  character.perk5name = perk5name.innerHTML;
+  character.perk5desc = perk5desc.innerHTML;
+  character.perk6name = perk6name.innerHTML;
+  character.perk6desc = perk6desc.innerHTML;
+  character.perk7name = perk7name.innerHTML;
+  character.perk7desc = perk7desc.innerHTML;
+  character.perk8name = perk8name.innerHTML;
+  character.perk8desc = perk8desc.innerHTML;
 
   if(lsTest() === true){
     getCharacterList();
@@ -463,22 +463,22 @@ function setCharData(character) {
   pers.innerHTML = character.personality;
   bs.innerHTML = character.backstory;
 
-  spmov1name.innerHTML = character.spmov1name;
-  spmov1desc.innerHTML = character.spmov1desc;
-  spmov2name.innerHTML = character.spmov2name;
-  spmov2desc.innerHTML = character.spmov2desc;
-  spmov3name.innerHTML = character.spmov3name;
-  spmov3desc.innerHTML = character.spmov3desc;
-  spmov4name.innerHTML = character.spmov4name;
-  spmov4desc.innerHTML = character.spmov4desc;
-  spmov5name.innerHTML = character.spmov5name;
-  spmov5desc.innerHTML = character.spmov5desc;
-  spmov6name.innerHTML = character.spmov6name;
-  spmov6desc.innerHTML = character.spmov6desc;
-  spmov7name.innerHTML = character.spmov7name;
-  spmov7desc.innerHTML = character.spmov7desc;
-  spmov8name.innerHTML = character.spmov8name;
-  spmov8desc.innerHTML = character.spmov8desc;
+  perk1name.innerHTML = character.perk1name;
+  perk1desc.innerHTML = character.perk1desc;
+  perk2name.innerHTML = character.perk2name;
+  perk2desc.innerHTML = character.perk2desc;
+  perk3name.innerHTML = character.perk3name;
+  perk3desc.innerHTML = character.perk3desc;
+  perk4name.innerHTML = character.perk4name;
+  perk4desc.innerHTML = character.perk4desc;
+  perk5name.innerHTML = character.perk5name;
+  perk5desc.innerHTML = character.perk5desc;
+  perk6name.innerHTML = character.perk6name;
+  perk6desc.innerHTML = character.perk6desc;
+  perk7name.innerHTML = character.perk7name;
+  perk7desc.innerHTML = character.perk7desc;
+  perk8name.innerHTML = character.perk8name;
+  perk8desc.innerHTML = character.perk8desc;
 }
 
 function saveCharacter() {
