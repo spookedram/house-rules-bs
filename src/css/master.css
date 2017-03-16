@@ -206,6 +206,14 @@ section h4 {
   color: #a1a1a1;
 }
 
+.donate {
+  color: #337ab7;
+}
+
+.donate:hover {
+  color: #23527c;
+}
+
 /* ID specific styles */
 #name {
   margin-top: 20px;

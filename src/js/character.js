@@ -237,6 +237,7 @@ function randomizeAbilityScores() {
   updateMods(dex_input, "dexMod");
   con_input.value = scores[2];
   conLabel.innerHTML = con_input.value;
+  updateHP();
   updateMods(con_input, "conMod");
   int_input.value = scores[3];
   intLabel.innerHTML = int_input.value;
