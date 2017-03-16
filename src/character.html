@@ -134,7 +134,7 @@
                 <tbody id="loadCharTable">
                   <tr>
                     <td>Empty Slot</td>
-                    <td class="text-right"><button type="button" class="btn btn-default" onclick="saveCharacter()">Save</button></td>
+                    <td class="text-right"><button type="button" class="btn btn-default" onclick="saveCharacter(), needToConfirm = false;">Save</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -168,11 +168,11 @@
             <div class="row" style="margin-bottom:18px;">
               <div class="col-xs-6">
                 <h3 class="view">LVL: <span id="lvlLabel">1</span></h3>
-                <h3 class="edit" style="display:none;">LVL: <input id="lvl" type="number" class="form-control inline" value="1" min="1" max="20" oninput="setLabel(this,'lvlLabel'), setTotal(), updateHP()"></h3>
+                <h3 class="edit" style="display:none;">LVL: <input id="lvl" type="number" class="form-control inline" value="1" min="1" max="20" oninput="setLabel(this,'lvlLabel'), setTotal(), updateHP(), needConfirm()"></h3>
               </div>
               <div class="col-xs-6">
                 <h3 class="view">HP: <span id="hpLabel">10</span></h3>
-                <h3 class="edit" style="display:none;">HP: <input id="hp" type="number" class="form-control inline" value="10" min="1" max="999" onchange="setLabel(this,'hpLabel')">
+                <h3 class="edit" style="display:none;">HP: <input id="hp" type="number" class="form-control inline" value="10" min="1" max="999" onchange="setLabel(this,'hpLabel'), needConfirm()">
 
               </div>
             </div>
@@ -181,7 +181,7 @@
                 <button id="edit-btn" type="button" class="btn btn-default no-print pull-left" onclick="toggleEdit()">Edit Details</button>
               </div>
               <div class="col-xs-6">
-                <button id="updateHP" type="button" class="edit btn btn-default" onclick="addRandomHP()" disabled="true" style="display:none;width:116px;">Update HP</button></h3>
+                <button id="updateHP" type="button" class="edit btn btn-default" onclick="addRandomHP(), needConfirm()" disabled="true" style="display:none;width:116px;">Update HP</button></h3>
               </div>
             </div>
           </div>
@@ -236,13 +236,13 @@
     						</thead>
     						<tbody>
                   <tr>
-    								<td><input id="strength" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'strLabel'), updateMods(this,'strMod'), setTotal()"></td>
-    								<td><input id="dexterity" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'dexLabel'), updateMods(this,'dexMod'), setTotal()"></td>
-    								<td><input id="constitution" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'conLabel'), updateMods(this,'conMod'), setTotal(), updateHP()"></td>
-                    <td><input id="intelligence" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'intLabel'), updateMods(this,'intMod'), setTotal()"></td>
-    								<td><input id="wisdom" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'wisLabel'), updateMods(this,'wisMod'), setTotal()"></td>
-    								<td><input id="charisma" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'chaLabel'), updateMods(this,'chaMod'), setTotal()"></td>
-                    <td><input id="perception" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'perLabel'), updateMods(this,'perMod'), setTotal()"></td>
+    								<td><input id="strength" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'strLabel'), updateMods(this,'strMod'), setTotal(), needConfirm()"></td>
+    								<td><input id="dexterity" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'dexLabel'), updateMods(this,'dexMod'), setTotal(), needConfirm()"></td>
+    								<td><input id="constitution" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'conLabel'), updateMods(this,'conMod'), setTotal(), updateHP(), needConfirm()"></td>
+                    <td><input id="intelligence" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'intLabel'), updateMods(this,'intMod'), setTotal(), needConfirm()"></td>
+    								<td><input id="wisdom" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'wisLabel'), updateMods(this,'wisMod'), setTotal(), needConfirm()"></td>
+    								<td><input id="charisma" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'chaLabel'), updateMods(this,'chaMod'), setTotal(), needConfirm()"></td>
+                    <td><input id="perception" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'perLabel'), updateMods(this,'perMod'), setTotal(), needConfirm()"></td>
     							</tr>
     							<tr class="text-center">
     								<td class="strMod">0</td>
@@ -257,7 +257,7 @@
     					</table>
               <div class="row">
                 <div class="col-xs-6 text-left">
-                  <button id="randomAS" type="button" class="btn btn-default" onclick="randomizeAbilityScores(), setTotal()">Randomize</button>
+                  <button id="randomAS" type="button" class="btn btn-default" onclick="randomizeAbilityScores(), setTotal(), needConfirm()">Randomize</button>
                 </div>
                 <div class="col-xs-6">
                   <div class="pull-right">
@@ -281,12 +281,12 @@
             <h3>Main Weapon</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="wpn1name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="wpn1name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="wpn1desc" class="enter-content" contenteditable="true"></p>
+                <p id="wpn1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="text-right">
-                  <select id="wpn1type" class="form-control n-mb pull-right">
+                  <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm()">
                     <option value="Small (d4)">Small (d4)</option>
                     <option value="Ranged (d6)">Ranged (d6)</option>
                     <option value="Medium (d8)" selected>Medium (d8)</option>
@@ -301,12 +301,12 @@
             <h3>Sub Weapon</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="wpn2name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="wpn2name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="wpn2desc" class="enter-content" contenteditable="true"></p>
+                <p id="wpn2desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="text-right">
-                  <select id="wpn2type" class="form-control n-mb pull-right">
+                  <select id="wpn2type" class="form-control n-mb pull-right" onchange="needConfirm()">
                     <option value="Small (d4)">Small (d4)</option>
                     <option value="Ranged (d6)" selected>Ranged (d6)</option>
                     <option value="Medium (d8)">Medium (d8)</option>
@@ -324,12 +324,12 @@
             <h3>Armor</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="armorName" class="enter-name" contenteditable="true"></h4>
+                <h4 id="armorName" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="armorDesc" class="enter-content" contenteditable="true"></p>
+                <p id="armorDesc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="text-right">
-                  <select id="armorType" class="form-control n-mb pull-right">
+                  <select id="armorType" class="form-control n-mb pull-right" onchange="needConfirm()">
                     <option value="None (AC 10)">None (AC 10)</option>
                     <option value="Light (AC 12)">Light (AC 12)</option>
                     <option value="Medium (AC 14)">Medium (AC 14)</option>
@@ -345,7 +345,7 @@
             <h3>Gear</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="gear" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="gear" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -362,7 +362,7 @@
             <h3>Appearance</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="appearance" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="appearance" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -371,7 +371,7 @@
             <h3>Personality</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="personality" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="personality" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -380,7 +380,7 @@
         <h3>Backstory</h3>
         <div class="panel panel-default n-mb">
           <div class="panel-body">
-            <p id="backstory" class="enter-content n-mb" contenteditable="true"></p>
+            <p id="backstory" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
           </div>
         </div>
       </section>
@@ -409,10 +409,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="perk1name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk1name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk1desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 1<br>
@@ -426,10 +426,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="perk2name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk2name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk2desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk2desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 1<br>
@@ -445,10 +445,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="perk3name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk3name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk3desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk3desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 4<br>
@@ -462,10 +462,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="perk4name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk4name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk4desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk4desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 7<br>
@@ -481,10 +481,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="perk5name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk5name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk5desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk5desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 10<br>
@@ -498,10 +498,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="perk6name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk6name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk6desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk6desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 13<br>
@@ -517,10 +517,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 id="perk7name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk7name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk7desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk7desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 16<br>
@@ -534,10 +534,10 @@
           <div class="col-sm-6">
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="perk8name" class="enter-name" contenteditable="true"></h4>
+                <h4 id="perk8name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
               </div>
               <div class="panel-body">
-                <p id="perk8desc" class="enter-content" contenteditable="true"></p>
+                <p id="perk8desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="unlocked">Unlocked at level 19<br>
@@ -553,7 +553,7 @@
       <div id="perDay">
         <hr class="pba">
 
-        <h3>Special Moves: Uses Per Day / Per Level Chart</h3>
+        <h3>Perks: Uses Per Day / Per Level Chart</h3>
         <div class="scroll-table">
           <table class="table table-striped">
             <thead>

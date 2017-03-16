@@ -704,70 +704,135 @@
             <hr>
 
             <h3 id="lvlUp">Leveling Up</h3>
-            <p>Characters and creatures in <b>House Rules RPG</b> have a level, a score between 1 and 20 that shows their progress and their power within the world. Every time your character gains a level, usually at the end of a significant quest, they have some opportunities to strengthen their character. Firstly they receive an <b>ability point</b> to add to one of their six abilities. Second, they get to roll a d10, add their constitution modifier, and add the result to <b>increase their max hit points</b> (if your constitution modifier brings the result into the negatives, just add 1 to their max hit points). Depending on the level your character is gaining, you might also unlock a new perk and add a die to your weapon damage. Your character also receives some <b>gold</b> that can be used to purchase equipment and items.</p>
-
-            <h4>Gold per Level</h4>
-            <div class="scroll-table">
-              <table class="table table-striped center-children">
-                <tbody>
-                  <tr>
-                    <th>Level</th>
-                    <th>1</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>7</th>
-                    <th>8</th>
-                    <th>9</th>
-                    <th>10</th>
-                  </tr>
-                  <tr>
-                    <th>Money</th>
-                    <td>-</td>
-                    <td>500g</td>
-                    <td>1000g</td>
-                    <td>1500g</td>
-                    <td>2100g</td>
-                    <td>2800g</td>
-                    <td>3400g</td>
-                    <td>4300g</td>
-                    <td>5300g</td>
-                    <td>6400g</td>
-                  </tr>
-                  <tr>
-                    <th>Level</th>
-                    <th>11</th>
-                    <th>12</th>
-                    <th>13</th>
-                    <th>14</th>
-                    <th>15</th>
-                    <th>16</th>
-                    <th>17</th>
-                    <th>18</th>
-                    <th>19</th>
-                    <th>20</th>
-                  </tr>
-                  <tr>
-                    <th>Money</th>
-                    <td>7600g</td>
-                    <td>8900g</td>
-                    <td>10.5kg</td>
-                    <td>13kg</td>
-                    <td>14.6kg</td>
-                    <td>16.3kg</td>
-                    <td>18.1kg</td>
-                    <td>20kg</td>
-                    <td>30kg</td>
-                    <td>40kg</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div><!-- /.scroll-table -->
+            <p>Characters and creatures in <b>House Rules RPG</b> have a level, a score between 1 and 20 that shows their progress and their power within the world. Every time your character gains a level, usually at the end of a significant quest, they have some opportunities to strengthen their character. Every time a character levels up, their Player gets to roll a d10, add their character's constitution modifier, and add the result to <b>increase their max hit points</b> (if their constitution modifier brings the result into the negatives, add only 1 to their max hit points). Depending on the level your character is gaining, you might also unlock a new perk, gain a new point to add to an ability of your choice, or gain a die to add to your weapon damage. Your character also receives some <b>gold</b> that can be used to purchase equipment and items.</p>
 
             <h4>Buying Items</h4>
-            <p>Whether or not your party will get gold to spend on magic items after leveling up is something you should discuss before the game starts. It can take some extra time to come up with magic items to sell, but there's lots of places to go for inspiration. Consider what kinds of items could be useful in-game: things that enable communication, protection, traversal, disguise, or power over the elements are a few ideas. You can have items that give advantage to certain rolls once a day or add a point to a modifier when worn, or you could just have various interesting garbs and armors just for appearance. It's up to you and your party, be creative and have fun with it!</p>
+            <p>Whether or not your party will get gold to spend on magic items after leveling up is something you should discuss before the game starts. It can take some extra time to come up with magic items to sell, but there's lots of places to go for inspiration. Consider what kinds of items could be useful in-game: things that enable communication, protection, traversal, disguise, or power over the elements are a few ideas. You can have one-use items that give advantage to certain rolls or add a point to a modifier when used, or you could just have various interesting garbs and armors just for appearance. It's up to you and your party, be creative and have fun with it!</p>
+
+            <div class="row">
+              <div id="lvlTable1" class="col-sm-6">
+                <table class="table table-striped center-children">
+                  <thead>
+                    <th>Level</th>
+                    <th>Rewards</th>
+                    <th>Gold</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>+1 Ability Point</td>
+                      <td>500g</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>+1 Damage Die</td>
+                      <td>1000g</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Unlock <b>Perk 3</b></td>
+                      <td>1500g</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>+1 Ability Point</td>
+                      <td>2100g</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>+1 Damage Die</td>
+                      <td>2800g</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Unlock <b>Perk 4</b></td>
+                      <td>3400g</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>+1 Ability Point</td>
+                      <td>4300g</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>+1 Damage Die</td>
+                      <td>5300g</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Unlock <b>Perk 5</b></td>
+                      <td>6400g</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="lvlTable2" class="col-sm-6">
+                <table class="table table-striped center-children">
+                  <thead>
+                    <th>Level</th>
+                    <th>Rewards</th>
+                    <th>Gold</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>11</td>
+                      <td>+1 Ability Point</td>
+                      <td>7600g</td>
+                    </tr>
+                    <tr>
+                      <td>12</td>
+                      <td>+1 Damage Die</td>
+                      <td>8900g</td>
+                    </tr>
+                    <tr>
+                      <td>13</td>
+                      <td>Unlock <b>Perk 6</b></td>
+                      <td>10.5kg</td>
+                    </tr>
+                    <tr>
+                      <td>14</td>
+                      <td>+1 Ability Point</td>
+                      <td>13kg</td>
+                    </tr>
+                    <tr>
+                      <td>15</td>
+                      <td>+1 Damage Die</td>
+                      <td>14.6kg</td>
+                    </tr>
+                    <tr>
+                      <td>16</td>
+                      <td>Unlock <b>Perk 7</b></td>
+                      <td>16.3kg</td>
+                    </tr>
+                    <tr>
+                      <td>17</td>
+                      <td>+1 Ability Point</td>
+                      <td>18.1kg</td>
+                    </tr>
+                    <tr>
+                      <td>18</td>
+                      <td>+1 Damage Die</td>
+                      <td>20kg</td>
+                    </tr>
+                    <tr>
+                      <td>19</td>
+                      <td>Unlock <b>Perk 8</b></td>
+                      <td>30kg</td>
+                    </tr>
+                    <tr>
+                      <td>20</td>
+                      <td>+1 Ability Point</td>
+                      <td>40kg</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
             <a href="javascript:void(0)" class="pull-left" onclick="openTab(event,'gameplay'), window.scrollTo(0,0);">Rules</a>
             <a href="javascript:void(0)" class="pull-right" onclick="openTab(event,'gameMaster'), window.scrollTo(0,0);">Game Master</a>

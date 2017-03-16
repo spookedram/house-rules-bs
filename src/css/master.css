@@ -215,6 +215,10 @@ section h4 {
   color: #23527c;
 }
 
+.text-left {
+  text-align: left !important;
+}
+
 /* ID specific styles */
 #name {
   margin-top: 20px;
@@ -233,6 +237,38 @@ section h4 {
 #spmov-table td:first-of-type {
   padding-right: 0;
   width: 52px;
+}
+
+#lvlTable1 {
+  padding-right: 15px;
+}
+#lvlTable1 table {
+  margin-bottom: 0;
+}
+#lvlTable2 {
+  padding-left: 15px;
+}
+#lvlTable2 thead {
+  display: none;
+}
+#lvlTable1 td:first-of-type,
+#lvlTable2 td:first-of-type {
+  width: 68px;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #lvlTable1 {
+    padding-right: 0;
+  }
+  #lvlTable1 table {
+    margin-bottom: 20px;
+  }
+  #lvlTable2 {
+    padding-left: 0;
+  }
+  #lvlTable2 thead {
+    display: table-header-group;
+  }
 }
 
 #setting-list *, #npc-list *{

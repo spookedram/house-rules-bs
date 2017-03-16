@@ -129,7 +129,7 @@
                 <tbody id="loadQuestTable">
                   <tr>
                     <td>Empty Slot</td>
-                    <td class="text-right"><button type="button" class="btn btn-default" onclick="saveQuest()">Save</button></td>
+                    <td class="text-right"><button type="button" class="btn btn-default" onclick="saveQuest(), needToConfirm = false;">Save</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -163,7 +163,7 @@
           <p class="small no-print">What are the different environments involved in this quest?</p>
           <div class="panel panel-default n-mb">
             <div class="panel-body">
-              <p id="settingsList" class="enter-content n-mb" contenteditable="true"></p>
+              <p id="settingsList" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@
           <p class="small no-print">Who are some of the NPCs involved in this quest?</p>
           <div class="panel panel-default n-mb">
             <div class="panel-body">
-              <p id="npcList" class="enter-content n-mb" contenteditable="true"></p>
+              <p id="npcList" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
             </div>
           </div>
         </div>
@@ -185,7 +185,7 @@
         <p class="small no-print">Introduce the starting elements of the quest.</p>
         <div class="panel panel-default">
           <div class="panel-body">
-            <p id="setup" class="enter-content n-mb" contenteditable="true"></p>
+            <p id="setup" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
           </div>
         </div>
       </section>
@@ -200,7 +200,7 @@
             <p class="small no-print">What's the end goal at the beginning of the quest?</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="goal" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="goal" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@
             <p class="small no-print">What info will the Players find early on in the quest?</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="wander" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="wander" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -226,7 +226,7 @@
             <p class="small no-print">An encounter for the Players to have some fun.</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="funFight" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="funFight" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -235,7 +235,7 @@
             <p class="small no-print">There's more going on than meets the eye. What's the twist?</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="twist" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="twist" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -252,7 +252,7 @@
             <p class="small no-print">An encounter to challenge your Players and remind them of the cost of failure.</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="challenge" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="challenge" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -261,7 +261,7 @@
             <p class="small no-print">What are the last peices of info before the final battle?</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="searchEnd" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="searchEnd" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -278,7 +278,7 @@
             <p class="small no-print">The big finale, the final fight!</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="climax" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="climax" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -287,7 +287,7 @@
             <p class="small no-print">The heroes get a chance to say goodbyes and collect their spoils.</p>
             <div class="panel panel-default n-mb">
               <div class="panel-body">
-                <p id="epilogue" class="enter-content n-mb" contenteditable="true"></p>
+                <p id="epilogue" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
           </div>
@@ -300,7 +300,7 @@
       <p class="small no-print">(Optional) Give your party a small taste of what's to come in the next session.</p>
       <div class="panel panel-default">
         <div class="panel-body">
-          <p id="cliffhanger" class="enter-content n-mb" contenteditable="true"></p>
+          <p id="cliffhanger" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
         </div>
       </div>
 

@@ -202,8 +202,8 @@ var sampleChars = [
     "charisma": "10",
     "perception": "10",
 
-    "wpn1name": "",
-    "wpn1desc": "",
+    "wpn1name": "Ancient Tome",
+    "wpn1desc": "A leather-bound book filled with words and illustrations depicting the Cleric's deity and its legacy. Allows the Cleric to call on their deity's power and heal a target for 1d8 hit points.",
     "wpn1type": "Small (d4)",
     "wpn2name": "Steel Buckler",
     "wpn2desc": "A solid shield made from wood and reinforced with steel, forming an odd symbol on the front. Used for protection but also can be used as a bashing weapon for 1d4 damage.",

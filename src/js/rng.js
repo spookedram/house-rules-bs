@@ -1,5 +1,6 @@
 var rollBtn = document.getElementById("roll-btn");
 var rollResult = document.getElementById("roll-result");
+var needToConfirm = false;
 
 function getRandomRange(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -37,4 +38,15 @@ function permutator(inputArr) {
   }
 
   return permute(inputArr);
+}
+
+window.onbeforeunload = confirmExit;
+function confirmExit() {
+  if (needToConfirm) {
+    return "Changes you made may not be saved.";
+  }
+}
+
+function needConfirm() {
+  needToConfirm = true;
 }
