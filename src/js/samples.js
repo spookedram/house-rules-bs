@@ -134,7 +134,7 @@ var sampleChars = [
     "spmov5name": "Targeted Theft",
     "spmov5desc": "On a successful DC 9 dexterity check, the Thief can take a specific item from an NPC without them noticing.",
     "spmov6name": "Evasion",
-    "spmov6desc": "If an attack hits the Thief, they get a chance to roll a dexterity check. If the check is higher than the attack roll, they evade the attack.",
+    "spmov6desc": "If an attack hits the Thief, they get a chance to roll a dexterity check, they evade the attack.",
     "spmov7name": "Skeleton Key",
     "spmov7desc": "Pick any physical lock without needing to roll a dexterity check.",
     "spmov8name": "Vanish",
