@@ -34,9 +34,22 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-nav.navbar-default {
-  background-color: white;
-  color: #777;
+
+nav.navbar {
+  border-radius: 0;
+}
+
+
+header.jumbotron {
+  height: 200px;
+  background-image: url("assets/banner_hatching.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#home {
+  background-color: #9ebc3c;
 }
 
 h1, h2, h3, h4, h5 {
