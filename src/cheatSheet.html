@@ -53,12 +53,103 @@
     <article class="container">
       <p class="lead text-center"><i>I looked for a good quote on shortcuts but couldn't find one in favor of them. Why not? Sometimes you just need a good reference sheet, not everything's a philosophical question about the value of doing things "the right way."</i></p>
 
-      <div class="row">
-        <div class="col-sm-6">
+      <!-- Nav tabs -->
+      <div id="rulesTabs" class="tab-list">
+        <a href="javascript:void(0)" class="tab-links active" onclick="openTab(event,'pregame')">Pre-Game</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'game')">Game</a>
+      </div>
 
+      <div class="tab-pane" id="pregame">
+        <h2>Pre-Game</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Creating Enemies</h3>
+            <p>Simple enemies don't need a full character sheet. You can shortcut the process; only write down their name, level, modifiers (only ones that would affect rolls), HP, AC, weapon damage, and perks, if any.</p>
+            <b>Examples:</b>
+            <div class="row">
+              <div class="col-sm-6">
+                <p>Level 4 Hobgoblin<br>
+                  STR +1 / DEX +1 / CHA -2<br>
+                  HP 23 / AC 12 / DMG 2d8<br>
+                  Perks<br>
+                  Headbutt: 2d12 damage headbutt attack.<br>
+                  Lick Wounds: 3d8 healing perk.<br>
+                  Cutpurse: DC 14 DEX to steal gold from target.</p>
+              </div>
+              <div class="col-sm-6">
+                <p>Level 14 Nightstalker<br>
+                  STR +3 / CON +3 / INT -2<br>
+                  HP 23 / AC 12 / DMG 2d8<br>
+                  Perks<br>
+                  Headbutt: 2d12 damage headbutt attack.<br>
+                  Lick Wounds: 3d8 healing perk.<br>
+                  Cutpurse: DC 14 DEX to steal gold from target.</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-sm-6">
+
+          </div>
         </div>
-        <div class="col-sm-6">
-          
+      </div>
+
+      <!-- Tab panes -->
+      <div class="tab-pane" id="game" style="display:none;">
+        <h2>Gameplay</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>Difficulty Checks</h3>
+            <p>For difficult actions Players must <b>roll a d20</b>, add their character's <b>ability score modifer</b> to the roll, and compare the result to the action's <b>difficuilty challenge (DC)</b>. If the result is higher they succeed, if not they fail.</p>
+            <p><b>Critical Rolls:</b><br>
+              Rolling a <i>natural 1</i> is a <b>critical miss</b>, rolling a <i>natural 20</i> is a <b>critical hit</b>.</p>
+            <p><b>Advantage:</b><br>
+              Roll twice and keep the <i>higher</i> roll.</p>
+            <p><b>Disadvantage:</b><br>
+              Roll twice and keep the <i>lower</i> roll.</p>
+          </div>
+          <div class="col-sm-6">
+            <h3 id="abScores">Ability Scores</h3>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>Strength</th>
+                  <td>Represents muscle and physical power</td>
+                  <td class="text-center">STR</td>
+                </tr>
+                <tr>
+                  <th>Dexterity</th>
+                  <td>Represents agility, reflexes, and balance</td>
+                  <td class="text-center">DEX</td>
+                </tr>
+                <tr>
+                  <th>Constitution</th>
+                  <td>Represents health, stamina, and endurance</td>
+                  <td class="text-center">CON</td>
+                </tr>
+                <tr>
+                  <th>Intelligence</th>
+                  <td>Represents critical thinking, learning, and logic</td>
+                  <td class="text-center">INT</td>
+                </tr>
+                <tr>
+                  <th>Wisdom</th>
+                  <td>Represents willpower, common sense, and intuition</td>
+                  <td class="text-center">WIS</td>
+                </tr>
+                <tr>
+                  <th>Charisma</th>
+                  <td>Represents personality, likability, and ability to lead</td>
+                  <td class="text-center">CHA</td>
+                </tr>
+                <tr>
+                  <th>Perception</th>
+                  <td>Represents senses and awareness</td>
+                  <td class="text-center">PER</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </article>
@@ -83,5 +174,6 @@
     </footer>
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
+    <script src="js/tabs.js"></script>
   </body>
 </html>

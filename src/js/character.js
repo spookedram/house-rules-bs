@@ -61,6 +61,7 @@ var perk8desc = document.getElementById("perk8desc");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 var randomAbilityArr = permutator([7,8,10,10,11,12,12]);
+var totalAbilityPoints = 70;
 
 // returns characterList array from localStorage
 function getCharacterList() {
@@ -223,11 +224,49 @@ function randomizeAbilityScores() {
   updateMods(per_input, "perMod");
 }
 
+function setLevel() {
+  switch(document.getElementById("lvl").value) {
+    default:
+      totalAbilityPoints = 70;
+      break;
+    case "2":
+    case "3":
+    case "4":
+      totalAbilityPoints = 71;
+      break;
+    case "5":
+    case "6":
+    case "7":
+      totalAbilityPoints = 72;
+      break;
+    case "8":
+    case "9":
+    case "10":
+      totalAbilityPoints = 73;
+      break;
+    case "11":
+    case "12":
+    case "13":
+      totalAbilityPoints = 74;
+      break;
+    case "14":
+    case "15":
+    case "16":
+      totalAbilityPoints = 75;
+      break;
+    case "17":
+    case "18":
+    case "19":
+      totalAbilityPoints = 76;
+      break;
+    case "20":
+      totalAbilityPoints = 77;
+  }
+}
+
 // sets total points and points left
 function setTotal() {
   var scores = document.getElementsByClassName("ability");
-  var level = document.getElementById("lvl").value;
-  var total = Number(level) + 69;
   var used = 0;
   var left = 0;
   var total_label = document.getElementById("totalPoints");
@@ -238,14 +277,14 @@ function setTotal() {
     used += Number(scores[i].value);
   }
 
-  left = total - used;
+  left = totalAbilityPoints - used;
 
-  total_label.innerHTML = total.toString();
+  total_label.innerHTML = totalAbilityPoints.toString();
   left_label.innerHTML = left.toString();
 
-  if(used > total) {
+  if(used > totalAbilityPoints) {
     left_label.parentElement.style.color = "red";
-  } else if (used < total) {
+  } else if (used < totalAbilityPoints) {
     left_label.parentElement.style.color = "orange";
   } else {
     left_label.parentElement.style.color = "black";
