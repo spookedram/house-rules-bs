@@ -16,49 +16,6 @@ var cliffhanger = document.getElementById("cliffhanger");
 
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 
-function hideModal() {
-  saveLoadModal.hide();
-}
-
-function showModal() {
-  saveLoadModal.show();
-}
-
-// toggle alert box
-function showAlert(target, boo){
-  if(boo) {
-    document.getElementById(target).style.display = "block";
-  } else {
-    document.getElementById(target).style.display = "none";
-  }
-}
-
-function uniqueNumber() {
-    var date = Date.now();
-
-    // If created at same millisecond as previous
-    if (date <= uniqueNumber.previous) {
-        date = ++uniqueNumber.previous;
-    } else {
-        uniqueNumber.previous = date;
-    }
-
-    return date;
-}
-uniqueNumber.previous = 0;
-
-// is localStorage empty?
-function lsTest(){
-    var test = 'test';
-    try {
-        localStorage.setItem(test, test);
-        localStorage.removeItem(test);
-        return true;
-    } catch(e) {
-        return false;
-    }
-}
-
 // returns characterList array from localStorage
 function getQuestList() {
   if(lsTest() === true) {
@@ -181,7 +138,7 @@ function loadSample(num) {
 }
 
 function addRowToLoadTable(obj) {
-  var table = document.getElementById("loadQuestTable");
+  var table = document.getElementById("loadTable");
   var name = String(obj.questName);
   var idNum = obj.pin;
   var newHTML = "";
@@ -193,16 +150,9 @@ function addRowToLoadTable(obj) {
   table.innerHTML += newHTML;
 }
 
-// get table and set extra rows to empty
-function clearTable(table) {
-  while (table.children[1]) {
-    table.removeChild(table.children[1]);
-  }
-}
-
 // set rows in table for each character in questList
 function refreshTable() {
-  var table = document.getElementById("loadQuestTable");
+  var table = document.getElementById("loadTable");
   var i = 0;
 
   if(lsTest() === true) {

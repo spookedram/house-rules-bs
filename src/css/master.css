@@ -34,15 +34,13 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-
 nav.navbar {
   border-radius: 0;
 }
 
-
 header.jumbotron {
   height: 200px;
-  background-image: url("assets/banner_hatching.png");
+  background-image: url("../assets/banner_hatching.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -314,7 +312,7 @@ section h4 {
 #rng-container {
   position: fixed;
   top: 83px; right: 0;
-  width: 200px;
+  width: 260px;
   z-index: 999;
 }
 
@@ -326,9 +324,28 @@ section h4 {
   border-bottom-right-radius: 8px;
 }
 
-#rng-panel input,
-#rng-panel p {
-  margin-bottom: 0;
+.rng-label {
+  margin: 0;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+#rng-panel h5 {
+  margin: 0;
+  display: inline-block;
+}
+
+#rng-panel input[type="number"],
+#rng-panel select {
+  display: inline-block;
+}
+
+#rng-panel input[type="number"] {
+  width: 56px;
+}
+
+#rng-panel select {
+  width:56px;
 }
 
 #rng-panel p {

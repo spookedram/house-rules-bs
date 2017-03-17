@@ -53,19 +53,39 @@
         <div id="rng-container" class="collapse">
           <div id="rng-panel">
             <div class="row">
-              <div class="col-xs-6">
-                <p>Min</p>
-                <input type="number" class="form-control" id="roll-min" value="1" min="1" max="998">
-                <p>Max</p>
-                <input type="number" class="form-control" id="roll-max" value="6" min="2" max="999">
+              <div class="col-xs-8">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <input type="radio" name="roller" value="0" onchange="setDice(1,20)" checked>
+                    <p class="rng-label">1d20</p>
+                  </div>
+                  <div class="col-xs-12">
+                    <input type="radio" name="roller" value="1" onchange="setDice(1,20)">
+                    <p class="rng-label">Other</p>
+                  </div>
+
+                  <div id="customRoll" class="col-xs-12">
+                    <input id="roll-amt" type="number" class="form-control" name="diceAmount" value="1" min="1" max="20">
+                    <h5>d</h5>
+                    <select id="roll-sides" class="form-control">
+                      <option value="4">4</option>
+                      <option value="6">6</option>
+                      <option value="8">8</option>
+                      <option value="10">10</option>
+                      <option value="12">12</option>
+                      <option value="20" selected>20</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-              <div class="col-xs-6 text-center">
+              <div class="col-xs-4 text-center">
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="text-center">Result</p>
                   </div>
                   <div class="col-xs-12">
-                    <h2 id="roll-result" class="odometer">0</h2>
+                    <h3 id="roll-result" class="odometer">0</h3>
                   </div>
                   <div class="col-xs-12">
                     <button type="button" class="btn btn-default" id="roll-btn" onclick="startRoll()">Roll</button>
@@ -109,7 +129,7 @@
                   <th>Name</th>
                   <th class="text-right">Action</th>
                 </thead>
-                <tbody id="loadQuestTable">
+                <tbody id="loadTable">
                   <tr>
                     <td>Empty Slot</td>
                     <td class="text-right"><button type="button" class="btn btn-default" onclick="saveQuest(), needToConfirm = false;">Save</button></td>
@@ -119,7 +139,7 @@
               <div id="fullAlert" class="alert alert-danger" style="display:none;">
                 <p>Your storage is full or your browser has denied access to storing local data! Please delete some quests, clear your localStorage, or change your browser settings to save this quest.</p>
                 <div class="text-right" style="margin-top:16px;">
-                  <button type="button" name="button" class="btn btn-primary" onclick="showAlert('fullAlert', false)">Ok</button>
+                  <button type="button" name="button" class="btn btsharedUtilsrimary" onclick="showAlert('fullAlert', false)">Ok</button>
                 </div>
               </div>
               <div id="clearAlert" class="alert alert-danger" style="display:none;">
@@ -334,7 +354,7 @@
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
     <script src="lib/odometer/odometer.js"></script>
-    <script src="js/rng.js"></script>
+    <script src="js/sharedUtils.js"></script>
     <script src="js/samples.js"></script>
     <script src="js/quest.js"></script>
   </body>

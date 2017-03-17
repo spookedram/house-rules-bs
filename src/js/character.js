@@ -62,32 +62,6 @@ var perk8desc = document.getElementById("perk8desc");
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 var randomAbilityArr = permutator([7,8,10,10,11,12,12]);
 
-function uniqueNumber() {
-    var date = Date.now();
-
-    // If created at same millisecond as previous
-    if (date <= uniqueNumber.previous) {
-        date = ++uniqueNumber.previous;
-    } else {
-        uniqueNumber.previous = date;
-    }
-
-    return date;
-}
-uniqueNumber.previous = 0;
-
-// is localStorage empty?
-function lsTest(){
-  var test = 'test';
-  try {
-    localStorage.setItem(test, test);
-    localStorage.removeItem(test);
-    return true;
-  } catch(e) {
-    return false;
-  }
-}
-
 // returns characterList array from localStorage
 function getCharacterList() {
   if(lsTest() === true) {
@@ -126,6 +100,12 @@ function toggleEdit(btn) {
     toggleArr(editDiv, false);
     toggleArr(viewDiv, true);
     edit_btn.innerHTML = "Edit Details";
+  }
+}
+
+function ifEditClose() {
+  if(editing_mode) {
+    toggleEdit();
   }
 }
 
@@ -210,16 +190,6 @@ function updateMods(input, target) {
   }
 }
 
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
-
 function randomizeAbilityScores() {
   var i = 0;
   var idx = 0;
@@ -279,17 +249,6 @@ function setTotal() {
     left_label.parentElement.style.color = "orange";
   } else {
     left_label.parentElement.style.color = "black";
-  }
-}
-
-function hideModal() {
-  saveLoadModal.hide();
-}
-
-function showModal() {
-  saveLoadModal.show();
-  if(editing_mode) {
-    toggleEdit();
   }
 }
 
@@ -500,9 +459,7 @@ function loadData(pin) {
   setCharData(result);
 
   hideModal();
-  if(editing_mode) {
-    toggleEdit();
-  }
+  ifEditClose();
 }
 
 function loadSample(num) {
@@ -511,7 +468,7 @@ function loadSample(num) {
 }
 
 function addRowToLoadTable(obj) {
-  var table = document.getElementById("loadCharTable");
+  var table = document.getElementById("loadTable");
   var name = String(obj.name);
   var idNum = obj.pin;
   var newHTML = "";
@@ -523,16 +480,9 @@ function addRowToLoadTable(obj) {
   table.innerHTML += newHTML;
 }
 
-// get table and set extra rows to empty
-function clearTable(table) {
-  while (table.children[1]) {
-    table.removeChild(table.children[1]);
-  }
-}
-
 // set rows in table for each character in characterList
 function refreshTable() {
-  var table = document.getElementById("loadCharTable");
+  var table = document.getElementById("loadTable");
   var i = 0;
 
   if(lsTest() === true) {
@@ -573,15 +523,6 @@ function clearItem(btn,pin) {
 
   localStorage.setItem('characterList', JSON.stringify(characterList));
   btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
-}
-
-// toggle alert box
-function showAlert(target, boo){
-  if(boo) {
-    document.getElementById(target).style.display = "block";
-  } else {
-    document.getElementById(target).style.display = "none";
-  }
 }
 
 function togglePerDay(chk) {
