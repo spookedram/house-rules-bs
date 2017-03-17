@@ -2,7 +2,7 @@ var questList = [];
 
 var questName = document.getElementById("questName");
 var settingsList = document.getElementById("settingsList");
-var npcList = document.getElementById("npcList");
+var npcsList = document.getElementById("npcsList");
 var setup = document.getElementById("setup");
 var goal = document.getElementById("goal");
 var wander = document.getElementById("wander");
@@ -35,7 +35,7 @@ function Quest() {
   this.questName = "";
 
   this.settingsList = "";
-  this.npcList = "";
+  this.npcsList = "";
   this.setup = "";
 
   this.goal = "";
@@ -59,7 +59,7 @@ function saveQuestData() {
   quest.questName = questName.innerHTML;
 
   quest.settingsList = settingsList.innerHTML;
-  quest.npcList = npcList.innerHTML;
+  quest.npcsList = npcsList.innerHTML;
   quest.setup = setup.innerHTML;
 
   quest.goal = goal.innerHTML;
@@ -95,7 +95,7 @@ function setQuestData(quest) {
   questName.innerHTML = quest.questName;
 
   settingsList.innerHTML = quest.settingsList;
-  npcList.innerHTML = quest.npcList;
+  npcsList.innerHTML = quest.npcsList;
   setup.innerHTML = quest.setup;
 
   goal.innerHTML = quest.goal;
@@ -193,4 +193,20 @@ function clearItem(btn,pin) {
 
   localStorage.setItem('questList', JSON.stringify(questList));
   btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
+}
+
+function addRowToList(str1, str2) {
+  var input = document.getElementById(str1);
+  var tableBody = document.getElementById(str2);
+
+  var newHTML = "<tr><td>" + input.value + "</td><td class='text-right'><button type='button' class='btn btn-default' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td></tr>";
+
+  if(input.value !== "") {
+    tableBody.innerHTML += newHTML;
+    input.value = "";
+  }
+}
+
+function deleteRow(btn) {
+  btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
 }
