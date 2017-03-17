@@ -187,6 +187,9 @@
             <p>To begin combat, the Players will roll <b>dexterity checks</b> for their character(s) and the Game Master will do the same for each type of enemy involved in the encounter. The highest roll goes first, followed by second highest, etc. When the order is set, the character(s) or creature(s) with the highest roll get to take their turn by attacking or taking an action.</p>
             <p class="well"><b>Note:</b> If a character or creature has the element of surprise, either rolling a successful dexterity check or their target fails a perception check, they can attack <i>before</i> the initiative roll.</p>
 
+            <h4>Turns</h4>
+            <p>A <b>turn</b> is a character or creature's <i>turn</i> to fight. They get to make <b>1 movement</b> and <b>1 action</b> (in that order) before the next person in the initiative order gets their turn. A movement is changing position, drawing a weapon, reloading a bow/gun, or using a movement-based perk. <b>You can only use 1 perk per turn.</b> A character or creature can also decide to either make a movement and skip their action or skip their movement and only take an action, if they want.</p>
+
             <h4>Rounds</h4>
             <p>One round of combat represents roughly <b>6 seconds</b> in the game world. One round is everyone in the order getting their turn, taking actions and attacking, defending and making saving throws. Once it's back to the first in the order it's a new round. Combat moves quickly but, if it's going too long, the Players and Game Master can always look for other options, like running away.</p>
 
@@ -245,68 +248,78 @@
 
             <h4>Dealing Damage</h4>
             <p>Each type of weapon has a <b>type</b> which also dictates what type of die is rolled for applying damage. Any item can be used as a physical weapon, so base the weapon's type on the physical size of the object (unless it's a ranged weapon or a shield, of course). Every 3 levels a character gets to add a die to their weapon's damage. See the table below:</p>
-            <table class="table">
-              <thead class="center-children">
-                <th>Level</th>
-                <th>Small</th>
-                <th>Ranged</th>
-                <th>Medium</th>
-                <th>Large</th>
-              </thead>
-              <tbody class="text-center">
-                <tr>
-                  <td>1-2</td>
-                  <td>1d4</td>
-                  <td>1d6</td>
-                  <td>1d8</td>
-                  <td>1d10</td>
-                </tr>
-                <tr>
-                  <td>3-5</td>
-                  <td>2d4</td>
-                  <td>2d6</td>
-                  <td>2d8</td>
-                  <td>2d10</td>
-                </tr>
-                <tr>
-                  <td>6-8</td>
-                  <td>3d4</td>
-                  <td>3d6</td>
-                  <td>3d8</td>
-                  <td>3d10</td>
-                </tr>
-                <tr>
-                  <td>9-11</td>
-                  <td>4d4</td>
-                  <td>4d6</td>
-                  <td>4d8</td>
-                  <td>4d10</td>
-                </tr>
-                <tr>
-                  <td>12-14</td>
-                  <td>5d4</td>
-                  <td>5d6</td>
-                  <td>5d8</td>
-                  <td>5d10</td>
-                </tr>
-                <tr>
-                  <td>15-17</td>
-                  <td>6d4</td>
-                  <td>6d6</td>
-                  <td>6d8</td>
-                  <td>6d10</td>
-                </tr>
-                <tr>
-                  <td>18-20</td>
-                  <td>7d4</td>
-                  <td>7d6</td>
-                  <td>7d8</td>
-                  <td>7d10</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="scroll-table">
+              <table class="table">
+                <thead class="center-children">
+                  <th>Level</th>
+                  <th>Small</th>
+                  <th>Ranged</th>
+                  <th>Medium</th>
+                  <th>Large</th>
+                  <th>Shield</th>
+                </thead>
+                <tbody class="text-center">
+                  <tr>
+                    <td>1-2</td>
+                    <td>1d4</td>
+                    <td>1d6</td>
+                    <td>1d8</td>
+                    <td>1d10</td>
+                    <td>AC +1</td>
+                  </tr>
+                  <tr>
+                    <td>3-5</td>
+                    <td>2d4</td>
+                    <td>2d6</td>
+                    <td>2d8</td>
+                    <td>2d10</td>
+                    <td>AC +1 / 1d4</td>
+                  </tr>
+                  <tr>
+                    <td>6-8</td>
+                    <td>3d4</td>
+                    <td>3d6</td>
+                    <td>3d8</td>
+                    <td>3d10</td>
+                    <td>AC +2 / 1d6</td>
+                  </tr>
+                  <tr>
+                    <td>9-11</td>
+                    <td>4d4</td>
+                    <td>4d6</td>
+                    <td>4d8</td>
+                    <td>4d10</td>
+                    <td>AC +2 / 2d4</td>
+                  </tr>
+                  <tr>
+                    <td>12-14</td>
+                    <td>5d4</td>
+                    <td>5d6</td>
+                    <td>5d8</td>
+                    <td>5d10</td>
+                    <td>AC +3 / 2d6</td>
+                  </tr>
+                  <tr>
+                    <td>15-17</td>
+                    <td>6d4</td>
+                    <td>6d6</td>
+                    <td>6d8</td>
+                    <td>6d10</td>
+                    <td>AC +3 / 3d4</td>
+                  </tr>
+                  <tr>
+                    <td>18-20</td>
+                    <td>7d4</td>
+                    <td>7d6</td>
+                    <td>7d8</td>
+                    <td>7d10</td>
+                    <td>AC +4 / 3d6</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <p class="well"><b>Note:</b> If a character is attacking while dual-wielding one-handed weapons, they'll make attack rolls and damage rolls for each weapon separately. Also, in some cases, a shield can be used to attack as well as defend, but that falls under <i>Extra Attributes</i>, which is discussed on the Player page.</p>
+            <p class="well"><b>Note:</b> If a character is attacking while dual-wielding one-handed weapons or using claws on two limbs, they'll make attack rolls and damage rolls for each weapon separately.</p>
 
             <hr>
 
