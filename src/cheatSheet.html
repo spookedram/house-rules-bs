@@ -46,133 +46,276 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <header class="jumbotron" style="background-color:#f29a3c">
+    <header class="jumbotron" style="background-color:#b52b77">
       <h1 class="text-center">Cheat Sheet</h1>
     </header>
 
     <article class="container">
-      <p class="lead text-center"><i>I looked for a good quote on shortcuts but couldn't find one in favor of them. Why not? Sometimes you just need a good reference sheet, not everything's a philosophical question about the value of doing things "the right way."</i></p>
+      <p class="lead text-center"><i>I looked for a good quote on shortcuts but couldn't find one in favor of them...</i></p>
 
-      <h2>Actions</h2>
-      <div class="row">
-        <div class="col-sm-6">
-          <p><b>Free Actions:</b><br>
-            If a Player wants to take a simple action, like speaking bluntly or opening an unlocked door, it's known as a <b>free action</b> because it doesn't require a roll.</p>
-          <p><b>Difficulty Checks</b><br>
-            For difficult actions Players must <b>roll a d20</b>, add their character's <b>ability score modifer</b> to the roll, and compare the result to the action's <b>difficuilty challenge (DC)</b>. If the result is higher they succeed, if not they fail.</p>
-          <p><b>Critical Rolls:</b><br>
-            Rolling a <i>natural 1</i> is a <b>critical miss</b>, rolling a <i>natural 20</i> is a <b>critical hit</b>.</p>
-          <p><b>Advantage:</b><br>
-            Roll twice and keep the <i>higher</i> roll.</p>
-          <p><b>Disadvantage:</b><br>
-            Roll twice and keep the <i>lower</i> roll.</p>
-        </div>
-        <div class="col-sm-6">
-          <h3 id="abScores">Ability Scores</h3>
-          <table class="table">
-            <tbody>
-              <tr>
-                <th>Strength</th>
-                <td>Represents muscle and physical power</td>
-                <td class="text-center">STR</td>
-              </tr>
-              <tr>
-                <th>Dexterity</th>
-                <td>Represents agility, reflexes, and balance</td>
-                <td class="text-center">DEX</td>
-              </tr>
-              <tr>
-                <th>Constitution</th>
-                <td>Represents health, stamina, and endurance</td>
-                <td class="text-center">CON</td>
-              </tr>
-              <tr>
-                <th>Intelligence</th>
-                <td>Represents critical thinking, learning, and logic</td>
-                <td class="text-center">INT</td>
-              </tr>
-              <tr>
-                <th>Wisdom</th>
-                <td>Represents willpower, common sense, and intuition</td>
-                <td class="text-center">WIS</td>
-              </tr>
-              <tr>
-                <th>Charisma</th>
-                <td>Represents personality, likability, and ability to lead</td>
-                <td class="text-center">CHA</td>
-              </tr>
-              <tr>
-                <th>Perception</th>
-                <td>Represents senses and awareness</td>
-                <td class="text-center">PER</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Nav tabs -->
+      <div id="rulesTabs" class="tab-list">
+        <a href="javascript:void(0)" class="tab-links active" onclick="openTab(event,'actions')">Actions</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'combat')">Combat</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'character')">Character</a>
+      </div>
+
+      <div class="tab-pane" id="actions">
+        <h2>Actions</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <p><b>Free Actions:</b><br>
+              If a Player wants to take a simple action, like speaking bluntly or opening an unlocked door, it's known as a <b>free action</b> because it doesn't require a roll.</p>
+            <p><b>Difficulty Checks</b><br>
+              For difficult actions Players must <b>roll a d20</b>, add their character's <b>ability score modifer</b> to the roll, and compare the result to the action's <b>difficuilty challenge (DC)</b>. If the result is higher they succeed, if not they fail.</p>
+            <p><b>Ability Score:</b><br>
+              Every character and creature has <b>7 abilities</b>, each with a score between 1 to 20. 10 is the baseline, more or less than ten gives the character a <b>modifier</b>.</p>
+            <p><b>Modifier:</b><br>
+              If a character has an ability score of <b>more than 10</b>, their ability score modifier <b>adds</b> that many points to rolls regarding that ability. If their score is <b>less than 10</b>, it <b>subtracts</b> points.</p>
+            <p><i>Example:</i><br>
+              An INT score of 14 gives the character +4 to DC INT checks. A CHA score of 8 gives the character -2 to DC CHA checks.</p>
+            <p><b>Critical Rolls:</b><br>
+              Rolling a <i>natural 1</i> is a <b>critical miss</b>, rolling a <i>natural 20</i> is a <b>critical hit</b>.</p>
+          </div>
+          <div class="col-sm-6">
+            <p><b>Advantage:</b><br>
+              Roll twice and keep the <i>higher</i> roll.</p>
+            <p><b>Disadvantage:</b><br>
+              Roll twice and keep the <i>lower</i> roll.</p>
+
+            <h3 id="abScores">Abilites</h3>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th>Strength</th>
+                  <td>Represents muscle and physical power</td>
+                  <td class="text-center">STR</td>
+                </tr>
+                <tr>
+                  <th>Dexterity</th>
+                  <td>Represents agility, reflexes, and balance</td>
+                  <td class="text-center">DEX</td>
+                </tr>
+                <tr>
+                  <th>Constitution</th>
+                  <td>Represents health, stamina, and endurance</td>
+                  <td class="text-center">CON</td>
+                </tr>
+                <tr>
+                  <th>Intelligence</th>
+                  <td>Represents critical thinking, learning, and logic</td>
+                  <td class="text-center">INT</td>
+                </tr>
+                <tr>
+                  <th>Wisdom</th>
+                  <td>Represents willpower, common sense, and intuition</td>
+                  <td class="text-center">WIS</td>
+                </tr>
+                <tr>
+                  <th>Charisma</th>
+                  <td>Represents personality, likability, and ability to lead</td>
+                  <td class="text-center">CHA</td>
+                </tr>
+                <tr>
+                  <th>Perception</th>
+                  <td>Represents senses and awareness</td>
+                  <td class="text-center">PER</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      <h2>Combat</h2>
-      <div class="row">
-        <div class="col-sm-6">
-          <p><b>Surprise Round:</b><br>
-            If a character or creature is undetected, they can attack a target <i>before initiative is set</i>. Undetected characters/creatures become detected on a <b>successful PER check</b>.</p>
-          <p><b>Initiative:</b><br>
-            Players roll a <b>DEX check</b> for each character, Game Masters roll for each type of creature. Highest goes first, lowest goes last.</p>
-          <p><b>Turn:</b><br>
-            A turn is one character/creature making <b>1 movement</b> and <b>1 action</b>, in that order. Attacking counts as an action.</p>
-          <p><b>Round:</b><br>
-            A round is completed when the initiative order comes back to the highest roll. A round represents <b>6 seconds</b> in-game.</p>
-          <p><b>Attacking:</b><br>
-            Attacks are essentially <i>difficulty checks</i>; roll a <b>d20</b> and add the appropriate <b>ability score modifier</b>. If the result is higher that the target's AC the attack hits. If not, it misses.</p>
-          <p><b>Death:</b><br>
-            If an NPC's HP hits or passes 0, they die. If a Player character's HP hits or passes 0, they fall unconcious and must roll <b>3 death saving throws</b> to wake up. If they fail all 3 rolls, they die. If they succeed on a roll, they wake with 1d6 HP. Healing a character may not wake them up, but their death saving throws are reset.</p>
+      <div class="tab-pane" id="combat" style="display:none;">
+        <h2>Combat</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <p><b>Surprise Round:</b><br>
+              If a character or creature is <b>undetected</b>, they can attack a target <i>before initiative is set</i>. Undetected characters/creatures become detected on a <b>successful PER check</b>.</p>
+            <p><b>Initiative:</b><br>
+              Players roll a <b>DEX check</b> for each character, Game Masters roll for each type of creature. Highest goes first, lowest goes last.</p>
+            <p><b>Turn:</b><br>
+              A turn is one character/creature making <b>1 movement</b> and <b>1 action</b>, in that order. Attacking counts as an action.</p>
+            <p><b>Round:</b><br>
+              A round is completed when the initiative order comes back to the highest roll. A round represents <b>6 seconds</b> in-game.</p>
+            <p><b>Attacking:</b><br>
+              Attacks are essentially <i>difficulty checks</i>; roll a <b>d20</b> and add the appropriate <b>ability score modifier</b>. If the result is higher that the target's AC the attack hits. If not, it misses.</p>
+            <p><b>Death:</b><br>
+              If an NPC's HP hits or passes 0, they die. If a Player character's HP hits or passes 0, they fall unconcious and must roll <b>3 death saving throws</b> to wake up. If they fail all 3 rolls, they die. If they succeed on a roll, they wake with 1d6 HP. Healing a character may not wake them up, but their death saving throws are reset.</p>
+          </div>
+          <div class="col-sm-6">
+            <p><b>Healing:</b><br>
+              HP can be revived through extra attributes, perks, or items. Healing counts as an action but does not typically require a difficulty check.</p>
+            <p><b>Saving Throws:</b><br>
+              Some attacks can be avoided by rolling a <b>saving throw</b>. The ability being checked against is determined by the nature of the attack, as seen on the Attack Types table below.</p>
+            <h3 class="n-mb">Attack Types</h3>
+            <table class="table">
+  						<thead>
+  							<th>Type</th>
+  							<th>Examples</th>
+  							<th>AS Mod</th>
+  							<th>Saving Throw</th>
+  						</thead>
+  						<tbody>
+  							<tr>
+  								<td>Physical Strike</td>
+  								<td>Punching, kicking, swinging a sword</td>
+  								<td>Str</td>
+  								<td>N/A</td>
+  							</tr>
+  							<tr>
+  								<td>Ranged</td>
+  								<td>Throwing knives, shooting an arrow or bullets</td>
+  								<td>Str / Dex</td>
+  								<td>Dex</td>
+  							</tr>
+  							<tr>
+  								<td>Physical Spell</td>
+  								<td>Fireballs, ice spikes, jets of scalding water</td>
+  								<td>Int / Wis</td>
+  								<td>Dex</td>
+  							</tr>
+  							<tr>
+  								<td>Mental / Psychic</td>
+  								<td>Illusory attacks, mind control</td>
+  								<td>Int / Wis</td>
+  								<td>Int / Wis</td>
+  							</tr>
+  							<tr>
+  								<td>Poison / Disease</td>
+  								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
+  								<td>Dex / Int</td>
+  								<td>Con</td>
+  							</tr>
+  						</tbody>
+  					</table>
+          </div>
         </div>
-        <div class="col-sm-6">
-          <p><b>Healing:</b><br>
-            HP can be revived through extra attributes, perks, or items. Healing counts as an action but does not typically require a difficulty check.</p>
-          <p><b>Saving Throws:</b><br>
-            Some attacks can be avoided by rolling a <b>saving throw</b>. The ability being checked against is determined by the nature of the attack, as seen on the Attack Types table below.</p>
-          <h3 class="n-mb">Attack Types</h3>
-          <table class="table">
-						<thead>
-							<th>Type</th>
-							<th>Examples</th>
-							<th>AS Mod</th>
-							<th>Saving Throw</th>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Physical Strike</td>
-								<td>Punching, kicking, swinging a sword</td>
-								<td>Str</td>
-								<td>N/A</td>
-							</tr>
-							<tr>
-								<td>Ranged</td>
-								<td>Throwing knives, shooting an arrow or bullets</td>
-								<td>Str / Dex</td>
-								<td>Dex</td>
-							</tr>
-							<tr>
-								<td>Physical Spell</td>
-								<td>Fireballs, ice spikes, jets of scalding water</td>
-								<td>Int / Wis</td>
-								<td>Dex</td>
-							</tr>
-							<tr>
-								<td>Mental / Psychic</td>
-								<td>Illusory attacks, mind control</td>
-								<td>Int / Wis</td>
-								<td>Int / Wis</td>
-							</tr>
-							<tr>
-								<td>Poison / Disease</td>
-								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
-								<td>Dex / Int</td>
-								<td>Con</td>
-							</tr>
-						</tbody>
-					</table>
+      </div>
+
+      <div class="tab-pane" id="character" style="display:none;">
+        <h2>Character Sheet</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <p><b>HP:</b><br>
+              HP stands for <b>hit points</b>, or the amount of hits your character can take before falling unconcious.</p>
+            <p><b>AC:</b><br>
+              AC stands for <b>armor class</b>, the amount of protection your character has from taking damage from attacks. See the <i>Armor Type</i> table for the 4 different base AC stats.</p>
+            <p><b>Weapon Type:</b><br>
+              Weapons can be <b>small</b>, like a knife or wand, <b>medium</b>, like a one-handed sword or a long pipe, or <b>large</b>, like a two-handed sword, spear, or axe. Weapons can also be <b>ranged</b>, like a bow or gun, or the slot can be used for a <b>shield</b>.</p>
+            <p><b>Weapon Damage:</b><br>
+              Players roll different sided dice depending on their weapon's type and a different amount of dice depending on their level. See the <i>Weapon Damage</i> table for more info.</p>
+            <p><b>Extra Attributes:</b><br>
+              Some weapons, armors, and items come with <b>extra attributes</b>. A magic wand is still a 1d4 weapon, but maybe it has an extra attribute that allows it to shoot fireballs for 1d8 fire damage. These attributes can level out characters who aren't strong or fast and allow them to hold their own in combat, as well as giving advantages and disadvantages to magical equipment.</p>
+            <p class="well"><b>Note:</b> Extra attributes should be <i>considered carefully</i> and <i>used sparingly</i>, and must be approved by the Game Master.</p>
+            <p><b>Perks:</b><br>
+              Characters start with 2 <b>perks</b>, special moves unique to the character based on their style, body type, history, etc. Perks can be used a limited number of times in a day (in-game) and only <b>once per turn</b> in combat. As characters level up they gain more uses per day and can unlock as many as <b>8 total perks</b>, each stronger than the last. Perks can damage or heal targets, allow a character to cast spells or use special tactics, add or subtract points or give advantage/disadvantage to specific rolls, and can have effects that last for multiple rounds. For examples of perks and the chart of uses per day, check out the perks section with some of the sample characters on the <a href="character.html">Character Creator</a> page.</p>
+          </div>
+          <div class="col-sm-6">
+            <h3>Weapon Damage</h3>
+            <div class="scroll-table">
+              <table class="table n-mb">
+                <thead class="center-children">
+                  <th>Level</th>
+                  <th>Small</th>
+                  <th>Ranged</th>
+                  <th>Medium</th>
+                  <th>Large</th>
+                  <th>Shield</th>
+                </thead>
+                <tbody class="text-center">
+                  <tr>
+                    <td>1-2</td>
+                    <td>1d4</td>
+                    <td>1d6</td>
+                    <td>1d8</td>
+                    <td>1d10</td>
+                    <td>AC +1</td>
+                  </tr>
+                  <tr>
+                    <td>3-5</td>
+                    <td>2d4</td>
+                    <td>2d6</td>
+                    <td>2d8</td>
+                    <td>2d10</td>
+                    <td>AC +1 / 1d4</td>
+                  </tr>
+                  <tr>
+                    <td>6-8</td>
+                    <td>3d4</td>
+                    <td>3d6</td>
+                    <td>3d8</td>
+                    <td>3d10</td>
+                    <td>AC +2 / 1d6</td>
+                  </tr>
+                  <tr>
+                    <td>9-11</td>
+                    <td>4d4</td>
+                    <td>4d6</td>
+                    <td>4d8</td>
+                    <td>4d10</td>
+                    <td>AC +2 / 2d4</td>
+                  </tr>
+                  <tr>
+                    <td>12-14</td>
+                    <td>5d4</td>
+                    <td>5d6</td>
+                    <td>5d8</td>
+                    <td>5d10</td>
+                    <td>AC +3 / 2d6</td>
+                  </tr>
+                  <tr>
+                    <td>15-17</td>
+                    <td>6d4</td>
+                    <td>6d6</td>
+                    <td>6d8</td>
+                    <td>6d10</td>
+                    <td>AC +3 / 3d4</td>
+                  </tr>
+                  <tr>
+                    <td>18-20</td>
+                    <td>7d4</td>
+                    <td>7d6</td>
+                    <td>7d8</td>
+                    <td>7d10</td>
+                    <td>AC +4 / 3d6</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>Armor Types</h3>
+            <table class="table">
+              <thead>
+                <th>Type</th>
+                <th>Desc</th>
+                <th>Attributes</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>None (AC 10)</td>
+                  <td>If your character is wearing regular clothing, a hazmat suit, or nothing at all, they have an armor type of <i>none</i>.</td>
+                  <td>+2 to initiative rolls</td>
+                </tr>
+                <tr>
+                  <td>Light (AC 12)</td>
+                  <td>If your character is wearing leather armor, plastic pads, or magic cloth, they have an armor type of <i>light</i>.</td>
+                  <td>+2 to AC</td>
+                </tr>
+                <tr>
+                  <td>Medium (AC 14)</td>
+                  <td>If your character is wearing bulletproof gear or partial steel/iron armor, they have an armor type of <i>medium</i>.</td>
+                  <td>+4 to AC, -2 to initiative rolls</td>
+                </tr>
+                <tr>
+                  <td>Heavy (AC 16)</td>
+                  <td>If your character is wearing dragon bones, a riot suit, or full steel/iron armor, they have an armor type of <i>heavy</i>.</td>
+                  <td>+6 to AC, -4 to initiative rolls</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </article>
