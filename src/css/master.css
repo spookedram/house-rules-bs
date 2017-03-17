@@ -311,7 +311,7 @@ section h4 {
 }
 
 #rng-container {
-  position: fixed;
+  position: absolute;
   top: 83px; right: 0;
   width: 260px;
   z-index: 999;
@@ -342,11 +342,14 @@ section h4 {
 }
 
 #rng-panel input[type="number"] {
-  width: 56px;
+  padding-right: 10px;
+  text-align: right;
+  width: 42px;
 }
 
 #rng-panel select {
-  width:56px;
+  padding: 6px;
+  width:64px;
 }
 
 #rng-panel p {
