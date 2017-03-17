@@ -66,7 +66,7 @@ var sampleChars = [
     "wpn1type": "Large (d10)",
     "wpn2name": "Steel Shield",
     "wpn2desc": "A medium-sized, steel kite shield with their family crest painted on the front. It's dented and very old, but still sturdy.",
-    "wpn2type": "Ranged (d6)",
+    "wpn2type": "Shield (AC +1)",
     "armorName": "Leather and Steel",
     "armorDesc": "Leather wrappings with steel plating over their joints and torso. On the front of their breastplate is the image of a lion, painted in gold.",
     "armorType": "Medium (AC 14)",
