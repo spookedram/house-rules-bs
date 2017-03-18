@@ -73,13 +73,25 @@ function rollDice(){
   rollResult.innerHTML = roll;
 }
 
-function setDice(num1, num2) {
+function setDice() {
+  var roller = document.getElementById("otherOption").checked;
   var amt = document.getElementById("roll-amt");
   var sides = document.getElementById("roll-sides");
 
-  amt.value = num1;
-  sides.value = num2;
+  // amt.value = num1;
+  // sides.value = num2;
+
+  if(roller) {
+    amt.disabled = false;
+    sides.disabled = false;
+  } else {
+    amt.disabled = true;
+    sides.disabled = true;
+    amt.value = 1;
+    sides.value = 20;
+  }
 }
+setDice();
 
 function startRoll(){
   rollResult.innerHTML = 0;

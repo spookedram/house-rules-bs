@@ -342,9 +342,9 @@ section h4 {
 }
 
 #rng-panel input[type="number"] {
-  padding-right: 10px;
+  padding-right: 6px;
   text-align: right;
-  width: 42px;
+  width: 56px;
 }
 
 #rng-panel select {
