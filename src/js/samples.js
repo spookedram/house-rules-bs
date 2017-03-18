@@ -96,7 +96,7 @@ var sampleChars = [
   {
     "pin": 2,
     "name": "",
-    "title": "the Thief",
+    "title": "the Cutpurse",
     "level": "1",
     "hp": "10",
 
@@ -237,7 +237,7 @@ var sampleChars = [
   {
     "pin": 5,
     "name": "",
-    "title": "the Ranger",
+    "title": "the Bard",
     "level": "1",
     "hp": "10",
 
@@ -249,9 +249,9 @@ var sampleChars = [
     "charisma": "7",
     "perception": "10",
 
-    "wpn1name": "",
+    "wpn1name": "Hunting Bow",
     "wpn1desc": "",
-    "wpn1type": "Medium (d8)",
+    "wpn1type": "Ranged (d6)",
     "wpn2name": "",
     "wpn2desc": "",
     "wpn2type": "Ranged (d6)",

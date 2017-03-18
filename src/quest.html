@@ -191,7 +191,7 @@
           <div class="input-group no-print">
             <input id="settingsInput" type="text" class="form-control">
             <span class="input-group-btn">
-              <button id="settingsBtn" type="button" class="btn btn-default" onclick="addRowToList('settingsInput','settingsList')">
+              <button id="settingsBtn" type="button" class="btn btn-default" onclick="addRowToList('settingsInput','settingsList'), focusedEnterBtn('settingsInput','settingsList')">
                 <span class="glyphicon glyphicon-plus"></span>
               </button>
             </span>
@@ -212,7 +212,7 @@
           <div class="input-group no-print">
             <input id="npcsInput" type="text" class="form-control">
             <span class="input-group-btn">
-              <button id="npcsBtn" type="button" class="btn btn-default" onclick="addRowToList('npcsInput','npcsList')">
+              <button id="npcsBtn" type="button" class="btn btn-default" onclick="addRowToList('npcsInput','npcsList'), focusedEnterBtn('npcsInput','npcsList')">
                 <span class="glyphicon glyphicon-plus"></span>
               </button>
             </span>
