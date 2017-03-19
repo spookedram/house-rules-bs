@@ -154,26 +154,29 @@
                 <div class="input-group">
                   <select id="sampleCharsList" class="form-control">
                     <option value="0">Custom</option>
-                    <option disabled="true">FANTASY</option>
-                    <option value="1">Warrior</option>
-                    <option value="2">Thief</option>
-                    <option value="3">Ice Mage</option>
-                    <option value="4">Cleric</option>
+
+                    <option disabled="true"></option>
+                    <option disabled="true">---BASIC---</option>
+                    <option value="1">Ranged DPS</option>
+                    <option value="2">Melee DPS</option>
+                    <option value="3">Tank</option>
+                    <option value="4">Healer</option>
                     <option value="5">Bard</option>
-                    <option disabled="true"></option>
-                    <option disabled="true">MODERN</option>
-                    <option value="6">Pilot</option>
-                    <option value="7">Hacker</option>
-                    <option value="8">Cyborg</option>
-                    <option value="9">Medic</option>
-                    <option value="10">Sniper</option>
-                    <option disabled="true"></option>
-                    <option disabled="true">HORROR</option>
-                    <option value="11">Vampire</option>
+
+                    <option disabled="true">---FANTASY---</option>
+                    <option value="6">Ranger</option>
+                    <option value="7">Ice Mage</option>
+                    <option value="8">Thief</option>
+                    <option value="9">Warrior</option>
+                    <option value="10">Cleric</option>
+                    <option value="11">Bard</option>
+
+                    <option disabled="true">---HORROR---</option>
                     <option value="12">Witch</option>
-                    <option value="13">Siren</option>
-                    <option value="14">Plague Doctor</option>
-                    <option value="15">Cursed Beast</option>
+                    <option value="13">Vampire</option>
+                    <option value="14">Werewolf</option>
+                    <option value="15">Plague Doctor</option>
+                    <option value="16">Siren</option>
                   </select>
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default" onclick="hideModal(), loadSample(document.getElementById('sampleCharsList').value)">Load</button>
