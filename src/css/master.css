@@ -232,6 +232,21 @@ section h4 {
 }
 
 /* ID specific styles */
+#backToTop {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  border-radius: 0;
+  background-color: white;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#mainContainer {
+  margin-bottom: 64px;
+}
+
 #name {
   margin-top: 20px;
 }

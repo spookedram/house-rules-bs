@@ -50,193 +50,57 @@
       <h1 class="text-center">Rules</h1>
     </header>
 
-    <article id="mainContainer" class="container">
+    <div class="container">
       <p class="lead text-center"><i>"...the code is more what you'd call 'guidelines' than actual rules." - Captain Barbossa</i></p>
 
       <p class="text-right">For a condensed version of the rules, <a href="cheatSheet.html">check out the HRRPG cheat sheet.</a></p>
+      <!-- Nav tabs -->
+      <div id="rulesTabs" class="tab-list">
+        <a href="javascript:void(0)" class="tab-links active" onclick="openTab(event,'gameplay')">Intro</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'players')">Characters</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'gameMaster')">Combat</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'gameMaster')">Quests</a>
+        <a href="javascript:void(0)" class="tab-links" onclick="openTab(event,'tips')">Etiquette</a>
+      </div>
 
-      <button id="backToTop" type="button" class="btn btn-default" onclick="topFunction()"><b>Back to Top</b></button>
-
-      <div class="row">
-        <div class="col-sm-3">
-          <h4>Index</h4>
-          <!-- accordion template -->
-          <div class="panel-group" id="myAccordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="openTab(event,'intro')">
-                    Intro
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                  <ol id="collapse1">
-                    <li><a href="#useDiceSim">Using the Dice Simulator</a></li>
-                    <li><a href="#saving">Saving Characters and Quests</a></li>
-                    <li><a href="#firstSession">The First Session</a></li>
-                    <li><a href="#actions">Understanding Actions</a></li>
-                    <li><a href="#gmEtiquette">Game Master Etiquette</a></li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="openTab(event,'characters')">
-                    Characters
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                  <ol id="collapse2">
-                    <li><a href="#archetypes">Character Archetypes</a></li>
-                    <li><a href="#nameTitle">Name and Title</a></li>
-                    <li><a href="#level">Level</a></li>
-                    <li><a href="#hp">Hit Points (HP)</a></li>
-                    <li><a href="#abilities">Ability Scores</a></li>
-                    <li><a href="#equipment">Equipment</a></li>
-                    <li><a href="#details">Details</a></li>
-                    <li><a href="#perks">Perks</a></li>
-                    <li><a href="#levelUp">Leveling Up</a></li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="openTab(event,'combat')">
-                    Combat
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="panel-body">
-                  <ol id="collapse3">
-                    <li><a href="#init">Initiative</a></li>
-                    <li><a href="#turns">Turns</a></li>
-                    <li><a href="#rounds">Rounds</a></li>
-                    <li><a href="#attacks">Attacking</a></li>
-                    <li><a href="#death">Death</a></li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingFour">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" onclick="openTab(event,'quests')">
-                    Quests
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                <div class="panel-body">
-                  <ol id="collapse4">
-                    <li><a href="#theme">Writing Quests</a></li>
-                    <li><a href="#settings">Settings</a></li>
-                    <li><a href="#npcs">NPCs</a></li>
-                    <li><a href="#rAndP">Rhythm and Pacing</a></li>
-                    <li><a href="#act1">Act One</a></li>
-                    <li><a href="#act2">Act Two</a></li>
-                    <li><a href="#act3">Act Three</a></li>
-                    <li><a href="#act4">Act Four</a></li>
-                    <li><a href="#transition">Transition</a></li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingFive">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" onclick="openTab(event,'etiquette')">
-                    Etiquette
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                <div class="panel-body">
-                  <ol id="collapse5">
-                    <li><a href="#pregame">Pre-Game</a></li>
-                    <li><a href="#during">During the Game</a></li>
-                    <li><a href="#postgame">Post-Game</a></li>
-                  </ol>
-                </div>
-              </div>
-            </div>
+      <!-- Tab panes -->
+      <div class="tab-pane" id="gameplay">
+        <h2>Gameplay Rules</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>Index</h4>
+            <ol>
+              <li><a href="#start">Getting started</a></li>
+              <li><a href="#actions">Taking actions</a></li>
+              <li><a href="#abScores">Ability Scores</a></li>
+              <li><a href="#critRolls">Critical Rolls</a></li>
+              <li><a href="#combat">Combat</a></li>
+              <li><a href="#health">Health</a></li>
+              <li><a href="#death">Death</a></li>
+            </ol>
           </div>
-        </div>
+          <div class="col-sm-9">
+            <h3 id="start">Getting Started</h3>
+            <p>Before you can start playing <b>House Rules RPG</b>, you'll need:</p>
+            <ul>
+              <li>a Game Master</li>
+              <li>a Quest</li>
+              <li>1 or more Players (with a character sheet)</li>
+              <li>a dice set (or simulator)</li>
+            </ul>
 
-        <div class="col-sm-9">
-          <!-- Tab pane 1 -->
-          <div class="tab-pane" id="intro">
-            <h2>Introduction</h2>
-            <p>House Rules RPG is a tool for building custom tabletop <b>role-playing games</b>, in which Players create and guide characters through a fictional world, built and controlled by the Game Master. The Players interact with the world by <b>taking actions</b> and engaging enemies in <b>combat</b>. Non-player characters (NPCs) are controlled by the Game Master and give the Players clues to help them progress through the events they’ve prepared.</p>
-
-            <h4>To play House Rules RPG, you’ll need:</h4>
-            <ol>
-              <li>A Game Master with a <b>quest</b></li>
-              <li>At least 1 Player with a <b>character</b></li>
-              <li>A dice set (or simulator)</li>
-            </ol>
-
-            <p>Thankfully, this website provides a <a href="character.html">character sheet creator</a>, a <a href="quest.html">quest writing tool</a>, and a dice simulator for you.</p>
-
-            <h3 id="useDiceSim">Using the Dice Simulator</h3>
-            <p>House Rules RPG provides a dice simulator on the <a href="character.html">Character</a> and <a href="quest.html">Quest</a> pages, in the upper-right hand corner of the header. Simply click the “Dice Sim” button to open the dice simulator panel and click the "Roll" button to generate a random number between 1 and 20. You can also check the radio button next to "Other" and use the inputs to set the amount and type of dice you want to roll.</p>
+            <h4>Using the Dice Simulator</h4>
+            <p><b>House Rules RPG</b> provides a dice simulator on the character creation and quest creation pages, in the upper-right hand corner of the header. Simply click the button to open the dice simulator panel and click the "Roll" button to generate a random number between 1 and 20. You can also check the radio button next to "Other" and use the inputs to set the amount and type of dice you want to roll.</p>
 
             <hr>
 
-            <h3 id="saving">Saving Characters and Quests</h3>
-            <p>You can use the <a href="character.html">Character</a> and <a href="quest.html">Quest</a> pages on this website to create, save, and update your character sheets and quest outlines. In a moment you’ll learn more about building a character and how to use the character creator, but first, two warnings.</p>
-
-            <p>First, as you may have read on the homepage of this site, House Rules RPG saves character and quest data to your browser’s “localStorage”. <i>We do not externally save, and cannot access, your data.</i> If your localStorage is cleared, <b>you will lose your character/quest data</b>. You also will only be able to load your data from the browser that they were created on. Depending on your browser, your localStorage will not be cleared unless you clear your cookies and website data, but we understand that sometimes it’s necessary, so be warned.</p>
-
-            <p>Second, your Game Master will need a copy of your character sheet, so you can either:</p>
-            <ol>
-              <li>Print two hard copies of your character sheet, keep one, and give your GM a copy to keep in their campaign folder, or</li>
-              <li>“Print” your character sheet as a PDF file to save it as a document on your computer. Then you can share it with your GM and view it from any of your devices, and if your browser data is cleared you won’t lose your character.</li>
-            </ol>
-
-            <p>This is House Rules RPG v1.0. <b>If there is a high enough demand for it</b>, we will continue to improve this site by adding user accounts, secured saves for characters and quests, and possibly a community section for finding and connecting with other players. However, this started as a free, simple, custom RPG tool and web development practice project and until there’s evidence that the system works well and enough people want those features, the site will remain as is.</p>
-
-            <p class="text-left">Tweet with the hashtag <b>#HRRPG</b> or send me an email about your experiences with House Rules RPG at <a href="mailto:spookedram@gmail.com?Subject=House%20Rules%20RPG" target="_blank">spookedram@gmail.com</a>, and let me know if those features are something you’d like to see.</p>
-
-            <hr>
-
-            <h3 id="firstSession">The First Session</h3>
-            <p>First you have to find people to play with. You can do a solo quest with 1 Player and a Game Master, or a bigger party with many Players (although we recommend <b>no more than 6</b> or you’ll find a simple quest ends up taking multiple sessions). The first session you have should be a round-table discussion about the kind of game you want to play and laying down your own personal rules about how to handle touchy subjects like character death, re-rolls, and rule challenges. Write them down and bring them to the session! Pick at least a vague genre, or agree to a completely random open-world, so that you can create quests and characters that don't conflict too badly. This first session is not for jumping in and playing your first quest, although there are sample characters and quests you can use if you'd rather jump right in instead of crafting a personalized experience.</p>
-
-            <h4>Pick a Genre</h4>
-            <p>Do you want your game to be classic fantasy? Space-faring sci-fi? Post-apocalyptic? Superheroes? Ancient Greek mythology? Lovecraftian? Talk about your interests and look to games, books, movies, and tv shows to get inspired! Or, maybe you’ll leave it up to your Game Master to craft the world and focus more on creating interesting characters. Whatever you choose, make sure your party is on the same page.</p>
-
-            <h4>House Rules</h4>
-            <p>Most tabletop RPG gaming groups develop something called <i>house rules</i> to work around unnecessarily complicated or unfair rules. There are some parts of House Rules RPG that will differ from party to party as well, house rules that you’ll decide on as a group.</p>
-            <ol>
-              <li>How will your party handle unfairness, inappropriate behavior, or broken rules?</li>
-              <li>Will you allow perks that give someone else control of your character via mind control or possession?</li>
-              <li>How will your party handle character death? Will there be ghosts or some other afterlife? Is there a chance for a character to be revived or are they gone forever and their Player has to rejoin with a new character?</li>
-            </ol>
-
-            <h4>Rule Challenges</h4>
-            <p>Sometimes people make mistakes. Sometimes a perk turns out to be game-breakingly powerful. Sometimes your Game Master will go mad, flip the table, and send your characters straight into a volcano. It's important to know ahead of time what's acceptable and what's not, and how your party will deal with the unacceptable. <b>Seek to compromise</b> where you can; if your character is blasting through every enemy like tissue paper, maybe you and your Game Master can set up a situation to narratively hinder them, weaken them, bring them back to equal footing with the rest of the party. If your Players have all had to roll death saving throws for 15 minutes, maybe you overestimated their combat skills and need to intervene for the sake of the story (and your relationships with your Players).</p>
-
-            <p>House Rules RPG is <b>by no means a perfect system</b>, especially since it puts most of the actual responsibility in your hands, but it's also supposed to be fun! It's a game, try not to hurt each other and work around the broken parts of the game as they come up.</p>
-
-            <hr>
-
-            <h3 id="actions">Understanding Actions</h3>
-            <p>When in-game, characters interact with the world and the NPCs by <b>taking actions</b>. Basically, a Player will tell the Game Master what they want their character to do and the Game Master will decide if it’s a <b>free action</b> or if it requires a <b>difficulty check</b>. Depending on the Game Master’s opinion, one of two things can happen.</p>
+            <h3 id="actions">Taking Actions</h3>
 
             <h4>Free Actions</h4>
-            <p>Actions that don’t require skill or aren't that difficult, like speaking bluntly or opening an unlocked door, are free actions and will not require the Player to roll a <b>difficulty check</b>.</p>
+            <p>During the game, Players will want their character to interact with the world and will do so by <b>taking an action</b>. Actions that aren't difficult, like speaking bluntly or opening an unlocked door, are <b>free actions</b>. If an action takes any skill, knowledge, or luck then the Player will need to roll a <b>difficulty check</b>.</p>
 
             <h4>Difficulty Checks</h4>
-            <p>Throwing a knife to cut a swinging rope, disarming a ticking time bomb, and summoning an unknowable beast from another dimension are a lot more difficult than opening an unlocked door. Actions with any level of difficulty require a <b>difficulty check (DC)</b>. If the Game Master decides that the action will require a difficulty check, they will first decide what ability the action will use and then pick a number that represents the action’s difficulty. Then the Player <b>rolls a d20</b> and adds or subtracts the required <b>ability score modifier</b>. If the result is higher than the action’s DC, the character succeeds, and if it is lower or equal to the action’s DC, the character fails. For example:</p>
+            <p>Throwing a knife to cut a swinging rope, disarming a ticking time bomb, and summoning an unknowable beast from another dimension are a lot more difficult than opening an unlocked door. Actions with any level of difficulty require a <b>difficulty check (DC)</b>. The Player will describe the action they want to attempt and the Game Master decides what modifier is being checked and how difficult the action being taken is as a number (which they may or may not share with the player). Then the Player rolls a <b>d20</b> to see if they succeed or fail the action. For example:</p>
 
             <blockquote>
               Player: "I want to use my new lockpick on the cage."<br>
@@ -246,144 +110,50 @@
               GM: "You pick the lock... and inside you find a sleeping circus bear."
             </blockquote>
 
-            <p class="well"><b>Note:</b> It can take some practice to put a number to an action's difficulty, but remember, Game Masters, that your party can sometimes combine rolls to give the more difficult actions the advantage of teamwork. For instance, lifting a truck could take a strength roll of 40, requiring a number of party members or NPCs to help out.</p>
+            <p class="well"><b>Note:</b> It can take some practice to put a number to an action's difficulty, but remember, Game Masters, that your party can sometimes combine rolls to give the more difficult actions the advantage of teamwork. For instance, lifting a truck could take a strength roll of 40, requiring all party members to help out.</p>
 
-            <h4>Critical Rolls</h4>
-            <p>If you roll for a difficulty check or an attack and it lands on 1, the result is a <b>critical miss</b>. On the other hand, if you roll a natural 20, that is, a 20 without modifiers, the result is a <b>critical hit</b> and the action is an instant success. The intensity of the action is between you and the Game Master to decide; the Player narrates their character taking the action and the Game Master narrates the result or effect.</p>
-
-            <h4>Advantage/Disadvantage</h4>
-            <p>Sometimes a character or NPC will find themselves in a position where the Game Master will decide to give them <b>advantage</b> or <b>disadvantage</b> on a particular roll. If the person rolling has advantage, they can roll twice and keep the <b>higher roll</b>. If they have disadvantage, they roll twice and keep the <b>lower roll</b>. Advantage/disadvantage is a powerful tool for controlling probability and should be <b>used sparingly</b>, and only if the situation calls for it.</p>
+            <p>You might have noticed that the Player's action had an ability that was being checked. When an action is likely going to result from a test of a character's abilities, the difficulty check is modified by the character's score for the ability being checked.</p>
 
             <hr>
 
-            <h3 id="gmEtiquette">Game Master Etiquette</h3>
-            <p>Game Masters, remember that you may have crafted the settings and events of the quest but your Player's characters are the ones who are living inside it. <b>Do not</b> make big decisions for them and try not to force them into dangerous situations without warning signs. It's better to drop subtle clues and let the Players guide themselves through the quest, offering a nudge in the right direction only occasionally.</p>
-          </div>
-
-          <!-- Tab pane 2 -->
-          <div class="tab-pane" id="characters" style="display:none;">
-            <h2>Characters</h2>
-            <p>Every Player is going to need at least 1 character that they can control in the game. Players can use the <a href="character.html">Character</a> page on this site to create their character sheet, and the Game Master can use it to design the NPCs that the Players will interact with.</p>
-
-            <h3 id="archetypes">Character Archetypes</h3>
-            <p>House Rules RPG encourages creativity and boundary-breaking gameplay, but it can help to have somewhere to start. These are the basic combat archetypes found in most RPGs. A well-balanced team will fill at least 4 different combat roles, but don't feel obligated to follow these roles exactly. Branch out, forge your own path, each party configuration and quest will have it's own unique challenges that can't be foreseen.</p>
-
-            <table class="table striped-table">
-              <tbody>
-                <tr>
-                  <th>Ranged DPS</th>
-                  <td>Ranged Damage-Per-Second characters are offensive types that primarily use <b>ranged attacks</b> and have perks designed to inflict damage from mid to long range.</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Examples: <i>Ranger, bowman, ranged magic user, gunman, sniper</i></td>
-                </tr>
-                <tr>
-                  <th>Melee DPS</th>
-                  <td>Melee Damage-Per-Second characters are offensive types that use <b>small or medium weapons</b> and have perks designed for enabling sneak attacks, dodging, and attacking multiple times.</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Examples: <i>Thief, assassin, monk, duelist, boxer, vampire</i></td>
-                </tr>
-                <tr>
-                  <th>Tank</th>
-                  <td>Tanks are characters with high HP and AC that can take a lot of damage. They use <b>medium weapons, large weapons, and shields</b>. Tanks are built for close-range combat, with perks designed to buff themselves and taunt enemies to draw attention away from the weaker player characters.</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Examples: <i>Knight, mercenary, wrestler, cyborg, werewolf</i></td>
-                </tr>
-                <tr>
-                  <th>Healer</th>
-                  <td>Healers are defensive types that revive their allies' HP and provide added protection. They use <b>healing items, blunt weapons and shields</b> and have perks designed to heal and protect.</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Examples: <i>Cleric, sheild fighter, nurse, medic, plague doctor</i></td>
-                </tr>
-                <tr>
-                  <th>Bard</th>
-                  <td>Bards are the <b>status-effect</b> characters, boosting their allies' power and draining their enemies' power. Bards use <b>magic items, instruments, and weapons</b> to buff their party members and defend themselves. Their perks will focus on temporarily boosting/hindering abilities and giving advantage/disadvantage on specific rolls.</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Examples: <i>Bard, dancer, jester, alchemist, siren, witch</i></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3 id="nameTitle">Name and Title</h3>
-            <p>You character needs a name and a title. Below is a list of possible titles:</p>
-
-            <table class="table">
-              <tbody class="n-mb">
-                <tr>
-                  <th>Profession</th>
-                  <td>Wizard, Doctor, Detective, Brawler, Dancer, Mechanic, Duelist, Hunter, Chef, Healer</td>
-                </tr>
-                <tr>
-                  <th>Status</th>
-                  <td>General, High Priest, Queen, Demigod, Knight, Forsaken, Sith Lord, Mayor, Chieftain</td>
-                </tr>
-                <tr>
-                  <th>Misc</th>
-                  <td>Bard, Wanderer, Thief, Monk, Cleric, Anarchist, Pilgrim, Master, Oracle, Zealot</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <p class="well"><b>Note:</b> Make sure you try and at least loosely match your character with the world your Game Master has created!</p>
-
-            <hr>
-
-            <h3 id="level">Level</h3>
-            <p>If you’re starting from scratch with a new group, it’s best to leave your level at 1. However, if you’re recreating a character, updating a character, or creating an NPC for a quest with characters higher than level 1 you can change this as needed.</p>
-
-            <hr>
-
-            <h3 id="hp">Hit Points (HP)</h3>
-            <p>Hit points, or HP, represent the number of hits your character can take before they fall unconscious and have to start rolling death saving throws (explained later). At level 1 your character’s HP is the same as their vitality ability score, and their max HP increases every time they level up.</p>
-
-            <hr>
-
-            <h3 id="abilities">Ability Scores</h3>
-            <p>Every character and creature in House Rules RPG has 7 ability scores, represented by a number between 1 and 20. Ability scores are more than just your character’s base stats, they’re used to give your character advantages and disadvantages when rolling for different kinds of actions in the game. These 7 abilities are:</p>
-
+            <h3 id="abScores">Ability Scores</h3>
+            <p>Every character and creature in <b>House Rules RPG</b> has 7 ability scores, represented by a number between 1 and 20. The abilities cover a wide variety of character attributes and actions that can be taken. These 7 abilities are:</p>
             <table class="table">
               <tbody>
                 <tr>
-                  <th>Strength<br>(STR)</th>
-                  <td>Represents muscle and physical power. Strength is used when making physical attacks, but also pushing, pulling, lifting, breaking, and carrying objects.</td>
+                  <th>Strength</th>
+                  <td>Represents muscle and physical power</td>
                 </tr>
                 <tr>
-                  <th>Dexterity<br>(DEX)</th>
-                  <td>Represents agility, reflexes, and balance. Dexterity is used when making ranged attacks, but also acrobatics, stealth, and also rolling for initiative when entering combat.</td>
+                  <th>Dexterity</th>
+                  <td>Represents agility, reflexes, and balance</td>
                 </tr>
                 <tr>
-                  <th>Vitality<br>(VIT)</th>
-                  <td>Represents health, stamina, and endurance. Vitality is used when increasing your character’s max HP after gaining a level, but it’s also checked when an action affects your character’s health, stamina, or endurance.</td>
+                  <th>Constitution</th>
+                  <td>Represents health, stamina, and endurance</td>
                 </tr>
                 <tr>
-                  <th>Intelligence<br>(INT)</th>
-                  <td>Represents critical thinking, learning, and logic. Intelligence is used when a character is applying study or knowledge to an action, such as casting a spell or reading an ancient language.</td>
+                  <th>Intelligence</th>
+                  <td>Represents critical thinking, learning, and logic</td>
                 </tr>
                 <tr>
-                  <th>Wisdom<br>(WIS)</th>
-                  <td>Represents willpower, common sense, and intuition. Wisdom is used when a character is applying faith, will, and guts. Wisdom is also used for spells and skills that were learned by training, rather than reading.</td>
+                  <th>Wisdom</th>
+                  <td>Represents willpower, common sense, and intuition</td>
                 </tr>
                 <tr>
-                  <th>Charisma<br>(CHA)</th>
-                  <td>Represents personality, likability, and ability to lead. Charisma is used when communicating and manipulating, intimidating and persuading. Charisma is how well your character speaks and socializes, regardless of how earnest they are.</td>
+                  <th>Charisma</th>
+                  <td>Represents personality, likability, and ability to lead</td>
                 </tr>
                 <tr>
-                  <th>Perception<br>(PER)</th>
-                  <td>Represents senses and awareness. Perception is used when a character will need to "notice" something odd, significant, or dangerous around them. This can come from a trap ready to spring, a hidden enemy, or a clue hidden in a room. Characters who are undetected will become detected when another character or enemy makes a successful perception check.</td>
+                  <th>Perception</th>
+                  <td>Represents senses and awareness</td>
                 </tr>
               </tbody>
             </table>
 
-            <p>Characters start with 10 points on each score, because 10 points means 0 modifier. Each number greater or less than 10 adds a positive or negative modifier, used in difficulty checks. For example:</p>
+            <p class="well"><b>Perception</b> is used when a character will need to "notice" something odd, significant, or dangerous around them. This can come from a trap ready to spring, a hidden enemy, or a clue hidden in a room.</p>
+
+            <p>Characters start with 10 points on each score, because 10 points means 0 modifier. Each number greater or less than 10 adds a modifier to ability checks. For example:</p>
 
             <blockquote>
               Player: "Can Killgrog understand the hieroglyphs?"<br>
@@ -395,15 +165,91 @@
               Killgrog: "It's a butterscotch recipe!"
             </blockquote>
 
-            <p>When you make your character, consider taking points from areas where they are weak and placing those points on abilities where they are strong. That way, when your character makes difficulty checks, they're more likely to succeed at actions they're good at and more likely to fail at actions they're bad at. We recommend going no lower than 7 and no higher than 18 on any one ability, at least to start; you never know when a brawler will need to make an intelligence roll to save his team.</p>
+            <p>When you make your character, consider taking points from areas where they are weak and placing those points on abilities where they are strong. That way, when your character makes difficulty checks, they're more likely to succeed at actions they're good at and more likely to fail at actions they're bad at. We recommend going <b>no lower than 7</b> and <b>no higher than 18</b> on any one ability, at least to start. You never know when a brawler will need to make an intelligence roll to save his team. Of course, the odd critical roll will always happen.</p>
 
             <hr>
 
-            <h3 id="equipment">Equipment</h3>
+            <h3 id="critRolls">Critical Rolls</h3>
+            <p>If you roll for a difficulty check or an attack and it lands on 1, the result is a <b>critical miss</b>. The action or attack you were trying to make fails instantly and often dramatically, and can even end up causing damage to your character depending on the situation. On the other hand, if you roll a <i>natural 20</i>, that is, a 20 without modifiers, it's known as a <b>critical hit</b> and it means that the action or attack is an instant success, sometimes even resulting in a one-hit-kill. The intensity of the action is between you and the Game Master to decide; the Player narrates their character making the action and the Game Master narrates the result or effect.</p>
 
-            <h4>Main Weapon</h4>
-            <p>You character's main weapon is their main mode of action during encounters. It can be a baseball bat, a broadsword, a healing staff, a blessed silver acoustic guitar with the name "Heather" written across it in hot-pink glitter... whatever you want. Every weapon will have a name, a description of the weapon's appearance and extra attributes, and a type, which determines the amount and type of dice you will roll to deal damage after landing a successful attack. Every few levels your character will add a dice to their weapon damage, as seen on the table below:</p>
+            <h4>Advantage and Disadvantage</h4>
+            <p>Some perks, teamwork, and other situations will grant the person rolling a dice something called <i>advantage</i> or <i>disadvantage</i>. When a Player has advantage on a roll, they roll twice and keep the higher roll as their result. In the case of disadvantage, the Player keeps the lower roll. Advantage and disadvantage can come from a character's perks, environmental effects, curses, or just plain dumb luck (courtesy of the Game Master).</p>
 
+            <hr>
+
+            <h3>Encounters</h3>
+            <p>Encounters are the moments when the characters <i>encounter</i> obstacles on their quest. These are the high-tension scenes in the quest, and can take many forms. Some examples of encounters are puzzles, hunts, races, sports, and of course, combat. It's important to note that, in storytelling, violence happens when someone has no other method by which to overcome an obstacle. Game Masters, don't force your Players into combat! Just present moments of conflict and if they would like to resolve it peacefully, give them a chance to make some charisma difficulty checks, or even just talk it out.</p>
+            <p><i>Not every encounter has to be a bloodbath.</i></p>
+
+
+            <h3 id="combat">Combat</h3>
+            <p>If it does come to battle, by the Player's hands or the NPCs, everyone must know the rules of combat. Combat is the easiest, most visceral way to add tension and excitement to the narrative.</p>
+
+            <h4>Initiative</h4>
+            <p>To begin combat, the Players will roll <b>dexterity checks</b> for their character(s) and the Game Master will do the same for each type of enemy involved in the encounter. The highest roll goes first, followed by second highest, etc. When the order is set, the character(s) or creature(s) with the highest roll get to take their turn by attacking or taking an action.</p>
+            <p class="well"><b>Note:</b> If a character or creature has the element of surprise, either rolling a successful dexterity check or their target fails a perception check, they can attack <i>before</i> the initiative roll.</p>
+
+            <h4>Turns</h4>
+            <p>A <b>turn</b> is a character or creature's <i>turn</i> to fight. They get to make <b>1 movement</b> and <b>1 action</b> (in that order) before the next person in the initiative order gets their turn. A movement is changing position, drawing a weapon, reloading a bow/gun, or using a movement-based perk. <b>You can only use 1 perk per turn.</b> A character or creature can also decide to either make a movement and skip their action or skip their movement and only take an action, if they want.</p>
+
+            <h4>Rounds</h4>
+            <p>One round of combat represents roughly <b>6 seconds</b> in the game world. One round is everyone in the order getting their turn, taking actions and attacking, defending and making saving throws. Once it's back to the first in the order it's a new round. Combat moves quickly but, if it's going too long, the Players and Game Master can always look for other options, like running away.</p>
+
+            <h3>Attacking</h3>
+            <p>Attacks can be made with unarmed strikes, weapons, spells, curses, summoned creatures, thrown objects... whatever the character or creature pleases.  First the attacker will <b>make an attack roll using a d20</b>, applying their appropriate ability score modifier. There are different conditions depending on the nature of the attack.</p>
+
+            <h4>Physical Strikes</h4>
+            <p>If the attack is a close to medium range physical strike with a sword, club, staff, pole, dagger, wrench, etc. then the attacker compares their attack roll against the target's <b>armor class (AC)</b>. If the result is higher than their target's AC, then the attack hits and the attacker rolls their weapon's <b>damage dice</b> to see how much damage the target will take. If the result is lower than their AC, the attack fails and play continues to the next character or creature in the order.</p>
+
+            <h4>Saving Throws</h4>
+            <p>Successful physical strikes cannot be defended against (unless the target has a perk that allows them to parry or dodge), but ranged attacks like arrows, spells, or bullets require the target to roll a <b>d20</b> for a saving throw, basically a dodge, and add the appropriate ability score modifier. If the resulting saving throw is higher than the attack roll, the target successfully <b>evades the attack</b>. If not, the attacker deals damage.</p>
+            <p class="well"><b>Note:</b> Saving throws can also be used to avoid environmental dangers and traps, set in place by the Game Master.</p>
+
+            <h3>Combat Table</h3>
+            <p class="n-mb">The following are examples of different ability score modifiers an attacker would apply and saving throws a target would roll, depending on the kind of attack being made:</p>
+            <table class="table">
+  						<thead>
+  							<th>Type</th>
+  							<th>Examples</th>
+  							<th>AS Mod</th>
+  							<th>Saving Throw</th>
+  						</thead>
+  						<tbody>
+  							<tr>
+  								<td>Physical Strike</td>
+  								<td>Punching, kicking, swinging a sword</td>
+  								<td>Str</td>
+  								<td>N/A</td>
+  							</tr>
+  							<tr>
+  								<td>Ranged</td>
+  								<td>Throwing knives, shooting an arrow or bullets</td>
+  								<td>Str / Dex</td>
+  								<td>Dex</td>
+  							</tr>
+  							<tr>
+  								<td>Physical Spell</td>
+  								<td>Fireballs, ice spikes, jets of scalding water</td>
+  								<td>Int / Wis</td>
+  								<td>Dex</td>
+  							</tr>
+  							<tr>
+  								<td>Mental / Psychic</td>
+  								<td>Illusory attacks, mind control</td>
+  								<td>Int / Wis</td>
+  								<td>Int / Wis</td>
+  							</tr>
+  							<tr>
+  								<td>Poison / Disease</td>
+  								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
+  								<td>Dex / Int</td>
+  								<td>Con</td>
+  							</tr>
+  						</tbody>
+  					</table>
+
+            <h4>Dealing Damage</h4>
+            <p>Each type of weapon has a <b>type</b> which also dictates what type of die is rolled for applying damage. Any item can be used as a physical weapon, so base the weapon's type on the physical size of the object (unless it's a ranged weapon or a shield, of course). Every 3 levels a character gets to add a die to their weapon's damage. See the table below:</p>
             <div class="scroll-table">
               <table class="table">
                 <thead class="center-children">
@@ -475,17 +321,138 @@
               </table>
             </div>
 
-            <h4>Sub Weapon</h4>
-            <p>Some characters will carry a shield, others will carry a bow or some other ranged weapon, and others still will just carry another head-basher to rush in dual-wield style. Your character’s secondary weapon, or sub weapon helps add an extra element to your character, and also has a name, description, and type.</p>
+            <p class="well"><b>Note:</b> If a character is attacking while dual-wielding one-handed weapons or using claws on two limbs, they'll make attack rolls and damage rolls for each weapon separately.</p>
 
-            <p><b>Animal Companions</b><br>As a quick side note, your character might have an animal companion that fights alongside them in combat. You can add an animal companion to your character in place of the character’s sub weapon. Different sized animals will have different weapon types: cats are small, birds are ranged, dogs are medium, bears are large, and as strange as it sounds, if your animal fits the use of a shield, like a massive turtle, it could also have that type.</p>
+            <hr>
+
+            <h3 id="health">Health</h3>
+            <p>All characters and creatures have another number that represents their health, called <b>hit points</b>. Your character's max hit points is the amount of damage they can sustain before going unconcious and eventually dying. Characters lose hit points from successful enemy attacks, but can also revive hit points for themselves and/or others with perks, first aid kits, health potions, or good old rest (outside of combat, of course).</p>
+
+            <hr>
+
+            <h3 id="death">Death</h3>
+            <p>When a character's HP is reduced to zero the character falls <b>unconcious</b>. The Player has 3 <i>death saving throws</i> (using a <b>d20 with no modifier</b>) as a way for their character to cling to life and give their party members a chance to heal them and bring them back from the brink. Healing may or may not wake them, but the character will no longer be dying. If the Player manages to roll 3 saves (3 rolls higher than 10) and the character hasn't been healed, they wake with <b>1d6 HP</b>. If they fail all 3 saving throws before their party can stabilize them, they die.</p>
+
+            <p>Some Game Masters may allow for an afterlife of some kind as a way to keep the Player in the game or allow the Player to create a new character to bring in on the next quest, but it's recommended that ghost characters not be given corporeal power or a means to speak with the party unless a party member has a perk that allows them to do so. If death isn't a punishment then there's no risk to combat!</p>
+
+            <p class="well"><b>Note:</b> Game Masters, make character death satisfying or temporary if you want to maintain an amicable relationship with your Players.</p>
+
+            <a href="javascript:void(0)" class="pull-right" onclick="openTab(event,'players'), window.scrollTo(0,0);">Players</a>
+          </div><!-- /content -->
+        </div><!-- /row -->
+      </div><!-- /tab-pane -->
+
+      <div class="tab-pane" id="players" style="display: none;">
+        <h2>Player Rules</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>Index</h4>
+            <ol>
+              <li><a href="#nameTitle">Name and Title</a></li>
+              <li><a href="#hitPoints">Hit Points</a></li>
+              <li><a href="#equip">Equipment</a></li>
+              <li><a href="#perks">Perks</a></li>
+              <li><a href="#lvlUp">Leveling Up</a></li>
+            </ol>
+          </div>
+          <div class="col-sm-9">
+            <h3>Sample Characters</h3>
+            <p>There are several example characters on the Character Save/Load panel that you can use as a starting point. Simply click the Save/Load button, select the example character you want to view from the dropdown list, and click the load button! Then you can tweak the character's stats to fit your needs.</p>
+
+            <h3>Character Archetypes</h3>
+            <p><b>House Rules RPG</b> encourages creativity and boundary-breaking gameplay, but it can help to have somewhere to start. These are the basic combat archetypes found in most RPGs. A well-balanced team will fill at least 4 different combat roles, but <b>don't feel obligated to follow these roles exactly</b>. Branch out, forge your own path, each party configuration and quest will have it's own unique challenges that can't be forseen.</p>
+            <table class="table striped-table">
+              <tbody>
+                <tr>
+                  <th>Ranged DPS</th>
+                  <td>Ranged Damage-Per-Second characters are offensive types that primarily use <b>ranged attacks</b> and have perks designed to inflict damage from mid to long range.</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Examples: <i>Ranger, bowman, ranged magic user, gunman, sniper</i></td>
+                </tr>
+                <tr>
+                  <th>Melee DPS</th>
+                  <td>Melee Damage-Per-Second characters are offensive types that use <b>small or medium weapons</b> and have perks designed for enabling sneak attacks, dodging, and attacking multiple times.</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Examples: <i>Thief, assassin, monk, duelist, boxer, vampire</i></td>
+                </tr>
+                <tr>
+                  <th>Tank</th>
+                  <td>Tanks are characters with high HP and AC that can take a lot of damage. They use <b>medium weapons, large weapons, and shields</b>. Tanks are built for close-range combat, with perks designed to buff themselves and taunt enemies to draw attention away from the weaker player characters.</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Examples: <i>Knight, mercenary, wrestler, cyborg, werewolf</i></td>
+                </tr>
+                <tr>
+                  <th>Healer</th>
+                  <td>Healers are defensive types that revive their allies' HP and provide added protection. They use <b>healing items, blunt weapons and shields</b> and have perks designed to heal and protect.</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Examples: <i>Cleric, sheild fighter, nurse, medic, plague doctor</i></td>
+                </tr>
+                <tr>
+                  <th>Bard</th>
+                  <td>Bards are the <b>status-effect</b> characters, boosting their allies' power and draining their enemies' power. Bards use <b>magic items, instruments, and weapons</b> to buff their party members and defend themselves. Their perks will focus on temporarily boosting/hindering abilities and giving advantage/disadvantage on specific rolls.</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Examples: <i>Bard, dancer, jester, alchemist, siren, witch</i></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3 id="nameTitle">Name and Title</h3>
+            <p>You character needs a name and a title. Below is a list of possible titles:</p>
+            <table class="table">
+              <tbody class="n-mb">
+                <tr>
+                  <th>Profession</th>
+                  <td>Wizard, Doctor, Detective, Brawler, Dancer, Mechanic, Duelist, Hunter, Chef, Healer</td>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <td>General, High Priest, Queen, Demigod, Knight, Forsaken, Sith Lord, Mayor, Chieftain</td>
+                </tr>
+                <tr>
+                  <th>Misc</th>
+                  <td>Bard, Wanderer, Thief, Monk, Cleric, Anarchist, Pilgrim, Master, Oracle, Zealot</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="well"><b>Note:</b> Make sure you try and at least loosely match your character with the world your Game Master has created!</p>
+
+            <hr>
+
+            <h3 id="hitPoints">Hit Points</h3>
+            <p>Your character's <b>hit points (HP)</b> represent the amount of damage they can take before they fall unconcious and must roll their death saving throws. At level 1, your character's HP will be the same as their constitution score. Every time a character levels up the Player will roll a d10, add the character's constitution modifier, and add the result to their max HP.</p>
+
+            <hr>
+
+            <h3 id="equip">Equipment</h3>
+            <p>Every character will have equipment they carry with them, mainly their weapons, armor, and other assorted gear.</p>
+
+            <h4>Main Weapon</h4>
+            <p>You character's <b>main weapon</b> is their main mode of action during encounters. It can be a baseball bat, a broadsword, a healing staff, a blessed silver acoustic guitar with the name "Heather" written across it in hot-pink glitter... whatever you want. Every weapon will have a <b>name</b>, a <b>description</b> of the weapon's appearance and extra attributes, and a <b>type</b>, which determines the type and amount of dice you will roll after landing a successful attack with it.</p>
+
+            <h4>Sub Weapon</h4>
+            <p>Some characters will carry a shield, others will carry a bow or some other ranged weapon, and others still will just carry another head-basher to rush in dual-wield style. The secondary weapon, or <b>sub weapon</b> helps add an extra element to your character, and also has a name, description, and type.</p>
+
+            <h4>Animal Companions</h4>
+            <p>Players have three choices when it comes to giving their character an animal companion. The animal can be <i>purely narrative</i> and <b>idle during combat</b>, the Player can create a <b>separate character sheet</b> for the animal and treat it as a separate, secondary character, or they can include the animal companion as their character's <b>sub weapon</b>, writing in their name, description of an attack they can make, and what "type" the animal would be. Cats are small, birds are ranged, dogs are medium, bears are large, and as strange as it sounds, if your animal fits the use of a shield, like a massive turtle, it could also have that type.</p>
+
+            <p class="well">We recommend the sub weapon option because it strikes a good balance, but the other options are available if you want a different experience.</p>
 
             <h4>Armor</h4>
-            <p>Every character and creature in House Rules RPG has an armor class that represents how well protected they are. If your character decides to wear some kind of protective gear, be it steel armor or elbow pads, you'll give it a name and description here, along with giving it a type. Keep in mind that there are penalties to heavier armors, but the protection they provide can definitely improve your character's chances of defending against attacks. Below are the armor types and their benefits/penalties:</p>
-
+            <p>The <b>armor</b> section of the character sheet describes your character's clothing and garbs. If your character decides to wear some kind of protective gear, be it steel armor or elbow pads, you'll give it a <b>name</b> and <b>description</b> here, along with giving it a <b>type</b>. Keep in mind that there are penalties to heavier armors, but the protection they provide can definitely improve your character's chances of defending against attacks. Below are the armor types and their benefits/penalties:</p>
             <table class="table">
               <thead>
                 <th>Type</th>
+                <th>AC</th>
                 <th>Desc</th>
                 <th>Attributes</th>
               </thead>
@@ -514,33 +481,30 @@
             </table>
 
             <h4>Gear</h4>
-            <p>Your character's gear section is for the extra equipment or magical items they carry. It could be survival gear, research tools, thieving tools, camping gear, etc. The gear section is also where you'll add mementos and important nostalgic items from your character's past, provided they carry it on them at all times. Try to reflect your character's daily needs in the gear they carry and don't forget that you can make use of their gear during the quests. Keep track of what your characters are holding, they can come in handy.</p>
+            <p>Your character's <b>gear</b> is the extra equipment or magical items they carry. It could be survival gear, research tools, thieving tools, camping gear, etc. The gear section is also where you'll add mementos and important nostalgic items from your character's past, provided they carry it on them at all times. Try to reflect your character's daily needs in the gear they carry and don't forget that you can make use of their gear during the quests. Keep track of what your characters are holding, they can come in handy.</p>
 
             <h4>Extra Attributes</h4>
-            <p>Extra attributes are essentially the special conditions or powers that a weapon, a set of armor, or an item possesses. Maybe it glows when a special type of enemy is nearby, or it has advantage in certain weather. The object could protect against or enhance a certain kind of attack. An example would be a wand that shoots lightning; you'd describe the wand first and add something like "Allows wielder to fire a lightning bolt at a target for 1d8 electric damage." The wand would still be a Small (d4) weapon, but when used correctly it will do the same damage as a Medium (d8) weapon.</p>
+            <p>Extra attributes are essentially the special conditions or powers that a weapon, a set of armor, or an item possesses. Maybe it glows when a special type of enemy is nearby, or it has advantage in certain weather. It could be that it protects against or enchances a certain kind of attack. An example would be a wand that shoots lightning; you'd describe the wand first and add something like "Allows wielder to fire a lightning bolt at a target for 1d8 electric damage." The wand would still be a Small (d4) weapon, but when used correctly it will do the same damage as a Medium (d8) weapon.</p>
 
-            <p>Extra attributes are useful for leveraging a character's INT and WIS scores, specifically for magic users, but can also help rogue-type characters who have poison darts, for instance. Extra Attributes must be approved by the Game Master and/or the rest of the party before you play. It's not fair for you character to pull out a pocketwatch they inherited from their grandfather during a fight and claim that his ghost can be summoned to fight alongside you, unless your Game Master knew about it and allowed it ahead of time.</p>
-
-            <hr>
-
-            <h3 id="details">Details</h3>
-            <p>In the <b>details</b> section you'll fill out your character’s appearance, personality, and backstory. You can be as vague or as specific as you'd like, but try to at least include important, game-relevant details.</p>
+            <p>Extra attributes are useful for leveraging a character's INT and WIS scores, specifically for <b>magic users</b>, but can also help rouge-type characters who have poison darts, for instance. Extra Attributes <b>must be approved by the Game Master</b> and/or the rest of the party before you play. It's not fair for you character to pull out a pocketwatch they inherited from their grandfather during a fight and claim that his ghost can be summoned to fight alongside you, <i>unless your Game Master knew about it and allowed it ahead of time</i>.</p>
 
             <hr>
 
             <h3 id="perks">Perks</h3>
-            <p>Most tabletop RPGs fuss around with complicated skill trees, spells, feats, domains, and combat maneuvers, but House Rules RPG keeps it simple by giving each character 8 perks. Perks are special actions your character can take thanks to their body, mind, background, training, studies, and growth. Perks can be spells, combat techniques or tactics, magic powers, or professional skills.</p>
+            <p>Most tabletop RPGs fuss around with complicated skill trees, spells, feats, domains, and combat maneuvers, but <b>House Rules RPG</b> keeps it simple by giving each character 8 <b>perks</b>. Perks are special actions your character can take thanks to their body, mind, background, training, studies, and growth. Perks can be spells, combat techniques or tactics, magic powers, or skills. They can be actions linked to a profession, attacks that do damage, or actions that change a target's modifiers for a certain number of rounds. To <b>use a perk</b>, the Player will roll a DC check with the appropriate modifer to see if the perk action was successful, if not they still lose the use for that day. When designing your character's perks, think about actions that are unique to their body or mind. A reptilian character might have a venomous bite as a perk, where as a healing-based character might have an assortment of restorative techniques. Each character will be different and will have a different power curve to consider.</p>
 
-            Perk Types Table
+            <blockquote>
+              Player: "I'm going to use my perk 'Light's Out' on the cybergoblin."<br>
+              Player rolls an 11 and adds 4 from their character's STR.<br>
+              Player: "15!"<br>
+              GM: "Alright the cybergoblin is going to roll a DEX saving throw."<br>
+              GM rolls a 16.<br>
+              Player: "Aw dang."<br>
+              GM: "Cybergoblins have a -2 to dexterity, so it hits."<br>
+              Player: "Oh! Okay awesome, he's blinded!"<br>
+            </blockquote>
 
-            <p><b>AoE</b><br>
-              Some perks affect an area rather than a specific target. An example of an AoE (area of effect) perk would be a ninja dropping spikes to impede her pursuers, a cleric healing his allies as long as their close to him for a few rounds, or a mage casting a lava spell on a specific area of the environment.</p>
-
-            <h4>Using Perks</h4>
-            <p>To use a perk, the Player will roll a difficulty check with the appropriate modifier to see if the perk action was successful, if not they still lose the use for that day. When designing your character's perks, think about actions that are unique to their body or mind. A reptilian character might have a venomous bite as a perk, where as a healing-based character might have an assortment of restorative techniques. Each character will be different and will have a different power curve to consider.</p>
-
-            <h4>Perks by Level</h4>
-            <p>Characters start with 2 perks and unlock a new one every 3 levels.</p>
+            <p>Characters start with 2 perks and unlock a new one every 3 levels. You get a certain number of uses per day that increases with your level, described below.</p>
             <table class="table">
               <thead>
                 <th>Levels</th>
@@ -582,8 +546,7 @@
               </tbody>
             </table>
 
-            <h4>Perks Uses per Day by Level</h4>
-            <p>You get a certain number of uses per day that increases with your level, described below.</p>
+            <h3>Perks: Uses Per Day / Per Level Chart</h3>
             <div class="scroll-table">
               <table class="table table-striped">
                 <thead>
@@ -798,8 +761,10 @@
               </table>
             </div>
 
-            <h3 id="levelUp">Leveling Up</h3>
-            <p>Your character’s level represents their progress and their power within the world. Every time your character gains a level, usually at the end of a significant quest or story arc, they have some opportunities to strengthen their character. Every time a character levels up, their Player gets to roll a d10, add their character's constitution modifier, and add the result to increase their max hit points (if their constitution modifier brings the result into the negatives, add only 1 to their max hit points). Depending on the level your character is gaining, you might also unlock a new perk, gain a new point to add to an ability of your choice, or gain a die to add to your weapon damage. Your character also receives some gold that can be used to purchase equipment and items.</p>
+            <hr>
+
+            <h3 id="lvlUp">Leveling Up</h3>
+            <p>Characters and creatures in <b>House Rules RPG</b> have a level, a score between 1 and 20 that shows their progress and their power within the world. Every time your character gains a level, usually at the end of a significant quest, they have some opportunities to strengthen their character. Every time a character levels up, their Player gets to roll a d10, add their character's constitution modifier, and add the result to <b>increase their max hit points</b> (if their constitution modifier brings the result into the negatives, add only 1 to their max hit points). Depending on the level your character is gaining, you might also unlock a new perk, gain a new point to add to an ability of your choice, or gain a die to add to your weapon damage. Your character also receives some <b>gold</b> that can be used to purchase equipment and items.</p>
 
             <h4>Buying Items</h4>
             <p>Whether or not your party will get gold to spend on magic items after leveling up is something you should discuss before the game starts. It can take some extra time to come up with magic items to sell, but there's lots of places to go for inspiration. Consider what kinds of items could be useful in-game: things that enable communication, protection, traversal, disguise, or power over the elements are a few ideas. You can have one-use items that give advantage to certain rolls or add a point to a modifier when used, or you could just have various interesting garbs and armors just for appearance. It's up to you and your party, be creative and have fun with it!</p>
@@ -928,87 +893,31 @@
                 </table>
               </div>
             </div>
+
+            <a href="javascript:void(0)" class="pull-left" onclick="openTab(event,'gameplay'), window.scrollTo(0,0);">Rules</a>
+            <a href="javascript:void(0)" class="pull-right" onclick="openTab(event,'gameMaster'), window.scrollTo(0,0);">Game Master</a>
+          </div><!-- /content -->
+        </div><!-- /row -->
+      </div><!-- /tab-pane -->
+
+      <div class="tab-pane" id="gameMaster" style="display: none;">
+        <h2>Quest Structure</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>Index</h4>
+            <ol>
+              <li><a href="#theme">Writing Quests</a></li>
+              <li><a href="#settings">Settings</a></li>
+              <li><a href="#npcs">NPCs</a></li>
+              <li><a href="#rAndP">Rhythm and Pacing</a></li>
+              <li><a href="#act1">Act One</a></li>
+              <li><a href="#act2">Act Two</a></li>
+              <li><a href="#act3">Act Three</a></li>
+              <li><a href="#act4">Act Four</a></li>
+              <li><a href="#transition">Transition</a></li>
+            </ol>
           </div>
-
-          <!-- Tab pane 3 -->
-          <div class="tab-pane" id="combat" style="display:none;">
-            <h2>Combat</h2>
-            <h3 id="init">Initiative</h3>
-            <p>If a conflict devolves into violence, you've entered combat, and combat starts with everyone <b>rolling for initiative</b>. Each character and type of enemy will make a <b>DEX difficulty check</b>. The character or enemy type with the highest roll is at the top of the order and the character or enemy type with the lowest roll is at the bottom. The first round starts with the top of the order’s first turn.</p>
-
-            <h4>Surprise Round</h4>
-            <p>If a character or creature is undetected, they can take a turn to attack a target <b>before the initiative roll</b>, as a surprise round.</p>
-
-            <h3 id="turns">Turns</h3>
-            <p>A <b>turn</b> is a character or creature's <i>turn</i> to fight. They get to make <b>1 movement</b> and <b>1 action</b> (in that order) before the next person in the initiative order gets their turn. A movement is changing position, drawing a weapon, reloading a bow/gun, or using a movement-based perk. An action could be attacking a target, casting a spell, or using an action-based perk. You can only use <b>1 perk per turn</b>. A character or creature can also decide to either make a movement and skip their action or skip their movement and only take an action, if they want.</p>
-
-            <h3 id="rounds">Rounds</h3>
-            <p>One <b>round</b> of combat represents roughly <b>6 seconds</b> in the game world. One round is everyone in the order getting their turn, moving, taking actions and attacking, defending and making saving throws. Once it's back to the first in the order it's a new round. Combat moves quickly but, if it's going too long, the Players and Game Master can always look for other options, like running away.</p>
-
-            <hr>
-
-            <h3 id="attacks">Attacking</h3>
-            <p>Attacks can be made with unarmed strikes, weapons, spells, curses, summoned creatures, thrown objects... whatever the character or creature pleases. Attacks are just actions, so the Player will make a difficulty check by <b>rolling a d20</b> and applying the appropriate <b>ability score modifier</b>. The difference between an action and an attack is that attacks are always checked against the target’s <b>armor class</b>.</p>
-
-            <p>If the attack is a close to mid-range <b>physical strike</b> with a sword, club, staff, pole, dagger, wrench, etc. and the attack hits, the attacker rolls their weapon's <b>damage dice</b> to see how many hit points the target loses. If the result is lower than their AC, the attack fails and play continues to the next character or creature in the order.</p>
-
-            <h4>Saving Throws</h4>
-            <p>Successful physical strikes cannot be defended against (unless the target has a perk that allows them to parry or dodge), but ranged attacks like arrows, spells, or bullets require the target to <b>roll a d20</b> for a <b>saving throw</b>, basically a dodge, and add the appropriate <b>ability score modifier</b>. If the resulting saving throw is higher than the attack roll, the target successfully evades the attack. If not, the attacker deals damage.</p>
-
-            <table class="table">
-  						<thead>
-  							<th>Type</th>
-  							<th>Examples</th>
-  							<th>AS Mod</th>
-  							<th>Saving Throw</th>
-  						</thead>
-  						<tbody>
-  							<tr>
-  								<td>Physical Strike</td>
-  								<td>Punching, kicking, swinging a sword</td>
-  								<td>Str</td>
-  								<td>N/A</td>
-  							</tr>
-  							<tr>
-  								<td>Ranged</td>
-  								<td>Throwing knives, shooting an arrow or bullets</td>
-  								<td>Str / Dex</td>
-  								<td>Dex</td>
-  							</tr>
-  							<tr>
-  								<td>Physical Spell</td>
-  								<td>Fireballs, ice spikes, jets of scalding water</td>
-  								<td>Int / Wis</td>
-  								<td>Dex</td>
-  							</tr>
-  							<tr>
-  								<td>Mental / Psychic</td>
-  								<td>Illusory attacks, mind control</td>
-  								<td>Int / Wis</td>
-  								<td>Int / Wis</td>
-  							</tr>
-  							<tr>
-  								<td>Poison / Disease</td>
-  								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
-  								<td>Dex / Int</td>
-  								<td>Con</td>
-  							</tr>
-  						</tbody>
-  					</table>
-
-            <hr>
-
-            <h3 id="death">Death</h3>
-            <p>When a character's HP is <b>reduced to zero</b> the character <b>falls unconscious</b>. The Player has 3 <b>death saving throws</b> (using a d20 with no modifier) as a way for their character to cling to life and give their party members a chance to heal them and bring them back from the brink. <i>Healing may or may not wake them, but the character will no longer be dying.</i> If the Player manages to roll <b>3 saves</b> (3 rolls higher than 10) and the character hasn't been healed, they wake with 1d6 HP. If they fail all 3 saving throws before their party can stabilize them, <b>they die</b>.</p>
-
-            <p>Some Game Masters may allow for an afterlife of some kind as a way to keep the Player in the game or allow the Player to create a new character to bring in on the next quest, but it's recommended that ghost characters not be given corporeal power or a means to speak with the party unless a party member has a perk that allows them to do so. If death isn't a punishment then there's no risk to combat!</p>
-
-            <p class="well"><b>Note:</b> Game Masters, make character death satisfying or temporary if you want to maintain an amicable relationship with your Players.</p>
-          </div>
-
-          <!-- Tab pane 4 -->
-          <div class="tab-pane" id="quests" style="display:none;">
-            <h2>Quests</h2>
+          <div class="col-sm-9">
             <h3>Sample Quests</h3>
             <p>There are several example quests on the Quest Save/Load panel that you can use as a starting point. Simply click the Save/Load button, select the example quest you want to view from the dropdown list, and click the load button! Then you can tweak the quest to fit your needs or simply use it to gain a better understanding of what to write in each box.</p>
 
@@ -1173,20 +1082,55 @@
             <p>Sometimes you may want to take a session to regroup and give your Players a rest themselves. It helps to think of sessions as high points, once in awhile you need to let them breathe and adjust their course. Give them low-risk interactions and provide moments where they can dig deeper into their characters thoughts and feelings, moments to build their characters into more complete forms.</p>
 
             <p>For example, you can give your characters time to visit past victories, take a trip home to see their family, or to reflect on their losses. Let it be a reminder of why they’re going on these quests. This can also be a good place to <b>switch out party members</b>; you can give their character a peaceful, satisfying ending rather than just letting them vanish out of thin air.</p>
-          </div>
 
-          <!-- Tab pane 5 -->
-          <div class="tab-pane" id="etiquette" style="display:none;">
-            <h2>Etiquette</h2>
-            <h3 id="pregame">Pre-Game</h3>
+            <a href="javascript:void(0)" class="pull-left" onclick="openTab(event,'players'), window.scrollTo(0,0);">Players</a>
+            <a href="javascript:void(0)" class="pull-right" onclick="openTab(event,'tips'), window.scrollTo(0,0);">Tips</a>
+          </div><!-- /content -->
+        </div><!-- /row -->
+      </div><!-- /tab-pane -->
+
+      <div class="tab-pane" id="tips" style="display: none;">
+        <h2>Tips</h2>
+        <div class="row">
+          <div class="col-sm-3">
+            <h4>Index</h4>
+            <ol>
+              <li><a href="#pregame">Before the Game</a></li>
+              <li><a href="#during">During the Game</a></li>
+              <li><a href="#postgame">After the Game</a></li>
+              <li><a href="#branch">Branching Out</a></li>
+            </ol>
+          </div>
+          <div class="col-sm-9">
+            <h3 id="pregame">Before the Game</h3>
+            <h4>Setting Up a Party</h4>
+            <p>First you have to find people to play with. You can do a solo quest with a Player and a Game Master, or a bigger party with many Players. The first session you have should be a round-table discussion about the kind of game you want to play and laying down your own personal rules about how to handle touchy subjects like character death, re-rolls, and rule challenges. Write them down and bring them to the session! Pick at least a vague genre, or agree to a completely random open-world, so that you can create quests and characters that don't conflict too badly. This first session is not for jumping in and playing your first quest, although there are sample characters and quests you can use if you'd rather jump right in instead of crafting a personalized experience.</p>
+
+            <h4>Creating Characters</h4>
+            <p>You can also use the first session to help each other with creating your characters (the Game Master can get started on the first quest). We recommend using the <a href="character.html">Character Creator</a> page of our site, but if you'd rather use pen and paper that's fine too. Just make sure you follow the required fields on the <a href="character.html">Character Creator</a> page.</p>
+            <p class="well"><b>Note:</b> Our <a href="character.html">Character Creator</a> and <a href="quest.html">Quest Writer</a> tools save data to your browser locally. You may not see the same list of content from different browsers, ie. your laptop vs your mobile device, and if the storage is cleared there is no way to retrieve your characters or quests.</p>
+            <p>You can save your characters more securely by printing them to PDF using the <span class="glyphicon glyphicon-print"></span> button and choosing "Save as PDF" as the destination. On mobile, some browsers allow you to Save to PDF or Add to Reading List. Once you have the PDF of your character, you can print out paper copies or just reference them from your device.</p>
+            <p class="well"><b>Note:</b> Your Game Master should have copies of every Player character sheet to run the quest!</p>
+            <p>Finally, set a time and place for the sessions. It can be face-to-face, over audio/video chat, however you want. You can play with friends out of state or right in your living room, but work it out ahead of time and <b>show up on time</b> for the session!</p>
+
+            <h4>Etiquette</h4>
             <ul>
               <li>Eat before the game, on your own or as a group, to avoid distracting snacking during play.</li>
               <li>Take a few minutes before the session starts to get non-game chitchat out of your system.</li>
-              <li>Don't be late without letting your Game Master (or other host) know about it.</li>
+              <li>Don't be late without letting your Game Master (or other host) know about it</li>
               <li>Have some water or another beverage handy.</li>
             </ul>
 
+            <hr>
+
             <h3 id="during">During the Game</h3>
+            <h4>Running a Quest</h4>
+            <p>Game Masters, remember that you may have crafted the settings and events of the quest but your Player's characters are the ones who are living inside it. Do not make big decisions for them and try not to force them into situations. It's better to drop subtle clues and let the Players guide themselves through the quest, offering a nudge in the right direction only occasionally.</p>
+
+            <h4>Rule Challenges</h4>
+            <p>Sometimes people make mistakes. Sometimes a perk turns out to be game-breakingly powerful. Sometimes your Game Master will go mad, flip the table, and send your characters straight into a volcano. It's important to know ahead of time what's acceptable and what's not, or at least how to deal with it. Seek to compromise where you can; if your character is blasting through every enemy like tissue paper, maybe you and your Game Master can set up a situation to narratively hinder them, weaken them, bring them back to equal footing with the rest of the party. If your Players have all had to roll death saving throws for 15 minutes, maybe you overestimated their combat skills and need to intervene for the sake of the story (and your relationships with your Players).</p> <p><b>House Rules RPG</b> is by no means a perfect system, especially since it puts most of the actual responsibility in your hands, but it's also supposed to be fun! It's a game, try not to hurt each other and work around the broken parts of the game as they come up.</p>
+
+            <h4>Etiquette</h4>
             <ul>
               <li>Don't hog the spotlight.</li>
               <li>Don't talk over each other.</li>
@@ -1195,17 +1139,31 @@
               <li>The Game Master may control the game, but they do not control the Players. If a Game Master has acted unfairly, pause the game and talk it out before resuming.</li>
             </ul>
 
-            <h3 id="postgame">Post-Game</h3>
+            <hr>
+
+            <h3 id="postgame">After the Game</h3>
+
+            <h4>Etiquette</h4>
             <ul>
               <li>Don't overstay your welcome or push to keep the session going later than appropriate.</li>
               <li>If you're playing in person and there's a mess from food, maps, dice, and/or figurines, help clean up a bit.</li>
               <li>Have an agreement and understanding about the time and place for the next session.</li>
               <li>Thank your Game Master and your Host!</li>
             </ul>
+
+            <h3 id="branch">Branching Out</h3>
+            <p>If you've enjoyed House Rules RPG but you're looking for a more in-depth experience or want to invest in a proper tabletop experience, we recommend:</p>
+            <ul>
+              <li><a href="http://dnd.wizards.com/dungeons-and-dragons/what-is-dd">Dungeons &#38; Dragons 5th Edition</a> - The classic dungeon-crawler  RPG.</li>
+              <li><a href="http://paizo.com/pathfinderRPG">Pathfinder</a> - A unique RPG system made to improve on some aspects of D&#38;D.</li>
+              <li><a href="http://www.dungeon-world.com/">Dungeon World</a> - An affordable, narrative-focused, fantasy RPG.</li>
+            </ul>
+
+            <a href="javascript:void(0)" class="pull-left" onclick="openTab(event,'gameMaster'), window.scrollTo(0,0);">Game Master</a>
           </div>
         </div>
-      </div><!-- /row -->
-    </article><!-- /container -->
+      </div><!-- /tab-pane -->
+    </div>
 
     <footer class="footer">
       <div class="container">
@@ -1227,23 +1185,5 @@
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
     <script src="js/tabs.js"></script>
-    <script>
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        document.getElementById("backToTop").style.display = "block";
-      } else {
-        document.getElementById("backToTop").style.display = "none";
-      }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-    </script>
   </body>
 </html>
