@@ -8,7 +8,7 @@ var sampleChars = [
 
     "strength": "10",
     "dexterity": "10",
-    "constitution": "10",
+    "vitality": "10",
     "intelligence": "10",
     "wisdom": "10",
     "charisma": "10",
@@ -55,7 +55,7 @@ var sampleChars = [
 
     "strength": "10",
     "dexterity": "12",
-    "constitution": "10",
+    "vitality": "10",
     "intelligence": "9",
     "wisdom": "10",
     "charisma": "8",
@@ -102,7 +102,7 @@ var sampleChars = [
 
     "strength": "",
     "dexterity": "",
-    "constitution": "",
+    "vitality": "",
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
@@ -149,7 +149,7 @@ var sampleChars = [
 
     "strength": "",
     "dexterity": "",
-    "constitution": "",
+    "vitality": "",
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
@@ -196,7 +196,7 @@ var sampleChars = [
 
     "strength": "",
     "dexterity": "",
-    "constitution": "",
+    "vitality": "",
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
@@ -243,7 +243,7 @@ var sampleChars = [
 
     "strength": "",
     "dexterity": "",
-    "constitution": "",
+    "vitality": "",
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
@@ -290,7 +290,7 @@ var sampleChars = [
 
     "strength": "8",
     "dexterity": "8",
-    "constitution": "10",
+    "vitality": "10",
     "intelligence": "12",
     "wisdom": "12",
     "charisma": "10",
@@ -337,7 +337,7 @@ var sampleChars = [
 
     "strength": "8",
     "dexterity": "8",
-    "constitution": "10",
+    "vitality": "10",
     "intelligence": "12",
     "wisdom": "12",
     "charisma": "10",
@@ -384,7 +384,7 @@ var sampleChars = [
 
     "strength": "8",
     "dexterity": "13",
-    "constitution": "10",
+    "vitality": "10",
     "intelligence": "10",
     "wisdom": "8",
     "charisma": "11",
@@ -431,7 +431,7 @@ var sampleChars = [
 
     "strength": "13",
     "dexterity": "10",
-    "constitution": "13",
+    "vitality": "13",
     "intelligence": "7",
     "wisdom": "8",
     "charisma": "9",
@@ -478,7 +478,7 @@ var sampleChars = [
 
     "strength": "8",
     "dexterity": "7",
-    "constitution": "11",
+    "vitality": "11",
     "intelligence": "12",
     "wisdom": "12",
     "charisma": "10",
@@ -525,7 +525,7 @@ var sampleChars = [
 
     "strength": "8",
     "dexterity": "12",
-    "constitution": "7",
+    "vitality": "7",
     "intelligence": "10",
     "wisdom": "11",
     "charisma": "12",
@@ -572,7 +572,7 @@ var sampleChars = [
 
     "strength": "",
     "dexterity": "",
-    "constitution": "",
+    "vitality": "",
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
@@ -619,7 +619,7 @@ var sampleChars = [
 
     "strength": "10",
     "dexterity": "10",
-    "constitution": "10",
+    "vitality": "10",
     "intelligence": "10",
     "wisdom": "10",
     "charisma": "10",
@@ -666,7 +666,7 @@ var sampleChars = [
 
     "strength": "12",
     "dexterity": "10",
-    "constitution": "12",
+    "vitality": "12",
     "intelligence": "8",
     "wisdom": "10",
     "charisma": "7",
@@ -713,7 +713,7 @@ var sampleChars = [
 
     "strength": "",
     "dexterity": "",
-    "constitution": "",
+    "vitality": "",
     "intelligence": "",
     "wisdom": "",
     "charisma": "",
@@ -760,7 +760,7 @@ var sampleChars = [
 
     "strength": "12",
     "dexterity": "10",
-    "constitution": "12",
+    "vitality": "12",
     "intelligence": "8",
     "wisdom": "10",
     "charisma": "7",

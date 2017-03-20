@@ -304,7 +304,7 @@
                 </tr>
                 <tr>
                   <th>Bard</th>
-                  <td>Bards are the <b>status-effect</b> characters, boosting their allies' power and draining their enemies' power. Bards use <b>magic items, instruments, and weapons</b> to buff their party members and defend themselves. Their perks will focus on temporarily boosting/hindering abilities and giving advantage/disadvantage on specific rolls.</td>
+                  <td>Bards are the <b>status-effect</b> characters, boosting their allies' power and draining their enemies' power. Bards use <b>magic items, instruments, and weapons</b> to buff their party members and defend themselves. Their perks will focus on temporarily boosting or hindering abilities, giving their allies an extra movement or action on their turn, etc.</td>
                 </tr>
                 <tr>
                   <td></td>
@@ -517,7 +517,7 @@
             <p>Your character's gear section is for the extra equipment or magical items they carry. It could be survival gear, research tools, thieving tools, camping gear, etc. The gear section is also where you'll add mementos and important nostalgic items from your character's past, provided they carry it on them at all times. Try to reflect your character's daily needs in the gear they carry and don't forget that you can make use of their gear during the quests. Keep track of what your characters are holding, they can come in handy.</p>
 
             <h4>Extra Attributes</h4>
-            <p>Extra attributes are essentially the special conditions or powers that a weapon, a set of armor, or an item possesses. Maybe it glows when a special type of enemy is nearby, or it has advantage in certain weather. The object could protect against or enhance a certain kind of attack. An example would be a wand that shoots lightning; you'd describe the wand first and add something like "Allows wielder to fire a lightning bolt at a target for 1d8 electric damage." The wand would still be a Small (d4) weapon, but when used correctly it will do the same damage as a Medium (d8) weapon.</p>
+            <p>Extra attributes are essentially the special conditions or powers that a weapon, a set of armor, or an item possesses. Maybe it glows when a special type of enemy is nearby, or it does +1 damage in certain weather. The object could protect against or enhance a certain kind of attack. An example would be a wand that shoots lightning; you'd describe the wand first and add something like "Allows wielder to fire a lightning bolt at a target for 1d8 electric damage." The wand would still be a Small (d4) weapon, but when used correctly it will do the same damage as a Medium (d8) weapon.</p>
 
             <p>Extra attributes are useful for leveraging a character's INT and WIS scores, specifically for magic users, but can also help rogue-type characters who have poison darts, for instance. Extra Attributes must be approved by the Game Master and/or the rest of the party before you play. It's not fair for you character to pull out a pocketwatch they inherited from their grandfather during a fight and claim that his ghost can be summoned to fight alongside you, unless your Game Master knew about it and allowed it ahead of time.</p>
 
@@ -1008,7 +1008,7 @@
   								<td>Poison / Disease</td>
   								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
   								<td>Dex / Int</td>
-  								<td>Con</td>
+  								<td>Vit</td>
   							</tr>
   						</tbody>
   					</table>
@@ -1119,7 +1119,7 @@
               </div>
               <div class="col-sm-6">
                 <h4>Level 14 Nightstalker</h4>
-                <p>STR +3 / DEX +1 / CON +3 / INT -2<br>
+                <p>STR +3 / DEX +1 / VIT +3 / INT -2<br>
                   HP 117 / AC 10 / DMG 5d4<br>
                   <b>Perks</b><br>
                   <i>Rend Flesh:</i> 10d8 DMG<br>
@@ -1244,23 +1244,6 @@
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
     <script src="js/tabs.js"></script>
-    <script>
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        document.getElementById("backToTop").style.display = "block";
-      } else {
-        document.getElementById("backToTop").style.display = "none";
-      }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-    </script>
+    <script src="js/backToTop.js"></script>
   </body>
 </html>

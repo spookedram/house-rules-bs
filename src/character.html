@@ -102,6 +102,8 @@
     <article id="mainContainer" class="container">
       <p class="lead text-center no-print"><i>"You look like a protagonist." - Rainbow Rowell</i></p>
 
+      <button id="backToTop" type="button" class="btn btn-default" onclick="topFunction()"><b>Back to Top</b></button>
+
       <div class="row no-print">
         <div class="col-xs-9">
           <div class="btn-group">
@@ -225,7 +227,7 @@
     						<thead class="center-children">
     							<th>STR</th>
     							<th>DEX</th>
-    							<th>CON</th>
+    							<th>VIT</th>
     							<th>INT</th>
     							<th>WIS</th>
     							<th>CHA</th>
@@ -235,7 +237,7 @@
     							<tr class="text-center">
     								<td id="strLabel">10</td>
     								<td id="dexLabel">10</td>
-    								<td id="conLabel">10</td>
+    								<td id="vitLabel">10</td>
     								<td id="intLabel">10</td>
     								<td id="wisLabel">10</td>
     								<td id="chaLabel">10</td>
@@ -245,7 +247,7 @@
     							<tr class="text-center">
     								<td class="strMod">0</td>
     								<td class="dexMod">0</td>
-    								<td class="conMod">0</td>
+    								<td class="vitMod">0</td>
     								<td class="intMod">0</td>
     								<td class="wisMod">0</td>
     								<td class="chaMod">0</td>
@@ -260,7 +262,7 @@
     						<thead class="center-children">
     							<th>STR</th>
     							<th>DEX</th>
-    							<th>CON</th>
+    							<th>VIT</th>
     							<th>INT</th>
     							<th>WIS</th>
     							<th>CHA</th>
@@ -270,7 +272,7 @@
                   <tr>
     								<td><input id="strength" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'strLabel'), updateMods(this,'strMod'), setTotal(), needConfirm()"></td>
     								<td><input id="dexterity" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'dexLabel'), updateMods(this,'dexMod'), setTotal(), needConfirm()"></td>
-    								<td><input id="constitution" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'conLabel'), updateMods(this,'conMod'), setTotal(), updateHP(), needConfirm()"></td>
+    								<td><input id="vitality" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'vitLabel'), updateMods(this,'vitMod'), setTotal(), updateHP(), needConfirm()"></td>
                     <td><input id="intelligence" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'intLabel'), updateMods(this,'intMod'), setTotal(), needConfirm()"></td>
     								<td><input id="wisdom" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'wisLabel'), updateMods(this,'wisMod'), setTotal(), needConfirm()"></td>
     								<td><input id="charisma" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'chaLabel'), updateMods(this,'chaMod'), setTotal(), needConfirm()"></td>
@@ -279,7 +281,7 @@
     							<tr class="text-center">
     								<td class="strMod">0</td>
     								<td class="dexMod">0</td>
-    								<td class="conMod">0</td>
+    								<td class="vitMod">0</td>
     								<td class="intMod">0</td>
     								<td class="wisMod">0</td>
     								<td class="chaMod">0</td>
@@ -822,5 +824,6 @@
     <script src="js/sharedUtils.js"></script>
     <script src="js/samples.js"></script>
     <script src="js/character.js"></script>
+    <script src="js/backToTop.js"></script>
   </body>
 </html>

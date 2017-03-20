@@ -53,6 +53,8 @@
     <article id="mainContainer" class="container">
       <p class="lead text-center"><i>I looked for a good quote on shortcuts but couldn't find one in favor of them.</i></p>
 
+      <button id="backToTop" type="button" class="btn btn-default" onclick="topFunction()"><b>Back to Top</b></button>
+
       <!-- Nav tabs -->
       <div id="rulesTabs" class="tab-list">
         <a href="javascript:void(0)" class="tab-links active" onclick="openTab(event,'actions')">Actions</a>
@@ -97,9 +99,9 @@
                   <td class="text-center">DEX</td>
                 </tr>
                 <tr>
-                  <th>Constitution</th>
+                  <th>Vitality</th>
                   <td>Represents health, stamina, and endurance</td>
-                  <td class="text-center">CON</td>
+                  <td class="text-center">VIT</td>
                 </tr>
                 <tr>
                   <th>Intelligence</th>
@@ -134,7 +136,7 @@
             <p><b>Surprise Round:</b><br>
               If a character or creature is <b>undetected</b>, they can attack a target <i>before initiative is set</i>. Undetected characters/creatures become detected on a <b>successful PER check</b>.</p>
             <p><b>Initiative:</b><br>
-              Players roll a <b>DEX check</b> for each character, Game Masters roll for each type of creature. Highest goes first, lowest goes last.</p>
+              Players roll a <b>DEX check</b> for each character, Game Masters roll for each type of enemy. Highest goes first, lowest goes last.</p>
             <p><b>Turn:</b><br>
               A turn is one character/creature making <b>1 movement</b> and <b>1 action</b>, in that order. Attacking counts as an action.</p>
             <p><b>Round:</b><br>
@@ -186,7 +188,7 @@
   								<td>Poison / Disease</td>
   								<td>Poison darts or gas, toxic sludge, plague rat bites</td>
   								<td>Dex / Int</td>
-  								<td>Con</td>
+  								<td>Vit</td>
   							</tr>
   						</tbody>
   					</table>
@@ -203,7 +205,7 @@
             <p><b>AC:</b><br>
               AC stands for <b>armor class</b>, the amount of protection your character has from taking damage from attacks. See the <i>Armor Type</i> table for the 4 different base AC stats.</p>
             <p><b>Weapon Type:</b><br>
-              Weapons can be <b>small</b>, like a knife or wand, <b>medium</b>, like a one-handed sword or a long pipe, or <b>large</b>, like a two-handed sword, spear, or axe. Weapons can also be <b>ranged</b>, like a bow or gun, or the slot can be used for a <b>shield</b>.</p>
+              Weapons can be <b>small</b>, like a knife or wand, <b>medium</b>, like a one-handed sword or a long pipe, or <b>large</b>, like a two-handed sword, spear, or axe. Weapons can also be <b>ranged</b>, like a bow or gun, a <b>shield</b>, or an animal companion.</p>
             <p><b>Weapon Damage:</b><br>
               Players roll different sided dice depending on their weapon's type and a different amount of dice depending on their level. See the <i>Weapon Damage</i> table for more info.</p>
             <p><b>Extra Attributes:</b><br>
@@ -341,5 +343,6 @@
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
     <script src="js/tabs.js"></script>
+    <script src="js/backToTop.js"></script>
   </body>
 </html>

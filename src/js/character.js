@@ -16,8 +16,8 @@ var str_input = document.getElementById("strength");
 var strLabel = document.getElementById("strLabel");
 var dex_input = document.getElementById("dexterity");
 var dexLabel = document.getElementById("dexLabel");
-var con_input = document.getElementById("constitution");
-var conLabel = document.getElementById("conLabel");
+var vit_input = document.getElementById("vitality");
+var vitLabel = document.getElementById("vitLabel");
 var int_input = document.getElementById("intelligence");
 var intLabel = document.getElementById("intLabel");
 var wis_input = document.getElementById("wisdom");
@@ -121,14 +121,14 @@ function setLabel(input, target) {
   }
 }
 
-// When constitution changes at lvl 1, update hp
+// When vitality changes at lvl 1, update hp
 function updateHP() {
   var btn = document.getElementById("updateHP");
 
   if(lvl_input.value === "1") {
     btn.disabled = true;
-    hp_input.value = con_input.value;
-    hpLabel.innerHTML = con_input.value;
+    hp_input.value = vit_input.value;
+    hpLabel.innerHTML = vit_input.value;
   } else {
     btn.disabled = false;
   }
@@ -136,8 +136,8 @@ function updateHP() {
 
 function addRandomHP() {
   var levels = Number(lvl_input.value) - 1;
-  var baseHP = Number(con_input.value);
-  var mod = Number(con_input.value) - 10;
+  var baseHP = Number(vit_input.value);
+  var mod = Number(vit_input.value) - 10;
   var i = 0;
   var num = 0;
 
@@ -156,7 +156,7 @@ function addRandomHP() {
       baseHP += newHP;
     }
 
-    console.log("Add " + mod + " for constitution");
+    console.log("Add " + mod + " for vitality");
     console.log("New HP: " + baseHP);
   }
 
@@ -206,10 +206,10 @@ function randomizeAbilityScores() {
   dex_input.value = scores[1];
   dexLabel.innerHTML = dex_input.value;
   updateMods(dex_input, "dexMod");
-  con_input.value = scores[2];
-  conLabel.innerHTML = con_input.value;
+  vit_input.value = scores[2];
+  vitLabel.innerHTML = vit_input.value;
   updateHP();
-  updateMods(con_input, "conMod");
+  updateMods(vit_input, "vitMod");
   int_input.value = scores[3];
   intLabel.innerHTML = int_input.value;
   updateMods(int_input, "intMod");
@@ -302,7 +302,7 @@ function Character() {
 
   this.strength = "";
   this.dexterity = "";
-  this.constitution = "";
+  this.vitality = "";
   this.intelligence = "";
   this.wisdom = "";
   this.charisma = "";
@@ -354,7 +354,7 @@ function saveCharData() {
 
   character.strength = strLabel.innerHTML;
   character.dexterity = dexLabel.innerHTML;
-  character.constitution = conLabel.innerHTML;
+  character.vitality = vitLabel.innerHTML;
   character.intelligence = intLabel.innerHTML;
   character.wisdom = wisLabel.innerHTML;
   character.charisma = chaLabel.innerHTML;
@@ -427,9 +427,9 @@ function setCharData(character) {
   dex_input.value = Number(character.dexterity);
   setLabel(dex_input, "dexLabel");
   updateMods(dex_input, "dexMod");
-  con_input.value = Number(character.constitution);
-  setLabel(con_input, "conLabel");
-  updateMods(con_input, "conMod");
+  vit_input.value = Number(character.vitality);
+  setLabel(vit_input, "vitLabel");
+  updateMods(vit_input, "vitMod");
   int_input.value = Number(character.intelligence);
   setLabel(int_input, "intLabel");
   updateMods(int_input, "intMod");
