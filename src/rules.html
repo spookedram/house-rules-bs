@@ -55,7 +55,7 @@
 
       <p class="text-right">For a condensed version of the rules, <a href="cheatSheet.html">check out the HRRPG cheat sheet.</a></p>
 
-      <button id="backToTop" type="button" class="btn btn-default" onclick="topFunction()"><b>Back to Top</b></button>
+      <button id="backToTop" type="button" class="btn btn-default" onclick="runScroll()"><b>Back to Top</b></button>
 
       <div class="row">
         <div class="col-sm-3">
@@ -531,13 +531,44 @@
             <h3 id="perks">Perks</h3>
             <p>Most tabletop RPGs fuss around with complicated skill trees, spells, feats, domains, and combat maneuvers, but House Rules RPG keeps it simple by giving each character 8 perks. Perks are special actions your character can take thanks to their body, mind, background, training, studies, and growth. Perks can be spells, combat techniques or tactics, magic powers, or professional skills.</p>
 
-            Perk Types Table
+            <table class="table table-striped">
+              <thead>
+                <th>Type</th>
+                <th>Desc</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tactic</td>
+                  <td>Combat tactics are perks that allow the user to dodge, evade, vanish, recover, counter, parry, and attack multiple times. These sorts of moves are common with DPS fighters and Tanks.</td>
+                </tr>
+                <tr>
+                  <td>Damage</td>
+                  <td>Lots of perks will be used to attack a target for more damage than their weapons alone could inflict. Whether it's a fireball or a cleaving blow, these perks are also common with DPS and Tanks.</td>
+                </tr>
+                <tr>
+                  <td>Healing</td>
+                  <td>Some perks will revive their injured allies' hit points for more than their base items can alone. Whether it's a healing bubble, magic touch, or field surgical technique, these perks are most likely to be found with Healers and Bards.</td>
+                </tr>
+                <tr>
+                  <td>Buff</td>
+                  <td>Everyone needs a boost now and then. Buff perks are used to give +1 to a specific ability for a certain number of rounds or, if used outside of combat, the perk adds the same number of points as the perk. (Perk 4 buff would be +4 to one roll outside of combat or +1 for 4 rounds during combat.)</td>
+                </tr>
+                <tr>
+                  <td>Debuff</td>
+                  <td>Debuff perks have the opposite effect of buffs, used to take away 1 point to a specific ability for a certain number of rounds or, if used outside of combat, the perk takes the same number of points as the perk. (Perk 6 debuff would be -6 to one roll outside of combat or -1 for 6 rounds during combat.)</td>
+                </tr>
+                <tr>
+                  <td>Pro. Skill</td>
+                  <td>Thieves steal, detectives investigate, doctors diagnose, summoners summon, alchemists transmute, bards perform, dancers dance, painters paint... Professional skill perks have a specific effect on the world depending on the profession of the user.</td>
+                </tr>
+              </tbody>
+            </table>
 
             <p><b>AoE</b><br>
               Some perks affect an area rather than a specific target. An example of an AoE (area of effect) perk would be a ninja dropping spikes to impede her pursuers, a cleric healing his allies as long as their close to him for a few rounds, or a mage casting a lava spell on a specific area of the environment.</p>
 
             <h4>Using Perks</h4>
-            <p>To use a perk, the Player will roll a difficulty check with the appropriate modifier to see if the perk action was successful, if not they still lose the use for that day. When designing your character's perks, think about actions that are unique to their body or mind. A reptilian character might have a venomous bite as a perk, where as a healing-based character might have an assortment of restorative techniques. Each character will be different and will have a different power curve to consider.</p>
+            <p>To use a perk, the Player will roll a difficulty check with the appropriate modifier to see if the perk action was successful. Using a perk still costs one of the uses per day, even if it fails. When designing your character's perks, think about actions that are unique to their body or mind. A reptilian character might have a venomous bite as a perk, where as a healing-based character might have an assortment of restorative techniques. Each character will be different and will have a different power curve to consider.</p>
 
             <h4>Perks by Level</h4>
             <p>Characters start with 2 perks and unlock a new one every 3 levels.</p>

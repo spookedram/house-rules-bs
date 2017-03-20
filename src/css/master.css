@@ -131,6 +131,10 @@ section h4 {
   overflow-x: scroll !important;
 }
 
+.panel-body ol {
+  padding-left: 15px;
+}
+
 .tab-list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -210,6 +214,10 @@ section h4 {
   .ability {
     padding: 0.5rem 0.75rem;
   }
+}
+
+.perkmod-label {
+  margin-top: 0;
 }
 
 .unlocked {

@@ -102,7 +102,7 @@
     <article id="mainContainer" class="container">
       <p class="lead text-center no-print"><i>"You look like a protagonist." - Rainbow Rowell</i></p>
 
-      <button id="backToTop" type="button" class="btn btn-default" onclick="topFunction()"><b>Back to Top</b></button>
+      <button id="backToTop" type="button" class="btn btn-default" onclick="runScroll()"><b>Back to Top</b></button>
 
       <div class="row no-print">
         <div class="col-xs-9">
@@ -448,8 +448,20 @@
               <div class="panel-body">
                 <p id="perk1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
-                    <p class="unlocked">Unlocked at level 1<br>
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk1mod">DC Mod</label>
+                    <select id="perk1mod" class="form-control n-mb" name="perk1mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
+                    <p class="unlocked"><br>Unlocked at level 1<br>
                       2d12 : 3sqft : 1 round</p>
                   </div>
                 </div>
@@ -465,7 +477,19 @@
               <div class="panel-body">
                 <p id="perk2desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk2mod">DC Mod</label>
+                    <select id="perk2mod" class="form-control n-mb" name="perk2mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
                     <p class="unlocked">Unlocked at level 1<br>
                       3d8 : 5sqft : 2 rounds</p>
                   </div>
@@ -484,7 +508,19 @@
               <div class="panel-body">
                 <p id="perk3desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk3mod">DC Mod</label>
+                    <select id="perk3mod" class="form-control n-mb" name="perk3mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
                     <p class="unlocked">Unlocked at level 4<br>
                       4d12 : 10sqft : 3 rounds</p>
                   </div>
@@ -501,7 +537,19 @@
               <div class="panel-body">
                 <p id="perk4desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk4mod">DC Mod</label>
+                    <select id="perk4mod" class="form-control n-mb" name="perk4mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
                     <p class="unlocked">Unlocked at level 7<br>
                       6d12 : 20sqft : 4 rounds</p>
                   </div>
@@ -520,7 +568,19 @@
               <div class="panel-body">
                 <p id="perk5desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk5mod">DC Mod</label>
+                    <select id="perk5mod" class="form-control n-mb" name="perk5mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
                     <p class="unlocked">Unlocked at level 10<br>
                       10d8 : 40sqft : 5 rounds</p>
                   </div>
@@ -537,7 +597,19 @@
               <div class="panel-body">
                 <p id="perk6desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk6mod">DC Mod</label>
+                    <select id="perk6mod" class="form-control n-mb" name="perk6mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
                     <p class="unlocked">Unlocked at level 13<br>
                       10d10 : 60sqft : 6 rounds</p>
                   </div>
@@ -556,7 +628,19 @@
               <div class="panel-body">
                 <p id="perk7desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk7mod">DC Mod</label>
+                    <select id="perk7mod" class="form-control n-mb" name="perk7mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
                     <p class="unlocked">Unlocked at level 16<br>
                       10d12 : 80sqft : 7 rounds</p>
                   </div>
@@ -573,7 +657,19 @@
               <div class="panel-body">
                 <p id="perk8desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-4">
+                    <label class="perkmod-label" for="perk8mod">DC Mod</label>
+                    <select id="perk8mod" class="form-control n-mb" name="perk8mod">
+                      <option value="str">STR</option>
+                      <option value="dex">DEX</option>
+                      <option value="vit">VIT</option>
+                      <option value="int">INT</option>
+                      <option value="wis">WIS</option>
+                      <option value="cha">CHA</option>
+                      <option value="per">PER</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-8">
                     <p class="unlocked">Unlocked at level 19<br>
                       12d12 : 100sqft : 8 rounds</p>
                   </div>
