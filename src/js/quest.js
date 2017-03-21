@@ -14,6 +14,9 @@ var climax = document.getElementById("climax");
 var epilogue = document.getElementById("epilogue");
 var cliffhanger = document.getElementById("cliffhanger");
 
+var settingsInput = document.getElementById("settingsInput");
+var npcsInput = document.getElementById("npcsInput");
+
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 
 // returns characterList array from localStorage
@@ -210,3 +213,21 @@ function addRowToList(str1, str2) {
 function deleteRow(btn) {
   btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
 }
+
+settingsInput.onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    addRowToList('settingsInput', 'settingsList');
+    return false;
+  }
+};
+
+npcsInput.onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    addRowToList('npcsInput', 'npcsList');
+    return false;
+  }
+};
