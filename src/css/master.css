@@ -90,6 +90,10 @@ footer a:hover {
   color: black;
 }
 
+article {
+  position: relative;
+}
+
 section h4 {
   margin: 6px 0;
 }

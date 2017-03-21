@@ -58,7 +58,7 @@
       <button id="backToTop" type="button" class="btn btn-default" onclick="runScroll()"><b>Back to Top</b></button>
 
       <div class="row">
-        <div class="col-sm-3">
+        <div id="indexPanel" class="col-sm-3">
           <h4>Index</h4>
           <!-- accordion template -->
           <div class="panel-group" id="myAccordion" role="tablist" aria-multiselectable="true">
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <div class="col-sm-9">
+        <div id="contentPanel" class="col-sm-9">
           <!-- Tab pane 1 -->
           <div class="tab-pane" id="intro">
             <h2>Introduction</h2>
@@ -275,40 +275,35 @@
                   <td>Ranged Damage-Per-Second characters are offensive types that primarily use <b>ranged attacks</b> and have perks designed to inflict damage from mid to long range.</td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>Examples: <i>Ranger, bowman, ranged magic user, gunman, sniper</i></td>
+                  <td colspan="2">Examples: <i>Ranger, bowman, ranged magic user, gunman, sniper</i></td>
                 </tr>
                 <tr>
                   <th>Melee DPS</th>
                   <td>Melee Damage-Per-Second characters are offensive types that use <b>small or medium weapons</b> and have perks designed for enabling sneak attacks, dodging, and attacking multiple times.</td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>Examples: <i>Thief, assassin, monk, duelist, boxer, vampire</i></td>
+                  <td colspan="2">Examples: <i>Thief, assassin, monk, duelist, boxer, vampire</i></td>
                 </tr>
                 <tr>
                   <th>Tank</th>
                   <td>Tanks are characters with high HP and AC that can take a lot of damage. They use <b>medium weapons, large weapons, and shields</b>. Tanks are built for close-range combat, with perks designed to buff themselves and taunt enemies to draw attention away from the weaker player characters.</td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>Examples: <i>Knight, mercenary, wrestler, cyborg, werewolf</i></td>
+                  <td colspan="2">Examples: <i>Knight, mercenary, wrestler, cyborg, werewolf</i></td>
                 </tr>
                 <tr>
                   <th>Healer</th>
                   <td>Healers are defensive types that revive their allies' HP and provide added protection. They use <b>healing items, blunt weapons and shields</b> and have perks designed to heal and protect.</td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>Examples: <i>Cleric, sheild fighter, nurse, medic, plague doctor</i></td>
+                  <td colspan="2">Examples: <i>Cleric, sheild fighter, nurse, medic, plague doctor</i></td>
                 </tr>
                 <tr>
                   <th>Bard</th>
                   <td>Bards are the <b>status-effect</b> characters, boosting their allies' power and draining their enemies' power. Bards use <b>magic items, instruments, and weapons</b> to buff their party members and defend themselves. Their perks will focus on temporarily boosting or hindering abilities, giving their allies an extra movement or action on their turn, etc.</td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>Examples: <i>Bard, dancer, jester, alchemist, siren, witch</i></td>
+                  <td colspan="2">Examples: <i>Bard, dancer, jester, alchemist, siren, witch</i></td>
                 </tr>
               </tbody>
             </table>
@@ -531,6 +526,7 @@
             <h3 id="perks">Perks</h3>
             <p>Most tabletop RPGs fuss around with complicated skill trees, spells, feats, domains, and combat maneuvers, but House Rules RPG keeps it simple by giving each character 8 perks. Perks are special actions your character can take thanks to their body, mind, background, training, studies, and growth. Perks can be spells, combat techniques or tactics, magic powers, or professional skills.</p>
 
+            <h4>Perk Types</h4>
             <table class="table table-striped">
               <thead>
                 <th>Type</th>
@@ -538,28 +534,46 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Tactic</td>
+                  <th>Tactic</th>
                   <td>Combat tactics are perks that allow the user to dodge, evade, vanish, recover, counter, parry, and attack multiple times. These sorts of moves are common with DPS fighters and Tanks.</td>
                 </tr>
                 <tr>
-                  <td>Damage</td>
-                  <td>Lots of perks will be used to attack a target for more damage than their weapons alone could inflict. Whether it's a fireball or a cleaving blow, these perks are also common with DPS and Tanks.</td>
+                  <td colspan="2">Example: <i>(Perk 4) <b>Payback:</b> If an enemy lands a physical strike on the character, the character can use this perk to immediately roll an attack on that enemy.</i></td>
                 </tr>
                 <tr>
-                  <td>Healing</td>
+                  <th>Damage</th>
+                  <td>Lots of perks will be used to attack a target for more damage than their weapons alone could inflict. Whether it's a fireball or a cleaving blow, these perks are also common with DPS fighters and Tanks.</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Example: <i>(Perk 2) <b>Flamethrower:</b> The character shoots a jet of fire from a special weapon attachment, aimed at a 5 sqft area in front of them, for a ranged attack that does 3d8 fire damage.</i></td>
+                </tr>
+                <tr>
+                  <th>Healing</th>
                   <td>Some perks will revive their injured allies' hit points for more than their base items can alone. Whether it's a healing bubble, magic touch, or field surgical technique, these perks are most likely to be found with Healers and Bards.</td>
                 </tr>
                 <tr>
-                  <td>Buff</td>
-                  <td>Everyone needs a boost now and then. Buff perks are used to add points to a specific ability. Each buff perk provides the target with a specific amount of points that can be used at once or distributed evenly over a number of rounds. For instance, a Perk 4 STR buff could be +4 to STR for one round, +2 for 2 rounds, or +1 for 4 rounds.</td>
+                  <td colspan="2">Example: <i>(Perk 3) <b>Healing Bubble:</b> The user casts a spell that creates a 10sqft shimmering golden bubble that distributes 4d12 HP to the targets inside.</i></td>
                 </tr>
                 <tr>
-                  <td>Debuff</td>
-                  <td>Debuff perks have the opposite effect of buffs, used to take away points from a specific ability. For instance, a Perk 6 WIS debuff could be -6 to WIS for one round, -3 for 2 rounds, -2 for 3 rounds, or -1 for 6 rounds. Points must be distributed evenly!</td>
+                  <th>Buff</th>
+                  <td>Everyone needs a boost now and then. Buff perks are used to add points to a specific ability. Each buff perk provides the target with a specific amount of points that can be used at once or distributed over a number of rounds. For instance, a Perk 4 STR buff could be <b>+4</b> to STR for <b>1 round</b> or <b>+1</b> for <b>4 rounds</b>.</td>
                 </tr>
                 <tr>
-                  <td>Pro. Skill</td>
+                  <td colspan="2">Example: <i>(Perk 6) <b>Song of Courage:</b> The user plays an energetic march on their instrument that boldens an ally, temporarily giving them +3 points to AC and +3 points to STR.</i></td>
+                </tr>
+                <tr>
+                  <th>Debuff</th>
+                  <td>Debuff perks have the opposite effect of buffs; instead of adding points, debuffs are used to take away points from a specific ability.</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Example: <i>(Perk 1) <b>Bad Luck Hex:</b> The user casts a hex on a target, giving them -1 to their next roll due to a short burst of bad luck.</i></td>
+                </tr>
+                <tr>
+                  <th>Pro. Skill</th>
                   <td>Thieves steal, detectives investigate, doctors diagnose, summoners summon, alchemists transmute, bards perform, dancers dance, painters paint... Professional skill perks have a specific effect on the world depending on the profession of the user.</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Example: <i>(Perk 8) <b>Speedpainted Mural:</b> The painter covers a 100sqft surface with a painted image of their choosing that lasts for 8 rounds. The surface does not have to be flat, and viewers who fail at a WIS DC saving throw will believe the image to be real.</i></td>
                 </tr>
               </tbody>
             </table>
@@ -568,7 +582,7 @@
               Some perks affect an area rather than a specific target. An example of an AoE (area of effect) perk would be a ninja dropping spikes to impede her pursuers, a cleric healing his allies as long as their close to him for a few rounds, or a mage casting a lava spell on a specific area of the environment.</p>
 
             <h4>Using Perks</h4>
-            <p>To use a perk, the Player will roll a difficulty check with the appropriate modifier to see if the perk action was successful. Using a perk still costs one of the uses per day, even if it fails. When designing your character's perks, think about actions that are unique to their body or mind. A reptilian character might have a venomous bite as a perk, where as a healing-based character might have an assortment of restorative techniques. Each character will be different and will have a different power curve to consider.</p>
+            <p>To use a perk, the Player will roll a difficulty check with the appropriate modifier to see if the perk action was successful. Using a perk still costs one of the uses per day, even if it fails. When designing your character's perks, think about actions that are unique to their body or mind. A reptilian character might have a venomous bite as a perk, where as a healing-based character might have an assortment of restorative techniques. Each character will be different and will have a different skills to consider.</p>
 
             <h4>Perks by Level</h4>
             <p>Characters start with 2 perks and unlock a new one every 3 levels.</p>
@@ -576,56 +590,47 @@
               <thead>
                 <th>Perk</th>
                 <th>Desc</th>
-                <th>Level Unlocked</th>
               </thead>
               <tbody>
                 <tr>
                   <td class="text-center">1</td>
                   <td><p>A basic skill or spell that your character has mastered. Think small, but not insignificant.</p>
-                    <b class="small">2d12 HP / 3sqft / 1 round / low-level professional skill</b></td>
-                  <td class="text-center">1</td>
+                    <b class="small">2d12 HP / 3sqft / 1 point / low-level professional skill</b></td>
                 </tr>
                 <tr>
                   <td class="text-center">2</td>
                   <td><p>A slightly more powerful skill/spell that your character maybe just recently learned.</p>
-                    <b class="small">3d8 HP / 5sqft / 2 round / low-level professional skill</b></td>
-                  <td class="text-center">1</td>
+                    <b class="small">3d8 HP / 5sqft / 2 points / low-level professional skill</b></td>
                 </tr>
                 <tr>
                   <td class="text-center">3</td>
                   <td><p>Through training and study your character unlocks a new ability/spell that opens new avenues of action. Try not to simply beef up lower moves or you'll find you stop using them altogether.</p>
-                    <b class="small">4d12 / 10sqft / 3 round / low-level professional skill</b></td>
-                  <td class="text-center">4</td>
+                    <b class="small">4d12 / 10sqft / 3 points / low-level professional skill</b></td>
                 </tr>
                 <tr>
                   <td class="text-center">4</td>
                   <td><p>Your character is a rising star, staking their name in the minor leagues and proving their metal. This move shows their progress and their drive to improve.</p>
-                    <b class="small">6d12 / 20sqft / 4 round / mid-level professional skill</b></td>
-                  <td class="text-center">7</td>
+                    <b class="small">6d12 / 20sqft / 4 points / mid-level professional skill</b></td>
                 </tr>
                 <tr>
                   <td class="text-center">5</td>
                   <td><p>Your character is making strides in their field and has unlocked or mastered a new technique that will turn the tide in times of need.</p>
-                    <b class="small">10d8 / 40sqft / 5 round / mid-level professional skill</b></td>
-                  <td class="text-center">10</td>
+                    <b class="small">10d8 / 40sqft / 5 points / mid-level professional skill</b></td>
                 </tr>
                 <tr>
                   <td class="text-center">6</td>
                   <td><p>Your character is at the level of a mentor, with much left to learn but much already behind them. This move will help them join the big leagues.</p>
-                    <b class="small">10d10 / 60sqft / 6 round / high-level professional skill</b></td>
-                  <td class="text-center">13</td>
+                    <b class="small">10d10 / 60sqft / 6 points / high-level professional skill</b></td>
                 </tr>
                 <tr>
                   <td class="text-center">7</td>
                   <td><p>Your character is at the level of a professor, an expert, or a champion, and this move is a testament to their dedication and training.</p>
-                    <b class="small">10d12 / 80sqft / 7 round / high-level professional skill</b></td>
-                  <td class="text-center">16</td>
+                    <b class="small">10d12 / 80sqft / 7 points / high-level professional skill</b></td>
                 </tr>
                 <tr>
                   <td class="text-center">8</td>
                   <td><p>Your character has become a renowned expert and master of their field, nigh unmatched in their expertise/strength. This move is the culmination of their training, their ultimate display of power.</p>
-                    <b class="small">12d12 / 100sqft / 8 round / master-level professional skill</b></td>
-                  <td class="text-center">19</td>
+                    <b class="small">12d12 / 100sqft / 8 points / master-level professional skill</b></td>
                 </tr>
               </tbody>
             </table>
@@ -847,7 +852,7 @@
             </div>
 
             <h3 id="levelUp">Leveling Up</h3>
-            <p>Your character’s level represents their progress and their power within the world. Character usually <b>gain a level</b> at the end of a significant quest or story arc, and each new level comes with rewards. First, every time a character levels up, their Player will <b>roll a d10</b>, add their character's <b>vitality modifier</b>, and add the result to <b>increase their max hit points</b> (if their vitality modifier brings the result into the negatives, add only 1 to their max hit points). Depending on the level your character is gaining, you might also <b>unlock a new perk</b>, gain a new <b>point</b> to add to an <b>ability</b> of your choice, or gain a <b>die</b> to add to your <b>weapon damage</b>. Your character also receives some <b>gold</b> that can be used to purchase new equipment and items.</p>
+            <p>Your character’s level represents their progress and their power within the world. Characters usually <b>gain a level</b> at the end of a significant quest or story arc, and each new level comes with rewards. First, every time a character levels up, their Player will <b>roll a d10</b>, add their character's <b>vitality modifier</b>, and add the result to <b>increase their max hit points</b> (if their vitality modifier brings the result into the negatives, roll again or just add 1 point instead). Depending on the level your character is gaining, you might also <b>unlock a new perk</b>, gain a new <b>point</b> to add to an <b>ability</b> of your choice, or gain a <b>die</b> to add to your <b>weapon damage</b>. Your character also receives some <b>gold</b> that can be used to purchase new equipment and items.</p>
 
             <h4>Buying Items</h4>
             <p>Whether or not your party will get gold to spend on magic items after leveling up is something you should discuss in the first session. It can take some extra time to come up with magic items to sell, but there's lots of places to go for inspiration. Consider what kinds of items could be <b>useful</b> in-game: things that enable communication, protection, traversal, disguise, or power over the elements are a few ideas. You can have one-use items that give <b>advantage</b> to certain rolls or <b>add a point to a modifier</b> when used, or you could just have various interesting garbs and armors just for appearance. It's up to you and your party, be creative and <b>have fun with it</b>!</p>
@@ -992,6 +997,8 @@
 
             <h3 id="rounds">Rounds</h3>
             <p>One <b>round</b> of combat represents roughly <b>6 seconds</b> in the game world. One round is everyone in the order getting their turn, moving, taking actions and attacking, defending and making saving throws. Once it's back to the first in the order it's a new round. Combat moves quickly but, if it's going too long, the Players and Game Master can always look for other options, like running away.</p>
+
+            <p>When <b>outside of combat</b>, a user's perk that lasts for a specific number of rounds lasts for that many <b>hours</b> instead.</p>
 
             <hr>
 
