@@ -156,28 +156,21 @@
                 <div class="input-group">
                   <select id="sampleCharsList" class="form-control">
                     <option value="0">Custom</option>
-
-                    <option disabled="true">---BASIC---</option>
-                    <option value="1">Ranged DPS</option>
-                    <option value="2">Melee DPS</option>
-                    <option value="3">Tank</option>
-                    <option value="4">Healer</option>
-                    <option value="5">Bard</option>
-
+                    <option disabled="true"></option>
                     <option disabled="true">---FANTASY---</option>
-                    <option value="6">Ranger</option>
-                    <option value="7">Ice Mage</option>
-                    <option value="8">Thief</option>
-                    <option value="9">Warrior</option>
-                    <option value="10">Cleric</option>
-                    <option value="11">Bard</option>
-
+                    <option value="1">Ranger</option>
+                    <option value="2">Ice Mage</option>
+                    <option value="3">Cutpurse</option>
+                    <option value="4">Warrior</option>
+                    <option value="5">Cleric</option>
+                    <option value="6">Bard</option>
+                    <option disabled="true"></option>
                     <option disabled="true">---HORROR---</option>
-                    <option value="12">Witch</option>
-                    <option value="13">Vampire</option>
-                    <option value="14">Werewolf</option>
-                    <option value="15">Plague Doctor</option>
-                    <option value="16">Siren</option>
+                    <option value="7">Witch</option>
+                    <option value="8">Vampire</option>
+                    <option value="9">Werewolf</option>
+                    <option value="10">Plague Doctor</option>
+                    <option value="11">Siren</option>
                   </select>
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default" onclick="hideModal(), loadSample(document.getElementById('sampleCharsList').value)">Load</button>
@@ -450,7 +443,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk1mod">DC Mod</label>
-                    <select id="perk1mod" class="form-control n-mb" name="perk1mod">
+                    <select id="perk1mod" class="form-control n-mb perkmod" name="perk1mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -479,7 +472,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk2mod">DC Mod</label>
-                    <select id="perk2mod" class="form-control n-mb" name="perk2mod">
+                    <select id="perk2mod" class="form-control n-mb perkmod" name="perk2mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -490,7 +483,7 @@
                     </select>
                   </div>
                   <div class="col-xs-8">
-                    <p class="unlocked">Unlocked at level 1<br>
+                    <p class="unlocked"><br>Unlocked at level 1<br>
                       3d8 : 5sqft : 2 rounds</p>
                   </div>
                 </div>
@@ -510,7 +503,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk3mod">DC Mod</label>
-                    <select id="perk3mod" class="form-control n-mb" name="perk3mod">
+                    <select id="perk3mod" class="form-control n-mb perkmod" name="perk3mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -521,7 +514,7 @@
                     </select>
                   </div>
                   <div class="col-xs-8">
-                    <p class="unlocked">Unlocked at level 4<br>
+                    <p class="unlocked"><br>Unlocked at level 4<br>
                       4d12 : 10sqft : 3 rounds</p>
                   </div>
                 </div>
@@ -539,7 +532,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk4mod">DC Mod</label>
-                    <select id="perk4mod" class="form-control n-mb" name="perk4mod">
+                    <select id="perk4mod" class="form-control n-mb perkmod" name="perk4mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -550,7 +543,7 @@
                     </select>
                   </div>
                   <div class="col-xs-8">
-                    <p class="unlocked">Unlocked at level 7<br>
+                    <p class="unlocked"><br>Unlocked at level 7<br>
                       6d12 : 20sqft : 4 rounds</p>
                   </div>
                 </div>
@@ -570,7 +563,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk5mod">DC Mod</label>
-                    <select id="perk5mod" class="form-control n-mb" name="perk5mod">
+                    <select id="perk5mod" class="form-control n-mb perkmod" name="perk5mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -581,7 +574,7 @@
                     </select>
                   </div>
                   <div class="col-xs-8">
-                    <p class="unlocked">Unlocked at level 10<br>
+                    <p class="unlocked"><br>Unlocked at level 10<br>
                       10d8 : 40sqft : 5 rounds</p>
                   </div>
                 </div>
@@ -599,7 +592,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk6mod">DC Mod</label>
-                    <select id="perk6mod" class="form-control n-mb" name="perk6mod">
+                    <select id="perk6mod" class="form-control n-mb perkmod" name="perk6mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -610,7 +603,7 @@
                     </select>
                   </div>
                   <div class="col-xs-8">
-                    <p class="unlocked">Unlocked at level 13<br>
+                    <p class="unlocked"><br>Unlocked at level 13<br>
                       10d10 : 60sqft : 6 rounds</p>
                   </div>
                 </div>
@@ -630,7 +623,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk7mod">DC Mod</label>
-                    <select id="perk7mod" class="form-control n-mb" name="perk7mod">
+                    <select id="perk7mod" class="form-control n-mb perkmod" name="perk7mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -641,7 +634,7 @@
                     </select>
                   </div>
                   <div class="col-xs-8">
-                    <p class="unlocked">Unlocked at level 16<br>
+                    <p class="unlocked"><br>Unlocked at level 16<br>
                       10d12 : 80sqft : 7 rounds</p>
                   </div>
                 </div>
@@ -659,7 +652,7 @@
                 <div class="row">
                   <div class="col-xs-4">
                     <label class="perkmod-label" for="perk8mod">DC Mod</label>
-                    <select id="perk8mod" class="form-control n-mb" name="perk8mod">
+                    <select id="perk8mod" class="form-control n-mb perkmod" name="perk8mod">
                       <option value="str">STR</option>
                       <option value="dex">DEX</option>
                       <option value="vit">VIT</option>
@@ -670,7 +663,7 @@
                     </select>
                   </div>
                   <div class="col-xs-8">
-                    <p class="unlocked">Unlocked at level 19<br>
+                    <p class="unlocked"><br>Unlocked at level 19<br>
                       12d12 : 100sqft : 8 rounds</p>
                   </div>
                 </div>
