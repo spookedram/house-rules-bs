@@ -114,6 +114,13 @@ section h4 {
   color: grey;
 }
 
+.anchor {
+  display: block;
+  position: relative;
+  top: -42px;
+  visibility: hidden;
+}
+
 .form-control {
   margin-bottom: 16px;
 }
