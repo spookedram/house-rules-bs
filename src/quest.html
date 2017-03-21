@@ -47,7 +47,7 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <header class="jumbotron no-print" style="background-color:#b52b77">
+    <header class="jumbotron no-print" style="background-color:#6DAEDB">
       <div class="container pull-right">
         <a href="#rng-container" type="button" class="btn btn-default" id="rng" data-toggle="collapse">Dice Sim</a>
         <div id="rng-container" class="collapse">
@@ -183,7 +183,7 @@
           <h3>Settings List</h3>
           <p class="small no-print">What are the different environments involved in this quest?</p>
           <div class="input-group no-print">
-            <input id="settingsInput" type="text" class="form-control">
+            <input id="settingsInput" type="text" class="form-control" oninput="needConfirm()">
             <span class="input-group-btn">
               <button id="settingsBtn" type="button" class="btn btn-default" onclick="addRowToList('settingsInput','settingsList'), focusedEnterBtn('settingsInput','settingsList')">
                 <span class="glyphicon glyphicon-plus"></span>
@@ -204,7 +204,7 @@
           <h3>NPC List</h3>
           <p class="small no-print">Who are some of the NPCs involved in this quest?</p>
           <div class="input-group no-print">
-            <input id="npcsInput" type="text" class="form-control">
+            <input id="npcsInput" type="text" class="form-control" oninput="needConfirm()">
             <span class="input-group-btn">
               <button id="npcsBtn" type="button" class="btn btn-default" onclick="addRowToList('npcsInput','npcsList'), focusedEnterBtn('npcsInput','npcsList')">
                 <span class="glyphicon glyphicon-plus"></span>
