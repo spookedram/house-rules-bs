@@ -606,3 +606,27 @@ function togglePerDay(chk) {
   }
 }
 togglePerDay(false);
+
+function changeSamples(obj) {
+  var wpn1SampleBtn = document.getElementById("wpn1SampleBtn");
+
+  switch(obj.value) {
+    case "Small (d4)":
+      wpn1SampleBtn.dataset.target = "#smallWpns1";
+      break;
+    case "Ranged (d6)":
+      wpn1SampleBtn.dataset.target = "#rangedWpns1";
+      break;
+    case "Medium (d8)":
+      wpn1SampleBtn.dataset.target = "#medWpns1";
+      break;
+    case "Large (d10)":
+      wpn1SampleBtn.dataset.target = "#largeWpns1";
+      break;
+    case "Shield (AC +1)":
+      wpn1SampleBtn.dataset.target = "#shields1";
+      break;
+    default:
+      break;
+  }
+}

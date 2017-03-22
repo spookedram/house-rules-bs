@@ -310,14 +310,96 @@
               </div>
               <div class="panel-body">
                 <p id="wpn1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <div class="text-right">
-                  <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm()">
-                    <option value="Small (d4)">Small (d4)</option>
-                    <option value="Ranged (d6)">Ranged (d6)</option>
-                    <option value="Medium (d8)" selected>Medium (d8)</option>
-                    <option value="Large (d10)">Large (d10)</option>
-                    <option value="Shield (AC +1)">Shield (AC +1)</option>
-                  </select>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <button id="wpn1SampleBtn" class="btn btn-default" type="button" aria-expanded="false" aria-controls="collapseExample" data-toggle="collapse" data-target="#medWpns1"> <!-- required DATA API -->
+                    Samples
+                  </button>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm(), changeSamples(this)">
+                      <option value="Small (d4)">Small (d4)</option>
+                      <option value="Ranged (d6)">Ranged (d6)</option>
+                      <option value="Medium (d8)" selected>Medium (d8)</option>
+                      <option value="Large (d10)">Large (d10)</option>
+                      <option value="Shield (AC +1)">Shield (AC +1)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div id="smallWpns1" class="collapse">
+                  <table class="table n-mb" style="margin-top: 15px;">
+                    <tbody>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Dagger</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Wand</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div id="rangedWpns1" class="collapse">
+                  <table class="table n-mb" style="margin-top: 15px;">
+                    <tbody>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Bow</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Gun</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div id="medWpns1" class="collapse">
+                  <table class="table n-mb" style="margin-top: 15px;">
+                    <tbody>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Sword</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Cane</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div id="largeWpns1" class="collapse">
+                  <table class="table n-mb" style="margin-top: 15px;">
+                    <tbody>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Longsword</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Staff</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div id="shields1" class="collapse">
+                  <table class="table n-mb" style="margin-top: 15px;">
+                    <tbody>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Buckler</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                      <tr>
+                        <td style="padding-left:0; vertical-align:middle;">Kite Shield</td>
+                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
