@@ -310,96 +310,14 @@
               </div>
               <div class="panel-body">
                 <p id="wpn1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <div class="row">
-                  <div class="col-xs-6">
-                    <button id="wpn1SampleBtn" class="btn btn-default" type="button" aria-expanded="false" aria-controls="collapseExample" data-toggle="collapse" data-target="#medWpns1"> <!-- required DATA API -->
-                    Samples
-                  </button>
-                  </div>
-                  <div class="col-xs-6 text-right">
-                    <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm(), changeSamples(this)">
-                      <option value="Small (d4)">Small (d4)</option>
-                      <option value="Ranged (d6)">Ranged (d6)</option>
-                      <option value="Medium (d8)" selected>Medium (d8)</option>
-                      <option value="Large (d10)">Large (d10)</option>
-                      <option value="Shield (AC +1)">Shield (AC +1)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div id="smallWpns1" class="collapse">
-                  <table class="table n-mb" style="margin-top: 15px;">
-                    <tbody>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Dagger</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Wand</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div id="rangedWpns1" class="collapse">
-                  <table class="table n-mb" style="margin-top: 15px;">
-                    <tbody>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Bow</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Gun</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div id="medWpns1" class="collapse">
-                  <table class="table n-mb" style="margin-top: 15px;">
-                    <tbody>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Sword</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Cane</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div id="largeWpns1" class="collapse">
-                  <table class="table n-mb" style="margin-top: 15px;">
-                    <tbody>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Longsword</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Staff</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div id="shields1" class="collapse">
-                  <table class="table n-mb" style="margin-top: 15px;">
-                    <tbody>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Buckler</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                      <tr>
-                        <td style="padding-left:0; vertical-align:middle;">Kite Shield</td>
-                        <td style="padding-right:0;"><button type="button" class="pull-right btn btn-default">Load</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="text-right">
+                  <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm()">
+                    <option value="Small (d4)">Small (d4)</option>
+                    <option value="Ranged (d6)">Ranged (d6)</option>
+                    <option value="Medium (d8)" selected>Medium (d8)</option>
+                    <option value="Large (d10)">Large (d10)</option>
+                    <option value="Shield (AC +1)">Shield (AC +1)</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -694,63 +612,151 @@
 
         <div class="row">
           <div class="col-sm-6">
-            <div class="panel panel-default">
+            <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="perk7name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-              </div>
-              <div class="panel-body">
-                <p id="perk7desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-4">
-                    <label class="perkmod-label" for="perk7mod">DC Mod</label>
-                    <select id="perk7mod" class="form-control n-mb perkmod" name="perk7mod">
-                      <option value="str">STR</option>
-                      <option value="dex">DEX</option>
-                      <option value="vit">VIT</option>
-                      <option value="int">INT</option>
-                      <option value="wis">WIS</option>
-                      <option value="cha">CHA</option>
-                      <option value="per">PER</option>
-                    </select>
-                  </div>
                   <div class="col-xs-8">
-                    <p class="unlocked"><br>Unlocked at level 16<br>
-                    <span class="small">10d12 : 80ft : 7 points</span></p>
+                    <h4 id="perk7name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                  </div>
+                  <div class="col-xs-4">
+                    <a href="#perk7help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+              <div class="panel-body">
+                <p id="perk7desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
+
+                <p class="unlocked n-mb">Unlocked at level 16</p>
+              </div>
+              <div id="perk7help" class="collapse">
+                <div class="panel-footer no-print">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="">Type</label>
+                      <select id="perk7type" class="form-control" name="perk7type">
+                        <option value="">-</option>
+                        <option value="10d12 damage">Damage</option>
+                        <option value="10d12 HP">Healing</option>
+                        <option value="add 7">Buff</option>
+                        <option value="remove 7">Debuff</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="perkmod-label" for="perk7aoe">AoE?</label>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <p><input type="radio" name="perk7aoe" value="no" checked> No</p>
+                        </div>
+                        <div class="col-xs-6">
+                          <p><input type="radio" name="perk7aoe" value="yes"> Yes</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="perkmod-label" for="perk7mod">DC Mod</label>
+                      <select id="perk7mod" class="form-control" name="perk7mod">
+                        <option value="">-</option>
+                        <option value="str">STR</option>
+                        <option value="dex">DEX</option>
+                        <option value="vit">VIT</option>
+                        <option value="int">INT</option>
+                        <option value="wis">WIS</option>
+                        <option value="cha">CHA</option>
+                        <option value="per">PER</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="perkmod-label" for="perk7st">Save</label>
+                      <select id="perk7st" class="form-control" name="perk7st">
+                        <option value="">-</option>
+                        <option value="str">STR</option>
+                        <option value="dex">DEX</option>
+                        <option value="vit">VIT</option>
+                        <option value="int">INT</option>
+                        <option value="wis">WIS</option>
+                        <option value="cha">CHA</option>
+                        <option value="per">PER</option>
+                      </select>
+                    </div>
+                  </div>
+                </div><!-- /.panel-footer -->
+              </div><!-- /perk7help -->
+            </div><!-- /.panel -->
+          </div><!-- /.col-sm-6 -->
 
           <div class="col-sm-6">
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="perk8name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-              </div>
-              <div class="panel-body">
-                <p id="perk8desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
                 <div class="row">
-                  <div class="col-xs-4">
-                    <label class="perkmod-label" for="perk8mod">DC Mod</label>
-                    <select id="perk8mod" class="form-control n-mb perkmod" name="perk8mod">
-                      <option value="str">STR</option>
-                      <option value="dex">DEX</option>
-                      <option value="vit">VIT</option>
-                      <option value="int">INT</option>
-                      <option value="wis">WIS</option>
-                      <option value="cha">CHA</option>
-                      <option value="per">PER</option>
-                    </select>
-                  </div>
                   <div class="col-xs-8">
-                    <p class="unlocked"><br>Unlocked at level 19<br>
-                    <span class="small">12d12 : 100ft : 8 points</span></p>
+                    <h4 id="perk8name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                  </div>
+                  <div class="col-xs-4">
+                    <a href="#perk8help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+              <div class="panel-body">
+                <p id="perk8desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
+
+                <p class="unlocked n-mb">Unlocked at level 19</p>
+              </div>
+              <div id="perk8help" class="collapse">
+                <div class="panel-footer no-print">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <label for="">Type</label>
+                      <select id="perk8type" class="form-control" name="perk8type">
+                        <option value="">-</option>
+                        <option value="12d12 damage">Damage</option>
+                        <option value="12d12 HP">Healing</option>
+                        <option value="add 8">Buff</option>
+                        <option value="remove 8">Debuff</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="perkmod-label" for="perk8aoe">AoE?</label>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <p><input type="radio" name="perk8aoe" value="no" checked> No</p>
+                        </div>
+                        <div class="col-xs-6">
+                          <p><input type="radio" name="perk8aoe" value="yes"> Yes</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="perkmod-label" for="perk8mod">DC Mod</label>
+                      <select id="perk8mod" class="form-control" name="perk8mod">
+                        <option value="">-</option>
+                        <option value="str">STR</option>
+                        <option value="dex">DEX</option>
+                        <option value="vit">VIT</option>
+                        <option value="int">INT</option>
+                        <option value="wis">WIS</option>
+                        <option value="cha">CHA</option>
+                        <option value="per">PER</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="perkmod-label" for="perk8st">Save</label>
+                      <select id="perk8st" class="form-control" name="perk8st">
+                        <option value="">-</option>
+                        <option value="str">STR</option>
+                        <option value="dex">DEX</option>
+                        <option value="vit">VIT</option>
+                        <option value="int">INT</option>
+                        <option value="wis">WIS</option>
+                        <option value="cha">CHA</option>
+                        <option value="per">PER</option>
+                      </select>
+                    </div>
+                  </div>
+                </div><!-- /.panel-footer -->
+              </div><!-- /perk8help -->
+            </div><!-- /.panel -->
+          </div><!-- /.col-sm-6 -->
+        </div><!-- /.row -->
       </section>
 
       <div id="perDay">
