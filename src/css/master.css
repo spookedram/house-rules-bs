@@ -67,15 +67,15 @@ p {
   text-align: justify;
 }
 
-label {
+/*label {
   margin-top: 16px;
 }
-/* Small devices (tablets, 768px and up) */
+/* Small devices (tablets, 768px and up)
 @media (min-width: 768px) {
   label {
     margin-top: 0;
   }
-}
+}*/
 
 footer {
   position: absolute;
@@ -421,6 +421,11 @@ section h4 {
   }
   .show-print {
     display: block;
+  }
+  .col-print-4 {
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 33.33333333%;
   }
   .pba {
     page-break-after: always;

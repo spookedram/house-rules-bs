@@ -140,12 +140,11 @@
                     <li><a href="#theme">Writing Quests</a></li>
                     <li><a href="#settings">Settings</a></li>
                     <li><a href="#npcs">NPCs</a></li>
+                    <li><a href="#setup">Setup</a></li>
+                    <li><a href="#goal">The Goal</a></li>
                     <li><a href="#rAndP">Rhythm and Pacing</a></li>
-                    <li><a href="#act1">Act One</a></li>
-                    <li><a href="#act2">Act Two</a></li>
-                    <li><a href="#act3">Act Three</a></li>
-                    <li><a href="#act4">Act Four</a></li>
-                    <li><a href="#transition">Transition</a></li>
+                    <li><a href="#cliffhangers">Cliffhangers</a></li>
+                    <li><a href="#transitions">Transitions</a></li>
                   </ol>
                 </div>
               </div>
@@ -1082,30 +1081,15 @@
           <!-- Tab pane 4 -->
           <div class="tab-pane" id="quests" style="display:none;">
             <h2>Quests</h2>
-            <h3>Sample Quests</h3>
-            <p>There are several example quests on the Quest Save/Load panel that you can use as a starting point. Simply click the Save/Load button, select the example quest you want to view from the dropdown list, and click the load button! Then you can tweak the quest to fit your needs or simply use it to gain a better understanding of what to write in each box.</p>
+            <p class="well"><b>Sample Quests:</b> There are several example quests on the Quest Save/Load panel that you can read to understand how the quest writing tool. Simply click the Save/Load button, select the example quest you want to view from the dropdown list, and click the load button!</p>
 
             <span id="theme" class="anchor"></span>
             <h3>Writing Quests</h3>
-            <p>The Game Master is, for all intents and purposes, the lead storyteller. They set up the world, the non-player characters, and the events that the Players will trigger by traversing through, and interacting with, the setting. To be an effective Game Master you must know how to set up compelling scenes, puzzles, and encounters for your party and become an actor, breathing life into every NPC (hostile or otherwise) that the Players come across. It's a tough job, but it can be incredibly rewarding.</p>
+            <p>The Game Master is, for all intents and purposes, the lead storyteller. They describe the world, the non-player characters, and the events that the Players will trigger by traversing through, and interacting with, the setting. To be an effective Game Master, you must know how to set up compelling scenes, obstacles, and conflicts for your party and become an actor, breathing life into every NPC (hostile or otherwise) that the Players come across. It's a tough job, but it can be incredibly rewarding.</p>
 
             <h4>Theme</h4>
-            <p>The key to writing a story with depth is to start with a solid theme. A theme is the core idea of the story, what the whole quest will revolve around. In story writing, the theme is the author's argument; it's a core issue that is being viewed through many lenses and perspectives. But at the end, theme also takes a side in the argument, it is the moral of the story. Think of a specific emotion or issue you want to explore, but try to keep it simple and strong. Some examples of themes include:</p>
-            <ul>
-              <li>There are no rules in love</li>
-              <li>Immortality carries a cost</li>
-              <li>In extreme circumstances, stealing is ethical</li>
-              <li>Nature is careless and dangerous</li>
-              <li>Peace means nothing without justice</li>
-            </ul>
-            <p>These are all arguments, but you could just as easily write quests around the opposites of those ideas. Pick an issue, take a side. Once you have a theme in mind you can start to think about ways to explore the different aspects of it: twist it around and find new perspectives on it and build some scenarios from the results. If you're having trouble coming up with one or you're not sure if what you have is a theme, ask these three questions:</p>
-            <ol>
-              <li>What is this quest about?</li>
-              <li>Why do I want to run this quest?</li>
-              <li>Will my Players care about this quest?</li>
-            </ol>
-            <p class="well"><b>Note:</b> The theme is best used with subtlety; it's not something you're going to announce or talk about with your Players until after the quest is completed. Also understand that the issue you're taking a side on might conflict with one of your Player's beliefs, but this is also an opportunity to engage in discussion and learn about each other.</p>
-            <p>If you'd rather stay away from debating or you just want something easy, you can pick something from this list instead:</p>
+            <p>Before you start designing combat scenarios and setting details, you should take some time to think about what kind of story you want to tell. If you're really interested in storytelling, do a little research on <a href="http://www.novel-writing-help.com/what-is-theme.html">themes</a>, specifically what they are and why they are important to narrative. If that's more work than you're willing to do, you can click or tap the "36 Plot Starters" button below for a list of starting points.</p>
+
             <a href="#plots" class="btn btn-default" data-toggle="collapse">36 Plot Starters</a>
             <div id="plots" class="collapse">
               <h4>Plot Starters</h4>
@@ -1173,88 +1157,57 @@
                 <p>STR +1 / DEX +1 / CHA -2<br>
                   HP 23 / AC 12 / DMG 2d8<br>
                   <b>Perks</b><br>
-                  <i>Lick Wounds:</i> 3d8 HP healing<br>
-                  <i>Cutpurse:</i> DC 14 DEX to steal 100g from target.</p>
+                  <i>Lick Wounds:</i> +3d8 HP to self<br>
+                  <i>Cutpurse:</i> DEX DC to steal 100g from target</p>
               </div>
               <div class="col-sm-6">
                 <h4>Level 14 Nightstalker</h4>
                 <p>STR +3 / DEX +1 / VIT +3 / INT -2<br>
                   HP 117 / AC 10 / DMG 5d4<br>
                   <b>Perks</b><br>
-                  <i>Rend Flesh:</i> 10d8 DMG<br>
-                  <i>Vanish:</i> 6 round/DC 17 PER<br>
+                  <i>Rend Flesh:</i> -10d8 HP to target<br>
+                  <i>Vanish:</i> DEX DC undetected 6 rounds<br>
               </div>
             </div>
             <p class="well"><b>Note:</b> When designing perks for enemies, use perks closer to their level. You can decide to include a description if the name doesn't describe the effects well enough.</p>
 
             <hr>
 
-            <span id="rAndP" class="anchor"></span>
-            <h3>Rhythm and Pacing</h3>
-            <p>An engaging story has everything to do with <b>pacing</b>. Knowing when and how to raise the stakes and release the tension to let your Players breathe is crucial to creating a satisfying experience. Too much tension for too long and your Players will go numb waiting for a break. Not enough and your story is boring. Oscillating between moments of action and moments of rest gives your Players time to process and regroup, to get perspective and put the stakes into proper context. The quest writing tool can help you pace out events in your quest to maintain a good rhythm of <b>highs and lows.</b></p>
-
-            <hr>
+            <span id="setup" class="anchor"></span>
             <h3>Setup</h3>
             <p>Sometimes a quest needs a little narration up front to set the scene, introduce some NPCs, and ease the Players into the world and put the quest into perspective. Not every quest will require this level of easing though, some will start off with a bang! If that's the case, skip the setup and jump straight into setting the goal.</p>
 
             <hr>
 
-            <span id="act1" class="anchor"></span>
-            <h3>Act One</h3>
-            <h4>High - Goal Set</h4>
-            <p>Every quest has an <b>end goal</b>. Whether or not the climax and resolution have anything to do with the original goal is irrelevant, what matters is that the party starts their quest with a <b>specific purpose</b>. This is a one-sentence call to action that sums up the reason the party is taking action. Are they after a large amount of treasure? Have they been contracted to stop a group of kidnappers? Maybe they must prove their innocence after being falsely (or rightly) accused of murder. Whatever it is, your Players must be given a <i>clear goal</i> to strive towards. Keep the theme in mind when writing the goal.</p>
-
-            <h4>Low - Wandering</h4>
-            <p>For the first real stretch of the story, the Players should be in charge. They'll be the ones deciding where to go and who to talk to, and the Game Master will be reacting by giving out small hints and subtly guiding them towards the first encounter, the first peak in tension, that will hopefully remind them of the cost of failure.</p>
+            <span id="goal" class="anchor"></span>
+            <h3>The Goal</h3>
+            <p>Every quest starts with a <b>goal</b>. Whether or not the climax and resolution have anything to do with the original goal is irrelevant, what matters is that the party starts their quest with a <i>specific purpose</i>. This is a one-sentence call-to-action that sums up the reason the characters are taking part in the quest. Are they after a large amount of treasure? Have they been contracted to stop a group of kidnappers? Maybe they must prove their innocence after being falsely (or rightly) accused of murder. Whatever it is, your Players must be given a <i>clear goal</i> to strive towards. Keep the theme in mind when writing the goal.</p>
 
             <hr>
 
-            <span id="act2" class="anchor"></span>
-            <h3>Act Two</h3>
-            <h4>High - Fun Fight</h4>
-            <p>The first true encounter of the story should be a chance for Players to stretch their role playing muscles. It must be higher tension than a simple investigation or traversal, but it should also be less of a challenge than what's to come. Your Players want to feel powerful, they want to use the new skills and weapons at their disposal, and this first encounter should satisfy that desire.</p>
+            <span id="rAndP" class="anchor"></span>
+            <h3>Rhythm and Pacing</h3>
+            <p>An engaging story has everything to do with <b>pacing</b>. Knowing when and how to raise the stakes and release the tension to let your Players breathe is crucial to creating a satisfying experience. Too much tension for too long and your Players will go numb waiting for a break. Not enough and your story is boring. Oscillating between moments of action and moments of rest gives your Players time to process and regroup, to get perspective and put the stakes into proper context. The quest writing tool can help you pace out events in your quest to maintain a good <b>rhythm of highs and lows</b> by breaking the quest down into individual acts.</p>
 
-            <p class="well"><b>Combat:</b> Stick to enemies lower than your party's level. Consider multiples and make it fun by adding in an interesting element; maybe they're fighting in sinking sand or they have to finish in a certain number of rounds before the police arrive.</p>
+            <h4>High Points</h4>
+            <p>Acts start on a <b>high point</b>, the scenes where the characters encounter obstacles on their quest. These are the high-tension scenes in the quest, and can take many forms. Some examples of high points are puzzles, hunts, races, sports, and of course, <b>combat</b>. It's important to note that, in storytelling, violence happens when someone has no other method by which to overcome an obstacle. Game Masters, don't force your Players into combat! Just present <b>moments of conflict</b> and if they would like to resolve it peacefully, give them a chance to make some charisma difficulty checks, or even just talk it out. <i>Not every encounter has to be a bloodbath.</i></p>
 
-            <h4>Low - The Twist</h4>
-            <p>Something about the quest is wrong. Somebody is lying, something else is brewing, and the initial threat is much more powerful or complicated than what was first thought. The twist is the moment where the Players realize that <b>the goal isn't quite what they thought it was</b>. Lead them into the twist or reveal it in a moment of instant revelation, but don't give away the whole secret just yet.</p>
-
-            <hr>
-
-            <span id="act3" class="anchor"></span>
-            <h3>Act Three</h3>
-            <h4>High - The Challenge</h4>
-            <p>This encounter should be a real test of the Player’s combat and problem solving skills. It's a heightened reminder of the cost of failure but it's also a reminder that the characters have still come far. Make it difficult, make it hurt, but make sure that the characters will come out the other end stronger, or at least more cautious, than they were when they started.</p>
-
-            <p class="well"><b>Combat:</b> Try some enemies on an equal level to your Player's characters. You can make it interesting with a chase sequence or some environmental obstacles.</p>
-
-            <h4>Low - The Search Ends</h4>
-            <p>This is the turning point, the beginning of the end. The characters have been stumbling around after the test and are collecting the last few clues they need to unravel the mystery. This event is <b>the big reveal</b>. Lead them right to the edge and drop the truth bomb, lure them in and then force them right into the last stretch running.</p>
+            <h4>Low Points</h4>
+            <p>After ever high point, whether there was combat or not, you should let your Players have some time to wander and dwell on what just happened. These are called <b>low points</b>; let the tension of the obstacle release and start to slowly build up tp the next high point with story clues, investigation, character interactions, etc. Let the Players plan, discuss, search, make allies, and gear up for the next obstacle. The low points are also where you'll include important narrative elements, plot twists, transitions, etc. Every quest should end on a low point and have an <b>epilogue</b>, so the Players can take some time to wrap things up.</p>
 
             <hr>
 
-            <span id="act4" class="anchor"></span>
-            <h3>Act Four</h3>
-            <h4>High - The Climax</h4>
-            <p>The final battle, the last encounter of the quest. This will be <i>the most difficult challenge for the Players yet</i>, it will test their skills and push them to the limit. The risk is the highest it's been, but the payoff is huge. This is the time to pull out all the stops.<p>
-
-            <p class="well"><b>Combat:</b> It's the final battle; at least 1 enemy should be a few levels higher than your Player's characters. Add some minions or dangerous (but not all-powerful) perks.</p>
-
-            <h4>Low - Epilogue</h4>
-            <p>With the threat subdued and the quest at its end, this last little lull is for the characters to collect their spoils, say their goodbyes, level up, and rest before the next quest begins. Give them time to <b>wrap up the story</b> and put a bow on it, time to feel the satisfaction of the win or to let the grief and loss from the quest settle in, or both.<p>
+            <span id="cliffhangers" class="anchor"></span>
+            <h3>Cliffhangers</h3>
+            <p>With the quest at its end you may wish to give your Players a <i>taste of what's brewing on the horizon</i>, which you can include in the form of an optional <b>cliffhanger</b>. Give them just enough of a morsel to get them excited for the next session.<p>
 
             <hr>
 
-            <h3>Cliffhanger (Optional)</h3>
-            <p>With the quest at its end you may wish to give your Players a <i>taste of what's brewing on the horizon</i>, which you can include in the form of a <b>cliffhanger</b>. Give them just enough of a morsel to get them excited for the next session.<p>
+            <span id="transitions" class="anchor"></span>
+            <h3>Transitions</h3>
+            <p>Sometimes you may want to take a session to <b>regroup</b> and give your Players a rest themselves. It helps to think of sessions as high points, once in awhile you need to let your party breathe and adjust their course. Think of these as <b>transitions</b> between story arcs. Give your Players <b>low-risk interactions</b> and provide moments where they can dig deeper into their characters thoughts and feelings, moments to build their characters into more complete creations.</p>
 
-            <hr>
-
-            <span id="transition" class="anchor"></span>
-            <h3>Transition</h3>
-            <p>Sometimes you may want to take a session to regroup and give your Players a rest themselves. It helps to think of sessions as high points, once in awhile you need to let them breathe and adjust their course. Give them low-risk interactions and provide moments where they can dig deeper into their characters thoughts and feelings, moments to build their characters into more complete forms.</p>
-
-            <p>For example, you can give your characters time to visit past victories, take a trip home to see their family, or to reflect on their losses. Let it be a reminder of why they’re going on these quests. This can also be a good place to <b>switch out party members</b>; you can give their character a peaceful, satisfying ending rather than just letting them vanish out of thin air.</p>
+            <p>For example, you can give your characters time to <b>visit past victories</b>, take a trip home to see their <b>family</b>, or to reflect on their <b>losses</b>. This can also be a good place to <b>switch out party members</b>; you can give their character a peaceful, satisfying ending rather than just letting them vanish out of thin air.</p>
           </div>
 
           <!-- Tab pane 5 -->

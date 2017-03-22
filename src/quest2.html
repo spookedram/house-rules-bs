@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>House Rules RPG - Quest</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Roboto+Slab" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/odometer/odometer-theme-minimal.css">
+    <link rel="stylesheet" href="css/master.css" type="text/css" />
+
+
+    <script src="https://cdn.jsdelivr.net/bootstrap.native/2.0.6/polyfill.min.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse n-mb no-print">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">House Rules RPG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="rules.html">Rules</a></li>
+            <li><a href="character.html">Character</a></li>
+            <li><a href="quest.html">Quest</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <header class="jumbotron no-print" style="background-color:#2D3142">
+      <div class="container pull-right">
+        <a href="#rng-container" type="button" class="btn btn-default" id="rng" data-toggle="collapse">Dice Sim</a>
+        <div id="rng-container" class="collapse">
+          <div id="rng-panel">
+            <div class="row">
+              <div class="col-xs-8">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <input type="radio" name="roller" value="0" onchange="setDice()" checked>
+                    <p class="rng-label">1d20</p>
+                  </div>
+                  <div class="col-xs-12">
+                    <input id="otherOption" type="radio" name="roller" value="1" onchange="setDice()">
+                    <p class="rng-label">Other</p>
+                  </div>
+
+                  <div id="customRoll" class="col-xs-12">
+                    <input id="roll-amt" type="number" class="form-control" name="diceAmount" value="1" min="1" max="20">
+                    <h5>d</h5>
+                    <select id="roll-sides" class="form-control">
+                      <option value="4">4</option>
+                      <option value="6">6</option>
+                      <option value="8">8</option>
+                      <option value="10">10</option>
+                      <option value="12">12</option>
+                      <option value="20" selected>20</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-4 text-center">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="text-center">Result</p>
+                  </div>
+                  <div class="col-xs-12">
+                    <h3 id="roll-result" class="odometer">0</h3>
+                  </div>
+                  <div class="col-xs-12">
+                    <button type="button" class="btn btn-default" id="roll-btn" onclick="startRoll()">Roll</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /row -->
+          </div><!-- /rng-panel -->
+        </div><!-- /rng-container -->
+      </div>
+
+      <h1 class="text-center">Quest Creator</h1>
+    </header>
+
+    <article id="mainContainer" class="container">
+      <p class="lead text-center no-print"><i>"Be unpredictable, be real, be interesting. Tell a good story." - James Dashner</i></p>
+
+      <button id="backToTop" type="button" class="btn btn-default" onclick="runScroll()"><b>Back to Top</b></button>
+
+      <div class="row no-print">
+        <div class="col-xs-9">
+          <div class="btn-group">
+              <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal()">Save/Load</button>
+          </div>
+        </div>
+        <div class="col-xs-3 text-right">
+          <button id="print-btn" type="button" class="btn btn-default" aria-label="Print" onclick="print()">
+            <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal fade" tabindex="-1" id="saveLoadModal" role="dialog" aria-labelledby="Save and Load Modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Save or Load</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <th>Name</th>
+                  <th class="text-right">Action</th>
+                </thead>
+                <tbody id="loadTable">
+                  <tr>
+                    <td>Empty Slot</td>
+                    <td class="text-right"><button type="button" class="btn btn-default" onclick="saveQuest(), needToConfirm = false;">Save</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div id="fullAlert" class="alert alert-danger" style="display:none;">
+                <p>Your storage is full or your browser has denied access to storing local data! Please delete some quests, clear your localStorage, or change your browser settings to save this quest.</p>
+                <div class="text-right" style="margin-top:16px;">
+                  <button type="button" name="button" class="btn btsharedUtilsrimary" onclick="showAlert('fullAlert', false)">Ok</button>
+                </div>
+              </div>
+              <div id="clearAlert" class="alert alert-danger" style="display:none;">
+                <p class="text-center">This will clear all your saved quests, are you sure?</p>
+                <div class="text-center" style="margin-top:16px;">
+                  <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showAlert('clearAlert', false)">Yes</button>
+                  <button type="button" name="button" class="btn btn-primary" onclick="showAlert('clearAlert', false)">Cancel</button>
+                </div>
+              </div>
+
+              <div style="margin: 0 auto;max-width: 268px;">
+                <h4>Sample Quests</h4>
+                <div class="input-group">
+                  <select id="sampleQuestList" class="form-control">
+                    <option value="0">Custom</option>
+                    <option disabled="true">FANTASY</option>
+                    <option value="1">Runaway Mimic!</option>
+                    <option value="2">Search the Deep</option>
+                  </select>
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" onclick="hideModal(), loadSample(document.getElementById('sampleQuestList').value)">Load</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button id="clearList" type="button" class="btn btn-danger pull-left" name="button" onclick="showAlert('clearAlert', true)">Clear List</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+      <h3>Quest Name</h3>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3 id="questName" class="enter-name n-mb" contenteditable="true" oninput="needConfirm()" style="margin:0;"></h3>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>Setup</h3>
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Prologue</h4>
+          <p class="small no-print">What do the Players need to know before the goal?</p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="prologue" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h4>Goal</h4>
+          <p class="small no-print">What's the goal at the beginning of the quest?</p>
+          <div class="panel panel-default n-mb">
+            <div class="panel-body">
+              <p id="goal" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <table class="no-print" style="margin-bottom:15px; width:100%;">
+        <tbody>
+          <tr>
+            <td><h3 class="no-print" style="margin:0;">Add an Enemy</h3></td>
+            <td><a href="#enemyCreator" class="btn btn-default pull-right" data-toggle="collapse">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="enemyCreator" class="collapse">
+        <div class="row no-print">
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-xs-8" style="padding-right:0;">
+                <label for="">Name</label>
+                <input type="text" name="" class="form-control">
+              </div>
+              <div class="col-xs-4">
+                <label for="">Amt</label>
+                <input type="number" name="" class="form-control text-center" value="1" min="1" max="20">
+              </div>
+
+              <div class="col-xs-3">
+                <label for="">Level</label>
+                <input type="number" name="" class="form-control text-center" value="1" min="1" max="20">
+              </div>
+              <div class="col-xs-3">
+                <label for="">HP</label>
+                <input type="number" name="" class="form-control text-center" value="10" min="1" max="999">
+              </div>
+              <div class="col-xs-6 text-right">
+                <label for="">&#160;</label>
+                <button type="button" class="btn btn-primary form-control">Update HP</button>
+              </div>
+
+              <div class="col-xs-12">
+                <table class="table n-mb">
+      						<thead class="center-children">
+      							<th>STR</th>
+      							<th>DEX</th>
+      							<th>VIT</th>
+      							<th>INT</th>
+      							<th>WIS</th>
+      							<th>CHA</th>
+                    <th>PER</th>
+      						</thead>
+      						<tbody>
+                    <tr>
+      								<td><input id="strength" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'strLabel'), updateMods(this,'strMod'), setTotal(), needConfirm()"></td>
+      								<td><input id="dexterity" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'dexLabel'), updateMods(this,'dexMod'), setTotal(), needConfirm()"></td>
+      								<td><input id="vitality" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'vitLabel'), updateMods(this,'vitMod'), setTotal(), updateHP(), needConfirm()"></td>
+                      <td><input id="intelligence" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'intLabel'), updateMods(this,'intMod'), setTotal(), needConfirm()"></td>
+      								<td><input id="wisdom" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'wisLabel'), updateMods(this,'wisMod'), setTotal(), needConfirm()"></td>
+      								<td><input id="charisma" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'chaLabel'), updateMods(this,'chaMod'), setTotal(), needConfirm()"></td>
+                      <td><input id="perception" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'perLabel'), updateMods(this,'perMod'), setTotal(), needConfirm()"></td>
+      							</tr>
+      							<tr class="text-center">
+      								<td class="strMod">0</td>
+      								<td class="dexMod">0</td>
+      								<td class="vitMod">0</td>
+      								<td class="intMod">0</td>
+      								<td class="wisMod">0</td>
+      								<td class="chaMod">0</td>
+                      <td class="perMod">0</td>
+      							</tr>
+      						</tbody>
+      					</table>
+                <div class="row">
+                  <div class="col-xs-6 text-left">
+                    <button id="randomAS" type="button" class="btn btn-default" onclick="randomizeAbilityScores(), setTotal(), needConfirm()">Randomize</button>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="pull-right">
+                      <p class="n-mb"><b>Total Points:</b> <span id="totalPoints">70</span></p>
+                      <p><b>Points Left:</b> <span id="pointsLeft">0</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="">Damage</label>
+                <select id="" class="form-control pull-right">
+                  <option value="Small (d4)">Small (d4)</option>
+                  <option value="Ranged (d6)">Ranged (d6)</option>
+                  <option value="Medium (d8)" selected>Medium (d8)</option>
+                  <option value="Large (d10)">Large (d10)</option>
+                </select>
+              </div>
+              <div class="col-xs-6">
+                <label for="">Armor Class</label>
+                <select id="" class="form-control pull-right">
+                  <option value="None (AC 10)">None (AC 10)</option>
+                  <option value="Light (AC 12)">Light (AC 12)</option>
+                  <option value="Medium (AC 14)">Medium (AC 14)</option>
+                  <option value="Heavy (AC 16)">Heavy (AC 16)</option>
+                </select>
+              </div>
+              <div class="col-xs-12">
+                <label for="">Perk 1</label>
+                <input type="text" name="" class="form-control">
+              </div>
+              <div class="col-xs-12">
+                <label for="">Perk 2</label>
+                <input type="text" name="" class="form-control">
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <label for="">Notes</label>
+                <input type="text" name="" class="form-control n-mb" placeholder="Quest items, shield, etc.">
+              </div>
+              <div class="col-xs-12 col-sm-6 text-right">
+                <label for="">&#160;</label>
+                <button type="button" class="btn btn-success form-control n-mb">Add Enemy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>Enemy List</h3>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-print-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 style="margin:8px auto">Level 4 Hobgoblin</h4>
+            </div>
+            <div class="panel-body">
+              <p>STR +1 / DEX +1 / CHA -2<br>
+                HP 23 / AC 12 / DMG 2d8<br>
+                <b>Perks</b><br>
+                <i>Lick Wounds:</i> +3d8 HP to self<br>
+                <i>Cutpurse:</i> DEX DC to steal 100g from target</p>
+            </div>
+            <div class="panel-footer no-print">
+              <div class="row">
+                <div class="col-xs-6">
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="col-xs-6 text-right">
+                  <button type="button" class="btn btn-success">Edit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-print-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 style="margin:8px auto">Level 4 Hobgoblin</h4>
+            </div>
+            <div class="panel-body">
+              <p>STR +1 / DEX +1 / CHA -2<br>
+                HP 23 / AC 12 / DMG 2d8<br>
+                <b>Perks</b><br>
+                <i>Lick Wounds:</i> +3d8 HP to self<br>
+                <i>Cutpurse:</i> DEX DC to steal 100g from target</p>
+            </div>
+            <div class="panel-footer no-print">
+              <div class="row">
+                <div class="col-xs-6">
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="col-xs-6 text-right">
+                  <button type="button" class="btn btn-success">Edit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-print-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 style="margin:8px auto">Level 4 Hobgoblin</h4>
+            </div>
+            <div class="panel-body">
+              <p>STR +1 / DEX +1 / CHA -2<br>
+                HP 23 / AC 12 / DMG 2d8<br>
+                <b>Perks</b><br>
+                <i>Lick Wounds:</i> +3d8 HP to self<br>
+                <i>Cutpurse:</i> DEX DC to steal 100g from target</p>
+            </div>
+            <div class="panel-footer no-print">
+              <div class="row">
+                <div class="col-xs-6">
+                  <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="col-xs-6 text-right">
+                  <button type="button" class="btn btn-success">Edit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="no-print">
+
+      <table class="no-print" style="margin-bottom:15px; width:100%;">
+        <tbody>
+          <tr>
+            <td><h3 class="no-print" style="margin:0;">Add an Act</h3></td>
+            <td><a href="#actCreator" class="btn btn-default pull-right" data-toggle="collapse">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="actCreator" class="collapse">
+        <div class="no-print">
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="">Low Point</label>
+              <p class="small">What info can the Players find out?</p>
+              <textarea name="name" rows="5" class="form-control"></textarea>
+            </div>
+            <div class="col-sm-6">
+              <label for="">High Point</label>
+              <p class="small">What's the conflict or obstacle of this act?</p>
+              <textarea name="name" rows="5" class="form-control"></textarea>
+            </div>
+            <div class="col-xs-12 text-right">
+              <button type="button" class="btn btn-success">Add Act</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>Acts</h3>
+      <div id="actsList">
+        <div class="panel panel-default no-print">
+          <div class="panel-heading">
+            <h4 style="margin:8px auto">Act 1</h4>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Low Point</b>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+              <div class="col-sm-6">
+                <b>High Point</b>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-xs-6">
+                <button type="button" class="btn btn-danger">Delete</button>
+              </div>
+              <div class="col-xs-6 text-right">
+                <button type="button" class="btn btn-success">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>Wrap Up</h3>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Epilogue</h4>
+          <p class="small no-print">What are the rewards for finishing this quest?</p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="cliffhanger" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h4>Cliffhanger</h4>
+          <p class="small no-print">(Optional) Give your party a small taste of what's coming in the next session.</p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="cliffhanger" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="modal-btn" type="button" class="btn btn-default pull-right no-print" data-toggle="modal" data-target="#saveLoadModal" onclick="runScroll(), showModal()">Save Quest</button>
+
+    </article><!-- /container -->
+
+
+    <footer class="footer no-print">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <p class="text-muted n-mb">Created by <a href="https://github.com/spookedram" target="_blank">spookedram</a></p>
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <a href="https://github.com/spookedram" target="_blank"><span class="fa fa-github"></span></a>
+              <a href="http://www.twitter.com/spookedram" target="_blank"><span class="fa fa-twitter"></span></a>
+              <a href="http://spookedram.tumblr.com" target="_blank"><span class="fa fa-tumblr"></span></a>
+            </div>
+          </div>
+        </div>
+        <p class="text-muted">If you like HR RPG, <a href="https://paypal.me/spookedram/5" target="_blank" class="donate">buy me a coffee?</a></p>
+      </div>
+    </footer>
+
+    <script src="lib/bootstrap/bootstrap-native.min.js"></script>
+    <script src="lib/odometer/odometer.js"></script>
+    <script src="js/sharedUtils.js"></script>
+    <script src="js/samples.js"></script>
+    <script src="js/quest.js"></script>
+    <script src="js/backToTop.js"></script>
+  </body>
+</html>
