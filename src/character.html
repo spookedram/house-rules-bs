@@ -709,54 +709,46 @@
               </div>
               <div id="perk8help" class="collapse">
                 <div class="panel-footer no-print">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <label for="">Type</label>
-                      <select id="perk8type" class="form-control" name="perk8type">
-                        <option value="">-</option>
-                        <option value="12d12 damage">Damage</option>
-                        <option value="12d12 HP">Healing</option>
-                        <option value="add 8">Buff</option>
-                        <option value="remove 8">Debuff</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-3">
-                      <label class="perkmod-label" for="perk8aoe">AoE?</label>
-                      <div class="row">
-                        <div class="col-xs-6">
-                          <p><input type="radio" name="perk8aoe" value="no" checked> No</p>
-                        </div>
-                        <div class="col-xs-6">
-                          <p><input type="radio" name="perk8aoe" value="yes"> Yes</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <label class="perkmod-label" for="perk8mod">DC Mod</label>
-                      <select id="perk8mod" class="form-control" name="perk8mod">
-                        <option value="">-</option>
-                        <option value="str">STR</option>
-                        <option value="dex">DEX</option>
-                        <option value="vit">VIT</option>
-                        <option value="int">INT</option>
-                        <option value="wis">WIS</option>
-                        <option value="cha">CHA</option>
-                        <option value="per">PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-3">
-                      <label class="perkmod-label" for="perk8st">Save</label>
-                      <select id="perk8st" class="form-control" name="perk8st">
-                        <option value="">-</option>
-                        <option value="str">STR</option>
-                        <option value="dex">DEX</option>
-                        <option value="vit">VIT</option>
-                        <option value="int">INT</option>
-                        <option value="wis">WIS</option>
-                        <option value="cha">CHA</option>
-                        <option value="per">PER</option>
-                      </select>
-                    </div>
+                  <p class="perk8demo n-mb" style="line-height:1.5em;">
+                    The user targets
+                    <select class="" name="" oninput="isTargetingEnemy('stLabel8', this)">
+                      <option value="0">themselves</option>
+                      <option value="enemy">an enemy</option>
+                      <option value="2">an ally</option>
+                      <option value="enemy">all enemies in a 100ft diameter</option>
+                      <option value="4">all allies in a 100ft diameter</option>
+                    </select><br>
+                    and rolls a
+                    <select class="" name="">
+                      <option value="">STR</option>
+                      <option value="">DEX</option>
+                      <option value="">VIT</option>
+                      <option value="">INT</option>
+                      <option value="">WIS</option>
+                      <option value="">CHA</option>
+                      <option value="">PER</option>
+                    </select>
+                    DC check.<br> If successful, <span id="stLabel8" class="hidden">the target(s) must roll a <select class="" name="">
+                      <option value="">STR</option>
+                      <option value="">DEX</option>
+                      <option value="">VIT</option>
+                      <option value="">INT</option>
+                      <option value="">WIS</option>
+                      <option value="">CHA</option>
+                      <option value="">PER</option>
+                    </select> saving throw. If they fail, </span> the perk
+                    <select class="" name="">
+                      <option value="">damages the target(s) for 12d12 HP.</option>
+                      <option value="">heals the target(s) for 12d12 HP.</option>
+                      <option value="">temporarily adds 8 points to the target's STR.</option>
+                      <option value="">temporarily subtracts 8 points from the target's STR.</option>
+                      <option value="">WIS</option>
+                      <option value="">CHA</option>
+                      <option value="">PER</option>
+                    </select>
+                  </p>
+                  <div class="text-right">
+                    
                   </div>
                 </div><!-- /.panel-footer -->
               </div><!-- /perk8help -->

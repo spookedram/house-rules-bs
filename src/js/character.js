@@ -586,3 +586,13 @@ function togglePerDay(chk) {
   }
 }
 togglePerDay(false);
+
+function isTargetingEnemy(target, input) {
+  var el = document.getElementById(target);
+
+  if(input.value !== "enemy") {
+    el.className = "hidden";
+  } else {
+    el.className = "";
+  }
+}
