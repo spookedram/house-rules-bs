@@ -312,18 +312,33 @@
             <h3>Main Weapon</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="wpn1name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                <div class="row">
+                  <div class="col-xs-8">
+                    <h4 id="wpn1name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                  </div>
+                  <div class="col-xs-4">
+                    <a href="#wpn1footer" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
+                  </div>
+                </div>
               </div>
               <div class="panel-body">
                 <p id="wpn1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <div class="text-right">
-                  <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm()">
-                    <option value="Small (d4)">Small (d4)</option>
-                    <option value="Ranged (d6)">Ranged (d6)</option>
-                    <option value="Medium (d8)" selected>Medium (d8)</option>
-                    <option value="Large (d10)">Large (d10)</option>
-                    <option value="Shield (AC +1)">Shield (AC +1)</option>
-                  </select>
+              </div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm()">
+                      <option value="Small (d4)">Small (d4)</option>
+                      <option value="Ranged (d6)">Ranged (d6)</option>
+                      <option value="Medium (d8)" selected>Medium (d8)</option>
+                      <option value="Large (d10)">Large (d10)</option>
+                      <option value="Shield (AC +1)">Shield (AC +1)</option>
+                    </select>
+                  </div>
+                  <div id="wpn1footer" class="col-xs-12 collapse">
+                    <p><b>Examples</b></p>
+                    <p id="wpn1examplesText">Test</p>
+                  </div>
                 </div>
               </div>
             </div>
