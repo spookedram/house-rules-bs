@@ -596,3 +596,174 @@ function isTargetingEnemy(target, input) {
     el.className = "";
   }
 }
+
+function getPerkTypeText(val, id) {
+  var dice = "";
+
+  switch(id) {
+    case 1:
+      dice = "2d12";
+      break;
+    case 2:
+      dice = "3d8";
+      break;
+    case 3:
+      dice = "4d12";
+      break;
+    case 4:
+      dice = "6d12";
+      break;
+    case 5:
+      dice = "10d8";
+      break;
+    case 6:
+      dice = "10d10";
+      break;
+    case 7:
+      dice = "10d12";
+      break;
+    case 8:
+      dice = "12d12";
+      break;
+  }
+
+  console.log(dice);
+
+  switch(val) {
+    case "Deal Damage":
+      return "damages the target(s) for " + dice + " HP.";
+    case "Heal":
+      return "heals the target(s) for " + dice + " HP.";
+    case "Buff AC":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's AC.";
+      } else {
+        return "temporarily adds " + id + " points to the target's AC.";
+      }
+      break;
+    case "Debuff AC":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's AC.";
+      } else {
+        return "temporarily removes " + id + " points from the target's AC.";
+      }
+      break;
+    case "Buff STR":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's STR.";
+      } else {
+        return "temporarily adds " + id + " points to the target's STR.";
+      }
+      break;
+    case "Debuff STR":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's STR.";
+      } else {
+        return "temporarily removes " + id + " points from the target's STR.";
+      }
+      break;
+    case "Buff DEX":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's DEX.";
+      } else {
+        return "temporarily adds " + id + " points to the target's DEX.";
+      }
+      break;
+    case "Debuff DEX":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's DEX.";
+      } else {
+        return "temporarily removes " + id + " points from the target's DEX.";
+      }
+      break;
+    case "Buff VIT":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's VIT.";
+      } else {
+        return "temporarily adds " + id + " points to the target's VIT.";
+      }
+      break;
+    case "Debuff VIT":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's VIT.";
+      } else {
+        return "temporarily removes " + id + " points from the target's VIT.";
+      }
+      break;
+    case "Buff INT":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's INT.";
+      } else {
+        return "temporarily adds " + id + " points to the target's INT.";
+      }
+      break;
+    case "Debuff INT":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's INT.";
+      } else {
+        return "temporarily removes " + id + " points from the target's INT.";
+      }
+      break;
+    case "Buff WIS":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's WIS.";
+      } else {
+        return "temporarily adds " + id + " points to the target's WIS.";
+      }
+      break;
+    case "Debuff WIS":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's WIS.";
+      } else {
+        return "temporarily removes " + id + " points from the target's WIS.";
+      }
+      break;
+    case "Buff CHA":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's CHA.";
+      } else {
+        return "temporarily adds " + id + " points to the target's CHA.";
+      }
+      break;
+    case "Debuff CHA":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's CHA.";
+      } else {
+        return "temporarily removes " + id + " points from the target's CHA.";
+      }
+      break;
+    case "Buff PER":
+      if(id === 1) {
+        return "temporarily adds 1 point to the target's PER.";
+      } else {
+        return "temporarily adds " + id + " points to the target's PER.";
+      }
+      break;
+    case "Debuff PER":
+      if(id === 1) {
+        return "temporarily removes 1 point from the target's PER.";
+      } else {
+        return "temporarily removes " + id + " points from the target's PER.";
+      }
+  }
+}
+
+function submitHelp(id) {
+  var desc = document.getElementById("perk" + id + "desc");
+  var target = document.getElementById("target" + id + "sel");
+  var dc = document.getElementById("dc" + id + "sel");
+  var st = document.getElementById("st" + id + "sel");
+  var type = document.getElementById("type" + id + "sel");
+  var typeText = "";
+  var text = "";
+
+  typeText = getPerkTypeText(type.options[type.selectedIndex].text, id);
+
+  if(target.value !== "enemy") {
+    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " DC check. If successful, the perk " + typeText;
+  } else {
+    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " DC check. If successful, the target(s) must roll a " + st.options[st.selectedIndex].text + " saving throw. If they fail, the perk " + typeText;
+  }
+
+  desc.innerHTML = text;
+}
