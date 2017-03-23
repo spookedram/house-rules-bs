@@ -112,7 +112,7 @@
           </div>
         </div>
         <div class="col-xs-3 text-right">
-          <button id="print-btn" type="button" class="btn btn-default" aria-label="Left Align" onclick="print()">
+          <button id="print-btn" type="button" class="btn btn-default" aria-label="Print" onclick="print()">
             <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
           </button>
         </div>
@@ -141,14 +141,20 @@
               <div id="fullAlert" class="alert alert-danger" style="display:none;">
                 <p>Your storage is full or your browser has denied access to storing local data! Please delete some quests, clear your localStorage, or change your browser settings to save this quest.</p>
                 <div class="text-right" style="margin-top:16px;">
-                  <button type="button" name="button" class="btn btsharedUtilsrimary" onclick="showAlert('fullAlert', false)">Ok</button>
+                  <button type="button" name="button" class="btn btn-primary" onclick="showElementById('fullAlert', false)">Ok</button>
                 </div>
               </div>
               <div id="clearAlert" class="alert alert-danger" style="display:none;">
                 <p class="text-center">This will clear all your saved quests, are you sure?</p>
                 <div class="text-center" style="margin-top:16px;">
-                  <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showAlert('clearAlert', false)">Yes</button>
-                  <button type="button" name="button" class="btn btn-primary" onclick="showAlert('clearAlert', false)">Cancel</button>
+                  <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showElementById('clearAlert', false)">Yes</button>
+                  <button type="button" name="button" class="btn btn-primary" onclick="showElementById('clearAlert', false)">Cancel</button>
+                </div>
+              </div>
+              <div id="nameAlert" class="alert alert-danger" style="display:none;">
+                <p>You quest must have a name!</p>
+                <div class="text-right" style="margin-top:16px;">
+                  <button type="button" name="button" class="btn btn-primary" onclick="showElementById('nameAlert', false)">Ok</button>
                 </div>
               </div>
 
@@ -169,185 +175,255 @@
             </div>
 
             <div class="modal-footer">
-              <button id="clearList" type="button" class="btn btn-danger pull-left" name="button" onclick="showAlert('clearAlert', true)">Clear List</button>
+              <button id="clearList" type="button" class="btn btn-danger pull-left" name="button" onclick="showElementById('clearAlert', true)">Clear List</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
 
-
-      <h2 id="questName" class="enter-name n-mb" contenteditable="true"></h2>
-      <div class="row">
-        <div class="col-sm-6">
-          <h3>Settings List</h3>
-          <p class="small no-print">What are the different environments involved in this quest?</p>
-          <div class="input-group no-print">
-            <input id="settingsInput" type="text" class="form-control" oninput="needConfirm()">
-            <span class="input-group-btn">
-              <button id="settingsBtn" type="button" class="btn btn-default" onclick="addRowToList('settingsInput','settingsList'), focusedEnterBtn('settingsInput','settingsList')">
-                <span class="glyphicon glyphicon-plus"></span>
-              </button>
-            </span>
-          </div>
-          <table class="table">
-            <thead>
-              <th>Settings</th>
-              <th></th>
-            </thead>
-            <tbody id="settingsList">
-
-            </tbody>
-          </table>
-        </div>
-        <div class="col-sm-6">
-          <h3>NPC List</h3>
-          <p class="small no-print">Who are some of the NPCs involved in this quest?</p>
-          <div class="input-group no-print">
-            <input id="npcsInput" type="text" class="form-control" oninput="needConfirm()">
-            <span class="input-group-btn">
-              <button id="npcsBtn" type="button" class="btn btn-default" onclick="addRowToList('npcsInput','npcsList'), focusedEnterBtn('npcsInput','npcsList')">
-                <span class="glyphicon glyphicon-plus"></span>
-              </button>
-            </span>
-          </div>
-          <table class="table">
-            <thead>
-              <th>NPCs</th>
-              <th></th>
-            </thead>
-            <tbody id="npcsList">
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <hr>
-
-      <section>
-        <h3>Setup</h3>
-        <p class="small no-print">Introduce the starting elements of the quest.</p>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <p id="setup" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-          </div>
-        </div>
-      </section>
-
-      <hr>
-
-      <section>
-        <h3>Act 1</h3>
-        <div class="row">
-          <div class="col-sm-6">
-            <h4>High - Goal Set</h4>
-            <p class="small no-print">What's the end goal at the beginning of the quest?</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="goal" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4>Low - Wandering</h4>
-            <p class="small no-print">What info will the Players find early on in the quest?</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="wander" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr>
-
-      <section>
-        <h3>Act 2</h3>
-        <div class="row">
-          <div class="col-sm-6">
-            <h4>High - Fun Fight</h4>
-            <p class="small no-print">An encounter for the Players to have some fun.</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="funFight" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4>Low - The Twist</h4>
-            <p class="small no-print">There's more going on than meets the eye. What's the twist?</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="twist" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr>
-
-      <section>
-        <h3>Act 3</h3>
-        <div class="row">
-          <div class="col-sm-6">
-            <h4>High - The Challenge</h4>
-            <p class="small no-print">An encounter to challenge your Players and remind them of the cost of failure.</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="challenge" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4>Low - The Search Ends</h4>
-            <p class="small no-print">What are the last peices of info before the final battle?</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="searchEnd" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr>
-
-      <section>
-        <h3>Act 4</h3>
-        <div class="row">
-          <div class="col-sm-6">
-            <h4>High - The Climax</h4>
-            <p class="small no-print">The big finale, the final fight!</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="climax" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h4>Low - Epilogue</h4>
-            <p class="small no-print">The heroes get a chance to say goodbyes and collect their spoils.</p>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="epilogue" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr>
-
-      <h3>Cliffhanger</h3>
-      <p class="small no-print">(Optional) Give your party a small taste of what's to come in the next session.</p>
+      <h3>Quest Name</h3>
       <div class="panel panel-default">
         <div class="panel-body">
-          <p id="cliffhanger" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+          <h3 id="questName" class="enter-name n-mb" contenteditable="true" oninput="needConfirm()" style="margin:0;"></h3>
         </div>
       </div>
+
+      <hr>
+
+      <h3>Setup</h3>
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Prologue</h4>
+          <p class="small no-print">What do the Players need to know before the goal?</p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="prologue" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h4>Goal</h4>
+          <p class="small no-print">What's the goal at the beginning of the quest?</p>
+          <div class="panel panel-default n-mb">
+            <div class="panel-body">
+              <p id="goal" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <table class="no-print" style="margin-bottom:15px; width:100%;">
+        <tbody>
+          <tr>
+            <td><h3 class="no-print" style="margin:0;">Add an Enemy</h3></td>
+            <td><a href="#enemyCreator" class="btn btn-default pull-right" data-toggle="collapse">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="enemyCreator" class="collapse">
+        <div class="row no-print">
+          <div class="col-sm-8 col-md-6">
+            <div class="row">
+              <div class="col-xs-9 col-md-10" style="padding-right:0;">
+                <label for="enemyName">Name <span class="small" style="color:#777;">(Required)</span></label>
+                <input type="text" id="enemyName" name="enemyName" class="form-control" oninput="toggleDisabled('addEnemyBtn',false)">
+              </div>
+              <div class="col-xs-3 col-md-2">
+                <label for="enemyAmt">Amt</label>
+                <input type="number" id="enemyAmt" name="enemyAmt" class="form-control text-center" value="1" min="1" max="20">
+              </div>
+
+              <div class="col-xs-3">
+                <label for="enemyLvl">Level</label>
+                <input type="number" id="lvl" name="enemyLvl" class="form-control text-center" value="1" min="1" max="20" oninput="setLevel(),setTotal(),updateHP()">
+              </div>
+              <div class="col-xs-3">
+                <label for="enemyHp">HP</label>
+                <input type="number" id="hp"  name="enemyHp" class="form-control text-center" value="10" min="1" max="999">
+              </div>
+              <div class="col-xs-6 text-right">
+                <label for="">&#160;</label>
+                <button id="updateHP" type="button" class="btn btn-primary form-control" disabled="true" onclick="addRandomHP()">Update HP</button>
+              </div>
+
+              <div class="col-xs-12">
+                <table class="table n-mb">
+      						<thead class="center-children">
+      							<th>STR</th>
+      							<th>DEX</th>
+      							<th>VIT</th>
+      							<th>INT</th>
+      							<th>WIS</th>
+      							<th>CHA</th>
+                    <th>PER</th>
+      						</thead>
+      						<tbody>
+                    <tr>
+      								<td><input name="strength" id="strength" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setTotal(),updateMods(this,'strMod')"></td>
+      								<td><input name="dexterity" id="dexterity" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setTotal(),updateMods(this,'dexMod')"></td>
+      								<td><input name="vitality" id="vitality" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setTotal(),updateMods(this,'vitMod'),updateHP()"></td>
+                      <td><input name="intelligence" id="intelligence" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setTotal(),updateMods(this,'intMod')"></td>
+      								<td><input name="wisdom" id="wisdom" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setTotal(),updateMods(this,'wisMod')"></td>
+      								<td><input name="charisma" id="charisma" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setTotal(),updateMods(this,'chaMod')"></td>
+                      <td><input name="perception" id="perception" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setTotal(),updateMods(this,'perMod')"></td>
+      							</tr>
+      							<tr class="text-center">
+      								<td class="strMod">0</td>
+      								<td class="dexMod">0</td>
+      								<td class="vitMod">0</td>
+      								<td class="intMod">0</td>
+      								<td class="wisMod">0</td>
+      								<td class="chaMod">0</td>
+                      <td class="perMod">0</td>
+      							</tr>
+      						</tbody>
+      					</table>
+                <div class="row">
+                  <div class="col-xs-6 text-left">
+                    <button id="randomAS" type="button" class="btn btn-default" onclick="randomizeAbilityScores(), setTotal(), needConfirm()">Randomize</button>
+                  </div>
+                  <div class="col-xs-6">
+                    <div class="pull-right">
+                      <p class="n-mb"><b>Total Points:</b> <span id="totalPoints">70</span></p>
+                      <p><b>Points Left:</b> <span id="pointsLeft">0</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-6">
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="enemyDamage">Damage</label>
+                <select id="enemyDamage" name="enemyDamage" class="form-control pull-right">
+                  <option value="d4">Small (d4)</option>
+                  <option value="d6">Ranged (d6)</option>
+                  <option value="d8" selected>Medium (d8)</option>
+                  <option value="d10">Large (d10)</option>
+                </select>
+              </div>
+              <div class="col-xs-6">
+                <label for="enemyArmor">Armor Class</label>
+                <select id="enemyArmor" cname="enemyDamage" class="form-control pull-right">
+                  <option value="10">None (AC 10)</option>
+                  <option value="12">Light (AC 12)</option>
+                  <option value="14">Medium (AC 14)</option>
+                  <option value="16">Heavy (AC 16)</option>
+                </select>
+              </div>
+              <div class="col-xs-12">
+                <label for="enemyPerk1">Perk 1</label>
+                <input type="text" id="enemyPerk1" name="enemyPerk1" class="form-control">
+              </div>
+              <div class="col-xs-12">
+                <label for="enemyPerk2">Perk 2</label>
+                <input type="text" id="enemyPerk2" name="enemyPerk2" class="form-control">
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <label for="enemyNotes">Notes</label>
+                <input type="text" id="enemyNotes" name="enemyNotes" class="form-control n-mb" placeholder="Quest items, shield, etc.">
+              </div>
+              <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-6 col-md-offset-0 text-right">
+                <label for="">&#160;</label>
+                <button id="addEnemyBtn" type="button" class="btn btn-success form-control n-mb" onclick="addEnemy(), toggleDisabled('addEnemyBtn',true)" disabled="true">Add Enemy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>Enemy List</h3>
+      <p class="no-print"><i>Tip: You can edit an enemy's entry by clicking or tapping directly on the text!</i></p>
+      <div id="enemyList" class="row">
+        <div id="emptyEnemyPanel" class="col-sm-6 col-sm-offset-3">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p class="text-center n-mb" style="color: #777;">You don't have any enemies yet.<br>Open the "Add an Enemy" panel to start creating some enemies!</p>
+            </div>
+          </div>
+        </div>
+        <!-- Enemies go here -->
+      </div>
+
+      <hr class="no-print">
+
+      <table class="no-print" style="margin-bottom:15px; width:100%;">
+        <tbody>
+          <tr>
+            <td><h3 class="no-print" style="margin:0;">Add an Act</h3></td>
+            <td><a href="#actCreator" class="btn btn-default pull-right" data-toggle="collapse">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="actCreator" class="collapse">
+        <div class="no-print">
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="">Low Point</label>
+              <p class="small">What info can the Players find out?</p>
+              <textarea id="newActLow" name="newActLow" rows="5" class="form-control" oninput="enableActBtn()"></textarea>
+            </div>
+            <div class="col-sm-6">
+              <label for="">High Point</label>
+              <p class="small">What's the conflict or obstacle of this act?</p>
+              <textarea id="newActHigh" name="newActHigh" rows="5" class="form-control" oninput="enableActBtn()"></textarea>
+            </div>
+            <div class="col-xs-12 text-right">
+              <button id="addActBtn" type="button" class="btn btn-success" onclick="addAct(),enableActBtn()" disabled="true">Add Act</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>Acts</h3>
+      <p class="no-print"><i>Tip: You can edit an act by clicking or tapping directly on the text!</i></p>
+      <div id="actList" class="row">
+        <div id="emptyActPanel" class="col-sm-6 col-sm-offset-3">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <p class="text-center n-mb" style="color: #777;">You don't have any acts yet.<br>Open the "Add an Act" panel to start writing your quest!</p>
+              </div>
+            </div>
+        </div>
+        <!-- Act List -->
+      </div>
+
+      <hr>
+
+      <h3>Wrap Up</h3>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Epilogue</h4>
+          <p class="small no-print">What are the rewards for finishing this quest?</p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="epilogue" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <h4>Cliffhanger</h4>
+          <p class="small no-print">(Optional) Give your party a small taste of what's coming in the next session.</p>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p id="cliffhanger" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="modal-btn" type="button" class="btn btn-default pull-right no-print" data-toggle="modal" data-target="#saveLoadModal" onclick="runScroll(), showModal()">Save Quest</button>
 
     </article><!-- /container -->
 
@@ -371,10 +447,11 @@
     </footer>
 
     <script src="lib/bootstrap/bootstrap-native.min.js"></script>
+    <script src="js/backToTop.js"></script>
     <script src="lib/odometer/odometer.js"></script>
     <script src="js/sharedUtils.js"></script>
     <script src="js/samples.js"></script>
+    <script src="js/enemyList.js"></script>
     <script src="js/quest.js"></script>
-    <script src="js/backToTop.js"></script>
   </body>
 </html>

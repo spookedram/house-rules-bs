@@ -2,6 +2,10 @@ var rollBtn = document.getElementById("roll-btn");
 var rollResult = document.getElementById("roll-result");
 var needToConfirm = false;
 
+function addToInnerHTML(target,str) {
+  target.innerHTML += str;
+}
+
 function getRandomRange(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -40,6 +44,19 @@ function showModal() {
   saveLoadModal.show();
 }
 
+function toggleArr(arr, boo) {
+  var i = 0;
+  var len = arr.length;
+
+  for(i; i < len; i++) {
+    if(boo) {
+      arr[i].style.display = "block";
+    } else {
+      arr[i].style.display = "none";
+    }
+  }
+}
+
 // get table and set extra rows to empty
 function clearTable(table) {
   while (table.children[1]) {
@@ -47,13 +64,44 @@ function clearTable(table) {
   }
 }
 
-// toggle alert box
-function showAlert(target, boo){
-  if(boo) {
-    document.getElementById(target).style.display = "block";
-  } else {
-    document.getElementById(target).style.display = "none";
+function getPinFromArray(arr, pin) {
+  var i = 0;
+  var len = arr.length;
+  for(i; i < len; i++) {
+    if(arr[i].pin == pin) {
+      return arr[i];
+    }
   }
+}
+
+function removePinFromArray(arr,pin) {
+  var i = 0;
+  var len = arr.length;
+  for(i; i < len; i++) {
+    if(arr[i].pin == pin) {
+      arr.splice(i, 1);
+      break;
+    }
+  }
+}
+
+// toggle alert box
+function showElementById(id, boo){
+  if(boo) {
+    document.getElementById(id).style.display = "block";
+  } else {
+    document.getElementById(id).style.display = "none";
+  }
+}
+
+function deletePinFromList(btn, arr, str, pin) {
+  removePinFromArray(arr,pin);
+
+  if(arr.length < 1) {
+    showElementById(str,true);
+  }
+
+  btn.parentNode.parentNode.parentNode.parentNode.parentNode.remove(btn.parentNode.parentNode.parentNode.parentNode);
 }
 
 function rollDice(){

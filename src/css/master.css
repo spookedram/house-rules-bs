@@ -2,18 +2,16 @@
 House Rules RPG (Bootstrap)
 Author: Zach Allen
 
-Colors:
-AndroidGreen #9ebc3c
-DeepSaffron  #f29a3c
-Fandango     #b52b77
-CeruleanBlue #3c50c1
-
 ~ Index ~
 - Basic Page Styles
+- Navigation
 - Utilities
 - Media Queries
 */
-/* ---------- Basic Page Styles ---------- */
+
+
+/*===|==|--- Basic Page Styles ---|==|===*/
+
 html {
   height: 100%;
   box-sizing: border-box;
@@ -34,22 +32,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-nav.navbar {
-  border-radius: 0;
-}
-
-header.jumbotron {
-  height: 200px;
-  background-image: url("../assets/banner_hatching.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#home {
-  background-color: #5BC0BE;
-}
-
 h1, h2, h3, h4, h5 {
   font-family: 'Roboto Slab', serif;
 }
@@ -66,16 +48,6 @@ h4 {
 p {
   text-align: justify;
 }
-
-/*label {
-  margin-top: 16px;
-}
-/* Small devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  label {
-    margin-top: 0;
-  }
-}*/
 
 footer {
   position: absolute;
@@ -98,52 +70,23 @@ section h4 {
   margin: 6px 0;
 }
 
-/* Useful Classes */
-.enter-content:empty:before {
-  content: 'Add content here';
-  color: grey;
+
+/*===|==|--- Navigation ---|==|===*/
+
+nav.navbar {
+  border-radius: 0;
 }
 
-.enter-name:empty:before {
-  content: 'Add name here';
-  color: grey;
+header.jumbotron {
+  height: 200px;
+  background-image: url("../assets/banner_hatching.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.enter-title:empty:before {
-  content: 'Add title here';
-  color: grey;
-}
-
-.anchor {
-  display: block;
-  position: relative;
-  top: -42px;
-  visibility: hidden;
-}
-
-.form-control {
-  margin-bottom: 16px;
-}
-
-.inline {
-  display: inline-block;
-  width: 72px;
-}
-
-.short-input {
-  width: 240px;
-}
-
-.center-children *{
-  text-align: center;
-}
-
-.scroll-table {
-  overflow-x: scroll !important;
-}
-
-.panel-body ol {
-  padding-left: 15px;
+#home {
+  background-color: #5BC0BE;
 }
 
 .tab-list {
@@ -205,15 +148,54 @@ section h4 {
   border-top-left-radius: 0;
 }
 
-.dropdown-header {
+
+/*===|==|--- Useful Classes ---|==|===*/
+
+.enter-content:empty:before {
+  content: 'Add content here';
+  color: grey;
+}
+
+.enter-name:empty:before {
+  content: 'Add name here';
+  color: grey;
+}
+
+.enter-title:empty:before {
+  content: 'Add title here';
+  color: grey;
+}
+
+.anchor {
   display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-size: 1.1em;
-  font-weight: bold;
-  font-family: 'Roboto Slab', serif;
-  color: #333;
-  white-space: nowrap;
+  position: relative;
+  top: -42px;
+  visibility: hidden;
+}
+
+.form-control {
+  margin-bottom: 16px;
+}
+
+.inline {
+  display: inline-block;
+  width: 72px;
+}
+
+.short-input {
+  width: 240px;
+}
+
+.center-children *{
+  text-align: center;
+}
+
+.scroll-table {
+  overflow-x: scroll !important;
+}
+
+.panel-body ol {
+  padding-left: 15px;
 }
 
 .ability {
@@ -254,7 +236,9 @@ section h4 {
   text-align: left !important;
 }
 
-/* ID specific styles */
+
+/*===|==|--- ID Specific Styles ---|==|===*/
+
 #backToTop {
   display: none;
   position: fixed;
@@ -339,6 +323,24 @@ section h4 {
   margin: 0;
 }
 
+#wpn1type, #wpn2type, #armorType {
+  width: 150px;
+}
+
+#edit {
+  display: none;
+}
+
+#addEnemyBtn:disabled {
+  background-color: #5cb85c !important;
+}
+
+#updateHP:disabled {
+  background-color: #337ab7 !important;
+}
+
+/*===|==|--- DiceSim ---|==|===*/
+
 #rng {
   position: absolute;
   top: 52px; right: 0;
@@ -398,15 +400,9 @@ section h4 {
   margin: 10px 0;
 }
 
-#wpn1type, #wpn2type, #armorType {
-  width: 150px;
-}
 
-#edit {
-  display: none;
-}
+/*===|==|--- Print Classes ---|==|===*/
 
-/* ---------- Utilities ---------- */
 .n-mb {
   margin-bottom: 0;
 }

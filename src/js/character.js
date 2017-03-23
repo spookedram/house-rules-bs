@@ -80,20 +80,7 @@ function getCharacterList() {
       characterList = [];
     }
   } else {
-    showAlert("fullAlert", true);
-  }
-}
-
-function toggleArr(arr, boo) {
-  var i = 0;
-  var len = arr.length;
-
-  for(i; i < len; i++) {
-    if(boo) {
-      arr[i].style.display = "block";
-    } else {
-      arr[i].style.display = "none";
-    }
+    showElementById("fullAlert", true);
   }
 }
 
@@ -431,7 +418,7 @@ function saveCharData() {
 
     return character;
   } else {
-    showAlert("fullAlert", true);
+    showElementById("fullAlert", true);
   }
 
 }
@@ -512,21 +499,19 @@ function setCharData(character) {
 }
 
 function saveCharacter() {
-  var character = saveCharData();
-  addRowToLoadTable(character);
+  if(charName.innerHTML !== "") {
+    var character = saveCharData();
+    addRowToLoadTable(character);
+  } else {
+    showElementById('nameAlert', true);
+  }
 }
 
 function loadData(pin) {
   var result;
   getCharacterList();
 
-  for(var i = 0; i < characterList.length; i++) {
-    if(characterList[i].pin == pin) {
-      result = characterList[i];
-      break;
-    }
-  }
-
+  result = getPinFromArray(characterList,pin);
   setCharData(result);
 
   hideModal();
@@ -566,7 +551,7 @@ function refreshTable() {
 
     localStorage.setItem('characterList', JSON.stringify(characterList));
   } else {
-    showAlert("fullAlert", true);
+    showElementById("fullAlert", true);
   }
 }
 refreshTable();
@@ -583,12 +568,7 @@ function clearList() {
 function clearItem(btn,pin) {
   getCharacterList();
 
-  for(var i = 0; i < characterList.length; i++) {
-    if(characterList[i].pin == pin) {
-      characterList.splice(i, 1);
-      break;
-    }
-  }
+  removePinFromArray(characterList,pin);
 
   console.log(characterList);
 
@@ -606,27 +586,3 @@ function togglePerDay(chk) {
   }
 }
 togglePerDay(false);
-
-function changeSamples(obj) {
-  var wpn1SampleBtn = document.getElementById("wpn1SampleBtn");
-
-  switch(obj.value) {
-    case "Small (d4)":
-      wpn1SampleBtn.dataset.target = "#smallWpns1";
-      break;
-    case "Ranged (d6)":
-      wpn1SampleBtn.dataset.target = "#rangedWpns1";
-      break;
-    case "Medium (d8)":
-      wpn1SampleBtn.dataset.target = "#medWpns1";
-      break;
-    case "Large (d10)":
-      wpn1SampleBtn.dataset.target = "#largeWpns1";
-      break;
-    case "Shield (AC +1)":
-      wpn1SampleBtn.dataset.target = "#shields1";
-      break;
-    default:
-      break;
-  }
-}

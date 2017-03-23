@@ -1,16 +1,11 @@
 var questList = [];
+var actList = [];
 
 var questName = document.getElementById("questName");
 var settingsList = document.getElementById("settingsList");
 var npcsList = document.getElementById("npcsList");
-var setup = document.getElementById("setup");
+var setup = document.getElementById("prologue");
 var goal = document.getElementById("goal");
-var wander = document.getElementById("wander");
-var funFight = document.getElementById("funFight");
-var twist = document.getElementById("twist");
-var challenge = document.getElementById("challenge");
-var searchEnd = document.getElementById("searchEnd");
-var climax = document.getElementById("climax");
 var epilogue = document.getElementById("epilogue");
 var cliffhanger = document.getElementById("cliffhanger");
 
@@ -28,7 +23,7 @@ function getQuestList() {
      questList = [];
     }
   } else {
-    showAlert("fullAlert", true);
+    showElementById("fullAlert", true);
   }
 }
 
@@ -37,22 +32,27 @@ function Quest() {
   this.pin = 0;
   this.questName = "";
 
-  this.settingsList = "";
-  this.npcsList = "";
   this.setup = "";
-
   this.goal = "";
-  this.wander = "";
 
-  this.funFight = "";
-  this.twist = "";
+  this.enemyList = [];
+  this.actList = [];
 
-  this.challenge = "";
-  this.searchEnd = "";
-
-  this.climax = "";
   this.epilogue = "";
   this.cliffhanger = "";
+}
+
+function getItems(str) {
+  var arr = document.getElementsByClassName(str);
+  var i = 0;
+  var len = arr.length;
+  var newArr = [];
+
+  for(i; i < len; i++) {
+    newArr.push(arr[i].innerHTML);
+  }
+
+  return newArr;
 }
 
 function saveQuestData() {
@@ -61,20 +61,12 @@ function saveQuestData() {
   quest.pin = uniqueNumber();
   quest.questName = questName.innerHTML;
 
-  quest.settingsList = settingsList.innerHTML;
-  quest.npcsList = npcsList.innerHTML;
   quest.setup = setup.innerHTML;
-
   quest.goal = goal.innerHTML;
-  quest.wander = wander.innerHTML;
 
-  quest.funFight = funFight.innerHTML;
-  quest.twist = twist.innerHTML;
+  quest.enemyList = getItems('enemy');
+  quest.actList = getItems('act');
 
-  quest.challenge = challenge.innerHTML;
-  quest.searchEnd = searchEnd.innerHTML;
-
-  quest.climax = climax.innerHTML;
   quest.epilogue = epilogue.innerHTML;
   quest.cliffhanger = cliffhanger.innerHTML;
 
@@ -90,34 +82,36 @@ function saveQuestData() {
 
     return quest;
   } else {
-      showAlert("fullAlert", true);
+      showElementById("fullAlert", true);
   }
 }
 
 function setQuestData(quest) {
   questName.innerHTML = quest.questName;
-
-  settingsList.innerHTML = quest.settingsList;
-  npcsList.innerHTML = quest.npcsList;
   setup.innerHTML = quest.setup;
-
   goal.innerHTML = quest.goal;
-  wander.innerHTML = quest.wander;
 
-  funFight.innerHTML = quest.funFight;
-  twist.innerHTML = quest.twist;
+  showElementById('emptyEnemyPanel', false);
+  for(var i = 0; i < quest.enemyList.length; i++) {
+    addToInnerHTML(document.getElementById('enemyList'), '<div class="enemy col-xs-12 col-sm-4 col-print-4">' + quest.enemyList[i] + '</div>');
+  }
 
-  challenge.innerHTML = quest.challenge;
-  searchEnd.innerHTML = quest.searchEnd;
+  showElementById('emptyActPanel', false);
+  for(var j = 0; j < quest.actList.length; j++) {
+    addToInnerHTML(document.getElementById('actList'), '<div class="act col-xs-12">' + quest.actList[j] + '</div>');
+  }
 
-  climax.innerHTML = quest.climax;
   epilogue.innerHTML = quest.epilogue;
   cliffhanger.innerHTML = quest.cliffhanger;
 }
 
 function saveQuest() {
-  var quest = saveQuestData();
-  addRowToLoadTable(quest);
+  if(questName.innerHTML !== "") {
+    var quest = saveQuestData();
+    addRowToLoadTable(quest);
+  } else {
+    showElementById('nameAlert', true);
+  }
 }
 
 function loadData(pin) {
@@ -168,7 +162,7 @@ function refreshTable() {
 
     localStorage.setItem('questList', JSON.stringify(questList));
   } else {
-    showAlert("fullAlert", true);
+    showElementById("fullAlert", true);
   }
 }
 refreshTable();
@@ -214,20 +208,48 @@ function deleteRow(btn) {
   btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
 }
 
-settingsInput.onkeypress = function(e){
-  if (!e) e = window.event;
-  var keyCode = e.keyCode || e.which;
-  if (keyCode == '13'){
-    addRowToList('settingsInput', 'settingsList');
-    return false;
+function enableActBtn() {
+  var low = document.getElementById("newActLow");
+  var high = document.getElementById("newActHigh");
+  if(low.value !== "" && high.value !== "") {
+    document.getElementById("addActBtn").disabled = false;
+  } else {
+    document.getElementById("addActBtn").disabled = true;
   }
-};
+}
 
-npcsInput.onkeypress = function(e){
-  if (!e) e = window.event;
-  var keyCode = e.keyCode || e.which;
-  if (keyCode == '13'){
-    addRowToList('npcsInput', 'npcsList');
-    return false;
+function Act() {
+  this.pin = "";
+  this.low = "";
+  this.high = "";
+}
+
+function addAct() {
+  if(actList.length < 9) {
+    var low = document.getElementById("newActLow");
+    var high = document.getElementById("newActHigh");
+    if(low.value !== "" && high.value !== "") {
+      var act = new Act();
+
+      act.low = low.value;
+      act.high = high.value;
+      act.pin = uniqueNumber();
+
+      addToInnerHTML(document.getElementById("actList"),'<div class="act col-xs-12"><div class="panel panel-default no-print"><div class="panel-heading"><h4 style="margin:8px auto">Act ' + (actList.length + 1) + '</h4></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Low Point</b><p contenteditable="true">' + act.low + '</p></div><div class="col-sm-6"><b>High Point</b><p contenteditable="true">' + act.high + '</p></div></div></div><div class="panel-footer"><div class="text-right"><button type="button" class="btn btn-danger" onclick="deleteAct(this,' + act.pin + ')">Delete</button></div></div></div></div>');
+
+      actList.push(act);
+      low.value = "";
+      high.value = "";
+    } else {
+
+    }
   }
-};
+
+  if(actList.length === 1) {
+    showElementById('emptyActPanel',false);
+  }
+}
+
+function deleteAct(btn, pin) {
+  deletePinFromList(btn, actList, 'emptyActPanel', pin);
+}
