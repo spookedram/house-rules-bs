@@ -1,4 +1,5 @@
 var questList = [];
+var actList = [];
 
 var questName = document.getElementById("questName");
 var settingsList = document.getElementById("settingsList");
@@ -31,8 +32,6 @@ function Quest() {
   this.pin = 0;
   this.questName = "";
 
-  this.settingsList = "";
-  this.npcsList = "";
   this.setup = "";
   this.goal = "";
 
@@ -50,7 +49,7 @@ function setEnemyList() {
   var newArr = [];
 
   for(i; i < len; i++) {
-    
+
   }
 }
 
@@ -66,7 +65,7 @@ function saveQuestData() {
   quest.setup = setup.innerHTML;
   quest.goal = goal.innerHTML;
 
-  quest.enemyList =
+  quest.enemyList = enemyList;
 
   quest.epilogue = epilogue.innerHTML;
   quest.cliffhanger = cliffhanger.innerHTML;
@@ -207,20 +206,51 @@ function deleteRow(btn) {
   btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
 }
 
-settingsInput.onkeypress = function(e){
-  if (!e) e = window.event;
-  var keyCode = e.keyCode || e.which;
-  if (keyCode == '13'){
-    addRowToList('settingsInput', 'settingsList');
-    return false;
-  }
-};
+function Act() {
+  this.pin = "";
+  this.low = "";
+  this.high = "";
+}
 
-npcsInput.onkeypress = function(e){
-  if (!e) e = window.event;
-  var keyCode = e.keyCode || e.which;
-  if (keyCode == '13'){
-    addRowToList('npcsInput', 'npcsList');
-    return false;
+function addAct() {
+  if(actList.length < 9) {
+    var low = document.getElementById("newActLow");
+    var high = document.getElementById("newActHigh");
+    var act = new Act();
+
+    act.low = low.value;
+    act.high = high.value;
+    act.pin = uniqueNumber();
+
+    addActToList(act);
+
+    actList.push(act);
   }
-};
+
+  if(actList.length === 1) {
+    document.getElementById('emptyActPanel').className = 'hidden';
+  }
+}
+
+function addActToList(act) {
+  var list = document.getElementById("actList");
+  var newHTML = '<div class="act col-xs-12"><div class="panel panel-default no-print"><div class="panel-heading"><h4 style="margin:8px auto">Act ' + (actList.length + 1) + '</h4></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Low Point</b><p>' + act.low + '</p></div><div class="col-sm-6"><b>High Point</b><p>' + act.high + '</p></div></div></div><div class="panel-footer"><div class="row"><div class="col-xs-6"><button type="button" class="btn btn-danger" onclick="deleteAct(this,' + act.pin + ')">Delete</button></div><div class="col-xs-6 text-right"><button type="button" class="btn btn-success">Edit</button></div></div></div></div></div>';
+
+  list.innerHTML += newHTML;
+}
+
+function deleteAct(btn, pin) {
+
+  for(var i = 0; i < actList.length; i++) {
+    if(actList[i].pin == pin) {
+      actList.splice(i,1);
+      break;
+    }
+  }
+
+  if(actList.length < 1) {
+    document.getElementById('emptyActPanel').className = '';
+  }
+
+  btn.parentNode.parentNode.parentNode.parentNode.parentNode.remove(btn.parentNode.parentNode.parentNode.parentNode);
+}

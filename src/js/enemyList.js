@@ -185,13 +185,15 @@ function openEdit(btn, pin) {
 }
 
 function addEnemy() {
-  if(enemyList.length < 5) {
+  if(enemyList.length < 9) {
     var list = document.getElementById("enemyList");
     list.innerHTML += createEnemyDiv();
     clearEnemyCreator();
   }
 
-  emptyPanel.style.display = "none";
+  if(enemyList.length === 1) {
+    document.getElementById('emptyEnemyPanel').className = 'hidden';
+  }
 }
 
 function deleteEnemy(btn, pin) {
@@ -204,7 +206,7 @@ function deleteEnemy(btn, pin) {
   }
 
   if(enemyList.length < 1) {
-    emptyPanel.style.display = "block";
+    document.getElementById('emptyEnemyPanel').className = '';
   }
 
   btn.parentNode.parentNode.parentNode.parentNode.parentNode.remove(btn.parentNode.parentNode.parentNode.parentNode);
