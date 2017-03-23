@@ -250,6 +250,16 @@ function addAct() {
   }
 }
 
+function toggleBtnText(btn, target) {
+  var el = document.getElementById(target);
+
+  if(el.className !== "collapse in") {
+    btn.innerHTML = "Close";
+  } else {
+    btn.innerHTML = "Open";
+  }
+}
+
 function deleteAct(btn, pin) {
   deletePinFromList(btn, actList, 'emptyActPanel', pin);
 }
