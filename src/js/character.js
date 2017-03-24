@@ -581,7 +581,7 @@ function chgExamples(input, target) {
       text = "A sword, a mace, an axe, a rapier, a cane, a rod, a baton, a pickaxe, a large piece of wood, a lyre, a trumpet, a hand scythe, a dog, a small bear, a panther, a cheetah, a monkey, a trashcan, a chair, etc.";
       break;
     case "Large (d10)":
-      text = "A warhammer, a two-handed sword, a battleaxe, polearms, a staff, a stopsign, a reaper's scythe, a coatrack, a spear, a lance, a lamp, a bear, a tiger, an alligator, a shark, a buffalo, an elephant, etc.";
+      text = "A warhammer, a two-handed sword, a battleaxe, polearms, a staff, a stopsign, a reaper's scythe, a coatrack, a spear, a lance, a lamp, a bear, a tiger, a horse, an alligator, a shark, a buffalo, an elephant, etc.";
       break;
     case "Shield (AC +1)":
       text = "A buckler, a kite shield, a tower shield, a trashcan lid, a car door, a riot shield, a thick sheet of wood with a handle glued to the back, a large turtle, an armadillo, a pangolin, etc.";
