@@ -65,7 +65,7 @@
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="openTab(event,'intro')">
+                  <a id="introLink" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="openTab(event,'intro')" class="tab-links active">
                     Intro
                   </a>
                 </h4>
@@ -85,7 +85,7 @@
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="openTab(event,'characters')">
+                  <a  id="charLink" class="collapsed tab-links" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="openTab(event,'characters')">
                     Characters
                   </a>
                 </h4>
@@ -109,7 +109,7 @@
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="openTab(event,'combat')">
+                  <a id="combatLink" class="collapsed tab-links" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="openTab(event,'combat')">
                     Combat
                   </a>
                 </h4>
@@ -129,7 +129,7 @@
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingFour">
                 <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" onclick="openTab(event,'quests')">
+                  <a id="questLink" class="collapsed tab-links" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" onclick="openTab(event,'quests')">
                     Quests
                   </a>
                 </h4>
@@ -152,7 +152,7 @@
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingFive">
                 <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" onclick="openTab(event,'etiquette')">
+                  <a id="etiqLink" class="collapsed tab-links" role="button" data-toggle="collapse" data-parent="#myAccordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" onclick="openTab(event,'etiquette')">
                     Etiquette
                   </a>
                 </h4>
@@ -174,7 +174,7 @@
           <!-- Tab pane 1 -->
           <div class="tab-pane" id="intro">
             <h2>Introduction</h2>
-            <p>House Rules RPG is a tool for building custom tabletop <b>role-playing games</b>, in which Players create and guide characters through a fictional world, built and controlled by the Game Master. The Players interact with the world by <b>taking actions</b> and engaging enemies in <b>combat</b>. Non-player characters (NPCs) are controlled by the Game Master and give the Players clues to help them progress through the events they’ve prepared.</p>
+            <p>House Rules RPG is a tool for building custom tabletop <b>role-playing games</b>, in which Players create and guide characters through a fictional world, built and controlled by the Game Master. The Players interact with the world by <b>taking actions</b> and engaging enemies in <b>combat</b>. Non-player characters (NPCs) are controlled by the Game Master and give the Players clues to help them progress through the quest they’ve prepared.</p>
 
             <h4>To play House Rules RPG, you’ll need:</h4>
             <ol>
@@ -194,7 +194,7 @@
             <h3>Saving Characters and Quests</h3>
             <p>You can use the <a href="character.html">Character</a> and <a href="quest.html">Quest</a> pages on this website to create, save, and update your character sheets and quest outlines. In a moment you’ll learn more about building a character and how to use the character creator, but first, two warnings.</p>
 
-            <p>First, as you may have read on the homepage of this site, House Rules RPG saves character and quest data to your browser’s “localStorage”. <i>We do not externally save, and cannot access, your data.</i> If your localStorage is cleared, <b>you will lose your character/quest data</b>. You also will only be able to load your data from the browser that they were created on. Depending on your browser, your localStorage will not be cleared unless you clear your cookies and website data, but we understand that sometimes it’s necessary, so be warned.</p>
+            <p>First, as you may have read on the homepage of this site, House Rules RPG saves character and quest data to your browser’s “localStorage”. <i>I do not externally save, and cannot access, your data.</i> If your localStorage is cleared, <b>you will lose your character/quest data</b>. You also will only be able to load your data from the browser that they were created on. Depending on your browser, your localStorage will not be cleared unless you clear your cookies and website data, but I understand that sometimes it’s necessary, so be warned.</p>
 
             <p>Second, your Game Master will need a copy of your character sheet, so you can either:</p>
             <ol>
@@ -202,7 +202,7 @@
               <li>“Print” your character sheet as a PDF file to save it as a document on your computer. Then you can share it with your GM and view it from any of your devices, and if your browser data is cleared you won’t lose your character.</li>
             </ol>
 
-            <p>This is House Rules RPG v1.0. <b>If there is a high enough demand for it</b>, we will continue to improve this site by adding user accounts, secured saves for characters and quests, and possibly a community section for finding and connecting with other players. However, this started as a free, simple, custom RPG tool and web development practice project and until there’s evidence that the system works well and enough people want those features, the site will remain as is.</p>
+            <p>This is House Rules RPG v1.0. <b>If there is a high enough demand for it</b>, I will continue to improve this site by adding user accounts, secured saves for characters and quests, and possibly a community section for finding and connecting with other players. However, as this free, simple, custom RPG tool is mostly a labor of love and web development practice, until there’s evidence that the system works well and enough people want those features, the site will remain as is.</p>
 
             <p class="text-left">Tweet with the hashtag <b>#HRRPG</b> or send me an email about your experiences with House Rules RPG at <a href="mailto:spookedram@gmail.com?Subject=House%20Rules%20RPG" target="_blank">spookedram@gmail.com</a>, and let me know if those features are something you’d like to see.</p>
 
@@ -210,7 +210,7 @@
 
             <span id="firstSession" class="anchor"></span>
             <h3>The First Session</h3>
-            <p>First you have to find people to play with. You can do a solo quest with 1 Player and a Game Master, or a bigger party with many Players (although we recommend <b>no more than 6</b> or you’ll find a simple quest ends up taking multiple sessions). The first session you have should be a round-table discussion about the kind of game you want to play and laying down your own personal rules about how to handle touchy subjects like character death, re-rolls, and rule challenges. Write them down and bring them to the session! Pick at least a vague genre, or agree to a completely random open-world, so that you can create quests and characters that don't conflict too badly. This first session is not for jumping in and playing your first quest, although there are sample characters and quests you can use if you'd rather jump right in instead of crafting a personalized experience.</p>
+            <p>First you have to find people to play with. You can do a solo quest with 1 Player and a Game Master, or a bigger party with many Players (although I recommend <b>no more than 6</b> or you’ll find a simple quest ends up taking multiple sessions). The first session you have should be a <b>round-table discussion</b> about the <b>kind of game</b> you want to play and laying down your own <b>personal rules</b> about how to handle touchy subjects like character death, re-rolls, and <b>rule challenges</b>. Write them down and bring them to the session! Pick at least a vague genre, or agree to a completely random open-world, so that you can create quests and characters that don't conflict too badly. This first session is not for jumping in and playing your first quest, although there are sample characters and quests you can use if you'd rather jump right in instead of crafting a personalized experience.</p>
 
             <h4>Pick a Genre</h4>
             <p>Do you want your game to be classic fantasy? Space-faring sci-fi? Post-apocalyptic? Superheroes? Ancient Greek mythology? Lovecraftian? Talk about your interests and look to games, books, movies, and tv shows to get inspired! Or, maybe you’ll leave it up to your Game Master to craft the world and focus more on creating interesting characters. Whatever you choose, make sure your party is on the same page.</p>
@@ -235,10 +235,10 @@
             <p>When in-game, characters interact with the world and the NPCs by <b>taking actions</b>. Basically, a Player will tell the Game Master what they want their character to do and the Game Master will decide if it’s a <b>free action</b> or if it requires a <b>difficulty check</b>. Depending on the Game Master’s opinion, one of two things can happen.</p>
 
             <h4>Free Actions</h4>
-            <p>Actions that don’t require skill or aren't that difficult, like speaking bluntly or opening an unlocked door, are free actions and will not require the Player to roll a <b>difficulty check</b>.</p>
+            <p>Actions that don’t require skill or aren't that difficult, like speaking bluntly or opening an unlocked door, are <b>free actions</b> and will not require the Player to roll a <b>difficulty check</b>.</p>
 
             <h4>Difficulty Checks</h4>
-            <p>Throwing a knife to cut a swinging rope, disarming a ticking time bomb, and summoning an unknowable beast from another dimension are a lot more difficult than opening an unlocked door. Actions with any level of difficulty require a <b>difficulty check (DC)</b>. If the Game Master decides that the action will require a difficulty check, they will first decide what ability the action will use and then pick a number that represents the action’s difficulty. Then the Player <b>rolls a d20</b> and adds or subtracts the required <b>ability score modifier</b>. If the result is higher than the action’s DC, the character succeeds, and if it is lower or equal to the action’s DC, the character fails. For example:</p>
+            <p>Throwing a knife to cut a swinging rope, disarming a ticking time bomb, and summoning an unknowable beast from another dimension are a lot more difficult than opening an unlocked door. Actions with any level of difficulty require a <b>difficulty check</b>. If the Game Master decides that the action will require a difficulty check, they will first decide what ability the action will use and then pick a number that represents the action’s difficulty challenge (DC). Then the Player <b>rolls a d20</b> and adds or subtracts the required <b>ability score modifier</b>. If the result is higher than or equal to the action’s DC, the character succeeds, and if it is lower than the action’s DC, the character fails. For example:</p>
 
             <blockquote>
               Player: "I want to use my new lockpick on the cage."<br>
@@ -261,6 +261,10 @@
             <span id="gmEtiquette" class="anchor"></span>
             <h3>Game Master Etiquette</h3>
             <p>Game Masters, remember that you may have crafted the settings and events of the quest but your Player's characters are the ones who are living inside it. <b>Do not</b> make big decisions for them and try not to force them into dangerous situations without warning signs. It's better to drop subtle clues and let the Players guide themselves through the quest, offering a nudge in the right direction only occasionally.</p>
+
+            <div class="text-right">
+              <button type="button" class="btn btn-default" onclick="runScroll()">Back to Top</button>
+            </div>
           </div>
 
           <!-- Tab pane 2 -->
@@ -300,7 +304,7 @@
                   <td>Healers are defensive types that revive their allies' HP and provide added protection. They use <b>healing items, blunt weapons and shields</b> and have perks designed to heal and protect.</td>
                 </tr>
                 <tr>
-                  <td colspan="2">Examples: <i>Cleric, sheild fighter, nurse, medic, plague doctor</i></td>
+                  <td colspan="2">Examples: <i>Cleric, shield fighter, nurse, medic, plague doctor</i></td>
                 </tr>
                 <tr>
                   <th>Bard</th>
@@ -320,26 +324,26 @@
               <tbody class="n-mb">
                 <tr>
                   <th>Profession</th>
-                  <td>Wizard, Doctor, Detective, Brawler, Dancer, Mechanic, Duelist, Hunter, Chef, Healer</td>
+                  <td>the Wizard, the Doctor, the Detective, the Brawler, the Dancer, the Mechanic, the Bard, the Thief, the Duelist, the Hunter, the Butler, the Chef, the Theme Song Guy</td>
                 </tr>
                 <tr>
                   <th>Status</th>
-                  <td>General, High Priest, Queen, Demigod, Knight, Forsaken, Sith Lord, Mayor, Chieftain</td>
+                  <td>the General, the High Priest, the Queen, the Demigod, the Knight, the Sith Lord, the Mayor, the Chieftain</td>
                 </tr>
                 <tr>
                   <th>Misc</th>
-                  <td>Bard, Wanderer, Thief, Monk, Cleric, Anarchist, Pilgrim, Master, Oracle, Zealot</td>
+                  <td>the Forsaken, the Wanderer, the Sad, the Brave, the Anarchist, the Pilgrim, the Mad One, the Oracle, the Zealot, the Poorly Dressed, the Smelly</td>
                 </tr>
               </tbody>
             </table>
 
-            <p class="well"><b>Note:</b> Make sure you try and at least loosely match your character with the world your Game Master has created!</p>
+            <p class="well"><b>Note:</b> Make sure that, if your party decided on a genre during the first session, you try and at least loosely match your character to the setting and feel of that genre.</p>
 
             <hr>
 
             <span id="level" class="anchor"></span>
             <h3>Level</h3>
-            <p>If you’re starting from scratch with a new group, it’s best to leave your level at 1. However, if you’re recreating a character, updating a character, or creating an NPC for a quest with characters higher than level 1 you can change this as needed.</p>
+            <p>If you’re starting from scratch with a new group, it’s best to leave your level at 1. However, if you’re recreating a character, updating a character, or creating an NPC for a quest with characters higher than level 1, you can change this as needed.</p>
 
             <hr>
 
@@ -361,7 +365,7 @@
                 </tr>
                 <tr>
                   <th>Dexterity<br>(DEX)</th>
-                  <td>Represents agility, reflexes, and balance. Dexterity is used when making ranged attacks, but also acrobatics, stealth, and also rolling for initiative when entering combat.</td>
+                  <td>Represents agility, reflexes, and balance. Dexterity is used when making ranged attacks, but also acrobatics, stealth, and rolling for initiative when entering combat.</td>
                 </tr>
                 <tr>
                   <th>Vitality<br>(VIT)</th>
@@ -398,7 +402,7 @@
               Killgrog: "It's a butterscotch recipe!"
             </blockquote>
 
-            <p>When you make your character, consider taking points from areas where they are weak and placing those points on abilities where they are strong. That way, when your character makes difficulty checks, they're more likely to succeed at actions they're good at and more likely to fail at actions they're bad at. We recommend going no lower than 7 and no higher than 18 on any one ability, at least to start; you never know when a brawler will need to make an intelligence roll to save his team.</p>
+            <p>When you make your character, consider taking points from areas where they are weak and placing those points on abilities where they are strong. That way, when your character makes difficulty checks, they're more likely to succeed at actions they're good at and more likely to fail at actions they're bad at. I recommend going no lower than 7 and no higher than 18 on any one ability, at least to start; you never know when a brawler will need to make an intelligence roll to save his team.</p>
 
             <hr>
 
@@ -993,6 +997,10 @@
                 </table>
               </div>
             </div>
+
+            <div class="text-right">
+              <button type="button" class="btn btn-default" onclick="runScroll()">Back to Top</button>
+            </div>
           </div>
 
           <!-- Tab pane 3 -->
@@ -1076,6 +1084,10 @@
             <p>Some Game Masters may allow for an afterlife of some kind as a way to keep the Player in the game or allow the Player to create a new character to bring in on the next quest, but it's recommended that ghost characters not be given corporeal power or a means to speak with the party unless a party member has a perk that allows them to do so. If death isn't a punishment then there's no risk to combat!</p>
 
             <p class="well"><b>Note:</b> Game Masters, make character death satisfying or temporary if you want to maintain an amicable relationship with your Players.</p>
+
+            <div class="text-right">
+              <button type="button" class="btn btn-default" onclick="runScroll()">Back to Top</button>
+            </div>
           </div>
 
           <!-- Tab pane 4 -->
@@ -1208,6 +1220,10 @@
             <p>Sometimes you may want to take a session to <b>regroup</b> and give your Players a rest themselves. It helps to think of sessions as high points, once in awhile you need to let your party breathe and adjust their course. Think of these as <b>transitions</b> between story arcs. Give your Players <b>low-risk interactions</b> and provide moments where they can dig deeper into their characters thoughts and feelings, moments to build their characters into more complete creations.</p>
 
             <p>For example, you can give your characters time to <b>visit past victories</b>, take a trip home to see their <b>family</b>, or to reflect on their <b>losses</b>. This can also be a good place to <b>switch out party members</b>; you can give their character a peaceful, satisfying ending rather than just letting them vanish out of thin air.</p>
+
+            <div class="text-right">
+              <button type="button" class="btn btn-default" onclick="runScroll()">Back to Top</button>
+            </div>
           </div>
 
           <!-- Tab pane 5 -->
@@ -1241,6 +1257,10 @@
               <li>Have an agreement and understanding about the time and place for the next session.</li>
               <li>Thank your Game Master and your Host!</li>
             </ul>
+
+            <div class="text-right">
+              <button type="button" class="btn btn-default" onclick="runScroll()">Back to Top</button>
+            </div>
           </div>
         </div>
       </div><!-- /row -->

@@ -105,12 +105,6 @@ header.jumbotron {
 
 .tab-links {
   display: inline-block;
-  padding: 0.5em 1em;
-}
-
-.tab-links:focus, .tab-links:hover {
-  text-decoration: none;
-  background-color: #e5e5e5;
 }
 
 .tab-links.disabled {
