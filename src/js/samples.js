@@ -510,7 +510,7 @@ var sampleChars = [
     "perception": "12",
 
     "wpn1name": "Silver Lyre",
-    "wpn1desc": "An ancient instrument of forgotten origin, passed down through the Siren's family for hundreds of years. If the Siren uses her lyre to attack an enemy, she'll have to use this perk to repair it before she can play music again.",
+    "wpn1desc": "An ancient instrument of forgotten origin, passed down through the Siren's family for hundreds of years. If the Siren uses her lyre to attack an enemy, she'll have to use an action to repair it before she can play music again.",
     "wpn1type": "Medium (d8)",
     "wpn2name": "Twin Sparrows",
     "wpn2desc": "Two small sparrows that follow the Siren. Together, they can attack sensitive areas of a target's face for 1d4 damage.",
