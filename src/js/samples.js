@@ -571,11 +571,13 @@ var sampleQuests = [
     "questName": "Runaway Mimic!",
     "settingList": ["A merchant city on the coast", "A dark, seemingly abandoned manor", "Hidden catacombs beneath the manor", "A large cave that lets out to the sea"],
 
-    "setup": "",
-    "goal": "",
+    "setup": "While gathering supplies in the merchant city, the party is interrupted by a small treasure chest that runs past, a leathery strap flapping from beneath its open lid, spilling coins as it's chased by a group of townsfolk. The party chases the mimic as well, but when they find it, it's surrounded by some thieves looking for a fight.",
+    "goal": "Defeat the thieves and catch the chest mimic!",
 
     "enemyList": [],
-    "actList": [],
+    "actList": [
+      "<div class='panel panel-default no-print'><div class='panel-heading'><div class='row'><div class='col-xs-8'><h4 style='margin:8px auto' contenteditable='true'>Act 1</h4></div><div class='col-xs-4 text-right no-print'><button type='button' class='btn btn-danger delete-btn' onclick='deleteEnemy(this,1490389211449)'><span class='glyphicon glyphicon-remove'></span></button></div></div></div><div class='panel-body'><div class='row'><div class='col-sm-6'><b>Low Point</b><p contenteditable='true'>After the party defeats the thieves, they are approached be an old man who introduces himself as Zeke. Zeke tells the party about General Belvedere and how he was revealed to be a clever thief of a man who sold enchanted chests as regular treasure chests. Once the chests were full of gold and jewels, he'd call them back to him and store the gold in his massive house.</p></div><div class='col-sm-6'><b>High Point</b><p contenteditable='true'></p></div></div></div></div>"
+    ],
 
     "epilogue": "",
     "cliffhanger": ""

@@ -76,28 +76,6 @@ function getEnemyData() {
   return enemy;
 }
 
-function setEnemyData(enemy) {
-  enemyName.value = enemy.name;
-  enemyAmt.value = enemy.amt;
-  enemyLvl.value = enemy.lvl;
-  enemyHp.value = enemy.hp;
-
-  str_input.value = enemy.str;
-  dex_input.value = enemy.dex;
-  vit_input.value = enemy.vit;
-  int_input.value = enemy.int;
-  wis_input.value = enemy.wis;
-  cha_input.value = enemy.cha;
-  per_input.value = enemy.per;
-
-  enemyDamage.value = enemy.damage;
-  enemyArmor.value = enemy.armor;
-
-  enemyPerk1.value = enemy.perk1;
-  enemyPerk2.value = enemy.perk2;
-  enemyNotes.value = enemy.notes;
-}
-
 function clearEnemyCreator() {
   enemyName.value = "";
   enemyAmt.value = "1";
