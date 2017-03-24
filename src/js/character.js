@@ -565,6 +565,44 @@ function isTargetingEnemy(target, input) {
   }
 }
 
+function chgExamples(input, target) {
+  var el = document.getElementById(target);
+  var val = input.value;
+  var text = "";
+
+  switch(val) {
+    case "Small (d4)":
+      text = "A dagger, a wand, a book, a stick, a flute, a tamborine, knitting needles, a stuffed animal, a spatula, a mouse, a rat, a squirrel, a racoon, a chicken, a cat, a small dog, a bottle, a pipe, etc.";
+      break;
+    case "Ranged (d6)":
+      text = "A longbow, a shortbow, a crossbow, blowdarts, poison darts, lawn darts, any gun, throwing knives, throwing stars, throwing rocks, slingshots, killer bees, birds, dragons, griffins, and other flying creatures, etc.";
+      break;
+    case "Medium (d8)":
+      text = "A sword, a mace, an axe, a rapier, a cane, a rod, a baton, a pickaxe, a large piece of wood, a lyre, a trumpet, a hand scythe, a dog, a small bear, a panther, a cheetah, a monkey, a trashcan, a chair, etc.";
+      break;
+    case "Large (d10)":
+      text = "A warhammer, a two-handed sword, a battleaxe, polearms, a staff, a stopsign, a reaper's scythe, a coatrack, a spear, a lance, a lamp, a bear, a tiger, an alligator, a shark, a buffalo, an elephant, etc.";
+      break;
+    case "Shield (AC +1)":
+      text = "A buckler, a kite shield, a tower shield, a trashcan lid, a car door, a riot shield, a thick sheet of wood with a handle glued to the back, a large turtle, an armadillo, a pangolin, etc.";
+      break;
+    case "None (AC 10)":
+      text = "Stark naked, civilian clothes, a simple tunic, non-magical robes, a band t-shirt, boxing shorts, a swimsuit, overalls, an fancy suit, an old sweater, etc.";
+      break;
+    case "Light (AC 12)":
+      text = "Leather armor, leather jacket, magic robes, plastic pads, bubble wrap, a hazmat suit, extra pants, a thin layer of psychic energy, garments with magical properties, etc.";
+      break;
+    case "Medium (AC 14)":
+      text = "Partial iron/steel armor, bulletproof gear, a combat outfit, a thick layer of psychic energy, concealed armor, scale armor, chainmail, etc.";
+      break;
+    case "Heavy (AC 16)":
+      text = "Full suit of armor, riot gear, dragon bone armor, cyborg enhancements, beast body, rocks for skin, a mech suit, etc.";
+      break;
+  }
+
+  el.innerHTML = text;
+}
+
 function getPerkTypeText(val, id) {
   var dice = "";
 

@@ -327,7 +327,7 @@
               <div class="panel-footer">
                 <div class="row">
                   <div class="col-xs-12">
-                    <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm()">
+                    <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm(), chgExamples(this,'wpn1examplesText')">
                       <option value="Small (d4)">Small (d4)</option>
                       <option value="Ranged (d6)">Ranged (d6)</option>
                       <option value="Medium (d8)" selected>Medium (d8)</option>
@@ -337,7 +337,7 @@
                   </div>
                   <div id="wpn1footer" class="col-xs-12 collapse">
                     <p><b>Examples</b></p>
-                    <p id="wpn1examplesText">Test</p>
+                    <p id="wpn1examplesText">A sword, a mace, an axe, a rapier, a cane, a rod, a baton, a pickaxe, a large piece of wood, a lyre, a trumpet, a hand scythe, a dog, a small bear, a panther, a cheetah, a monkey, a trashcan, a chair, etc.</p>
                   </div>
                 </div>
               </div>
@@ -347,18 +347,33 @@
             <h3>Sub Weapon</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="wpn2name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                <div class="row">
+                  <div class="col-xs-8">
+                    <h4 id="wpn2name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                  </div>
+                  <div class="col-xs-4">
+                    <a href="#wpn2footer" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
+                  </div>
+                </div>
               </div>
               <div class="panel-body">
                 <p id="wpn2desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <div class="text-right">
-                  <select id="wpn2type" class="form-control n-mb pull-right" onchange="needConfirm()">
-                    <option value="Small (d4)">Small (d4)</option>
-                    <option value="Ranged (d6)" selected>Ranged (d6)</option>
-                    <option value="Medium (d8)">Medium (d8)</option>
-                    <option value="Large (d10)">Large (d10)</option>
-                    <option value="Shield (AC +1)">Shield (AC +1)</option>
-                  </select>
+              </div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <select id="wpn2type" class="form-control n-mb pull-right" onchange="needConfirm(), chgExamples(this,'wpn2examplesText')">
+                      <option value="Small (d4)">Small (d4)</option>
+                      <option value="Ranged (d6)" selected>Ranged (d6)</option>
+                      <option value="Medium (d8)">Medium (d8)</option>
+                      <option value="Large (d10)">Large (d10)</option>
+                      <option value="Shield (AC +1)">Shield (AC +1)</option>
+                    </select>
+                  </div>
+                  <div id="wpn2footer" class="col-xs-12 collapse">
+                    <p><b>Examples</b></p>
+                    <p id="wpn2examplesText">A longbow, a shortbow, a crossbow, blowdarts, poison darts, lawn darts, any gun, throwing knives, throwing stars, throwing rocks, slingshots, killer bees, birds, dragons, griffins, and other flying creatures, etc.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -370,17 +385,32 @@
             <h3>Armor</h3>
             <div class="panel panel-default n-mb">
               <div class="panel-heading">
-                <h4 id="armorName" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                <div class="row">
+                  <div class="col-xs-8">
+                    <h4 id="armorName" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                  </div>
+                  <div class="col-xs-4">
+                    <a href="#armorFooter" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
+                  </div>
+                </div>
               </div>
               <div class="panel-body">
                 <p id="armorDesc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <div class="text-right">
-                  <select id="armorType" class="form-control n-mb pull-right" onchange="needConfirm()">
-                    <option value="None (AC 10)">None (AC 10)</option>
-                    <option value="Light (AC 12)">Light (AC 12)</option>
-                    <option value="Medium (AC 14)">Medium (AC 14)</option>
-                    <option value="Heavy (AC 16)">Heavy (AC 16)</option>
-                  </select>
+              </div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <select id="armorType" class="form-control n-mb pull-right" onchange="needConfirm(),chgExamples(this,'armorExamplesText')">
+                      <option value="None (AC 10)">None (AC 10)</option>
+                      <option value="Light (AC 12)">Light (AC 12)</option>
+                      <option value="Medium (AC 14)">Medium (AC 14)</option>
+                      <option value="Heavy (AC 16)">Heavy (AC 16)</option>
+                    </select>
+                  </div>
+                  <div id="armorFooter" class="col-xs-12 collapse">
+                    <p><b>Examples</b></p>
+                    <p id="armorExamplesText">Stark naked, civilian clothes, a simple tunic, non-magical robes, a band t-shirt, boxing shorts, a swimsuit, overalls, an fancy suit, an old sweater, etc.</p>
+                  </div>
                 </div>
               </div>
             </div>
