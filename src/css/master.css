@@ -348,6 +348,7 @@ header.jumbotron {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border: none;
+  z-index: 999;
 }
 
 #rng-container {
