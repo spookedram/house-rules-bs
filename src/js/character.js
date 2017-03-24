@@ -766,9 +766,9 @@ function submitHelp(id) {
   typeText = getPerkTypeText(type.options[type.selectedIndex].text, id);
 
   if(target.value !== "enemy") {
-    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " DC check. If successful, the perk " + typeText;
+    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. If successful, the perk " + typeText;
   } else {
-    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " DC check. If successful, the target(s) must roll a " + st.options[st.selectedIndex].text + " saving throw. If they fail, the perk " + typeText;
+    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. If successful, the target(s) must roll a " + st.options[st.selectedIndex].text + " saving throw. If they fail, the perk " + typeText;
   }
 
   desc.innerHTML = text;
