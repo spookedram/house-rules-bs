@@ -319,11 +319,33 @@
               </div>
               <div class="col-xs-12">
                 <label for="enemyPerk1">Perk 1</label>
-                <input type="text" id="enemyPerk1" name="enemyPerk1" class="form-control">
+                <div class="input-group">
+                  <input type="text" id="enemyPerk1" name="enemyPerk1" class="form-control">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li><a href="#" onclick="perkHelper('enemyPerk1',0)">Damage</a></li>
+                      <li><a href="#" onclick="perkHelper('enemyPerk1',1)">Healing</a></li>
+                      <li><a href="#" onclick="perkHelper('enemyPerk1',2)">Buff</a></li>
+                      <li><a href="#" onclick="perkHelper('enemyPerk1',3)">Debuff</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div class="col-xs-12">
                 <label for="enemyPerk2">Perk 2</label>
-                <input type="text" id="enemyPerk2" name="enemyPerk2" class="form-control">
+                <div class="input-group">
+                  <input type="text" id="enemyPerk2" name="enemyPerk2" class="form-control">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li><a href="#" onclick="perkHelper('enemyPerk2',0)">Damage</a></li>
+                      <li><a href="#" onclick="perkHelper('enemyPerk2',1)">Healing</a></li>
+                      <li><a href="#" onclick="perkHelper('enemyPerk2',2)">Buff</a></li>
+                      <li><a href="#" onclick="perkHelper('enemyPerk2',3)">Debuff</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div class="col-xs-12 col-md-6">
                 <label for="enemyNotes">Notes</label>

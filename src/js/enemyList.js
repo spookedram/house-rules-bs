@@ -216,7 +216,7 @@ function createEnemyDiv() {
     notes = '<p class="n-mb"><b>Notes</b></p><p contenteditable="true">' + enemy.notes + '</p>';
   }
 
-  addToInnerHTML(document.getElementById("enemyList"),'<div class="enemy col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><h4 style="margin:8px auto">Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</span></h4></div><div class="panel-body"><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p><p class="n-mb"><b>Perks</b></p><p contenteditable="true">' + enemy.perk1 + '<br>' + enemy.perk2 + notes + '</p></div><div class="panel-footer no-print"><div class="row"><div class="col-xs-6"><button type="button" class="btn btn-danger" onclick="deleteEnemy(this,' + enemy.pin + ')">Delete</button></div><div class="col-xs-6 text-right"><button type="button" class="btn btn-success" onclick="openEdit(this,'+enemy.pin+')">Edit</button></div></div></div></div></div>');
+  addToInnerHTML(document.getElementById("enemyList"),'<div class="enemy col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><h4 style="margin:8px auto">Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</span></h4></div><div class="panel-body"><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p><p class="n-mb"><b>Perks</b></p><p contenteditable="true">' + enemy.perk1 + '<br>' + enemy.perk2 + notes + '</p></div><div class="panel-footer no-print"><div class="text-right"><button type="button" class="btn btn-danger" onclick="deleteEnemy(this,' + enemy.pin + ')">Delete</button></div></div></div></div>');
 }
 
 function addEnemy() {
@@ -335,9 +335,6 @@ function randomizeAbilityScores() {
 
 function setLevel() {
   switch(document.getElementById("lvl").value) {
-    default:
-      totalAbilityPoints = 70;
-      break;
     case "2":
     case "3":
     case "4":
@@ -370,6 +367,10 @@ function setLevel() {
       break;
     case "20":
       totalAbilityPoints = 77;
+      break;
+    default:
+      totalAbilityPoints = 70;
+      break;
   }
 }
 
@@ -398,4 +399,70 @@ function setTotal() {
   } else {
     left_label.parentElement.style.color = "black";
   }
+}
+
+function perkHelper(target, boo) {
+  var el = document.getElementById(target);
+  var hp = "";
+  var num = "";
+  var text = "";
+
+  switch(document.getElementById("lvl").value) {
+    case "1":
+    case "2":
+    case "3":
+      hp = "2d12";
+      num = "1";
+      break;
+    case "4":
+    case "5":
+    case "6":
+      hp = "4d12";
+      num = "2";
+      break;
+    case "7":
+    case "8":
+    case "9":
+      hp = "6d12";
+      num = "3";
+      break;
+    case "10":
+    case "11":
+    case "12":
+      hp = "10d8";
+      num = "4";
+      break;
+    case "13":
+    case "14":
+    case "15":
+      hp = "10d10";
+      num = "5";
+      break;
+    case "16":
+    case "17":
+    case "18":
+      hp = "10d12";
+      num = "6";
+      break;
+    case "19":
+    case "20":
+      hp = "12d12";
+      num = "7";
+      break;
+    default:
+      hp = "2d12";
+      num = "1";
+  }
+
+  if(boo === 0) {
+    text = "Critical Strike (STR): Attacks target for " + hp + " damage.";
+  } else if (boo === 1) {
+    text = "Lick Wounds (VIT): Heals self for " + hp + " HP.";
+  } else if (boo === 2) {
+    text = "Fortify (STR): Buffs self for " + num + " AC.";
+  } else {
+    text = "Hinder (VIT): Debuffs target for " + num + " STR.";
+  }
+
+  el.value = text;
 }
