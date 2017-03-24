@@ -61,13 +61,13 @@ function saveQuestData() {
 
   quest.pin = uniqueNumber();
   quest.questName = questName.innerHTML;
-  quest.settingList = getItems('setting');
+  quest.settingList = settingList;
 
   quest.setup = setup.innerHTML;
   quest.goal = goal.innerHTML;
 
   quest.enemyList = getItems('enemy');
-  quest.actList = getItems('act');
+  quest.actList = actList;
 
   quest.epilogue = epilogue.innerHTML;
   quest.cliffhanger = cliffhanger.innerHTML;
@@ -104,7 +104,7 @@ function setQuestData(quest) {
 
   showElementById('emptyActPanel', false);
   for(var k = 0; k < quest.actList.length; k++) {
-    addToInnerHTML(document.getElementById('actList'), '<div class="act col-xs-12">' + quest.actList[k] + '</div>');
+    addToInnerHTML(document.getElementById('actList'), "<div class='panel panel-default no-print'><div class='panel-heading'><div class='row'><div class='col-xs-8'><h4 style='margin:8px auto' contenteditable='true'>Act 1</h4></div><div class='col-xs-4 text-right no-print'><button type='button' class='btn btn-danger delete-btn' onclick='deleteEnemy(this," + quest.pin + ")'><span class='glyphicon glyphicon-remove'></span></button></div></div></div><div class='panel-body'><div class='row'><div class='col-sm-6'><b>Low Point</b><p contenteditable='true'>" + quest.actList[k].low + "</p></div><div class='col-sm-6'><b>High Point</b><p contenteditable='true'>" + quest.actList[k].high + "</p></div></div></div></div>");
   }
 
   epilogue.innerHTML = quest.epilogue;
@@ -252,8 +252,6 @@ function addAct() {
       act.pin = uniqueNumber();
 
       addToInnerHTML(document.getElementById("actList"),'<div class="act col-xs-12"><div class="panel panel-default no-print"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto" contenteditable="true">Act ' + (actList.length + 1) + '</h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEnemy(this,' + act.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Low Point</b><p contenteditable="true">' + act.low + '</p></div><div class="col-sm-6"><b>High Point</b><p contenteditable="true">' + act.high + '</p></div></div></div></div></div>');
-
-
 
       actList.push(act);
       low.value = "";
