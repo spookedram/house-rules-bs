@@ -182,18 +182,16 @@
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
 
-      <h3>Quest Name</h3>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <h3 id="questName" class="enter-name n-mb" contenteditable="true" oninput="needConfirm()" style="margin:0;"></h3>
-        </div>
-      </div>
-
-      <hr>
-
-      <h3>Setup</h3>
       <div class="row">
         <div class="col-sm-6">
+          <h3>Quest Name</h3>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h3 id="questName" class="enter-name n-mb" contenteditable="true" oninput="needConfirm()" style="margin:0;"></h3>
+            </div>
+          </div>
+
+          <h3>Setup</h3>
           <h4>Prologue</h4>
           <p class="small no-print">What do the Players need to know before the goal?</p>
           <div class="panel panel-default">
@@ -201,8 +199,7 @@
               <p id="prologue" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6">
+
           <h4>Goal</h4>
           <p class="small no-print">What's the goal at the beginning of the quest?</p>
           <div class="panel panel-default n-mb">
@@ -210,6 +207,27 @@
               <p id="goal" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
             </div>
           </div>
+        </div>
+        <div class="col-sm-6">
+          <h3>Settings</h3>
+          <p class="small no-print">What are the different environments involved in this quest?</p>
+          <div class="input-group no-print">
+            <input id="settingsInput" type="text" class="form-control" oninput="needConfirm()">
+            <span class="input-group-btn">
+              <button id="settingsBtn" type="button" class="btn btn-default" onclick="addRowToList('settingsInput','settingsList'), focusedEnterBtn('settingsInput','settingsList')">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </span>
+          </div>
+          <table class="table">
+            <thead>
+              <th>Setting List</th>
+              <th></th>
+            </thead>
+            <tbody id="settingsList">
+
+            </tbody>
+          </table>
         </div>
       </div>
 
@@ -319,7 +337,7 @@
               </div>
               <div class="col-xs-12">
                 <label for="enemyPerk1">Perk 1</label>
-                <div class="input-group">
+                <div class="input-group enemy-perk-container">
                   <input type="text" id="enemyPerk1" name="enemyPerk1" class="form-control">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></button>
@@ -334,7 +352,7 @@
               </div>
               <div class="col-xs-12">
                 <label for="enemyPerk2">Perk 2</label>
-                <div class="input-group">
+                <div class="input-group enemy-perk-container">
                   <input type="text" id="enemyPerk2" name="enemyPerk2" class="form-control">
                   <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></button>
@@ -351,7 +369,7 @@
                 <label for="enemyNotes">Notes</label>
                 <input type="text" id="enemyNotes" name="enemyNotes" class="form-control n-mb" placeholder="Quest items, shield, etc.">
               </div>
-              <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-6 col-md-offset-0 text-right">
+              <div class="col-xs-12 col-md-6 col-md-offset-0 text-right">
                 <label for="">&#160;</label>
                 <button id="addEnemyBtn" type="button" class="btn btn-success form-control n-mb" onclick="addEnemy(), toggleDisabled('addEnemyBtn',true)" disabled="true">Add Enemy</button>
               </div>
@@ -364,7 +382,7 @@
 
       <h3>Enemy List</h3>
       <p class="no-print"><i>Tip: You can edit an enemy's entry by clicking or tapping directly on the text!</i></p>
-      <div id="enemyList" class="row">
+      <div id="enemyList" class="row equal">
         <div id="emptyEnemyPanel" class="col-sm-6 col-sm-offset-3">
           <div class="panel panel-default">
             <div class="panel-body">

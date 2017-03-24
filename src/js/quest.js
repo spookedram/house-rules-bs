@@ -1,8 +1,8 @@
 var questList = [];
+var settingList = [];
 var actList = [];
 
 var questName = document.getElementById("questName");
-var settingsList = document.getElementById("settingsList");
 var npcsList = document.getElementById("npcsList");
 var setup = document.getElementById("prologue");
 var goal = document.getElementById("goal");
@@ -31,6 +31,7 @@ function getQuestList() {
 function Quest() {
   this.pin = 0;
   this.questName = "";
+  this.settingList = [];
 
   this.setup = "";
   this.goal = "";
@@ -60,6 +61,7 @@ function saveQuestData() {
 
   quest.pin = uniqueNumber();
   quest.questName = questName.innerHTML;
+  quest.settingList = getItems('setting');
 
   quest.setup = setup.innerHTML;
   quest.goal = goal.innerHTML;
@@ -88,17 +90,21 @@ function saveQuestData() {
 
 function setQuestData(quest) {
   questName.innerHTML = quest.questName;
+  for(var i = 0; i < quest.settingList.length; i++) {
+    addToInnerHTML(document.getElementById('settingsList'), "<tr><td class='setting' style='vertical-align:middle'>" + quest.settingList[i] + "</td><td class='text-right'><button type='button' class='btn btn-default no-print' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
+  }
+
   setup.innerHTML = quest.setup;
   goal.innerHTML = quest.goal;
 
   showElementById('emptyEnemyPanel', false);
-  for(var i = 0; i < quest.enemyList.length; i++) {
-    addToInnerHTML(document.getElementById('enemyList'), '<div class="enemy col-xs-12 col-sm-4 col-print-4">' + quest.enemyList[i] + '</div>');
+  for(var j = 0; j < quest.enemyList.length; j++) {
+    addToInnerHTML(document.getElementById('enemyList'), '<div class="enemy col-xs-12 col-sm-4 col-print-4">' + quest.enemyList[j] + '</div>');
   }
 
   showElementById('emptyActPanel', false);
-  for(var j = 0; j < quest.actList.length; j++) {
-    addToInnerHTML(document.getElementById('actList'), '<div class="act col-xs-12">' + quest.actList[j] + '</div>');
+  for(var k = 0; k < quest.actList.length; k++) {
+    addToInnerHTML(document.getElementById('actList'), '<div class="act col-xs-12">' + quest.actList[k] + '</div>');
   }
 
   epilogue.innerHTML = quest.epilogue;
@@ -196,10 +202,11 @@ function addRowToList(str1, str2) {
   var input = document.getElementById(str1);
   var tableBody = document.getElementById(str2);
 
-  var newHTML = "<tr><td>" + input.value + "</td><td class='text-right'><button type='button' class='btn btn-default' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td></tr>";
+  var newHTML = "<tr><td class='setting' style='vertical-align:middle'>" + input.value + "</td><td class='text-right'><button type='button' class='btn btn-default no-print' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td></tr>";
 
   if(input.value !== "") {
     tableBody.innerHTML += newHTML;
+    settingList.push(input.value);
     input.value = "";
   }
 }
@@ -207,6 +214,15 @@ function addRowToList(str1, str2) {
 function deleteRow(btn) {
   btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
 }
+
+settingsInput.onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    addRowToList('settingsInput', 'settingsList');
+    return false;
+  }
+};
 
 function enableActBtn() {
   var low = document.getElementById("newActLow");

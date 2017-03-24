@@ -555,148 +555,29 @@ var sampleQuests = [
   {
     "pin": 0,
     "questName": "",
+    "settingList": [],
 
-    "settingsList": "",
-    "npcList": "",
     "setup": "",
-
     "goal": "",
-    "wander": "",
 
-    "funFight": "",
-    "twist": "",
+    "enemyList": [],
+    "actList": [],
 
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
     "epilogue": "",
     "cliffhanger": ""
   },
   {
     "pin": 1,
-    "questName": "Bird Bones",
+    "questName": "Runaway Mimic!",
+    "settingList": ["A merchant city on the coast", "A dark, seemingly abandoned manor", "Hidden catacombs beneath the manor", "A large cave that lets out to the sea"],
 
-    "settingsList": "",
-    "npcList": "",
     "setup": "",
-
     "goal": "",
-    "wander": "",
 
-    "funFight": "",
-    "twist": "",
+    "enemyList": [],
+    "actList": [],
 
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
     "epilogue": "",
     "cliffhanger": ""
   },
-  {
-    "pin": 2,
-    "questName": "",
-
-    "settingsList": "",
-    "npcList": "",
-    "setup": "",
-
-    "goal": "",
-    "wander": "",
-
-    "funFight": "",
-    "twist": "",
-
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
-    "epilogue": "",
-    "cliffhanger": ""
-  },
-  {
-    "pin": 3,
-    "questName": "",
-
-    "settingsList": "",
-    "npcList": "",
-    "setup": "",
-
-    "goal": "",
-    "wander": "",
-
-    "funFight": "",
-    "twist": "",
-
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
-    "epilogue": "",
-    "cliffhanger": ""
-  },
-  {
-    "pin": 4,
-    "questName": "",
-
-    "settingsList": "",
-    "npcList": "",
-    "setup": "",
-
-    "goal": "",
-    "wander": "",
-
-    "funFight": "",
-    "twist": "",
-
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
-    "epilogue": "",
-    "cliffhanger": ""
-  },
-  {
-    "pin": 5,
-    "questName": "",
-
-    "settingsList": "",
-    "npcList": "",
-    "setup": "",
-
-    "goal": "",
-    "wander": "",
-
-    "funFight": "",
-    "twist": "",
-
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
-    "epilogue": "",
-    "cliffhanger": ""
-  },
-  {
-    "pin": 6,
-    "questName": "",
-
-    "settingsList": "",
-    "npcList": "",
-    "setup": "",
-
-    "goal": "",
-    "wander": "",
-
-    "funFight": "",
-    "twist": "",
-
-    "challenge": "",
-    "searchEnd": "",
-
-    "climax": "",
-    "epilogue": "",
-    "cliffhanger": ""
-  }
 ];

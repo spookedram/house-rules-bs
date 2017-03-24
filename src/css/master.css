@@ -236,6 +236,45 @@ header.jumbotron {
   text-align: left !important;
 }
 
+.equal
+{
+  display: block
+}
+.equal > div.enemy
+{
+  width: 100%;
+}
+.equal > div.enemy > div.panel {
+  width:100%;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .equal
+  {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .equal > div.enemy
+  {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width:33%;
+  }
+  .equal > div.enemy > div.panel {
+    width:100%;
+  }
+}
+
+.enemy-perk-container{
+  margin-bottom: 15px;
+}
+
 
 /*===|==|--- ID Specific Styles ---|==|===*/
 
@@ -313,10 +352,6 @@ header.jumbotron {
   }
 }
 
-#setting-list *, #npc-list *{
-  vertical-align: middle;
-}
-
 #titleLabel {
   margin-top: 0;
 }
@@ -346,6 +381,7 @@ header.jumbotron {
 #updateHP:disabled {
   background-color: #337ab7 !important;
 }
+
 
 /*===|==|--- DiceSim ---|==|===*/
 
