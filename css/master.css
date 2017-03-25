@@ -442,7 +442,7 @@ header.jumbotron {
 }
 
 #roll-result {
-  width: 100% !important;
+  margin: 10px 0;
 }
 
 
