@@ -423,8 +423,12 @@ header.jumbotron {
 
 #rng-panel input[type="number"],
 #rng-panel select {
-  margin-bottom: 0;
   display: inline-block;
+}
+
+#roll-amt,
+#roll-sides {
+  margin-bottom: 0 !important;
 }
 
 #rng-panel input[type="number"] {
