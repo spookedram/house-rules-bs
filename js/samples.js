@@ -128,7 +128,7 @@ var sampleChars = [
     "wpn1desc": "A pair of concealed iron daggers that spring out into their hands from inside their sleeves. Excellent for sneak attacks. Roll 2 attacks if using both daggers.",
     "wpn1type": "Small (d4)",
     "wpn2name": "Poison Darts",
-    "wpn2desc": "Small darts tipped with a poisonous powder. If the target fails a CON saving throw, they are poisoned and take 1d4 damage at the beginning of their turn for 3 rounds.",
+    "wpn2desc": "Small darts tipped with a poisonous powder. If the target fails a VIT saving throw, they are poisoned and take 1d4 damage at the beginning of their turn for 3 rounds.",
     "wpn2type": "Ranged (d6)",
     "armorName": "Disappearing Cloak",
     "armorDesc": "A cloak as dark as the night, gives +1 on rolls for stealth-based DEX checks when it's dark, but provides little physical protection.",
