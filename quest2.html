@@ -319,7 +319,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button id="addEnemyBtn" type="button" class="btn btn-success" onclick="addEnemy(), toggleDisabled('addEnemyBtn',true), document.getElementById('addEventBtn').click(), document.getElementById('openEnemyCreator').click()" disabled="true">Add Enemy</button>
+              <button id="addEnemyBtn" type="button" data-dismiss="modal" class="btn btn-success" disabled="true">Add Enemy</button>
             </div>
           </div>
         </div>
@@ -336,15 +336,15 @@
               <div class="row">
                 <div class="col-xs-12">
                   <label for="trapName">Name</label>
-                  <input type="text" name="trapName" class="form-control">
+                  <input id="trapName" type="text" name="trapName" class="form-control">
                 </div>
                 <div class="col-xs-12">
                   <label for="trapDesc">Description</label>
-                  <textarea name="trapDesc" rows="3" class="form-control"></textarea>
+                  <textarea id="trapDesc" name="trapDesc" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="col-xs-6">
                   <label for="trapST">Saving Throw</label>
-                  <select id="trapDamage" name="trapDamage" class="form-control n-mb">
+                  <select id="trapST" name="trapDamage" class="form-control n-mb">
                     <option value="STR">STR</option>
                     <option value="DEX" selected>DEX</option>
                     <option value="VIT">VIT</option>
@@ -367,7 +367,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-success">Add Event</button>
+              <button type="button" class="btn btn-success" onclick="addTrap(1)">Add Event</button>
             </div>
           </div>
         </div>
@@ -398,7 +398,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-success">Add Event</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Add Event</button>
             </div>
           </div>
         </div>
@@ -426,7 +426,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-success">Add Event</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Add Event</button>
             </div>
           </div>
         </div>
@@ -454,88 +454,68 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-success">Add Event</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal">Add Event</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <table class="table n-mb">
-            <tbody>
-              <tr>
-                <td class="area-name"><h4>Abandoned Castle - First Floor</h4></td>
-                <td class="area-remove"><button type="button" class="btn btn-danger delete-btn" onclick="showElementById('deleteAlert1', true)"><span class="glyphicon glyphicon-remove"></span></button></td>
-              </tr>
-            </tbody>
-          </table>
+      <div id="areaListWrapper">
 
-          <div id="deleteAlert1" class="alert alert-danger n-mb" style="display:none;">
-            <p class="text-center">This will delete this area and all it's events. Are you sure?</p>
-            <div class="text-center" style="margin-top:16px;">
-              <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showElementById('deleteAlert1', false)">Yes</button>
-              <button type="button" name="button" class="btn btn-primary" onclick="showElementById('deleteAlert1', false)">Cancel</button>
-            </div>
-          </div>
+      </div>
+
+      <div class="area panel panel-default">
+        <div class="panel-heading">
+          <h4>Abandoned Castle - First Floor</h4>
         </div>
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <b>Description</b>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div class="col-sm-8">
-              <div class="row">
-                <div class="col-xs-5">
-                  <h4 style="margin: 0;">Events</h4>
-                </div>
-                <div class="col-xs-7">
-                  <div class="dropdown pull-right">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="area1eventsDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      Add an Event
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="area1eventsDD">
-                      <li><a data-toggle="modal" href="#enemyModal">Enemy</a></li>
-                      <li><a data-toggle="modal" href="#trapModal">Trap</a></li>
-                      <li><a data-toggle="modal" href="#puzzleModal">Puzzle</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a data-toggle="modal" href="#npcModal">NPC</a></li>
-                      <li><a data-toggle="modal" href="#itemModal">Quest Item</a></li>
-                    </ul>
-                  </div>
-                </div>
+            <div class="col-sm-6 text-right no-print">
+              <h4 style="margin-top:0;">Add an Event</h4>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#enemyModal">Enemy</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#trapModal">Trap</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#puzzleModal">Puzzle</button>
               </div>
-
-              <p id="area1eventsEmpty">You don't have any events yet! Use the button on the right to create a new event.</p>
-
-              <div id="eventList" class="row equal">
-                
+              <div class="btn-group">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#npcModal">NPC</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#itemModal">Quest Item</button>
               </div>
             </div>
           </div>
+
+          <h4>Events</h4>
+          <p id="area1eventsEmpty">You have not made any events for this area yet! Use the buttons on the right to create a new event.</p>
+
+          <div id="area1eventList" class="row equal"></div>
+        </div>
+        <div class="panel-footer text-right no-print">
+          <button type="button" class="btn btn-danger">Delete Area</button>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row no-print">
         <div class="col-sm-8 col-sm-offset-2">
           <h4>Add an Area</h4>
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="row">
                 <div class="col-sm-6">
-                  <label for="">Area Name</label>
-                  <input type="text" name="" value="" class="form-control n-mb">
+                  <label for="areaName">Area Name</label>
+                  <input id="areaName" type="text" name="areaName" class="form-control n-mb">
                 </div>
               </div>
             </div>
             <div class="panel-body">
-              <label for="">Area Description</label>
-              <textarea name="name" rows="5" cols="80" class="form-control n-mb"></textarea>
+              <label for="areaDesc">Area Description</label>
+              <textarea id="areaDesc" name="areaDesc" rows="5" class="form-control n-mb"></textarea>
             </div>
             <div class="panel-footer text-right">
-              <button type="button" class="btn btn-success">Add Area</button>
+              <button type="button" class="btn btn-success" onclick="addAnArea()">Add Area</button>
             </div>
           </div>
         </div>
