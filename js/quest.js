@@ -220,3 +220,19 @@ function toggleBtnText(btn, target) {
     btn.innerHTML = "Open";
   }
 }
+
+function addTrap() {
+
+}
+
+function addPuzzle() {
+
+}
+
+function addNPCInteraction() {
+
+}
+
+function addQuestItem() {
+  
+}
