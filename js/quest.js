@@ -36,9 +36,6 @@ function Quest() {
   this.setup = "";
   this.goal = "";
 
-  this.enemyList = [];
-  this.actList = [];
-
   this.epilogue = "";
   this.cliffhanger = "";
 }
@@ -66,8 +63,7 @@ function saveQuestData() {
   quest.setup = setup.innerHTML;
   quest.goal = goal.innerHTML;
 
-  quest.enemyList = getItems('enemy');
-  quest.actList = actList;
+  quest.eventList = getItems('event');
 
   quest.epilogue = epilogue.innerHTML;
   quest.cliffhanger = cliffhanger.innerHTML;
@@ -198,11 +194,11 @@ function clearItem(btn,pin) {
   btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
 }
 
-function addRowToList(str1, str2) {
-  var input = document.getElementById(str1);
-  var tableBody = document.getElementById(str2);
+function addAnArea() {
+  var input = document.getElementById("settingsInput");
+  var tableBody = document.getElementById("settingsList");
 
-  var newHTML = "<tr><td class='setting' style='vertical-align:middle'>" + input.value + "</td><td class='text-right'><button type='button' class='btn btn-default no-print' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td></tr>";
+  var newHTML = "<tr><td><button type='button' class='btn btn-default no-print' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td><td class='setting' style='vertical-align:middle'>" + input.value + "</td><td  class='text-right'><button type='button' class='btn btn-default no-print'>Load</button></td></tr>";
 
   if(input.value !== "") {
     tableBody.innerHTML += newHTML;
@@ -215,55 +211,6 @@ function deleteRow(btn) {
   btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
 }
 
-settingsInput.onkeypress = function(e){
-  if (!e) e = window.event;
-  var keyCode = e.keyCode || e.which;
-  if (keyCode == '13'){
-    addRowToList('settingsInput', 'settingsList');
-    return false;
-  }
-};
-
-function enableActBtn() {
-  var low = document.getElementById("newActLow");
-  var high = document.getElementById("newActHigh");
-  if(low.value !== "" && high.value !== "") {
-    document.getElementById("addActBtn").disabled = false;
-  } else {
-    document.getElementById("addActBtn").disabled = true;
-  }
-}
-
-function Act() {
-  this.pin = "";
-  this.low = "";
-  this.high = "";
-}
-
-function addAct() {
-  if(actList.length < 9) {
-    var low = document.getElementById("newActLow");
-    var high = document.getElementById("newActHigh");
-    if(low.value !== "" && high.value !== "") {
-      var act = new Act();
-
-      act.low = low.value;
-      act.high = high.value;
-      act.pin = uniqueNumber();
-
-      addToInnerHTML(document.getElementById("actList"),'<div class="act col-xs-12"><div class="panel panel-default no-print"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto" contenteditable="true">Act ' + (actList.length + 1) + '</h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEnemy(this,' + act.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Low Point</b><p contenteditable="true">' + act.low + '</p></div><div class="col-sm-6"><b>High Point</b><p contenteditable="true">' + act.high + '</p></div></div></div></div></div>');
-
-      actList.push(act);
-      low.value = "";
-      high.value = "";
-    }
-  }
-
-  if(actList.length === 1) {
-    showElementById('emptyActPanel',false);
-  }
-}
-
 function toggleBtnText(btn, target) {
   var el = document.getElementById(target);
 
@@ -272,8 +219,4 @@ function toggleBtnText(btn, target) {
   } else {
     btn.innerHTML = "Open";
   }
-}
-
-function deleteAct(btn, pin) {
-  deletePinFromList(btn, actList, 'emptyActPanel', pin);
 }

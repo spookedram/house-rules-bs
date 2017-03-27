@@ -89,6 +89,11 @@ header.jumbotron {
   background-color: #5BC0BE;
 }
 
+.btn{
+    white-space:normal !important;
+    word-wrap:break-word;
+}
+
 .tab-list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -275,6 +280,21 @@ header.jumbotron {
   margin-bottom: 15px;
 }
 
+.area-name {
+  border-top: none !important;
+  vertical-align: middle !important;
+  padding-left: 0 !important;
+}
+.area-name h4 {
+  margin: 0;
+}
+
+.area-remove {
+  text-align: right;
+  border-top: none !important;
+  width: 64px;
+  padding-right: 0 !important;
+}
 
 /*===|==|--- ID Specific Styles ---|==|===*/
 
