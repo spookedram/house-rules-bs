@@ -1,5 +1,3 @@
-var enemyList = [];
-
 var enemyName = document.getElementById("enemyName");
 var enemyAmt = document.getElementById("enemyAmt");
 var enemyLvl = document.getElementById("lvl");
@@ -22,8 +20,6 @@ var cha_input = document.getElementById("charisma");
 var per_input = document.getElementById("perception");
 var totalAbilityPoints = 70;
 
-var emptyPanel = document.getElementById("emptyEnemyPanel");
-
 function Enemy() {
   this.pin = "";
   this.name = "";
@@ -41,9 +37,6 @@ function Enemy() {
 
   this.damage = "";
   this.armor = "";
-
-  this.perk1 = "";
-  this.perk2 = "";
   this.notes = "";
 }
 
@@ -67,10 +60,8 @@ function getEnemyData() {
 
   enemy.damage = enemyDamage.value;
   enemy.armor = enemyArmor.value;
-
   enemy.notes = enemyNotes.value;
 
-  enemyList.push(enemy);
   return enemy;
 }
 
@@ -137,7 +128,6 @@ function getLvlDmgBonus() {
 
 function createEnemyDiv() {
   var enemy = getEnemyData();
-  var id = document.getElementById("eventIdInput").value;
   var amt = "";
   var abilities = [enemy.str,
     enemy.dex,
@@ -191,7 +181,7 @@ function createEnemyDiv() {
     notes = '<p class="n-mb"><b>Notes</b></p><p contenteditable="true">' + enemy.notes + '</p>';
   }
 
-  addToInnerHTML(document.getElementById("eventList"),'<div class="event col-xs-12 col-sm-6"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Event ' + id + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEnemy(this,' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p><b>Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</b></p><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p><p class="n-mb">' + notes + '</p></div></div></div>');
+  addToInnerHTML(document.getElementById("area" + currentArea + "eventList"),'<div class="event col-xs-12 col-sm-6"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Event ' + id + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEnemy(this,' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p><b>Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</b></p><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p><p class="n-mb">' + notes + '</p></div></div></div>');
 }
 
 function addEnemy() {
@@ -208,10 +198,6 @@ function addEnemy() {
 function toggleDisabled(str, boo) {
   var el = document.getElementById(str);
   el.disabled = boo;
-}
-
-function deleteEnemy(btn,pin) {
-  deletePinFromList(btn, enemyList, 'emptyEnemyPanel', pin);
 }
 
 // When vitality changes at lvl 1, update hp

@@ -225,7 +225,7 @@ function addAnArea() {
 
   var wrapper = document.getElementById("areaListWrapper");
 
-  var newHTML = '<div id=' + area.pin + ' class="area panel panel-default"><div class="panel-heading"><h4>' + area.name + '</h4></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Description</b><p>' + area.desc + '</p></div><div class="col-sm-6 text-right no-print"><h4 style="margin-top:0;">Add an Event</h4><div class="btn-group"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#enemyModal">Enemy</button><button type="button" class="btn btn-default" data-toggle="modal" data-target="#trapModal">Trap</button><button type="button" class="btn btn-default" data-toggle="modal" data-target="#puzzleModal">Puzzle</button></div><div class="btn-group"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#npcModal">NPC</button><button type="button" class="btn btn-default" data-toggle="modal" data-target="#itemModal">Quest Item</button></div></div></div><h4>Events</h4><p id="area' + area.pin + 'eventsEmpty">You have not made any events for this area yet! Use the buttons on the right to create a new event.</p><div id="area' + area.pin + 'eventList" class="row equal"></div></div><div class="panel-footer text-right no-print"><button type="button" class="btn btn-danger" onclick="deleteArea(' + area.pin + ')">Delete Area</button></div></div>';
+  var newHTML = '<div id=' + area.pin + ' class="area panel panel-default"><div class="panel-heading"><h4 contenteditable="true">' + area.name + '</h4></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Description</b><p contenteditable="true">' + area.desc + '</p></div><div class="col-sm-6 text-right no-print"><h4 style="margin-top:0;">Add an Event</h4><div class="btn-group"><button  type="button" class="btn btn-default" data-toggle="modal" data-target="#enemyModal">Enemy</button><button type="button" class="btn btn-default" data-toggle="modal" data-target="#trapModal">Trap</button><button type="button" class="btn btn-default" data-toggle="modal" data-target="#puzzleModal">Puzzle</button></div> <div class="btn-group"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#npcModal">NPC</button><button type="button" class="btn btn-default" data-toggle="modal" data-target="#itemModal">Quest Item</button></div></div></div><h4>Events</h4><p id="area' + area.pin + 'eventsEmpty">You have not made any events for this area yet! Use the buttons on the right to create a new event.</p><div id="area' + area.pin + 'eventList" class="row equal"></div></div><div class="panel-footer text-right no-print"><button type="button" class="btn btn-danger" onclick="deleteArea(' + area.pin + ')">Delete Area</button></div></div>';
 
 
   if(document.getElementById("areaName").value !== "" && document.getElementById("areaDesc").value !== "") {
@@ -238,6 +238,11 @@ function addAnArea() {
 function deleteArea(pin) {
   var el = document.getElementById(pin);
   document.getElementById("areaListWrapper").removeChild(el);
+}
+
+function setCurrentArea(pin) {
+  currentArea = pin;
+  console.log(currentArea);
 }
 
 function addTrap(id) {
@@ -267,3 +272,7 @@ function addNPCInteraction() {
 function addQuestItem() {
 
 }
+
+document.getElementById("addEnemyBtn").addEventListener("click", function(){
+
+});

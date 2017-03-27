@@ -360,6 +360,17 @@ header.jumbotron {
   }
 }
 
+#enemyAbilities {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 375px) {
+  #enemyAbilities {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 #titleLabel {
   margin-top: 0;
 }
