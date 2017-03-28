@@ -36,7 +36,7 @@ function Enemy() {
   this.damage = "";
   this.armor = "";
   this.notes = "";
-  
+
   this.div = "";
 }
 
@@ -128,6 +128,7 @@ function getLvlDmgBonus() {
 
 function addEnemy() {
   var enemy = getEnemyData();
+  var area = getArea();
   var amt = "";
   var abilities = [enemy.str,
     enemy.dex,
@@ -181,12 +182,10 @@ function addEnemy() {
   if(enemy.notes !== "") {
     notes = '<p class="n-mb"><b>Notes</b></p><p class="n-mb" contenteditable="true">' + enemy.notes + '</p>';
   }
-  
-  newHTML = '<div id="' + enemy.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Enemy Encounter</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentArea + ',' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p><b>Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</b></p><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p>' + notes + '</div></div></div>';
-  
+
+  newHTML = '<div id="' + enemy.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p>' + notes + '</div></div></div>';
+
   enemy.div = newHTML;
-  
-  var area = getPinFromArray(areaList,currentArea);
   area.events.push(enemy);
   addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
   hideModal(enemyModal);

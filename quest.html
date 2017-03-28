@@ -189,7 +189,7 @@
           <h3 id="questName" class="enter-name n-mb" contenteditable="true" oninput="needConfirm()" style="margin:0;"></h3>
         </div>
       </div>
-      
+
       <h3>Setup</h3>
       <div class="row">
         <div class="col-sm-6">
@@ -212,11 +212,6 @@
           </div>
         </div>
       </div>
-
-      <hr>
-
-      <h3>Areas and Events</h3>
-      <p class="no-print"><i>Tip: You can edit an event by clicking or tapping directly on the text!</i></p>
 
       <div id="enemyModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="enemyCreatorModal" aria-hidden="true">
         <div class="modal-dialog">
@@ -460,7 +455,7 @@
           </div>
         </div>
       </div>
-      
+
       <div id="deleteAreaModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="deleteArea" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -473,37 +468,68 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-              <button type="button" class="btn btn-danger" onclick="deleteArea(currentArea)">Yes</button>
+              <button type="button" class="btn btn-danger" onclick="deleteArea(currentArea, currentMap)">Yes</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div id="areaListWrapper">
-
+      <div id="deleteMapModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="deleteMap" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="deleteMap">Delete this map?</h4>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this map? You will lose all the areas and events you've created for it.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+              <button type="button" class="btn btn-danger" onclick="deleteMap(currentMap)">Yes</button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="row no-print">
-        <div class="col-sm-8 col-sm-offset-2">
-          <h4>Add an Area</h4>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-sm-6">
-                  <label for="areaName">Area Name</label>
-                  <input id="areaName" type="text" name="areaName" class="form-control n-mb">
+      <div id="addMapModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mapModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h3 class="modal-title" id="mapModal">Add a Map</h3>
+            </div>
+            <div class="modal-body">
+              <h4>Map Name</h4>
+              <input id="mapName" type="text" name="mapName" class="form-control">
+              <h4 class="text-center">Map Areas</h4>
+              <div id="mapModalAreaList">
+
+              </div>
+              <label for="modalArea">Add an Area</label>
+              <div class="input-group">
+                <input id="modalArea" type="text" name="modalArea" class="form-control" placeholder="Area name">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default" style="white-space:nowrap !important;" onclick="addAreaModal()">Add</button>
                 </div>
               </div>
             </div>
-            <div class="panel-body">
-              <label for="areaDesc">Area Description</label>
-              <textarea id="areaDesc" name="areaDesc" rows="5" class="form-control n-mb"></textarea>
-            </div>
-            <div class="panel-footer text-right">
-              <button type="button" class="btn btn-success" onclick="addAnArea()">Add Area</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="clearMapModal()">Cancel</button>
+              <button type="button" class="btn btn-danger" onclick="addMap()">Add Map</button>
             </div>
           </div>
         </div>
+      </div>
+
+      <div id="mapList">
+
+      </div>
+
+      <hr class="no-print">
+
+      <div class="text-center no-print">
+        <button type="button" class="btn btn-default btn-lg" onclick="showModal(addMapModal)">Add Map</button>
       </div>
 
       <hr>
