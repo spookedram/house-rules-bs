@@ -89,6 +89,11 @@ header.jumbotron {
   background-color: #5BC0BE;
 }
 
+.btn{
+  white-space:normal !important;
+  word-wrap:break-word;
+}
+
 .tab-list {
   display: -webkit-box;
   display: -webkit-flex;
@@ -275,6 +280,9 @@ header.jumbotron {
   margin-bottom: 15px;
 }
 
+.area .panel-heading h4 {
+  margin: 6px 0;
+}
 
 /*===|==|--- ID Specific Styles ---|==|===*/
 
@@ -349,6 +357,17 @@ header.jumbotron {
   }
   #lvlTable2 thead {
     display: table-header-group;
+  }
+}
+
+#enemyAbilities {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 375px) {
+  #enemyAbilities {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
@@ -472,6 +491,13 @@ header.jumbotron {
     padding-right: 15px;
     padding-left: 15px;
     width: 33.33333333%;
+  }
+  .panel-heading {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .panel-body {
+    border-top: none;
   }
   .pba {
     page-break-after: always;

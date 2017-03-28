@@ -36,12 +36,12 @@ function lsTest(){
   }
 }
 
-function hideModal() {
-  saveLoadModal.hide();
+function hideModal(modal) {
+  modal.hide();
 }
 
-function showModal() {
-  saveLoadModal.show();
+function showModal(modal) {
+  modal.show();
 }
 
 function toggleArr(arr, boo) {
@@ -83,6 +83,18 @@ function removePinFromArray(arr,pin) {
       break;
     }
   }
+}
+
+function checkRequiredFields(arr) {
+  var i = 0;
+  var len = arr.length;
+  var filled = true;
+  for(i; i < len; i++) {
+    if(arr.value === "") {
+      filled = false;
+    }
+  }
+  return filled;
 }
 
 // toggle alert box

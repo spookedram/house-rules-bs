@@ -1,18 +1,23 @@
 var questList = [];
-var settingList = [];
-var actList = [];
+var mapList = [];
 
 var questName = document.getElementById("questName");
-var npcsList = document.getElementById("npcsList");
-var setup = document.getElementById("prologue");
+var prologue = document.getElementById("prologue");
 var goal = document.getElementById("goal");
 var epilogue = document.getElementById("epilogue");
 var cliffhanger = document.getElementById("cliffhanger");
 
-var settingsInput = document.getElementById("settingsInput");
-var npcsInput = document.getElementById("npcsInput");
-
 var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
+var enemyModal = new Modal(document.getElementById("enemyModal"), {});
+var trapModal = new Modal(document.getElementById("trapModal"), {});
+var puzzleModal = new Modal(document.getElementById("puzzleModal"), {});
+var npcModal = new Modal(document.getElementById("npcModal"), {});
+var itemModal = new Modal(document.getElementById("itemModal"), {});
+var deleteAreaModal = new Modal(document.getElementById("deleteAreaModal"), {});
+var deleteMapModal = new Modal(document.getElementById("deleteMapModal"), {});
+
+var currentArea;
+var currentMap;
 
 // returns characterList array from localStorage
 function getQuestList() {
@@ -31,13 +36,12 @@ function getQuestList() {
 function Quest() {
   this.pin = 0;
   this.questName = "";
-  this.settingList = [];
 
-  this.setup = "";
+  this.prologue = "";
   this.goal = "";
 
-  this.enemyList = [];
-  this.actList = [];
+  this.mapDiv = "";
+  this.mapList = [];
 
   this.epilogue = "";
   this.cliffhanger = "";
@@ -61,13 +65,12 @@ function saveQuestData() {
 
   quest.pin = uniqueNumber();
   quest.questName = questName.innerHTML;
-  quest.settingList = settingList;
 
-  quest.setup = setup.innerHTML;
+  quest.prologue = prologue.innerHTML;
   quest.goal = goal.innerHTML;
 
-  quest.enemyList = getItems('enemy');
-  quest.actList = actList;
+  quest.mapDiv = document.getElementById("mapList").innerHTML;
+  quest.mapList = mapList;
 
   quest.epilogue = epilogue.innerHTML;
   quest.cliffhanger = cliffhanger.innerHTML;
@@ -88,24 +91,24 @@ function saveQuestData() {
   }
 }
 
+function getEvents(arr) {
+  var html = "";
+  var i = 0;
+  var len = arr.length;
+  for(i; i < len; i++) {
+    html += arr[i].div;
+  }
+  return html;
+}
+
 function setQuestData(quest) {
   questName.innerHTML = quest.questName;
-  for(var i = 0; i < quest.settingList.length; i++) {
-    addToInnerHTML(document.getElementById('settingsList'), "<tr><td class='setting' style='vertical-align:middle'>" + quest.settingList[i] + "</td><td class='text-right'><button type='button' class='btn btn-default no-print' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td></tr>");
-  }
 
-  setup.innerHTML = quest.setup;
+  prologue.innerHTML = quest.prologue;
   goal.innerHTML = quest.goal;
 
-  showElementById('emptyEnemyPanel', false);
-  for(var j = 0; j < quest.enemyList.length; j++) {
-    addToInnerHTML(document.getElementById('enemyList'), '<div class="enemy col-xs-12 col-sm-4 col-print-4">' + quest.enemyList[j] + '</div>');
-  }
-
-  showElementById('emptyActPanel', false);
-  for(var k = 0; k < quest.actList.length; k++) {
-    addToInnerHTML(document.getElementById('actList'), "<div class='panel panel-default no-print'><div class='panel-heading'><div class='row'><div class='col-xs-8'><h4 style='margin:8px auto' contenteditable='true'>Act 1</h4></div><div class='col-xs-4 text-right no-print'><button type='button' class='btn btn-danger delete-btn' onclick='deleteEnemy(this," + quest.pin + ")'><span class='glyphicon glyphicon-remove'></span></button></div></div></div><div class='panel-body'><div class='row'><div class='col-sm-6'><b>Low Point</b><p contenteditable='true'>" + quest.actList[k].low + "</p></div><div class='col-sm-6'><b>High Point</b><p contenteditable='true'>" + quest.actList[k].high + "</p></div></div></div></div>");
-  }
+  mapList = quest.mapList;
+  document.getElementById("mapList").innerHTML = quest.mapDiv;
 
   epilogue.innerHTML = quest.epilogue;
   cliffhanger.innerHTML = quest.cliffhanger;
@@ -133,7 +136,7 @@ function loadData(pin) {
 
   setQuestData(result);
 
-  hideModal();
+  hideModal(saveLoadModal);
 }
 
 function loadSample(num) {
@@ -198,70 +201,8 @@ function clearItem(btn,pin) {
   btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
 }
 
-function addRowToList(str1, str2) {
-  var input = document.getElementById(str1);
-  var tableBody = document.getElementById(str2);
-
-  var newHTML = "<tr><td class='setting' style='vertical-align:middle'>" + input.value + "</td><td class='text-right'><button type='button' class='btn btn-default no-print' onclick='deleteRow(this)'><span class='glyphicon glyphicon-remove'></span></button></td></tr>";
-
-  if(input.value !== "") {
-    tableBody.innerHTML += newHTML;
-    settingList.push(input.value);
-    input.value = "";
-  }
-}
-
 function deleteRow(btn) {
   btn.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode);
-}
-
-settingsInput.onkeypress = function(e){
-  if (!e) e = window.event;
-  var keyCode = e.keyCode || e.which;
-  if (keyCode == '13'){
-    addRowToList('settingsInput', 'settingsList');
-    return false;
-  }
-};
-
-function enableActBtn() {
-  var low = document.getElementById("newActLow");
-  var high = document.getElementById("newActHigh");
-  if(low.value !== "" && high.value !== "") {
-    document.getElementById("addActBtn").disabled = false;
-  } else {
-    document.getElementById("addActBtn").disabled = true;
-  }
-}
-
-function Act() {
-  this.pin = "";
-  this.low = "";
-  this.high = "";
-}
-
-function addAct() {
-  if(actList.length < 9) {
-    var low = document.getElementById("newActLow");
-    var high = document.getElementById("newActHigh");
-    if(low.value !== "" && high.value !== "") {
-      var act = new Act();
-
-      act.low = low.value;
-      act.high = high.value;
-      act.pin = uniqueNumber();
-
-      addToInnerHTML(document.getElementById("actList"),'<div class="act col-xs-12"><div class="panel panel-default no-print"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto" contenteditable="true">Act ' + (actList.length + 1) + '</h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEnemy(this,' + act.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Low Point</b><p contenteditable="true">' + act.low + '</p></div><div class="col-sm-6"><b>High Point</b><p contenteditable="true">' + act.high + '</p></div></div></div></div></div>');
-
-      actList.push(act);
-      low.value = "";
-      high.value = "";
-    }
-  }
-
-  if(actList.length === 1) {
-    showElementById('emptyActPanel',false);
-  }
 }
 
 function toggleBtnText(btn, target) {
@@ -274,6 +215,206 @@ function toggleBtnText(btn, target) {
   }
 }
 
-function deleteAct(btn, pin) {
-  deletePinFromList(btn, actList, 'emptyActPanel', pin);
+function addAreaModal() {
+  var wrapper = document.getElementById("mapModalAreaList");
+  var input = document.getElementById("modalArea");
+  var newHTML = '<p class="text-center">' + input.value + '</p>';
+
+  if(input.value !== "") {
+    wrapper.innerHTML += newHTML;
+    areaList.push(input.value);
+    input.value = "";
+  }
+}
+
+function clearMapModal() {
+  document.getElementById("mapName").value = "";
+  document.getElementById("mapModalAreaList").innerHTML = "";
+  areaList = [];
+  document.getElementById("modalArea").value = "";
+  hideModal(addMapModal);
+}
+
+function Map() {
+  this.pin = uniqueNumber();
+  this.name = "";
+  this.areas = [];
+}
+
+function Area() {
+  this.pin = uniqueNumber();
+  this.name = "";
+  this.mapId = 0;
+  this.div = "";
+  this.events = [];
+}
+
+function Trap() {
+  this.pin = uniqueNumber();
+  this.name = document.getElementById("trapName").value;
+  this.desc = document.getElementById("trapDesc").value;
+  this.save = document.getElementById("trapST").value;
+  this.dmg = document.getElementById("trapDamage").value;
+  this.div = "";
+}
+
+function Puzzle() {
+  this.pin = uniqueNumber();
+  this.name = document.getElementById("puzzleName").value;
+  this.desc = document.getElementById("puzzleDesc").value;
+  this.solv = document.getElementById("puzzleSol").value;
+  this.div = "";
+}
+
+function NPC() {
+  this.pin = uniqueNumber();
+  this.name = document.getElementById("npcName").value;
+  this.desc = document.getElementById("npcDesc").value;
+  this.div = "";
+}
+
+function Item() {
+  this.pin = uniqueNumber();
+  this.name = document.getElementById("itemName").value;
+  this.desc = document.getElementById("itemDesc").value;
+  this.div = "";
+}
+
+function addMap() {
+  if(document.getElementById("mapName").value !== "") {
+    var map = new Map();
+    map.name = document.getElementById("mapName").value;
+
+    console.log("beep");
+
+    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control" placeholder="Area Name"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
+
+    mapList.push(map);
+    document.getElementById("mapList").innerHTML += newHTML;
+    document.getElementById("mapName").value = "";
+  } else {
+    document.getElementById("mapName").placeholder = "Required!";
+  }
+}
+
+function addAnArea(mapId) {
+  if(document.getElementById("area" + mapId + "Name").value !== "") {
+    var map = getPinFromArray(mapList, mapId);
+    var area = new Area();
+    area.mapId = mapId;
+    area.name = document.getElementById("area" + mapId + "Name").value;
+    area.div = '<div id=' + area.pin + ' class="area panel panel-default"><div class="panel-heading"><h4 contenteditable="true">' + area.name + '</h4></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Description</b><textarea id="area' + area.pin + 'Desc" name="area' + area.pin + 'Desc" rows="2" class="form-control n-mb"></textarea></div><div class="col-sm-6 text-right no-print"><h4 class="n-mb">Add an Event</h4><div class="btn-group" style="margin-top:15px;"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(enemyModal)">Enemy</button><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(trapModal)">Trap</button><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(puzzleModal)">Puzzle</button></div> <div class="btn-group" style="margin-top:15px;"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(npcModal)">NPC</button><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(itemModal)">Quest Item</button></div></div></div><h4>Events</h4><div id="area' + area.pin + 'eventList" class="row equal"></div></div><div class="panel-footer text-right no-print"><button type="button" class="btn btn-danger" onclick="setCurrentArea(' + area.pin + ',' + mapId + '), showModal(deleteAreaModal)">Delete Area</button></div></div>';
+
+    document.getElementById("map" + mapId + "areaList").innerHTML += area.div;
+    map.areas.push(area);
+    document.getElementById("area" + mapId + "Name").value = "";
+  } else {
+    document.getElementById("area" + mapId + "Name").placeholder = "Required!";
+  }
+}
+
+function setCurrentArea(pin, mapId) {
+  currentArea = pin;
+  currentMap = mapId;
+  console.log(currentArea);
+}
+
+function getArea() {
+  var map = getPinFromArray(mapList,currentMap);
+  return getPinFromArray(map.areas,currentArea);
+}
+
+function deleteMap(pin) {
+  var el = document.getElementById(pin);
+  document.getElementById("mapList").removeChild(el);
+  removePinFromArray(mapList, pin);
+  hideModal(deleteMapModal);
+}
+
+function deleteArea(pin, mapId) {
+  var map = getPinFromArray(mapList, mapId);
+  var el = document.getElementById(pin);
+  document.getElementById("map" + mapId + "areaList").removeChild(el);
+  removePinFromArray(map.areas, pin);
+  hideModal(deleteAreaModal);
+}
+
+function deleteEvent(mapId, pin, evt) {
+  var map = getPinFromArray(mapList, mapId);
+  var area = getPinFromArray(map.areas,pin);
+  var el = document.getElementById(evt);
+  document.getElementById("area" + pin + "eventList").removeChild(el);
+  removePinFromArray(area.events, evt);
+}
+
+function addTrap() {
+  var trap = new Trap();
+  var area = getArea();
+
+  var newHTML = '<div id="' + trap.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">' + trap.name + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + trap.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p contenteditable="true">' + trap.desc + '</p><p class="text-right n-mb">Saving Throw: ' + trap.save + '<br>Damage: ' + trap.dmg + '</p></div></div></div>';
+
+  trap.div = newHTML;
+
+  if(checkRequiredFields([trap.name,trap.desc,trap.save,trap.dmg])) {
+    area.events.push(trap);
+    addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+    hideModal(trapModal);
+    document.getElementById("trapName").value = "";
+    document.getElementById("trapDesc").value = "";
+    document.getElementById("trapST").value = "DEX";
+    document.getElementById("trapDamage").value = "d6";
+  }
+}
+
+function addPuzzle() {
+  var puzzle = new Puzzle();
+  var area = getArea();
+
+  var newHTML = '<div id="' + puzzle.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">' + puzzle.name + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + puzzle.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p contenteditable="true">' + puzzle.desc + '</p><b>Solution</b><p class="n-mb" contenteditable="true">' + puzzle.solv + '</p></div></div></div>';
+
+  puzzle.div = newHTML;
+
+  if(checkRequiredFields([puzzle.name,puzzle.desc,puzzle.solv])) {
+    area.events.push(puzzle);
+    addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+    hideModal(puzzleModal);
+    document.getElementById("puzzleName").value = "";
+    document.getElementById("puzzleDesc").value = "";
+    document.getElementById("puzzleSol").value = "";
+  }
+}
+
+
+function addNPC() {
+  var npc = new NPC();
+  var area = getArea();
+
+  var newHTML = '<div id="' + npc.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">' + npc.name + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + npc.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p class="n-mb" contenteditable="true">' + npc.desc + '</p></div></div></div>';
+
+  npc.div = newHTML;
+
+  if(checkRequiredFields([npc.name,npc.desc])) {
+    area.events.push(npc);
+    addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+    hideModal(npcModal);
+    document.getElementById("npcName").value = "";
+    document.getElementById("npcDesc").value = "";
+  }
+}
+
+function addQuestItem() {
+  var item = new Item();
+  var area = getArea();
+
+  var newHTML = '<div id="' + item.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">' + item.name + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + item.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p class="n-mb" contenteditable="true">' + item.desc + '</p></div></div></div>';
+
+  item.div = newHTML;
+
+  if(checkRequiredFields([item.name,item.desc])) {
+    area.events.push(item);
+    addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+    hideModal(itemModal);
+    document.getElementById("itemName").value = "";
+    document.getElementById("itemDesc").value = "";
+  }
 }

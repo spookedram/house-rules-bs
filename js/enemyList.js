@@ -1,13 +1,9 @@
-var enemyList = [];
-
 var enemyName = document.getElementById("enemyName");
 var enemyAmt = document.getElementById("enemyAmt");
 var enemyLvl = document.getElementById("lvl");
 var enemyHp = document.getElementById("hp");
 var enemyDamage = document.getElementById("enemyDamage");
 var enemyArmor = document.getElementById("enemyArmor");
-var enemyPerk1 = document.getElementById("enemyPerk1");
-var enemyPerk2 = document.getElementById("enemyPerk2");
 var enemyNotes = document.getElementById("enemyNotes");
 
 var randomAbilityArr = permutator([8,8,10,10,10,12,12]);
@@ -22,10 +18,8 @@ var cha_input = document.getElementById("charisma");
 var per_input = document.getElementById("perception");
 var totalAbilityPoints = 70;
 
-var emptyPanel = document.getElementById("emptyEnemyPanel");
-
 function Enemy() {
-  this.pin = "";
+  this.pin = 0;
   this.name = "";
   this.amt = "";
   this.lvl = "";
@@ -41,10 +35,9 @@ function Enemy() {
 
   this.damage = "";
   this.armor = "";
-
-  this.perk1 = "";
-  this.perk2 = "";
   this.notes = "";
+
+  this.div = "";
 }
 
 function getEnemyData() {
@@ -67,12 +60,8 @@ function getEnemyData() {
 
   enemy.damage = enemyDamage.value;
   enemy.armor = enemyArmor.value;
-
-  enemy.perk1 = enemyPerk1.value;
-  enemy.perk2 = enemyPerk2.value;
   enemy.notes = enemyNotes.value;
 
-  enemyList.push(enemy);
   return enemy;
 }
 
@@ -102,8 +91,6 @@ function clearEnemyCreator() {
   enemyDamage.value = "d8";
   enemyArmor.value = "10";
 
-  enemyPerk1.value = "";
-  enemyPerk2.value = "";
   enemyNotes.value = "";
 }
 
@@ -139,8 +126,9 @@ function getLvlDmgBonus() {
   }
 }
 
-function createEnemyDiv() {
+function addEnemy() {
   var enemy = getEnemyData();
+  var area = getArea();
   var amt = "";
   var abilities = [enemy.str,
     enemy.dex,
@@ -153,6 +141,7 @@ function createEnemyDiv() {
   var details = "";
   var lvlDmgBonus = "";
   var notes = "";
+  var newHTML = "";
 
   //If more than one enemy, add (x#) to heading
   if(enemy.amt !== "1") {
@@ -191,30 +180,21 @@ function createEnemyDiv() {
   details = "HP " + enemy.hp + " / AC " + enemy.armor + " / DMG " + lvlDmgBonus + enemy.damage;
 
   if(enemy.notes !== "") {
-    notes = '<p class="n-mb"><b>Notes</b></p><p contenteditable="true">' + enemy.notes + '</p>';
+    notes = '<p class="n-mb"><b>Notes</b></p><p class="n-mb" contenteditable="true">' + enemy.notes + '</p>';
   }
 
-  addToInnerHTML(document.getElementById("enemyList"),'<div class="enemy col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEnemy(this,' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p><p class="n-mb"><b>Perks</b></p><p contenteditable="true">' + enemy.perk1 + '<br>' + enemy.perk2 + notes + '</p></div></div></div>');
-}
+  newHTML = '<div id="' + enemy.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p>' + notes + '</div></div></div>';
 
-function addEnemy() {
-  if(enemyList.length < 9) {
-    createEnemyDiv();
-    clearEnemyCreator();
-  }
-
-  if(enemyList.length === 1) {
-    showElementById('emptyEnemyPanel',false);
-  }
+  enemy.div = newHTML;
+  area.events.push(enemy);
+  addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+  hideModal(enemyModal);
+  clearEnemyCreator();
 }
 
 function toggleDisabled(str, boo) {
   var el = document.getElementById(str);
   el.disabled = boo;
-}
-
-function deleteEnemy(btn,pin) {
-  deletePinFromList(btn, enemyList, 'emptyEnemyPanel', pin);
 }
 
 // When vitality changes at lvl 1, update hp
@@ -377,70 +357,4 @@ function setTotal() {
   } else {
     left_label.parentElement.style.color = "black";
   }
-}
-
-function perkHelper(target, boo) {
-  var el = document.getElementById(target);
-  var hp = "";
-  var num = "";
-  var text = "";
-
-  switch(document.getElementById("lvl").value) {
-    case "1":
-    case "2":
-    case "3":
-      hp = "2d12";
-      num = "1";
-      break;
-    case "4":
-    case "5":
-    case "6":
-      hp = "4d12";
-      num = "2";
-      break;
-    case "7":
-    case "8":
-    case "9":
-      hp = "6d12";
-      num = "3";
-      break;
-    case "10":
-    case "11":
-    case "12":
-      hp = "10d8";
-      num = "4";
-      break;
-    case "13":
-    case "14":
-    case "15":
-      hp = "10d10";
-      num = "5";
-      break;
-    case "16":
-    case "17":
-    case "18":
-      hp = "10d12";
-      num = "6";
-      break;
-    case "19":
-    case "20":
-      hp = "12d12";
-      num = "7";
-      break;
-    default:
-      hp = "2d12";
-      num = "1";
-  }
-
-  if(boo === 0) {
-    text = "Critical Strike (STR): Attacks target for " + hp + " damage.";
-  } else if (boo === 1) {
-    text = "Lick Wounds (VIT): Heals self for " + hp + " HP.";
-  } else if (boo === 2) {
-    text = "Fortify (STR): Buffs self for " + num + " AC.";
-  } else {
-    text = "Hinder (VIT): Debuffs target for " + num + " STR.";
-  }
-
-  el.value = text;
 }
