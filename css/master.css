@@ -493,10 +493,10 @@ header.jumbotron {
     width: 33.33333333%;
   }
   .panel-heading {
+    padding-bottom: 0;
     border-bottom: none;
   }
   .panel-body {
-    padding-top: 0;
     border-top: none;
   }
   .pba {
