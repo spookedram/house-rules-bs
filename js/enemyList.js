@@ -4,8 +4,6 @@ var enemyLvl = document.getElementById("lvl");
 var enemyHp = document.getElementById("hp");
 var enemyDamage = document.getElementById("enemyDamage");
 var enemyArmor = document.getElementById("enemyArmor");
-var enemyPerk1 = document.getElementById("enemyPerk1");
-var enemyPerk2 = document.getElementById("enemyPerk2");
 var enemyNotes = document.getElementById("enemyNotes");
 
 var randomAbilityArr = permutator([8,8,10,10,10,12,12]);
@@ -21,7 +19,7 @@ var per_input = document.getElementById("perception");
 var totalAbilityPoints = 70;
 
 function Enemy() {
-  this.pin = "";
+  this.pin = 0;
   this.name = "";
   this.amt = "";
   this.lvl = "";
@@ -38,6 +36,8 @@ function Enemy() {
   this.damage = "";
   this.armor = "";
   this.notes = "";
+  
+  this.div = "";
 }
 
 function getEnemyData() {
@@ -126,7 +126,7 @@ function getLvlDmgBonus() {
   }
 }
 
-function createEnemyDiv() {
+function addEnemy() {
   var enemy = getEnemyData();
   var amt = "";
   var abilities = [enemy.str,
@@ -140,6 +140,7 @@ function createEnemyDiv() {
   var details = "";
   var lvlDmgBonus = "";
   var notes = "";
+  var newHTML = "";
 
   //If more than one enemy, add (x#) to heading
   if(enemy.amt !== "1") {
@@ -178,21 +179,18 @@ function createEnemyDiv() {
   details = "HP " + enemy.hp + " / AC " + enemy.armor + " / DMG " + lvlDmgBonus + enemy.damage;
 
   if(enemy.notes !== "") {
-    notes = '<p class="n-mb"><b>Notes</b></p><p contenteditable="true">' + enemy.notes + '</p>';
+    notes = '<p class="n-mb"><b>Notes</b></p><p class="n-mb" contenteditable="true">' + enemy.notes + '</p>';
   }
-
-  addToInnerHTML(document.getElementById("area" + currentArea + "eventList"),'<div class="event col-xs-12 col-sm-6"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Event ' + id + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEnemy(this,' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p><b>Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</b></p><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p><p class="n-mb">' + notes + '</p></div></div></div>');
-}
-
-function addEnemy() {
-  if(enemyList.length < 9) {
-    createEnemyDiv();
-    clearEnemyCreator();
-  }
-
-  if(enemyList.length === 1) {
-    showElementById('emptyEnemyPanel',false);
-  }
+  
+  newHTML = '<div id="' + enemy.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Enemy Encounter</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentArea + ',' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p><b>Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</b></p><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p>' + notes + '</div></div></div>';
+  
+  enemy.div = newHTML;
+  
+  var area = getPinFromArray(areaList,currentArea);
+  area.events.push(enemy);
+  addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+  hideModal(enemyModal);
+  clearEnemyCreator();
 }
 
 function toggleDisabled(str, boo) {
