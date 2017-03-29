@@ -112,14 +112,8 @@ function setQuestData(quest) {
   document.getElementById("mapList").innerHTML = quest.mapDiv;
 
   for(var i = 0; i < mapList.length; i++) {
-    var canvas = document.getElementById('imageCanvas' + mapList[i].pin);
-    var ctx = canvas.getContext("2d");
-
-    var image = new Image();
-    image.src = mapList[i].img;
-    image.onload = function() {
-      ctx.drawImage(image, 0, 0);
-    };
+    var img = document.getElementById('image' + mapList[i].pin);
+    img.src = mapList[i].img;
   }
 
   epilogue.innerHTML = quest.epilogue;
@@ -298,12 +292,11 @@ function addMap() {
     var map = new Map();
     map.name = document.getElementById("mapName").value;
 
-    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="no-print"><p>Upload an Image<br><i>Warning: Saving images to your map takes up a LOT of space in your localStorage. Upload by URL when you can to save space.</i></p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader"/><div class="input-group col-sm-6" style="margin-top:15px; margin-bottom:15px;"><input id="imageURL' + map.pin + '" type="text" class="form-control" placeholder="Paste URL here"><div class="input-group-btn"><button type="button" class="btn btn-primary" onclick="addImage(' + map.pin + ')">Upload</button></div></div><div class="text-center"><canvas id="imageCanvas' + map.pin + '" height="0" style="margin-bottom:15px;" class="img-responsive"></canvas></div></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
+    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="no-print"><p>Upload an Image<br><i>Warning: Saving images to your map takes up a LOT of space in your localStorage. Upload by URL when you can to save space.</i></p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader" onchange="handleImage(event,' + map.pin + ')"/><div class="input-group" style="margin-top:15px;"><input id="imageURL' + map.pin + '" type="text" class="form-control" placeholder="Paste URL here"><div class="input-group-btn"><button type="button" class="btn btn-primary" onclick="addImage(' + map.pin + ')">Upload</button></div></div><div class="text-right"><button type="button" class="btn btn-warning" style="margin-top:15px;" onclick="clearImage(' + map.pin + ')">Clear Image</button></div><div class="text-center"><img src="" id="image' + map.pin + '" height="0" style="margin-top:15px; margin-bottom:15px;" class="img-responsive"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
 
     mapList.push(map);
     document.getElementById("mapList").innerHTML += newHTML;
     document.getElementById("mapName").value = "";
-    uploadImage(map.pin);
   } else {
     document.getElementById("mapName").placeholder = "Required!";
   }
@@ -321,42 +314,51 @@ document.getElementById("mapName").onkeypress = function(e){
 function addImage(mapId) {
   var map = getPinFromArray(mapList, mapId);
   var imageLoader = document.getElementById('imageURL' + mapId);
-  var canvas = document.getElementById('imageCanvas' + mapId);
-  var ctx = canvas.getContext('2d');
+  var img = document.getElementById('image' + mapId);
 
-  var img = new Image();
-  img.onload = function(){
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img,0,0);
-  };
-  img.src = imageLoader.value;
-  img.id = "map" + mapId + "img";
-  map.img = img.src;
+  if(imageLoader.value !== "") {
+    img.src = imageLoader.value;
+    img.id = "map" + mapId + "img";
+    map.img = img.src;
+    hideModal(imageModal);
+  } else {
+    imageLoader.placeholder = "Required!";
+  }
 }
 
-function uploadImage(mapId) {
+function handleImage(e, mapId){
   var map = getPinFromArray(mapList, mapId);
   var imageLoader = document.getElementById('imageLoader' + mapId);
-  imageLoader.addEventListener('change', handleImage, false);
-  var canvas = document.getElementById('imageCanvas' + mapId);
-  var ctx = canvas.getContext('2d');
 
-  function handleImage(e){
-      var reader = new FileReader();
-      reader.onload = function(event){
-          var img = new Image();
-          img.onload = function(){
-              canvas.width = img.width;
-              canvas.height = img.height;
-              ctx.drawImage(img,0,0);
-          };
-          img.src = event.target.result;
-          img.id = "map" + mapId + "img";
-          map.img = img.src;
-      };
-      reader.readAsDataURL(e.target.files[0]);
+  var img = document.getElementById('image' + mapId);
+  img.src = "";
+
+  var tgt = e.target || window.event.srcElement,
+    files = tgt.files;
+
+  // FileReader support
+  if (FileReader && files && files.length) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      img.src = fr.result;
+      map.img = fr.result;
+    };
+    fr.readAsDataURL(files[0]);
   }
+  hideModal(imageModal);
+}
+
+function clearImage(mapId) {
+  var map = getPinFromArray(mapList, mapId);
+  var imageLoader = document.getElementById('imageLoader');
+  var imageURL = document.getElementById('imageURL');
+
+  imageLoader.value = null;
+  imageURL.value = "";
+
+  var img = document.getElementById('image' + mapId);
+  img.src = "";
+  map.img = "";
 }
 
 function addAreaEnter (e, mapId) {
@@ -388,7 +390,6 @@ function addAnArea(mapId) {
 function setCurrentArea(pin, mapId) {
   currentArea = pin;
   currentMap = mapId;
-  console.log(currentArea);
 }
 
 function getArea() {
