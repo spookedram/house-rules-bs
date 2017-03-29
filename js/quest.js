@@ -111,6 +111,17 @@ function setQuestData(quest) {
   mapList = quest.mapList;
   document.getElementById("mapList").innerHTML = quest.mapDiv;
 
+  for(var i = 0; i < mapList.length; i++) {
+    var canvas = document.getElementById('imageCanvas' + mapList[i].pin);
+    var ctx = canvas.getContext("2d");
+
+    var image = new Image();
+    image.src = mapList[i].img;
+    image.onload = function() {
+      ctx.drawImage(image, 0, 0);
+    };
+  }
+
   epilogue.innerHTML = quest.epilogue;
   cliffhanger.innerHTML = quest.cliffhanger;
 }
@@ -239,6 +250,7 @@ function clearMapModal() {
 function Map() {
   this.pin = uniqueNumber();
   this.name = "";
+  this.img = "";
   this.areas = [];
 }
 
@@ -286,7 +298,7 @@ function addMap() {
     var map = new Map();
     map.name = document.getElementById("mapName").value;
 
-    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="no-print"><p>Upload an Image</p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader"/><div class="text-center" style="margin-bottom:15px; overflow-x:scroll;"><canvas id="imageCanvas' + map.pin + '" height="0"></canvas></div></div><div id="map' + map.pin + 'images"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
+    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="no-print"><p>Upload an Image</p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader"/><div class="text-center" style="margin-bottom:15px;"><canvas id="imageCanvas' + map.pin + '" height="0" class="img-responsive"></canvas></div></div><div id="map' + map.pin + 'images"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
 
     mapList.push(map);
     document.getElementById("mapList").innerHTML += newHTML;
@@ -305,6 +317,30 @@ document.getElementById("mapName").onkeypress = function(e){
     return false;
   }
 };
+
+function uploadImage(mapId) {
+  var map = getPinFromArray(mapList, mapId);
+  var imageLoader = document.getElementById('imageLoader' + mapId);
+  imageLoader.addEventListener('change', handleImage, false);
+  var canvas = document.getElementById('imageCanvas' + mapId);
+  var ctx = canvas.getContext('2d');
+
+  function handleImage(e){
+      var reader = new FileReader();
+      reader.onload = function(event){
+          var img = new Image();
+          img.onload = function(){
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img,0,0);
+          };
+          img.src = event.target.result;
+          img.id = "map" + mapId + "img";
+          map.img = img.src;
+      };
+      reader.readAsDataURL(e.target.files[0]);
+  }
+}
 
 function addAreaEnter (e, mapId) {
   if (!e) e = window.event;
