@@ -304,7 +304,6 @@ document.getElementById("mapName").onkeypress = function(e){
   }
 };
 
-
 function addAreaEnter (e, mapId) {
   if (!e) e = window.event;
   var keyCode = e.keyCode || e.which;
