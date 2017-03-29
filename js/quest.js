@@ -243,6 +243,7 @@ function clearMapModal() {
 function Map() {
   this.pin = uniqueNumber();
   this.name = "";
+  this.desc = "";
   this.img = "";
   this.areas = [];
 }
@@ -291,7 +292,7 @@ function addMap() {
     var map = new Map();
     map.name = document.getElementById("mapName").value;
 
-    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="no-print"><p>Upload an Image<br><i>Warning: Saving images to your map takes up a LOT of space in your localStorage. Upload by URL when you can to save space.</i></p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader" onchange="handleImage(event,' + map.pin + ')"/><div class="input-group" style="margin-top:15px;"><input id="imageURL' + map.pin + '" type="text" class="form-control" placeholder="Paste URL here"><div class="input-group-btn"><button type="button" class="btn btn-primary" onclick="addImage(' + map.pin + ')">Upload</button></div></div><div class="text-right"><button type="button" class="btn btn-warning" style="margin-top:15px;" onclick="clearImage(' + map.pin + ')">Clear Image</button></div></div><div class="text-center"><img src="" id="image' + map.pin + '" height="0" style="margin-top:15px; margin-bottom:15px;" class="img-responsive"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
+    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><label for="map' + map.pin + 'Desc">Description</label><textarea rows="3" name="map' + map.pin + 'Desc" class="form-control" oninput="addMapDesc(this,' + map.pin + ')"></textarea><div class="no-print"><p>Upload an Image<br><i>Warning: Saving images to your map takes up a LOT of space in your localStorage. Upload by URL when you can to save space.</i></p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader" onchange="handleImage(event,' + map.pin + ')"/><div class="input-group" style="margin-top:15px;"><input id="imageURL' + map.pin + '" type="text" class="form-control" placeholder="Paste URL here"><div class="input-group-btn"><button type="button" class="btn btn-primary" onclick="addImage(' + map.pin + ')">Upload</button></div></div><div class="text-right"><button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage(' + map.pin + ')">Clear Image</button></div></div><div class="text-center"><img src="" id="image' + map.pin + '" height="0" style="margin-bottom:15px;" class="img-responsive"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
 
     mapList.push(map);
     document.getElementById("mapList").innerHTML += newHTML;
@@ -309,6 +310,11 @@ document.getElementById("mapName").onkeypress = function(e){
     return false;
   }
 };
+
+function addMapDesc(input, mapId) {
+  var map = getPinFromArray(mapList, mapId);
+  map.desc = input.value;
+}
 
 function addImage(mapId) {
   var map = getPinFromArray(mapList, mapId);
