@@ -10,35 +10,6 @@ function getRandomRange(max, min) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function saveImg() {
-  var el = document.getElementById("imgToSave");
-  var w = el.offsetWidth;
-  var h = el.offsetHeight;
-  var canvas = document.createElement('canvas');
-  canvas.width = w * 2;
-  canvas.height = h * 2;
-  canvas.style.margin = "0 auto";
-  canvas.style.width = w + 'px';
-  canvas.style.height = h + 'px';
-  var context = canvas.getContext('2d');
-  var movH = -Math.abs(h) + 10;
-  var movW = -Math.abs(w/8);
-  console.log(movW);
-  context.scale(2,2);
-  context.setTransform(2,0,0,2, movW, movH);
-  context.stroke();
-  html2canvas(el, { canvas: canvas }).then(function(canvas) {
-    document.getElementById("imgContainer").appendChild(canvas);
-  });
-}
-
-function saveImg() {
-  var el = document.getElementById("imgToSave");
-  html2canvas(el).then(function(canvas) {
-    document.getElementById("imgContainer").appendChild(canvas);
-  });
-}
-
 function uniqueNumber() {
     var date = Date.now();
 
@@ -62,6 +33,28 @@ function lsTest(){
     return true;
   } catch(e) {
     return false;
+  }
+}
+
+function uploadImage(mapId) {
+  var imageLoader = document.getElementById('imageLoader' + mapId);
+  imageLoader.addEventListener('change', handleImage, false);
+  var canvas = document.getElementById('imageCanvas' + mapId);
+  var ctx = canvas.getContext('2d');
+
+  function handleImage(e){
+      var reader = new FileReader();
+      reader.onload = function(event){
+          var img = new Image();
+          img.onload = function(){
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img,0,0);
+          };
+          img.src = event.target.result;
+          img.className += "img-responsive";
+      };
+      reader.readAsDataURL(e.target.files[0]);
   }
 }
 
