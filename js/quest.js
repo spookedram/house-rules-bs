@@ -15,6 +15,7 @@ var npcModal = new Modal(document.getElementById("npcModal"), {});
 var itemModal = new Modal(document.getElementById("itemModal"), {});
 var deleteAreaModal = new Modal(document.getElementById("deleteAreaModal"), {});
 var deleteMapModal = new Modal(document.getElementById("deleteMapModal"), {});
+var imageModal = new Modal(document.getElementById("imageModal"), {});
 
 var currentArea;
 var currentMap;
@@ -109,6 +110,11 @@ function setQuestData(quest) {
 
   mapList = quest.mapList;
   document.getElementById("mapList").innerHTML = quest.mapDiv;
+
+  for(var i = 0; i < mapList.length; i++) {
+    var img = document.getElementById('image' + mapList[i].pin);
+    img.src = mapList[i].img;
+  }
 
   epilogue.innerHTML = quest.epilogue;
   cliffhanger.innerHTML = quest.cliffhanger;
@@ -238,6 +244,7 @@ function clearMapModal() {
 function Map() {
   this.pin = uniqueNumber();
   this.name = "";
+  this.img = "";
   this.areas = [];
 }
 
@@ -285,15 +292,82 @@ function addMap() {
     var map = new Map();
     map.name = document.getElementById("mapName").value;
 
-    console.log("beep");
-
-    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control" placeholder="Area Name"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
+    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="no-print"><p>Upload an Image<br><i>Warning: Saving images to your map takes up a LOT of space in your localStorage. Upload by URL when you can to save space.</i></p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader" onchange="handleImage(event,' + map.pin + ')"/><div class="input-group" style="margin-top:15px;"><input id="imageURL' + map.pin + '" type="text" class="form-control" placeholder="Paste URL here"><div class="input-group-btn"><button type="button" class="btn btn-primary" onclick="addImage(' + map.pin + ')">Upload</button></div></div><div class="text-right"><button type="button" class="btn btn-warning" style="margin-top:15px;" onclick="clearImage(' + map.pin + ')">Clear Image</button></div><div class="text-center"><img src="" id="image' + map.pin + '" height="0" style="margin-top:15px; margin-bottom:15px;" class="img-responsive"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
 
     mapList.push(map);
     document.getElementById("mapList").innerHTML += newHTML;
     document.getElementById("mapName").value = "";
   } else {
     document.getElementById("mapName").placeholder = "Required!";
+  }
+}
+
+document.getElementById("mapName").onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    addMap();
+    return false;
+  }
+};
+
+function addImage(mapId) {
+  var map = getPinFromArray(mapList, mapId);
+  var imageLoader = document.getElementById('imageURL' + mapId);
+  var img = document.getElementById('image' + mapId);
+
+  if(imageLoader.value !== "") {
+    img.src = imageLoader.value;
+    img.id = "map" + mapId + "img";
+    map.img = img.src;
+    hideModal(imageModal);
+  } else {
+    imageLoader.placeholder = "Required!";
+  }
+}
+
+function handleImage(e, mapId){
+  var map = getPinFromArray(mapList, mapId);
+  var imageLoader = document.getElementById('imageLoader' + mapId);
+
+  var img = document.getElementById('image' + mapId);
+  img.src = "";
+
+  var tgt = e.target || window.event.srcElement,
+    files = tgt.files;
+
+  // FileReader support
+  if (FileReader && files && files.length) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      img.src = fr.result;
+      map.img = fr.result;
+    };
+    fr.readAsDataURL(files[0]);
+  }
+  hideModal(imageModal);
+}
+
+function clearImage(mapId) {
+  var map = getPinFromArray(mapList, mapId);
+  var imageLoader = document.getElementById('imageLoader');
+  var imageURL = document.getElementById('imageURL');
+
+  imageLoader.value = null;
+  imageURL.value = "";
+
+  var img = document.getElementById('image' + mapId);
+  img.src = "";
+  map.img = "";
+}
+
+function addAreaEnter (e, mapId) {
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    var target = this.
+    addAnArea(mapId);
+    return false;
   }
 }
 
@@ -316,7 +390,6 @@ function addAnArea(mapId) {
 function setCurrentArea(pin, mapId) {
   currentArea = pin;
   currentMap = mapId;
-  console.log(currentArea);
 }
 
 function getArea() {
