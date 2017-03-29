@@ -285,15 +285,33 @@ function addMap() {
     var map = new Map();
     map.name = document.getElementById("mapName").value;
 
-    console.log("beep");
-
-    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control" placeholder="Area Name"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
+    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
 
     mapList.push(map);
     document.getElementById("mapList").innerHTML += newHTML;
     document.getElementById("mapName").value = "";
   } else {
     document.getElementById("mapName").placeholder = "Required!";
+  }
+}
+
+document.getElementById("mapName").onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    addMap();
+    return false;
+  }
+};
+
+
+function addAreaEnter (e, mapId) {
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    var target = this.
+    addAnArea(mapId);
+    return false;
   }
 }
 
