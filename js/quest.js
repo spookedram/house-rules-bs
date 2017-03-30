@@ -350,6 +350,7 @@ function handleImage(e, mapId){
     fr.onload = function () {
       img.src = fr.result;
       map.img = fr.result;
+      img.style.height = "0";
     };
     fr.readAsDataURL(files[0]);
   }
