@@ -11,6 +11,7 @@ var lvl_input = document.getElementById("lvl");
 var lvlLabel = document.getElementById("lvlLabel");
 var hp_input = document.getElementById("hp");
 var hpLabel = document.getElementById("hpLabel");
+var tempHp = document.getElementById("tempHp");
 
 var str_input = document.getElementById("strength");
 var strLabel = document.getElementById("strLabel");
@@ -116,6 +117,7 @@ function updateHP() {
     btn.disabled = true;
     hp_input.value = vit_input.value;
     hpLabel.innerHTML = vit_input.value;
+    tempHp.value = vit_input.value;
   } else {
     btn.disabled = false;
   }
@@ -154,6 +156,7 @@ function addRandomHP() {
   console.log("--------------------------------");
   hp_input.value = String(baseHP);
   hpLabel.innerHTML = hp_input.value;
+  tempHp.value = hp_input.value;
 }
 
 // Updates ability score modifier
@@ -407,6 +410,7 @@ function setCharData(character) {
   setLabel(lvl_input, "lvlLabel");
   hp_input.value = Number(character.hp);
   setLabel(hp_input, "hpLabel");
+  tempHp.value = Number(character.hp);
 
   str_input.value = Number(character.strength);
   setLabel(str_input, "strLabel");
