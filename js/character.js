@@ -109,6 +109,10 @@ function setLabel(input, target) {
   }
 }
 
+function setTempHp() {
+  tempHp.value = hp_input.value;
+}
+
 // When vitality changes at lvl 1, update hp
 function updateHP() {
   var btn = document.getElementById("updateHP");
