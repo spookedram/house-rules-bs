@@ -60,7 +60,7 @@ var perk7desc = document.getElementById("perk7desc");
 var perk8name = document.getElementById("perk8name");
 var perk8desc = document.getElementById("perk8desc");
 
-var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
+//var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 var randomAbilityArr = permutator([7,8,10,10,11,12,12]);
 var totalAbilityPoints = 70;
 

@@ -1,5 +1,6 @@
 var rollBtn = document.getElementById("roll-btn");
 var rollResult = document.getElementById("roll-result");
+var saveLoadModal = new Modal(document.getElementById("saveLoadModal"), {});
 var needToConfirm = false;
 
 function addToInnerHTML(target,str) {

@@ -108,7 +108,7 @@
       <div class="row no-print">
         <div class="col-xs-9">
           <div class="btn-group">
-              <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal(), ifEditClose()">Save/Load</button>
+              <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal(saveLoadModal), ifEditClose()">Save/Load</button>
           </div>
         </div>
         <div class="col-xs-3 text-right">
@@ -175,7 +175,7 @@
                     <option value="9">Siren</option>
                   </select>
                   <div class="input-group-btn">
-                    <button type="button" class="btn btn-default" onclick="hideModal(), loadSample(document.getElementById('sampleCharsList').value)">Load</button>
+                    <button type="button" class="btn btn-default" onclick="hideModal(saveLoadModal), loadSample(document.getElementById('sampleCharsList').value)">Load</button>
                   </div>
                 </div>
               </div>
