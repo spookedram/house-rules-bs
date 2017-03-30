@@ -442,11 +442,6 @@
                 <p id="appearance" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
               </div>
             </div>
-            <div class="text-center">
-              <img src="" id="imageUpload" height="0" style="margin-bottom:15px;" class="img-responsive">
-            </div>
-          </div>
-          <div class="col-sm-6">
             <div class="no-print">
               <p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p>
               <input type="file" id="imageLoader" name="imageLoader" onchange="handleImage(event)"/>
@@ -459,14 +454,14 @@
               <div class="text-right">
                 <button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage()">Clear Image</button>
               </div>
-
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="text-center">
+              <img src="" id="imageUpload" height="0" style="margin-bottom:15px;" class="img-responsive">
             </div>
           </div>
         </div>
-
-
-
-
 
         <div class="row">
           <div class="col-sm-6">

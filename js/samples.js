@@ -26,6 +26,7 @@ var sampleChars = [
     "gear": "",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -81,6 +82,7 @@ var sampleChars = [
     "gear": "Some old books, charts, and maps, a quill and ink set, and a small telescope.",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -136,6 +138,7 @@ var sampleChars = [
     "gear": "Thieves' tools (lockpicks and bits of wire), rope, climbing gear, and empty sacks for storing larger loot",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -191,6 +194,7 @@ var sampleChars = [
     "gear": "A survival pack with basic camping gear, rations, a whetstone, a waterskin, a wooden bowl and spoon, and various small knives",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -246,6 +250,7 @@ var sampleChars = [
     "gear": "A canteen and a strange-looking talisman",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -301,6 +306,7 @@ var sampleChars = [
     "gear": "",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -356,6 +362,7 @@ var sampleChars = [
     "gear": "",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -411,6 +418,7 @@ var sampleChars = [
     "gear": "Large Ruby Amulet",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -466,6 +474,7 @@ var sampleChars = [
     "gear": "The Werewolf carries only the dagger and a small sack of coins. His transformations are too frequent; carrying anything of value is a waste of time and energy.",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -521,6 +530,7 @@ var sampleChars = [
     "gear": "Lyre repair kit",
 
     "appearance": "",
+    "image": "",
     "personality": "",
     "backstory": "",
 
@@ -555,33 +565,12 @@ var sampleQuests = [
   {
     "pin": 0,
     "questName": "",
-    "settingList": [],
 
-    "setup": "",
+    "prologue": "",
     "goal": "",
 
-    "enemyList": [],
-    "actList": [],
-
-    "epilogue": "",
-    "cliffhanger": ""
-  },
-  {
-    "pin": 1,
-    "questName": "Runaway Mimic!",
-    "settingList": ["A merchant city on the coast", "A dark, seemingly abandoned manor", "Hidden catacombs beneath the manor", "A large cave that lets out to the sea"],
-
-    "setup": "While gathering supplies in the merchant city, the party is interrupted by a small treasure chest that runs past, a leathery strap flapping from beneath its open lid, spilling coins as it's chased by a group of townsfolk. The party chases the mimic as well, but when they find it, it's surrounded by some thieves looking for a fight.",
-    "goal": "Defeat the thieves and catch the chest mimic!",
-
-    "enemyList": [],
-    "actList": [
-      {
-        "pin": 0,
-        "low": "After the party defeats the thieves, they are approached be an old man who introduces himself as Zeke. Zeke tells the party about General Belvedere and how he was revealed to be a clever thief of a man who sold enchanted chests as regular treasure chests. Once the chests were full of gold and jewels, he'd call them back to him and store the gold in his massive house.",
-        "high": ""
-      }
-    ],
+    "mapDiv": "",
+    "mapList": [],
 
     "epilogue": "",
     "cliffhanger": ""
