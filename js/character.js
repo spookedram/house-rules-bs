@@ -28,6 +28,7 @@ var chaLabel = document.getElementById("chaLabel");
 var per_input = document.getElementById("perception");
 var perLabel = document.getElementById("perLabel");
 
+var appImg = document.getElementById("imageUpload");
 var app = document.getElementById("appearance");
 var pers = document.getElementById("personality");
 var bs = document.getElementById("backstory");
@@ -303,6 +304,7 @@ function Character() {
   this.perception = "";
 
   this.appearance = "";
+  this.appImg = "";
   this.personality = "";
   this.backstory = "";
 
@@ -355,6 +357,7 @@ function saveCharData() {
   character.perception = perLabel.innerHTML;
 
   character.appearance = app.innerHTML;
+  character.image = appImg.src;
   character.personality = pers.innerHTML;
   character.backstory = bs.innerHTML;
 
@@ -453,6 +456,7 @@ function setCharData(character) {
   gear.innerHTML = character.gear;
 
   app.innerHTML = character.appearance;
+  appImg.src = character.image;
   pers.innerHTML = character.personality;
   bs.innerHTML = character.backstory;
 
@@ -490,7 +494,7 @@ function loadData(pin) {
   result = getPinFromArray(characterList,pin);
   setCharData(result);
 
-  hideModal();
+  hideModal(saveLoadModal);
   ifEditClose();
 }
 
@@ -780,4 +784,49 @@ function submitHelp(id) {
   }
 
   desc.innerHTML = text;
+}
+
+function addImage() {
+  var imageLoader = document.getElementById('imageLoader');
+  var imageURL = document.getElementById('imageURL');
+  appImg.src = "";
+  imageLoader.value = "";
+
+  if(imageURL.value !== "") {
+    appImg.src = imageURL.value;
+    appImg.style.display = "block";
+  } else {
+    imageURL.placeholder = "Required!";
+  }
+}
+
+function handleImage(e){
+  var imageLoader = document.getElementById('imageLoader');
+  var imageURL = document.getElementById('imageURL');
+  appImg.src = "";
+
+  imageURL.value = "";
+
+  var tgt = e.target || window.event.srcElement,
+    files = tgt.files;
+
+  // FileReader support
+  if (FileReader && files && files.length) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      appImg.src = fr.result;
+      appImg.style.display = "block";
+    };
+    fr.readAsDataURL(files[0]);
+  }
+}
+
+function clearImage(mapId) {
+  var imageLoader = document.getElementById('imageLoader');
+  var imageURL = document.getElementById('imageURL');
+  imageLoader.value = "";
+  imageURL.value = "";
+  appImg.height = 0;
+  appImg.src = "";
+  appImg.style.display = "none";
 }
