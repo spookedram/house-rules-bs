@@ -326,6 +326,7 @@ function addImage(mapId) {
 
   if(imageURL.value !== "") {
     img.src = imageURL.value;
+    img.style.display = "block";
     map.img = img.src;
   } else {
     imageURL.placeholder = "Required!";
@@ -349,6 +350,7 @@ function handleImage(e, mapId){
     var fr = new FileReader();
     fr.onload = function () {
       img.src = fr.result;
+      img.style.display = "block";
       map.img = fr.result;
     };
     fr.readAsDataURL(files[0]);
@@ -364,6 +366,7 @@ function clearImage(mapId) {
   imageURL.value = "";
   img.height = 0;
   img.src = "";
+  img.style.display = "none";
   map.img = "";
 }
 
