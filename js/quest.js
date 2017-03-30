@@ -7,7 +7,6 @@ var goal = document.getElementById("goal");
 var epilogue = document.getElementById("epilogue");
 var cliffhanger = document.getElementById("cliffhanger");
 
-var saveLoadModal = new Modal(document.getElementById("modal-btn"), {});
 var enemyModal = new Modal(document.getElementById("enemyModal"), {});
 var trapModal = new Modal(document.getElementById("trapModal"), {});
 var puzzleModal = new Modal(document.getElementById("puzzleModal"), {});
