@@ -457,6 +457,9 @@ function setCharData(character) {
 
   app.innerHTML = character.appearance;
   appImg.src = character.image;
+  if(appImg.src !== "") {
+    appImg.style.display = "block";
+  }
   pers.innerHTML = character.personality;
   bs.innerHTML = character.backstory;
 
