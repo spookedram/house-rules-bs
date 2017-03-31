@@ -510,9 +510,6 @@ header.jumbotron {
   .panel-body {
     border-top: none;
   }
-  .pbb {
-    page-break-before: always;
-  }
   .pba {
     page-break-after: always;
   }
