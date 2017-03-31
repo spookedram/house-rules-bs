@@ -141,14 +141,14 @@
               <div id="fullAlert" class="alert alert-danger" style="display:none;">
                 <p>Your storage is full or your browser has denied access to storing local data! Please delete some characters, clear your localStorage, or change your browser settings to save this character.</p>
                 <div class="text-right" style="margin-top:16px;">
-                  <button type="button" name="button" class="btn btn-primary" onclick="showAlert('fullAlert', false)">Ok</button>
+                  <button type="button" name="button" class="btn btn-primary" onclick="showElementById('fullAlert', false)">Ok</button>
                 </div>
               </div>
               <div id="clearAlert" class="alert alert-danger" style="display:none;">
                 <p class="text-center">This will clear all your saved characters, are you sure?</p>
                 <div class="text-center" style="margin-top:16px;">
-                  <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showAlert('clearAlert', false)">Yes</button>
-                  <button type="button" name="button" class="btn btn-primary" onclick="showAlert('clearAlert', false)">Cancel</button>
+                  <button type="button" name="button" class="btn btn-danger" onclick="clearList(),showElementById('clearAlert', false)">Yes</button>
+                  <button type="button" name="button" class="btn btn-primary" onclick="showElementById('clearAlert', false)">Cancel</button>
                 </div>
               </div>
               <div id="nameAlert" class="alert alert-danger" style="display:none;">
@@ -182,7 +182,7 @@
             </div>
 
             <div class="modal-footer">
-              <button id="clearList" type="button" class="btn btn-danger pull-left" name="button" onclick="showAlert('clearAlert', true)">Clear List</button>
+              <button id="clearList" type="button" class="btn btn-danger pull-left" name="button" onclick="showElementById('clearAlert', true)">Clear List</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
           </div><!-- /.modal-content -->

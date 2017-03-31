@@ -514,7 +514,7 @@ function addRowToLoadTable(obj) {
 
   console.log(obj);
 
-  newHTML = "<tr><td><div>" + name + "</div></td><td class='text-right'><div class='btn-group'><button type='button' class='btn btn-default n-m-b' onclick='clearItem(this,&quot;" + idNum + "&quot;)'>Delete</button><button type='button' class='btn btn-default n-m-b' id='" + idNum + "' onclick='loadData(this.id)'>Load</button></div></td></tr>";
+  newHTML = "<tr><td><div style='max-width:120px; word-wrap:break-word;'>" + name + "</div></td><td class='text-right' style='min-width:142px;'><div class='btn-group'><button type='button' class='btn btn-default n-m-b' onclick='showElementById(&quot;alert" + idNum + "&quot;, true)'>Delete</button><button type='button' class='btn btn-default n-m-b' id='" + idNum + "' onclick='loadData(this.id)'>Load</button></div><div id='alert" + idNum + "' style='display:none;'><b>Are you sure?</b> <p class='text-right'><button type='button' class='btn btn-primary n-m-b' onclick='showElementById(&quot;alert" + idNum + "&quot;, false)'>No</button> <button type='button' class='btn btn-danger n-m-b' onclick='clearItem(this,&quot;" + idNum + "&quot;)'>Yes</button></p></div></td></tr>";
 
   table.innerHTML += newHTML;
 }
@@ -556,7 +556,7 @@ function clearItem(btn,pin) {
   console.log(characterList);
 
   localStorage.setItem('characterList', JSON.stringify(characterList));
-  btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
+  btn.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode.parentNode);
 }
 
 function togglePerDay(chk) {
