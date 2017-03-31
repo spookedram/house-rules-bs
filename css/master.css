@@ -495,7 +495,7 @@ header.jumbotron {
     padding-left: 15px;
     width: 33.33333333%;
   }
-  #prologue {
+  .fullwide {
     width: 100%;
   }
   .panel-heading {
