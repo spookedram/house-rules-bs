@@ -505,7 +505,7 @@ header.jumbotron {
   .pba {
     page-break-after: always;
   }
-  section, .area, .pbi {
+  section, .map, .area, .pbi {
     page-break-inside: avoid;
   }
   [class*="col-sm"] {
