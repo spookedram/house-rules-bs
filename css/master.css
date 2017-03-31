@@ -495,7 +495,7 @@ header.jumbotron {
     padding-left: 15px;
     width: 33.33333333%;
   }
-  h4 {
+  h3, h4 {
     margin-bottom: 1em;
   }
   .fullwide {
@@ -509,6 +509,9 @@ header.jumbotron {
   }
   .panel-body {
     border-top: none;
+  }
+  .pbb {
+    page-break-before: always;
   }
   .pba {
     page-break-after: always;
