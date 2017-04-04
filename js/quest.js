@@ -290,7 +290,7 @@ function addMap() {
     var map = new Map();
     map.name = document.getElementById("mapName").value;
 
-    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb no-print"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="panel panel-default"><div class="panel-body pbi"><label for="map' + map.pin + 'Desc">Description</label><p name="map' + map.pin + 'Desc" class="enter-content n-mb" contenteditable="true"></p></div></div><div class="no-print"><p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p><input type="file" id="imageLoader' + map.pin + '" name="imageLoader" onchange="handleImage(event,' + map.pin + ')"/><div class="input-group" style="margin-top:15px;"><input id="imageURL' + map.pin + '" type="text" class="form-control" placeholder="Paste URL here"><div class="input-group-btn"><button type="button" class="btn btn-primary" onclick="addImage(' + map.pin + ')">Upload</button></div></div><div class="text-right"><button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage(' + map.pin + ')">Clear Image</button></div></div><div class="text-center"><img src="" id="image' + map.pin + '" height="0" style="margin-bottom:15px;" class="img-responsive"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
+    var newHTML = '<div id=' + map.pin + ' class="map"><hr class="n-mb no-print"><div class="row"><div class="col-xs-8"><h3 contenteditable="true">' + map.name + '</h3></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger" style="margin:15px 0;" onclick="showModal(deleteMapModal), setCurrentArea(0, ' + map.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div><div class="row no-print"><div class="col-sm-6"><button type="button" class="btn btn-default" onclick="addMapDesc(this, ' + map.pin + ')" style="margin-bottom:15px; margin-right:15px; width:100%;">Add Description</button></div><div class="col-sm-6"><button type="button" class="btn btn-default" onclick="addMapImage(this, ' + map.pin + ')" style="margin-bottom:15px; width:100%;">Add Image</button></div></div><div class="text-center"><img src="" id="image' + map.pin + '" height="0" style="margin-bottom:15px;" class="img-responsive"></div><div id="map' + map.pin + 'areaList"></div><div class="row no-print"><div class="col-sm-6 col-sm-offset-3"><div class="input-group"><input type="text" id="area' + map.pin + 'Name" class="form-control newAreaInput" placeholder="Area Name" onkeypress="addAreaEnter(event,' + map.pin + ')"><div class="input-group-btn"><button type="button" class="btn btn-default" onclick="addAnArea(' + map.pin + ')">Add</button></div></div></div></div></div>';
 
     mapList.push(map);
     document.getElementById("mapList").innerHTML += newHTML;
@@ -298,6 +298,22 @@ function addMap() {
   } else {
     document.getElementById("mapName").placeholder = "Required!";
   }
+}
+
+function addMapDesc(btn, mapId) {
+  btn.parentNode.innerHTML = '<div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:0;margin-top:8px;">Description</h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-sm btn-danger" style="margin:0;" onclick="removeMapDesc(this, ' + mapId + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body pbi"><p name="map' + mapId + 'Desc" class="enter-content n-mb" contenteditable="true"></p></div></div>';
+}
+
+function removeMapDesc(btn, mapId) {
+  btn.parentNode.parentNode.parentNode.parentNode.parentNode.innerHTML = '<button type="button" class="btn btn-default" onclick="addMapDesc(this, ' + mapId + ')" style="margin-bottom:15px; margin-right:15px; width:100%;">Add Description</button>';
+}
+
+function addMapImage(btn, mapId) {
+  btn.parentNode.innerHTML = '<div class="panel panel-default no-print"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:0;margin-top:8px;">Add an Image</h4></div><div class="col-xs-4 text-right"><button type="button" class="btn btn-sm btn-danger" style="margin:0;" onclick="removeMapImage(this, ' + mapId + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p><input type="file" id="imageLoader' + mapId + '" name="imageLoader" onchange="handleImage(event,' + mapId + ')"/><div class="input-group" style="margin-top:15px;"><input id="imageURL' + mapId + '" type="text" class="form-control" placeholder="Paste URL here"><div class="input-group-btn"><button type="button" class="btn btn-primary" onclick="addImage(' + mapId + ')">Upload</button></div></div><div class="text-right"><button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage(' + mapId + ')">Clear Image</button></div></div></div>';
+}
+
+function removeMapImage(btn, mapId) {
+  btn.parentNode.parentNode.parentNode.parentNode.parentNode.innerHTML = '<button type="button" class="btn btn-default" onclick="addMapImage(this, ' + mapId + ')" style="margin-bottom:15px; margin-right:15px; width:100%;">Add an Image</button>';
 }
 
 document.getElementById("mapName").onkeypress = function(e){
@@ -379,7 +395,7 @@ function addAnArea(mapId) {
     var area = new Area();
     area.mapId = mapId;
     area.name = document.getElementById("area" + mapId + "Name").value;
-    area.div = '<div id=' + area.pin + ' class="area panel panel-default"><div class="panel-heading"><h4 contenteditable="true">' + area.name + '</h4></div><div class="panel-body"><div class="row"><div class="col-sm-6"><b>Description</b><div class="panel panel-default"><div class="panel-body"><p name="area' + area.pin + 'Desc" class="enter-content n-mb" contenteditable="true"></p></div></div></div><div class="col-sm-6 text-right no-print"><h4 class="n-mb">Add an Event</h4><div class="btn-group" style="margin-top:15px;"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(enemyModal)">Enemy</button><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(trapModal)">Trap</button><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(puzzleModal)">Puzzle</button></div> <div class="btn-group" style="margin-top:15px;"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(npcModal)">NPC</button><button type="button" class="btn btn-default" onclick="setCurrentArea(' + area.pin + ',' + mapId + '),showModal(itemModal)">Quest Item</button></div></div></div><h4>Events</h4><div id="area' + area.pin + 'eventList" class="row equal"></div></div><div class="panel-footer text-right no-print"><button type="button" class="btn btn-danger" onclick="setCurrentArea(' + area.pin + ',' + mapId + '), showModal(deleteAreaModal)">Delete Area</button></div></div>';
+    area.div = '<div id=' + area.pin + ' class="area panel panel-default"><div class="panel-heading"><h4 contenteditable="true">' + area.name + '</h4></div><div class="panel-body"><div class="row no-print"><div class="col-sm-6"><button type="button" class="btn btn-default" onclick="addAreaDesc(this, ' + area.pin + ')" style="margin-bottom:15px; margin-right:15px; width:100%;">Add Description</button></div><div class="col-sm-6"><button type="button" class="btn btn-default" onclick="addEventInput(this, ' + area.pin + ', ' + map.pin + ')" style="margin-bottom:15px; width:100%;">Add an Event</button></div></div><h4>Events</h4><div id="area' + area.pin + 'eventList" class="row equal"></div></div><div class="panel-footer text-right no-print"><button type="button" class="btn btn-danger" onclick="setCurrentArea(' + area.pin + ',' + mapId + '), showModal(deleteAreaModal)">Delete Area</button></div></div>';
 
     document.getElementById("map" + mapId + "areaList").innerHTML += area.div;
     map.areas.push(area);
@@ -387,6 +403,22 @@ function addAnArea(mapId) {
   } else {
     document.getElementById("area" + mapId + "Name").placeholder = "Required!";
   }
+}
+
+function addAreaDesc(btn, areaId) {
+  btn.parentNode.innerHTML ='<div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:0;margin-top:8px;">Description</h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-sm btn-danger" style="margin:0;" onclick="removeAreaDesc(this, ' + areaId + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p name="area' + areaId + 'Desc" class="enter-content n-mb" contenteditable="true"></p></div></div>';
+}
+
+function removeAreaDesc(btn, areaId) {
+  btn.parentNode.parentNode.parentNode.parentNode.parentNode.innerHTML = '<button type="button" class="btn btn-default" onclick="addAreaDesc(this, ' + areaId + ')" style="margin-bottom:15px; margin-right:15px; width:100%;">Add Description</button>';
+}
+
+function addEventInput(btn, areaId, mapId) {
+  btn.parentNode.innerHTML ='<div class="panel panel-default"><div class="panel-heading"><h4 style="margin:0;">Add an Event</h4></div><div class="panel-body"><div class="row"><div class="col-sm-4"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + areaId + ',' + mapId + '),showModal(enemyModal)" style="margin-bottom:15px; width:100%;">Enemy</button></div><div class="col-sm-4"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + areaId + ',' + mapId + '),showModal(trapModal)" style="margin-bottom:15px; width:100%;">Trap</button></div><div class="col-sm-4"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + areaId + ',' + mapId + '),showModal(puzzleModal)" style="margin-bottom:15px; width:100%;">Puzzle</button></div></div><div class="row"><div class="col-sm-6"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + areaId + ',' + mapId + '),showModal(npcModal)" style="margin-bottom:15px; width:100%;">NPC</button></div><div class="col-sm-6"><button type="button" class="btn btn-default" onclick="setCurrentArea(' + areaId + ',' + mapId + '),showModal(itemModal)" style="width:100%;">Quest Item</button></div></div></div><div class="panel-footer text-right no-print"><button type="button" class="btn btn-sm btn-danger" style="margin:0;" onclick="removeEventInput(this, ' + areaId + ', ' + mapId + ')">Cancel</button></div></div>';
+}
+
+function removeEventInput(btn, areaId, mapId) {
+  btn.parentNode.parentNode.parentNode.innerHTML = '<button type="button" class="btn btn-default" onclick="addEventInput(this, ' + areaId + ', ' + mapId + ')" style="margin-bottom:15px; margin-right:15px; width:100%;">Add an Event</button>';
 }
 
 function setCurrentArea(pin, mapId) {
