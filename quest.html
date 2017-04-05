@@ -152,6 +152,12 @@
                   <button type="button" name="button" class="btn btn-primary" onclick="showElementById('clearAlert', false)">Cancel</button>
                 </div>
               </div>
+              <div id="saveChanges" class="alert alert-danger" style="display:none;">
+                <p>You have unsaved changes on your current quest, please save them before you load another quest!</p>
+                <div class="text-right" style="margin-top:16px;">
+                  <button type="button" name="button" class="btn btn-primary" onclick="showElementById('saveChanges', false)">Ok</button>
+                </div>
+              </div>
               <div id="nameAlert" class="alert alert-danger" style="display:none;">
                 <p>You quest must have a name!</p>
                 <div class="text-right" style="margin-top:16px;">

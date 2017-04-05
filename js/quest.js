@@ -128,19 +128,23 @@ function saveQuest() {
 }
 
 function loadData(pin) {
-  var result;
-  getQuestList();
+  if(!needToConfirm) {
+    var result;
+    getQuestList();
 
-  for(var i = 0; i < questList.length; i++) {
-    if(questList[i].pin == pin) {
-      result = questList[i];
-      break;
+    for(var i = 0; i < questList.length; i++) {
+      if(questList[i].pin == pin) {
+        result = questList[i];
+        break;
+      }
     }
+
+    setQuestData(result);
+
+    hideModal(saveLoadModal);
+  } else {
+    showElementById("saveChanges", true);
   }
-
-  setQuestData(result);
-
-  hideModal(saveLoadModal);
 }
 
 function loadSample(num) {
@@ -295,6 +299,7 @@ function addMap() {
     mapList.push(map);
     document.getElementById("mapList").innerHTML += newHTML;
     document.getElementById("mapName").value = "";
+    needConfirm();
   } else {
     document.getElementById("mapName").placeholder = "Required!";
   }
@@ -400,6 +405,7 @@ function addAnArea(mapId) {
     document.getElementById("map" + mapId + "areaList").innerHTML += area.div;
     map.areas.push(area);
     document.getElementById("area" + mapId + "Name").value = "";
+    needConfirm();
   } else {
     document.getElementById("area" + mapId + "Name").placeholder = "Required!";
   }
@@ -470,6 +476,7 @@ function addTrap() {
     document.getElementById("trapDesc").value = "";
     document.getElementById("trapST").value = "DEX";
     document.getElementById("trapDamage").value = "d6";
+    needConfirm();
   }
 }
 
@@ -488,6 +495,7 @@ function addPuzzle() {
     document.getElementById("puzzleName").value = "";
     document.getElementById("puzzleDesc").value = "";
     document.getElementById("puzzleSol").value = "";
+    needConfirm();
   }
 }
 
@@ -506,6 +514,7 @@ function addNPC() {
     hideModal(npcModal);
     document.getElementById("npcName").value = "";
     document.getElementById("npcDesc").value = "";
+    needConfirm();
   }
 }
 
@@ -523,5 +532,6 @@ function addQuestItem() {
     hideModal(itemModal);
     document.getElementById("itemName").value = "";
     document.getElementById("itemDesc").value = "";
+    needConfirm();
   }
 }
