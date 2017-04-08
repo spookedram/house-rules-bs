@@ -491,14 +491,18 @@ function saveCharacter() {
 }
 
 function loadData(pin) {
-  var result;
-  getCharacterList();
+    if(!needToConfirm) {
+    var result;
+    getCharacterList();
 
-  result = getPinFromArray(characterList,pin);
-  setCharData(result);
+    result = getPinFromArray(characterList,pin);
+    setCharData(result);
 
-  hideModal(saveLoadModal);
-  ifEditClose();
+    hideModal(saveLoadModal);
+    ifEditClose();
+  } else {
+    showElementById("saveChanges", true);
+  }
 }
 
 function loadSample(num) {
