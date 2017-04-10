@@ -563,7 +563,8 @@
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type1sel" class="form-control">
-                        <option>Deal Damage</option>
+                        <option>Physical Strike</option>
+                        <option>Ranged Attack</option>
                         <option>Heal</option>
                         <option disabled="true"></option>
                         <option>Buff AC</option>
@@ -652,7 +653,8 @@
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type2sel" class="form-control">
-                        <option>Deal Damage</option>
+                        <option>Physical Strike</option>
+                        <option>Ranged Attack</option>
                         <option>Heal</option>
                         <option disabled="true"></option>
                         <option>Buff AC</option>
@@ -743,7 +745,8 @@
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type3sel" class="form-control">
-                        <option>Deal Damage</option>
+                        <option>Physical Strike</option>
+                        <option>Ranged Attack</option>
                         <option>Heal</option>
                         <option disabled="true"></option>
                         <option>Buff AC</option>
@@ -832,7 +835,8 @@
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type4sel" class="form-control">
-                        <option>Deal Damage</option>
+                        <option>Physical Strike</option>
+                        <option>Ranged Attack</option>
                         <option>Heal</option>
                         <option disabled="true"></option>
                         <option>Buff AC</option>
@@ -923,7 +927,8 @@
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type5sel" class="form-control">
-                        <option>Deal Damage</option>
+                        <option>Physical Strike</option>
+                        <option>Ranged Attack</option>
                         <option>Heal</option>
                         <option disabled="true"></option>
                         <option>Buff AC</option>
@@ -1012,7 +1017,8 @@
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type6sel" class="form-control">
-                        <option>Deal Damage</option>
+                        <option>Physical Strike</option>
+                        <option>Ranged Attack</option>
                         <option>Heal</option>
                         <option disabled="true"></option>
                         <option>Buff AC</option>
@@ -1104,7 +1110,8 @@
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type7sel" class="form-control">
-                        <option>Deal Damage</option>
+                        <option>Physical Strike</option>
+                        <option>Ranged Attack</option>
                         <option>Heal</option>
                         <option disabled="true"></option>
                         <option>Buff AC</option>
@@ -1157,10 +1164,9 @@
                   <div class="perk8demo text-left row">
                     <div class="col-sm-12">
                       <label for="">User targets</label>
-                      <select id="target8sel" oninput="isTargetingEnemy('stLabel8', this)" class="form-control">
-                        <option value="0">themselves</option>
+                      <select id="target8sel" oninput="isTargetingEnemy(8)" class="form-control">
                         <option value="enemy" selected>an enemy</option>
-                        <option value="2">an ally</option>
+                        <option value="2">themselves or an ally</option>
                         <option value="enemy">all enemies in a 100ft diameter</option>
                         <option value="4">all allies in a 100ft diameter</option>
                       </select>
@@ -1179,41 +1185,42 @@
                     </div>
                     <div class="col-sm-6">
                       <div id="stLabel8">
-                      <label for="">Saving Throw</label>
-                      <select id="st8sel" class="form-control">
-                        <option>STR</option>
-                        <option selected>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
+                        <label for="">Saving Throw</label>
+                        <select id="st8sel" class="form-control">
+                          <option>STR</option>
+                          <option selected>DEX</option>
+                          <option>VIT</option>
+                          <option>INT</option>
+                          <option>WIS</option>
+                          <option>CHA</option>
+                          <option>PER</option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <label for="">Effect</label>
                       <select id="type8sel" class="form-control">
-                        <option>Deal Damage</option>
-                        <option>Heal</option>
+                        <option value="0">Physical Strike</option>
+                        <option value="0">Ranged Attack</option>
+                        <option value="1">Heal</option>
                         <option disabled="true"></option>
-                        <option>Buff AC</option>
-                        <option>Buff STR</option>
-                        <option>Buff DEX</option>
-                        <option>Buff VIT</option>
-                        <option>Buff INT</option>
-                        <option>Buff WIS</option>
-                        <option>Buff CHA</option>
-                        <option>Buff PER</option>
+                        <option value="1">Buff AC</option>
+                        <option value="1">Buff STR</option>
+                        <option value="1">Buff DEX</option>
+                        <option value="1">Buff VIT</option>
+                        <option value="1">Buff INT</option>
+                        <option value="1">Buff WIS</option>
+                        <option value="1">Buff CHA</option>
+                        <option value="1">Buff PER</option>
                         <option disabled="true"></option>
-                        <option>Debuff AC</option>
-                        <option>Debuff STR</option>
-                        <option>Debuff DEX</option>
-                        <option>Debuff VIT</option>
-                        <option>Debuff INT</option>
-                        <option>Debuff WIS</option>
-                        <option>Debuff CHA</option>
-                        <option>Debuff PER</option>
+                        <option value="0">Debuff AC</option>
+                        <option value="0">Debuff STR</option>
+                        <option value="0">Debuff DEX</option>
+                        <option value="0">Debuff VIT</option>
+                        <option value="0">Debuff INT</option>
+                        <option value="0">Debuff WIS</option>
+                        <option value="0">Debuff CHA</option>
+                        <option value="0">Debuff PER</option>
                       </select>
                     </div>
                   </div>

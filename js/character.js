@@ -574,10 +574,11 @@ function togglePerDay(chk) {
 }
 togglePerDay(false);
 
-function isTargetingEnemy(target, input) {
-  var el = document.getElementById(target);
+function isTargetingEnemy(num) {
+  var el = document.getElementById('stLabel' + num);
+  var target = document.getElementById('target' + num + 'sel');
 
-  if(input.value !== "enemy") {
+  if(target.value !== "enemy") {
     el.className = "hidden";
   } else {
     el.className = "";
@@ -622,8 +623,15 @@ function chgExamples(input, target) {
   el.innerHTML = text;
 }
 
-function getPerkTypeText(val, id) {
+function getPerkTypeText(tar, val, id) {
   var dice = "";
+  var target_s = "";
+
+  if(tar === "an enemy" || tar === "themselves or an ally") {
+    target_s = "the target";
+  } else {
+    target_s = "each target";
+  }
 
   switch(id) {
     case 1:
@@ -655,10 +663,11 @@ function getPerkTypeText(val, id) {
   console.log(dice);
 
   switch(val) {
-    case "Deal Damage":
-      return "damages the target(s) for " + dice + " HP.";
+    case "Physical Strike":
+    case "Ranged Attack":
+      return "damages " + target_s + " for " + dice + " HP.";
     case "Heal":
-      return "heals the target(s) for " + dice + " HP.";
+      return "heals " + target_s + " for " + dice + " HP.";
     case "Buff AC":
       if(id === 1) {
         return "temporarily adds 1 point to the target's AC.";
@@ -779,15 +788,26 @@ function submitHelp(id) {
   var dc = document.getElementById("dc" + id + "sel");
   var st = document.getElementById("st" + id + "sel");
   var type = document.getElementById("type" + id + "sel");
+  var theEach = "";
   var typeText = "";
   var text = "";
 
-  typeText = getPerkTypeText(type.options[type.selectedIndex].text, id);
+  if(target.options[target.selectedIndex].text === "an enemy" || target.options[target.selectedIndex].text === "themselves or an ally") {
+    theEach = "the target";
+  } else {
+    theEach = "each target";
+  }
+
+  typeText = getPerkTypeText(target.options[target.selectedIndex].text, type.options[type.selectedIndex].text, id);
 
   if(target.value !== "enemy") {
     text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. If successful, the perk " + typeText;
   } else {
-    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. If successful, the target(s) must roll a " + st.options[st.selectedIndex].text + " saving throw. If they fail, the perk " + typeText;
+    if(type.options[type.selectedIndex].text === "Physical Strike") {
+      text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " attack. If successful, the perk " + typeText;
+    } else {
+      text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. If successful, " + theEach + " must roll a " + st.options[st.selectedIndex].text + " saving throw. If they fail, the perk " + typeText;
+    }
   }
 
   desc.innerHTML = text;
