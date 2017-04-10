@@ -626,11 +626,13 @@ function chgExamples(input, target) {
 function getPerkTypeText(tar, val, id) {
   var dice = "";
   var target_s = "";
+  var dmg_hp_multiple = "";
 
   if(tar === "an enemy" || tar === "themselves or an ally") {
     target_s = "the target";
   } else {
     target_s = "each target";
+    dmg_hp_multiple = "(divided evenly)";
   }
 
   switch(id) {
@@ -665,14 +667,14 @@ function getPerkTypeText(tar, val, id) {
   switch(val) {
     case "Physical Strike":
     case "Ranged Attack":
-      return "damages " + target_s + " for " + dice + " HP.";
+      return "damages the target for " + dice + " HP " + dmg_hp_multiple + ".";
     case "Heal":
-      return "heals " + target_s + " for " + dice + " HP.";
+      return "heals the target for " + dice + " HP " + dmg_hp_multiple + ".";
     case "Buff AC":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's AC.";
+        return "temporarily adds 1 point to " + target_s + "'s AC.";
       } else {
-        return "temporarily adds " + id + " points to the target's AC.";
+        return "temporarily adds " + id + " points to " + target_s + "'s AC.";
       }
       break;
     case "Debuff AC":
@@ -684,9 +686,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Buff STR":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's STR.";
+        return "temporarily adds 1 point to " + target_s + "'s STR.";
       } else {
-        return "temporarily adds " + id + " points to the target's STR.";
+        return "temporarily adds " + id + " points to " + target_s + "'s STR.";
       }
       break;
     case "Debuff STR":
@@ -698,9 +700,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Buff DEX":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's DEX.";
+        return "temporarily adds 1 point to " + target_s + "'s DEX.";
       } else {
-        return "temporarily adds " + id + " points to the target's DEX.";
+        return "temporarily adds " + id + " points to " + target_s + "'s DEX.";
       }
       break;
     case "Debuff DEX":
@@ -712,9 +714,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Buff VIT":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's VIT.";
+        return "temporarily adds 1 point to " + target_s + "'s VIT.";
       } else {
-        return "temporarily adds " + id + " points to the target's VIT.";
+        return "temporarily adds " + id + " points to " + target_s + "'s VIT.";
       }
       break;
     case "Debuff VIT":
@@ -726,9 +728,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Buff INT":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's INT.";
+        return "temporarily adds 1 point to " + target_s + "'s INT.";
       } else {
-        return "temporarily adds " + id + " points to the target's INT.";
+        return "temporarily adds " + id + " points to " + target_s + "'s INT.";
       }
       break;
     case "Debuff INT":
@@ -740,9 +742,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Buff WIS":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's WIS.";
+        return "temporarily adds 1 point to " + target_s + "'s WIS.";
       } else {
-        return "temporarily adds " + id + " points to the target's WIS.";
+        return "temporarily adds " + id + " points to " + target_s + "'s WIS.";
       }
       break;
     case "Debuff WIS":
@@ -754,9 +756,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Buff CHA":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's CHA.";
+        return "temporarily adds 1 point to " + target_s + "'s CHA.";
       } else {
-        return "temporarily adds " + id + " points to the target's CHA.";
+        return "temporarily adds " + id + " points to " + target_s + "'s CHA.";
       }
       break;
     case "Debuff CHA":
@@ -768,9 +770,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Buff PER":
       if(id === 1) {
-        return "temporarily adds 1 point to the target's PER.";
+        return "temporarily adds 1 point to " + target_s + "'s PER.";
       } else {
-        return "temporarily adds " + id + " points to the target's PER.";
+        return "temporarily adds " + id + " points to " + target_s + "'s PER.";
       }
       break;
     case "Debuff PER":
