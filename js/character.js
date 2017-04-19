@@ -679,9 +679,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff AC":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's AC.";
+        return "temporarily removes 1 point from " + target_s + "'s AC.";
       } else {
-        return "temporarily removes " + id + " points from the target's AC.";
+        return "temporarily removes " + id + " points from " + target_s + "'s AC.";
       }
       break;
     case "Buff STR":
@@ -693,9 +693,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff STR":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's STR.";
+        return "temporarily removes 1 point from " + target_s + "'s STR.";
       } else {
-        return "temporarily removes " + id + " points from the target's STR.";
+        return "temporarily removes " + id + " points from " + target_s + "'s STR.";
       }
       break;
     case "Buff DEX":
@@ -707,9 +707,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff DEX":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's DEX.";
+        return "temporarily removes 1 point from " + target_s + "'s DEX.";
       } else {
-        return "temporarily removes " + id + " points from the target's DEX.";
+        return "temporarily removes " + id + " points from " + target_s + "'s DEX.";
       }
       break;
     case "Buff VIT":
@@ -721,9 +721,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff VIT":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's VIT.";
+        return "temporarily removes 1 point from " + target_s + "'s VIT.";
       } else {
-        return "temporarily removes " + id + " points from the target's VIT.";
+        return "temporarily removes " + id + " points from " + target_s + "'s VIT.";
       }
       break;
     case "Buff INT":
@@ -735,9 +735,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff INT":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's INT.";
+        return "temporarily removes 1 point from " + target_s + "'s INT.";
       } else {
-        return "temporarily removes " + id + " points from the target's INT.";
+        return "temporarily removes " + id + " points from " + target_s + "'s INT.";
       }
       break;
     case "Buff WIS":
@@ -749,9 +749,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff WIS":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's WIS.";
+        return "temporarily removes 1 point from " + target_s + "'s WIS.";
       } else {
-        return "temporarily removes " + id + " points from the target's WIS.";
+        return "temporarily removes " + id + " points from " + target_s + "'s WIS.";
       }
       break;
     case "Buff CHA":
@@ -763,9 +763,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff CHA":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's CHA.";
+        return "temporarily removes 1 point from " + target_s + "'s CHA.";
       } else {
-        return "temporarily removes " + id + " points from the target's CHA.";
+        return "temporarily removes " + id + " points from " + target_s + "'s CHA.";
       }
       break;
     case "Buff PER":
@@ -777,9 +777,9 @@ function getPerkTypeText(tar, val, id) {
       break;
     case "Debuff PER":
       if(id === 1) {
-        return "temporarily removes 1 point from the target's PER.";
+        return "temporarily removes 1 point from " + target_s + "'s PER.";
       } else {
-        return "temporarily removes " + id + " points from the target's PER.";
+        return "temporarily removes " + id + " points from " + target_s + "'s PER.";
       }
   }
 }
@@ -803,12 +803,12 @@ function submitHelp(id) {
   typeText = getPerkTypeText(target.options[target.selectedIndex].text, type.options[type.selectedIndex].text, id);
 
   if(target.value !== "enemy") {
-    text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. If successful, the perk " + typeText;
+    text = "The user targets " + target.options[target.selectedIndex].text + " and the perk " + typeText;
   } else {
     if(type.options[type.selectedIndex].text === "Physical Strike") {
-      text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " attack. If successful, the perk " + typeText;
+      text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " attack. If the attack hits, the perk " + typeText;
     } else {
-      text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. If successful, " + theEach + " must roll a " + st.options[st.selectedIndex].text + " saving throw. If they fail, the perk " + typeText;
+      text = "The user targets " + target.options[target.selectedIndex].text + " and rolls a " + dc.options[dc.selectedIndex].text + " check. Then, " + theEach + " must roll a " + st.options[st.selectedIndex].text + " contested saving throw. If they fail, the perk " + typeText;
     }
   }
 
