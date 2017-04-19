@@ -667,9 +667,9 @@ function getPerkTypeText(tar, val, id) {
   switch(val) {
     case "Physical Strike":
     case "Ranged Attack":
-      return "damages the target for " + dice + " HP " + dmg_hp_multiple + ".";
+      return "damages " + target_s + " for " + dice + " HP " + dmg_hp_multiple + ".";
     case "Heal":
-      return "heals the target for " + dice + " HP " + dmg_hp_multiple + ".";
+      return "heals " + target_s + " for " + dice + " HP " + dmg_hp_multiple + ".";
     case "Buff AC":
       if(id === 1) {
         return "temporarily adds 1 point to " + target_s + "'s AC.";
