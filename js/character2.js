@@ -1,9 +1,8 @@
 var characterList = [];
 
-var editing_mode = false;
+var editing_mode = true;
 var editDiv = document.getElementsByClassName("edit");
 var viewDiv = document.getElementsByClassName("view");
-var edit_btn = document.getElementById("edit-btn");
 
 var charName = document.getElementById("charName");
 var title = document.getElementById("title");
@@ -14,19 +13,12 @@ var hpLabel = document.getElementById("hpLabel");
 var tempHp = document.getElementById("tempHp");
 
 var str_input = document.getElementById("strength");
-var strLabel = document.getElementById("strLabel");
 var dex_input = document.getElementById("dexterity");
-var dexLabel = document.getElementById("dexLabel");
 var vit_input = document.getElementById("vitality");
-var vitLabel = document.getElementById("vitLabel");
 var int_input = document.getElementById("intelligence");
-var intLabel = document.getElementById("intLabel");
 var wis_input = document.getElementById("wisdom");
-var wisLabel = document.getElementById("wisLabel");
 var cha_input = document.getElementById("charisma");
-var chaLabel = document.getElementById("chaLabel");
 var per_input = document.getElementById("perception");
-var perLabel = document.getElementById("perLabel");
 
 var appImg = document.getElementById("imageUpload");
 var app = document.getElementById("appearance");
@@ -80,16 +72,24 @@ function getCharacterList() {
 
 // Shows/hides editing inputs
 function toggleEdit(btn) {
+  var editInputs = document.getElementsByClassName("edit-input");
+
   editing_mode = !editing_mode;
 
   if(editing_mode) {
     toggleArr(editDiv, true);
     toggleArr(viewDiv, false);
-    edit_btn.innerHTML = "View Details";
+    for(var i = 0; i < editInputs.length; i++) {
+      editInputs[i].disabled = false;
+    }
+    btn.innerHTML = '<span class="glyphicon glyphicon-check" aria-hidden="true"></span>';
   } else {
     toggleArr(editDiv, false);
     toggleArr(viewDiv, true);
-    edit_btn.innerHTML = "Edit Details";
+    for(var j = 0; j < editInputs.length; j++) {
+      editInputs[j].disabled = true;
+    }
+    btn.innerHTML = '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>';
   }
 }
 
@@ -103,10 +103,17 @@ function ifEditClose() {
 function setLabel(input, target) {
   var label = document.getElementById(target);
 
+  label.innerHTML = input.value;
+}
+
+// When input changes, updates label
+function setInputLabel(input, target) {
+  var label = document.getElementById(target);
+
   if(input.value === "" || input.value === null ) {
     return;
   } else {
-    label.innerHTML = input.value;
+    label.value = input.value;
   }
 }
 
@@ -121,7 +128,6 @@ function updateHP() {
   if(lvl_input.value === "1") {
     btn.disabled = true;
     hp_input.value = vit_input.value;
-    hpLabel.innerHTML = vit_input.value;
     tempHp.value = vit_input.value;
   } else {
     btn.disabled = false;
@@ -138,9 +144,6 @@ function addRandomHP() {
   function rollForHP() {
     var newHP = 0;
     num = getRandomRange(10, 1);
-    console.log("--------------");
-    console.log("Base HP: " + baseHP);
-    console.log("Rolled a " + num);
     newHP += num;
     newHP += mod;
 
@@ -149,18 +152,13 @@ function addRandomHP() {
     } else {
       baseHP += newHP;
     }
-
-    console.log("Add " + mod + " for vitality");
-    console.log("New HP: " + baseHP);
   }
 
   for(i; i < levels; i++) {
     rollForHP();
   }
 
-  console.log("--------------------------------");
   hp_input.value = String(baseHP);
-  hpLabel.innerHTML = hp_input.value;
   tempHp.value = hp_input.value;
 }
 
@@ -196,26 +194,19 @@ function randomizeAbilityScores() {
   scores = randomAbilityArr[getRandomRange(randomAbilityArr.length, 0)];
 
   str_input.value = scores[0];
-  strLabel.innerHTML = str_input.value;
   updateMods(str_input, "strMod");
   dex_input.value = scores[1];
-  dexLabel.innerHTML = dex_input.value;
   updateMods(dex_input, "dexMod");
   vit_input.value = scores[2];
-  vitLabel.innerHTML = vit_input.value;
   updateHP();
   updateMods(vit_input, "vitMod");
   int_input.value = scores[3];
-  intLabel.innerHTML = int_input.value;
   updateMods(int_input, "intMod");
   wis_input.value = scores[4];
-  wisLabel.innerHTML = wis_input.value;
   updateMods(wis_input, "wisMod");
   cha_input.value = scores[5];
-  chaLabel.innerHTML = cha_input.value;
   updateMods(cha_input, "chaMod");
   per_input.value = scores[6];
-  perLabel.innerHTML = per_input.value;
   updateMods(per_input, "perMod");
 }
 
@@ -683,16 +674,16 @@ function chgExamples(input, target) {
     case "Shield (AC +1)":
       text = "A buckler, a kite shield, a tower shield, a trashcan lid, a car door, a riot shield, a thick sheet of wood with a handle glued to the back, a large turtle, an armadillo, a pangolin, etc.";
       break;
-    case "None (AC 10)":
+    case "10":
       text = "Stark naked, civilian clothes, a simple tunic, non-magical robes, a band t-shirt, boxing shorts, a swimsuit, overalls, an fancy suit, an old sweater, etc.";
       break;
-    case "Light (AC 12)":
+    case "12":
       text = "Leather armor, leather jacket, magic robes, plastic pads, bubble wrap, a hazmat suit, extra pants, a thin layer of psychic energy, garments with magical properties, etc.";
       break;
-    case "Medium (AC 14)":
+    case "14":
       text = "Partial iron/steel armor, bulletproof gear, a combat outfit, a thick layer of psychic energy, concealed armor, scale armor, chainmail, etc.";
       break;
-    case "Heavy (AC 16)":
+    case "16":
       text = "Full suit of armor, riot gear, dragon bone armor, cyborg enhancements, beast body, rocks for skin, a mech suit, etc.";
       break;
   }

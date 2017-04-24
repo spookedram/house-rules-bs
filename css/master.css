@@ -198,6 +198,10 @@ header.jumbotron {
   text-align: center;
 }
 
+.table.center-children>tbody>tr>td, .table.center-children>tbody>tr>th, .table.center-children>tfoot>tr>td, .table.center-children>tfoot>tr>th, .table.center-children>thead>tr>td, .table.center-children>thead>tr>th {
+  vertical-align: middle;
+}
+
 .scroll-table {
   overflow-x: scroll !important;
 }
@@ -227,8 +231,6 @@ header.jumbotron {
 
 .unlocked {
   margin-bottom: 0;
-  float: right;
-  text-align: right;
   color: #a1a1a1;
 }
 
