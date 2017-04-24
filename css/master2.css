@@ -486,10 +486,10 @@ header.jumbotron {
 }
 
 @media print {
-  .no-print {
+  .no-print, .edit {
     display: none;
   }
-  .show-print {
+  .show-print, .view {
     display: block;
   }
   .col-print-4 {
@@ -497,11 +497,12 @@ header.jumbotron {
     padding-left: 15px;
     width: 33.33333333%;
   }
-  .col-print-6 {
+  .col-print-8 {
     padding-right: 15px;
     padding-left: 15px;
-    width: 50%;
+    width: 66.66777777%;
   }
+  /*
   h3, h4 {
     margin-bottom: 1em;
   }
@@ -517,12 +518,14 @@ header.jumbotron {
   .panel-body {
     border-top: none;
   }
+  */
   .pba {
     page-break-after: always;
   }
   section, .pbi {
     page-break-inside: avoid;
   }
+
   [class*="col-sm"] {
     float: left;
   }

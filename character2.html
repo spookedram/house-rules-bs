@@ -15,7 +15,7 @@
     <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="lib/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="lib/odometer/odometer-theme-minimal.css">
-    <link rel="stylesheet" href="css/master.css" type="text/css" />
+    <link rel="stylesheet" href="css/master2.css" type="text/css" />
 
     <script src="https://cdn.jsdelivr.net/bootstrap.native/2.0.6/polyfill.min.js"> </script>
     <!--[if lt IE 9]>
@@ -199,7 +199,7 @@
       <div class="row" style="margin-top:15px;">
         <section class="col-xs-12">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 col-print-4">
               <div class="view" style="display:none;">
                 <h2>Character Name</h2>
                 <h3>Title</h3>
@@ -241,7 +241,7 @@
               <hr>
 
               <h3>Ability Scores</h3>
-              <table class="table n-mb center-children">
+              <table class="table center-children">
     						<thead class="">
     							<th class="text-left">Ability</th>
     							<th>Score</th>
@@ -301,36 +301,42 @@
                   <p class="text-right"><b>Points Left:</b> <span id="pointsLeft">0</span></p>
                 </div>
               </div>
-
-              <h3>Appearance</h3>
-              <p id="appLabel" class="view" style="display:none;"></p>
-
-              <div class="edit no-print">
-                <textarea class="form-control" rows="5" oninput="setLabel(this, 'appLabel')"></textarea>
-
-                <p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p>
-                <input type="file" id="imageLoader" name="imageLoader" onchange="handleImage(event)"/>
-                <div class="input-group" style="margin-top:15px;">
-                  <input id="imageURL" type="text" class="form-control" placeholder="Paste URL here">
-                  <div class="input-group-btn">
-                    <button type="button" class="btn btn-primary" onclick="addImage()">Upload</button>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage()">Clear Image</button>
-                </div>
-              </div>
-
-              <div class="text-center">
-                <p class="edit">Image</p>
-                <img src="" id="imageUpload" height="0" style="margin-bottom:15px;" class="img-responsive">
-              </div>
             </div><!-- /.col-sm-4 sidebar -->
 
             <div class="col-sm-8">
               <div class="row">
-                <div class="col-lg-6">
-                  <h3>Main Weapon</h3>
+                <div class="col-sm-6 col-print-6">
+                  <div class="text-center">
+                    <img src="" id="imageUpload" height="0" style="margin-bottom:15px;" class="img-responsive">
+                  </div>
+                </div>
+                <div class="col-sm-6 col-print-6">
+                  <h3>Appearance</h3>
+                  <p id="appLabel" class="view" style="display:none;"></p>
+
+                  <div class="edit no-print">
+                    <textarea class="form-control" rows="5" oninput="setLabel(this, 'appLabel')"></textarea>
+
+                    <p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p>
+                    <input type="file" id="imageLoader" name="imageLoader" onchange="handleImage(event)"/>
+                    <div class="input-group" style="margin-top:15px;">
+                      <input id="imageURL" type="text" class="form-control" placeholder="Paste URL here">
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary" onclick="addImage()">Upload</button>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage()">Clear Image</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="row">
+                <div class="col-lg-6 col-print-8">
+                  <h3 style="margin-top:0;">Main Weapon</h3>
                   <label for="">Description</label>
                   <textarea class="form-control" rows="5"></textarea>
 
@@ -355,8 +361,9 @@
                   </div>
                   <hr style="margin:0;">
                 </div>
-                <div class="col-lg-6">
-                  <h3>Secondary Weapon</h3>
+
+                <div class="col-lg-6 col-print-8">
+                  <h3 style="margin-top:0;">Secondary Weapon</h3>
                   <label for="">Description</label>
                   <textarea class="form-control" rows="5"></textarea>
 
@@ -384,7 +391,7 @@
               </div>
 
               <div class="row n-mb">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-print-8">
                   <h3>Armor</h3>
                   <label for="">Description</label>
                   <textarea class="form-control" rows="5"></textarea>
@@ -410,7 +417,7 @@
                   <hr style="margin:0;">
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-print-8">
                   <h3>Gear</h3>
                   <label for="">Items</label>
                   <textarea class="form-control" rows="5"></textarea>
@@ -443,7 +450,7 @@
               </div>
 
               <div class="row" style="margin-top: 15px;">
-                <div id="perk1" class="col-sm-6">
+                <div id="perk1" class="col-sm-6 col-print-6">
                   <h3 style="margin-top:0;">Perk 1</h3>
                   <label for="">Name</label>
                   <input type="text" class="form-control" placeholder="Enter name here">
@@ -530,7 +537,7 @@
                   </div><!-- /perk1help -->
                 </div><!-- /.col-sm-6 -->
 
-                <div id="perk2" class="col-sm-6">
+                <div id="perk2" class="col-sm-6 col-print-6">
                   <h3 style="margin-top:0;">Perk 2</h3>
                   <label for="">Name</label>
                   <input type="text" class="form-control" placeholder="Enter name here">
@@ -618,7 +625,7 @@
                 </div><!-- /.col-sm-6 -->
               </div>
 
-              <div class="row" style="margin-top: 15px;">
+              <div class="row " style="margin-top: 15px;">
                 <div id="perk3" class="col-sm-6">
                   <h3 style="margin-top:0;">Perk 3</h3>
                   <label for="">Name</label>
@@ -1146,9 +1153,17 @@
                 </div><!-- /.col-sm-6 -->
               </div>
 
-              <h3>Personality</h3>
+              <hr>
+
+              <h3 style="margin-top:0;">Personality</h3>
               <p id="persLabel" class="view" style="display:none;"></p>
               <textarea class="form-control edit" rows="2" oninput="setLabel(this, 'persLabel')"></textarea>
+
+              <hr>
+
+              <h3>Backstory</h3>
+              <p id="bsLabel" class="view" style="display:none;"></p>
+              <textarea class="form-control edit" rows="6" oninput="setLabel(this, 'bsLabel')"></textarea>
             </div>
           </div>
         </section>
@@ -1368,12 +1383,6 @@
           </table>
         </div>
 
-        <section class="col-xs-12">
-          <h3>Backstory</h3>
-          <p id="bsLabel" class="view" style="display:none;"></p>
-          <textarea class="form-control edit" rows="6" oninput="setLabel(this, 'bsLabel')"></textarea>
-          <hr>
-        </section>
       </div>
 
       <button id="modal-btn" type="button" class="btn btn-default pull-right no-print" data-toggle="modal" data-target="#saveLoadModal" onclick="runScroll(), showModal(saveLoadModal)" style="margin-top:15px;">Save Character</button>
