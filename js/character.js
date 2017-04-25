@@ -383,6 +383,7 @@ function setLevel() {
       document.getElementById("perk8").style.display = "block";
       break;
   }
+  showPerkUsesByLevel(lvl);
 }
 
 setLevel();
