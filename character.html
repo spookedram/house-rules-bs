@@ -227,7 +227,7 @@
               <div class="row">
                 <div class="col-xs-6">
                   <label for="">Max HP</label>
-                  <input type="number" id="hp" class="form-control edit-input" value="10" min="1" max="999">
+                  <input type="number" id="hp" class="form-control edit-input" value="10" min="1" max="999" oninput="needConfirm()">
                 </div>
                 <div class="col-xs-6 view" style="display:none;">
                   <label for="">Temp HP</label>
@@ -315,14 +315,14 @@
                   <p id="appLabel" class="view" style="display:none;"></p>
 
                   <div class="edit no-print">
-                    <textarea id="appearance" class="form-control" rows="5" oninput="setLabel(this, 'appLabel')"></textarea>
+                    <textarea id="appearance" class="form-control" rows="5" oninput="setLabel(this, 'appLabel'), needConfirm()"></textarea>
 
                     <p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p>
                     <input type="file" id="imageLoader" name="imageLoader" onchange="handleImage(event)"/>
                     <div class="input-group" style="margin-top:15px;">
                       <input id="imageURL" type="text" class="form-control" placeholder="Paste URL here">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary" onclick="addImage()">Upload</button>
+                        <button type="button" class="btn btn-primary" onclick="addImage(), needConfirm()">Upload</button>
                       </div>
                     </div>
                     <div class="text-right">
@@ -332,7 +332,7 @@
 
                   <h3>Personality</h3>
                   <p id="persLabel" class="view" style="display:none;"></p>
-                  <textarea id="personality" class="form-control edit" rows="2" oninput="setLabel(this, 'persLabel')"></textarea>
+                  <textarea id="personality" class="form-control edit" rows="2" oninput="setLabel(this, 'persLabel'), needConfirm()"></textarea>
                 </div>
               </div>
 
@@ -343,12 +343,12 @@
                   <h3 style="margin-top:0;">Main Weapon</h3>
                   <label for="">Description</label>
                   <p id="wpn1descLabel" class="view" style="display:none;"></p>
-                  <textarea id="wpn1desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn1descLabel')"></textarea>
+                  <textarea id="wpn1desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn1descLabel'), needConfirm()"></textarea>
 
                   <div class="row">
                     <div class="col-xs-6">
                       <label for="">Weapon Type</label>
-                      <select id="wpn1type" class="form-control edit-input" onchange="chgExamples(this,'wpn1examplesText')">
+                      <select id="wpn1type" class="form-control edit-input" onchange="chgExamples(this,'wpn1examplesText'), needConfirm()">
                         <option value="Small">Small (1d4)</option>
                         <option value="Ranged">Ranged (1d6)</option>
                         <option value="Medium" selected>Medium (1d8)</option>
@@ -370,12 +370,12 @@
                   <h3 style="margin-top:0;">Sub Weapon</h3>
                   <label for="">Description</label>
                   <p id="wpn2descLabel" class="view" style="display:none;"></p>
-                  <textarea id="wpn2desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn2descLabel')"></textarea>
+                  <textarea id="wpn2desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn2descLabel'), needConfirm()"></textarea>
 
                   <div class="row">
                     <div class="col-xs-6">
                       <label for="">Weapon Type</label>
-                      <select id="wpn2type" class="form-control edit-input" onchange="chgExamples(this,'wpn2examplesText')">
+                      <select id="wpn2type" class="form-control edit-input" onchange="chgExamples(this,'wpn2examplesText'), needConfirm()">
                         <option value="Small">Small (1d4)</option>
                         <option value="Ranged" selected>Ranged (1d6)</option>
                         <option value="Medium">Medium (1d8)</option>
@@ -401,12 +401,12 @@
                   <h3>Armor</h3>
                   <label for="">Description</label>
                   <p id="armorDescLabel" class="view" style="display:none;"></p>
-                  <textarea id="armorDesc" class="form-control edit" rows="5" oninput="setLabel(this, 'armorDescLabel')"></textarea>
+                  <textarea id="armorDesc" class="form-control edit" rows="5" oninput="setLabel(this, 'armorDescLabel'), needConfirm()"></textarea>
 
                   <div class="row">
                     <div class="col-xs-6">
                       <label for="">Armor Type</label>
-                      <select id="armorType" class="form-control edit-input" onchange="chgExamples(this,'armorExamplesText'), setInputLabel(this, 'acLabel')">
+                      <select id="armorType" class="form-control edit-input" onchange="chgExamples(this,'armorExamplesText'), setInputLabel(this, 'acLabel'), needConfirm()">
                         <option value="10">None (AC 10)</option>
                         <option value="12">Light (AC 12)</option>
                         <option value="14">Medium (AC 14)</option>
@@ -426,7 +426,7 @@
                 <div class="col-sm-6">
                   <h3>Gear</h3>
                   <label for="">Items</label>
-                  <textarea id="gear" class="form-control" rows="5"></textarea>
+                  <textarea id="gear" class="form-control" rows="5" oninput="needConfirm()"></textarea>
 
                   <div class="row">
                     <div class="col-xs-5 col-xs-offset-7">
@@ -481,10 +481,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 1</h3>
                     <label for="">Name</label>
-                    <input id="perk1name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk1nameLabel')">
+                    <input id="perk1name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk1nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk1desc" class="form-control" rows="3" oninput="setLabel(this, 'perk1descLabel')"></textarea>
+                    <textarea id="perk1desc" class="form-control" rows="3" oninput="setLabel(this, 'perk1descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -560,7 +560,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(1)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(1), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk1help -->
                   </div>
@@ -606,10 +606,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 2</h3>
                     <label for="">Name</label>
-                    <input id="perk2name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk2nameLabel')">
+                    <input id="perk2name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk2nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk2desc" class="form-control" rows="3" oninput="setLabel(this, 'perk2descLabel')"></textarea>
+                    <textarea id="perk2desc" class="form-control" rows="3" oninput="setLabel(this, 'perk2descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -685,7 +685,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(2)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(2), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk2help -->
                   </div>
@@ -733,10 +733,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 3</h3>
                     <label for="">Name</label>
-                    <input id="perk3name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk3nameLabel')">
+                    <input id="perk3name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk3nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk3desc" class="form-control" rows="3" oninput="setLabel(this, 'perk3descLabel')"></textarea>
+                    <textarea id="perk3desc" class="form-control" rows="3" oninput="setLabel(this, 'perk3descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -812,7 +812,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(3)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(3), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk3help -->
                   </div>
@@ -855,10 +855,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 4</h3>
                     <label for="">Name</label>
-                    <input id="perk4name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk4nameLabel')">
+                    <input id="perk4name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk4nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk4desc" class="form-control" rows="3" oninput="setLabel(this, 'perk4descLabel')"></textarea>
+                    <textarea id="perk4desc" class="form-control" rows="3" oninput="setLabel(this, 'perk4descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -934,7 +934,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(4)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(4), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk4help -->
                   </div>
@@ -976,10 +976,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 5</h3>
                     <label for="">Name</label>
-                    <input id="perk5name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk5nameLabel')">
+                    <input id="perk5name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk5nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk5desc" class="form-control" rows="3" oninput="setLabel(this, 'perk5descLabel')"></textarea>
+                    <textarea id="perk5desc" class="form-control" rows="3" oninput="setLabel(this, 'perk5descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -1055,7 +1055,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(5)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(5), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk5help -->
                   </div>
@@ -1089,10 +1089,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 6</h3>
                     <label for="">Name</label>
-                    <input id="perk6name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk6nameLabel')">
+                    <input id="perk6name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk6nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk6desc" class="form-control" rows="3" oninput="setLabel(this, 'perk6descLabel')"></textarea>
+                    <textarea id="perk6desc" class="form-control" rows="3" oninput="setLabel(this, 'perk6descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -1168,7 +1168,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(6)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(6), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk6help -->
                   </div>
@@ -1201,10 +1201,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 7</h3>
                     <label for="">Name</label>
-                    <input id="perk7name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk7nameLabel')">
+                    <input id="perk7name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk7nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk7desc" class="form-control" rows="3" oninput="setLabel(this, 'perk7descLabel')"></textarea>
+                    <textarea id="perk7desc" class="form-control" rows="3" oninput="setLabel(this, 'perk7descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -1280,7 +1280,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(7)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(7), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk7help -->
                   </div>
@@ -1305,10 +1305,10 @@
                   <div class="edit">
                     <h3 style="margin-top:0;">Perk 8</h3>
                     <label for="">Name</label>
-                    <input id="perk8name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk8nameLabel')">
+                    <input id="perk8name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk8nameLabel'), needConfirm()">
 
                     <label for="">Description</label>
-                    <textarea id="perk8desc" class="form-control" rows="3" oninput="setLabel(this, 'perk8descLabel')"></textarea>
+                    <textarea id="perk8desc" class="form-control" rows="3" oninput="setLabel(this, 'perk8descLabel'), needConfirm()"></textarea>
 
                     <div class="row">
                       <div class="col-xs-8">
@@ -1384,7 +1384,7 @@
                         </div>
                       </div>
                       <div class="text-right">
-                        <button type="button" class="btn btn-default" onclick="submitHelp(8)">Submit</button>
+                        <button type="button" class="btn btn-default" onclick="submitHelp(8), needConfirm()">Submit</button>
                       </div>
                     </div><!-- /perk8help -->
                   </div>
@@ -1396,7 +1396,7 @@
 
               <h3>Backstory</h3>
               <p id="bsLabel" class="view" style="display:none;"></p>
-              <textarea id="backstory" class="form-control edit" rows="6" oninput="setLabel(this, 'bsLabel')"></textarea>
+              <textarea id="backstory" class="form-control edit" rows="6" oninput="setLabel(this, 'bsLabel'), needConfirm()"></textarea>
             </div>
           </div>
         </section>
