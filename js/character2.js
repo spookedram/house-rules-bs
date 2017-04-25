@@ -229,7 +229,6 @@ function setLevel() {
       break;
     case "8":
     case "9":
-
     case "10":
       totalAbilityPoints = 73;
       break;
@@ -250,6 +249,65 @@ function setLevel() {
       break;
     case "20":
       totalAbilityPoints = 77;
+  }
+
+  function setDamageDice(id, num, shield) {
+    var el = document.getElementById(id);
+    var newArr = ["Small (" + num + "d4)",
+      "Ranged (" + num + "d6)",
+      "Medium (" + num + "d8)",
+      "Large (" + num + "d10)",
+      "Shield " + shield];
+
+    el.item(0).innerHTML = newArr[0];
+    el.item(1).innerHTML = newArr[1];
+    el.item(2).innerHTML = newArr[2];
+    el.item(3).innerHTML = newArr[3];
+    el.item(4).innerHTML = newArr[4];
+  }
+
+  switch(lvl) {
+    default:
+    case "2":
+      setDamageDice('wpn1type', 1, '(AC +1)');
+      setDamageDice('wpn2type', 1, '(AC +1)');
+      break;
+    case "3":
+    case "4":
+    case "5":
+      setDamageDice('wpn1type', 2, '(AC +1/1d4)');
+      setDamageDice('wpn2type', 2, '(AC +1/1d4)');
+      break;
+    case "6":
+    case "7":
+    case "8":
+      setDamageDice('wpn1type', 3, '(AC +2/1d6)');
+      setDamageDice('wpn2type', 3, '(AC +2/1d6)');
+      break;
+    case "9":
+    case "10":
+    case "11":
+      setDamageDice('wpn1type', 4, '(AC +2/2d4)');
+      setDamageDice('wpn2type', 4, '(AC +2/2d4)');
+      break;
+    case "12":
+    case "13":
+    case "14":
+      setDamageDice('wpn1type', 5, '(AC +3/2d6)');
+      setDamageDice('wpn2type', 5, '(AC +3/2d6)');
+      break;
+    case "15":
+    case "16":
+    case "17":
+      setDamageDice('wpn1type', 6, '(AC +3/3d4)');
+      setDamageDice('wpn2type', 6, '(AC +3/3d4)');
+      break;
+    case "18":
+    case "19":
+    case "20":
+      setDamageDice('wpn1type', 7, '(AC +4/3d6)');
+      setDamageDice('wpn2type', 7, '(AC +4/3d6)');
+      break;
   }
 
   switch(lvl) {
@@ -659,19 +717,19 @@ function chgExamples(input, target) {
   var text = "";
 
   switch(val) {
-    case "Small (d4)":
+    case "Small":
       text = "A dagger, a wand, a book, a stick, a flute, a tamborine, knitting needles, a stuffed animal, a spatula, a mouse, a rat, a squirrel, a racoon, a chicken, a cat, a small dog, a bottle, a pipe, etc.";
       break;
-    case "Ranged (d6)":
+    case "Ranged":
       text = "A longbow, a shortbow, a crossbow, blowdarts, poison darts, lawn darts, any gun, throwing knives, throwing stars, throwing rocks, slingshots, killer bees, birds, dragons, griffins, and other flying creatures, etc.";
       break;
-    case "Medium (d8)":
+    case "Medium":
       text = "A sword, a mace, an axe, a rapier, a cane, a rod, a baton, a pickaxe, a large piece of wood, a lyre, a trumpet, a hand scythe, a dog, a small bear, a panther, a cheetah, a monkey, a trashcan, a chair, etc.";
       break;
-    case "Large (d10)":
+    case "Large":
       text = "A warhammer, a two-handed sword, a battleaxe, polearms, a staff, a stopsign, a reaper's scythe, a coatrack, a spear, a lance, a lamp, a bear, a tiger, a horse, an alligator, a shark, a buffalo, an elephant, etc.";
       break;
-    case "Shield (AC +1)":
+    case "Shield":
       text = "A buckler, a kite shield, a tower shield, a trashcan lid, a car door, a riot shield, a thick sheet of wood with a handle glued to the back, a large turtle, an armadillo, a pangolin, etc.";
       break;
     case "10":
@@ -926,4 +984,15 @@ function clearImage(mapId) {
   appImg.height = 0;
   appImg.src = "";
   appImg.style.display = "none";
+}
+
+function checkUsesPerDay(input) {
+  var checkbox = input.childNodes[1];
+  var star = input.childNodes[3];
+
+  if(checkbox.checked) {
+    star.className = "glyphicon glyphicon-star";
+  } else {
+    star.className = "glyphicon glyphicon-star-empty";
+  }
 }
