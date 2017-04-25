@@ -497,7 +497,7 @@ function saveCharData() {
   character.armorType = armorType.value;
 
   character.gear = gear.value;
-  character.gear = gold.value;
+  character.gold = gold.value;
 
   character.perk1name = perk1name.value;
   character.perk1desc = perk1desc.value;
