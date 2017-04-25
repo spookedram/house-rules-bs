@@ -130,7 +130,7 @@ function updateHP() {
   if(lvl_input.value === "1") {
     btn.disabled = true;
     hp_input.value = vit_input.value;
-    tempHp.value = vit_input.value;
+    setTempHp();
   } else {
     btn.disabled = false;
   }
@@ -432,7 +432,7 @@ function Character() {
   this.perception = "";
 
   this.appearance = "";
-  this.appImg = "";
+  this.image = "";
   this.personality = "";
   this.backstory = "";
 
@@ -637,7 +637,6 @@ function loadData(pin) {
     setCharData(result);
 
     hideModal(saveLoadModal);
-    ifEditClose();
   } else {
     showElementById("saveChanges", true);
   }
@@ -645,7 +644,6 @@ function loadData(pin) {
 
 function loadSample(num) {
   setCharData(sampleChars[num]);
-  setTotal();
 }
 
 function addRowToLoadTable(obj) {
