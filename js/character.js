@@ -540,6 +540,7 @@ function setCharData(character) {
   title.value = character.title;
   setLabel(title, 'titleLabel');
   lvl_input.value = Number(character.level);
+  setLevel();
   hp_input.value = Number(character.hp);
   tempHp.value = Number(character.hp);
 
