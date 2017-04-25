@@ -383,7 +383,6 @@ function setLevel() {
       document.getElementById("perk8").style.display = "block";
       break;
   }
-  showPerkUsesByLevel(lvl);
 }
 
 setLevel();
@@ -542,6 +541,7 @@ function setCharData(character) {
   setLabel(title, 'titleLabel');
   lvl_input.value = Number(character.level);
   setLevel();
+  showPerkUsesByLevel(lvl_input.value);
   hp_input.value = Number(character.hp);
   tempHp.value = Number(character.hp);
 
