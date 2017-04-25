@@ -559,12 +559,15 @@ function setCharData(character) {
   updateMods(per_input, "perMod");
 
   wpn1desc.value = character.wpn1desc;
+  setLabel(wpn1desc, "wpn1descLabel");
   wpn1type.value = character.wpn1type;
 
   wpn2desc.value = character.wpn2desc;
+  setLabel(wpn2desc, "wpn2descLabel");
   wpn2type.value = character.wpn2type;
 
   armorDesc.value = character.armorDesc;
+  setLabel(armorDesc, "armorDescLabel");
   armorType.value = character.armorType;
   setInputLabel(armorType, 'acLabel');
 
@@ -572,12 +575,15 @@ function setCharData(character) {
   gold.value = character.gold;
 
   app.value = character.appearance;
+  setLabel(app, "appLabel");
   appImg.src = character.image;
   if(appImg.src !== "") {
     appImg.style.display = "block";
   }
   pers.value = character.personality;
+  setLabel(pers, "persLabel");
   bs.value = character.backstory;
+  setLabel(bs, "bsLabel");
 
   perk1name.value = character.perk1name;
   setLabel(perk1name, "perk1nameLabel");
