@@ -312,11 +312,9 @@
                 </div>
                 <div class="col-sm-6 col-print-6">
                   <h3>Appearance</h3>
-                  <p id="appLabel" class="view" style="display:none;"></p>
+                  <textarea id="appearance" class="form-control" rows="5" oninput="setLabel(this, 'appLabel')"></textarea>
 
                   <div class="edit no-print">
-                    <textarea id="appearance" class="form-control" rows="5" oninput="setLabel(this, 'appLabel')"></textarea>
-
                     <p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p>
                     <input type="file" id="imageLoader" name="imageLoader" onchange="handleImage(event)"/>
                     <div class="input-group" style="margin-top:15px;">
@@ -338,8 +336,7 @@
                 <div class="col-sm-6">
                   <h3 style="margin-top:0;">Main Weapon</h3>
                   <label for="">Description</label>
-                  <p id="wpn1descLabel" class="view" style="display:none;"></p>
-                  <textarea id="wpn1desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn1desc')"></textarea>
+                  <textarea id="wpn1desc" class="form-control" rows="5"></textarea>
 
                   <div class="row">
                     <div class="col-xs-6">
@@ -365,8 +362,7 @@
                 <div class="col-sm-6">
                   <h3 style="margin-top:0;">Sub Weapon</h3>
                   <label for="">Description</label>
-                  <p id="wpn2descLabel" class="view" style="display:none;"></p>
-                  <textarea id="wpn2desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn2desc')"></textarea>
+                  <textarea id="wpn2desc" class="form-control" rows="5"></textarea>
 
                   <div class="row">
                     <div class="col-xs-6">
@@ -396,8 +392,7 @@
                 <div class="col-sm-6">
                   <h3>Armor</h3>
                   <label for="">Description</label>
-                  <p id="armorDescLabel" class="view" style="display:none;"></p>
-                  <textarea id="armorDesc" class="form-control edit" rows="5" oninput="setLabel(this, 'armorDesc')"></textarea>
+                  <textarea id="armorDesc" class="form-control" rows="5"></textarea>
 
                   <div class="row">
                     <div class="col-xs-6">
