@@ -289,6 +289,10 @@ header.jumbotron {
   margin: 6px 0;
 }
 
+.perkDiv {
+  margin-top: 15px;
+}
+
 /*===|==|--- ID Specific Styles ---|==|===*/
 
 #backToTop {
@@ -312,10 +316,6 @@ header.jumbotron {
 #headingFour,
 #headingFive {
   padding: 0;
-}
-
-#name {
-  margin-top: 20px;
 }
 
 #loadCharTable * {
@@ -502,23 +502,6 @@ header.jumbotron {
     padding-left: 15px;
     width: 66.66777777%;
   }
-  /*
-  h3, h4 {
-    margin-bottom: 1em;
-  }
-  .fullwide {
-    padding-right: 15px;
-    padding-left: 15px;
-    width: 100%;
-  }
-  .panel-heading {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .panel-body {
-    border-top: none;
-  }
-  */
   .pba {
     page-break-after: always;
   }
@@ -526,11 +509,13 @@ header.jumbotron {
     page-break-inside: avoid;
   }
 
-  [class*="col-sm"] {
+  [class*="col-"] {
     float: left;
   }
-  [class*="col-sm-6"],
   [class*="col-sm-8"] {
+    width: 66%;
+  }
+  [class*="col-sm-6"] {
     width: 50%;
   }
 }

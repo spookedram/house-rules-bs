@@ -1,48 +1,36 @@
 var characterList = [];
 
-var editing_mode = false;
+var editing_mode = true;
 var editDiv = document.getElementsByClassName("edit");
 var viewDiv = document.getElementsByClassName("view");
-var edit_btn = document.getElementById("edit-btn");
 
-var charName = document.getElementById("charName");
+var charName = document.getElementById("name");
 var title = document.getElementById("title");
 var lvl_input = document.getElementById("lvl");
-var lvlLabel = document.getElementById("lvlLabel");
 var hp_input = document.getElementById("hp");
-var hpLabel = document.getElementById("hpLabel");
 var tempHp = document.getElementById("tempHp");
 
 var str_input = document.getElementById("strength");
-var strLabel = document.getElementById("strLabel");
 var dex_input = document.getElementById("dexterity");
-var dexLabel = document.getElementById("dexLabel");
 var vit_input = document.getElementById("vitality");
-var vitLabel = document.getElementById("vitLabel");
 var int_input = document.getElementById("intelligence");
-var intLabel = document.getElementById("intLabel");
 var wis_input = document.getElementById("wisdom");
-var wisLabel = document.getElementById("wisLabel");
 var cha_input = document.getElementById("charisma");
-var chaLabel = document.getElementById("chaLabel");
 var per_input = document.getElementById("perception");
-var perLabel = document.getElementById("perLabel");
 
 var appImg = document.getElementById("imageUpload");
 var app = document.getElementById("appearance");
 var pers = document.getElementById("personality");
 var bs = document.getElementById("backstory");
 
-var wpn1name = document.getElementById("wpn1name");
 var wpn1desc = document.getElementById("wpn1desc");
 var wpn1type = document.getElementById("wpn1type");
-var wpn2name = document.getElementById("wpn2name");
 var wpn2desc = document.getElementById("wpn2desc");
 var wpn2type = document.getElementById("wpn2type");
-var armorName = document.getElementById("armorName");
 var armorDesc = document.getElementById("armorDesc");
 var armorType = document.getElementById("armorType");
 var gear = document.getElementById("gear");
+var gold = document.getElementById("gold");
 
 var perk1name = document.getElementById("perk1name");
 var perk1desc = document.getElementById("perk1desc");
@@ -80,16 +68,30 @@ function getCharacterList() {
 
 // Shows/hides editing inputs
 function toggleEdit(btn) {
+  var editInputs = document.getElementsByClassName("edit-input");
+
   editing_mode = !editing_mode;
 
   if(editing_mode) {
     toggleArr(editDiv, true);
     toggleArr(viewDiv, false);
-    edit_btn.innerHTML = "View Details";
+    for(var i = 0; i < editInputs.length; i++) {
+      editInputs[i].disabled = false;
+    }
+    if(btn) {
+      btn.innerHTML = '<span class="glyphicon glyphicon-check" aria-hidden="true"></span>';
+    }
+    document.getElementById("print-btn").disabled = true;
   } else {
     toggleArr(editDiv, false);
     toggleArr(viewDiv, true);
-    edit_btn.innerHTML = "Edit Details";
+    for(var j = 0; j < editInputs.length; j++) {
+      editInputs[j].disabled = true;
+    }
+    if(btn) {
+      btn.innerHTML = '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>';
+    }
+    document.getElementById("print-btn").disabled = false;
   }
 }
 
@@ -103,10 +105,17 @@ function ifEditClose() {
 function setLabel(input, target) {
   var label = document.getElementById(target);
 
+  label.innerHTML = input.value;
+}
+
+// When input changes, updates label
+function setInputLabel(input, target) {
+  var label = document.getElementById(target);
+
   if(input.value === "" || input.value === null ) {
     return;
   } else {
-    label.innerHTML = input.value;
+    label.value = input.value;
   }
 }
 
@@ -121,7 +130,6 @@ function updateHP() {
   if(lvl_input.value === "1") {
     btn.disabled = true;
     hp_input.value = vit_input.value;
-    hpLabel.innerHTML = vit_input.value;
     tempHp.value = vit_input.value;
   } else {
     btn.disabled = false;
@@ -138,9 +146,6 @@ function addRandomHP() {
   function rollForHP() {
     var newHP = 0;
     num = getRandomRange(10, 1);
-    console.log("--------------");
-    console.log("Base HP: " + baseHP);
-    console.log("Rolled a " + num);
     newHP += num;
     newHP += mod;
 
@@ -149,18 +154,13 @@ function addRandomHP() {
     } else {
       baseHP += newHP;
     }
-
-    console.log("Add " + mod + " for vitality");
-    console.log("New HP: " + baseHP);
   }
 
   for(i; i < levels; i++) {
     rollForHP();
   }
 
-  console.log("--------------------------------");
   hp_input.value = String(baseHP);
-  hpLabel.innerHTML = hp_input.value;
   tempHp.value = hp_input.value;
 }
 
@@ -196,26 +196,19 @@ function randomizeAbilityScores() {
   scores = randomAbilityArr[getRandomRange(randomAbilityArr.length, 0)];
 
   str_input.value = scores[0];
-  strLabel.innerHTML = str_input.value;
   updateMods(str_input, "strMod");
   dex_input.value = scores[1];
-  dexLabel.innerHTML = dex_input.value;
   updateMods(dex_input, "dexMod");
   vit_input.value = scores[2];
-  vitLabel.innerHTML = vit_input.value;
   updateHP();
   updateMods(vit_input, "vitMod");
   int_input.value = scores[3];
-  intLabel.innerHTML = int_input.value;
   updateMods(int_input, "intMod");
   wis_input.value = scores[4];
-  wisLabel.innerHTML = wis_input.value;
   updateMods(wis_input, "wisMod");
   cha_input.value = scores[5];
-  chaLabel.innerHTML = cha_input.value;
   updateMods(cha_input, "chaMod");
   per_input.value = scores[6];
-  perLabel.innerHTML = per_input.value;
   updateMods(per_input, "perMod");
 }
 
@@ -238,7 +231,6 @@ function setLevel() {
       break;
     case "8":
     case "9":
-
     case "10":
       totalAbilityPoints = 73;
       break;
@@ -259,6 +251,65 @@ function setLevel() {
       break;
     case "20":
       totalAbilityPoints = 77;
+  }
+
+  function setDamageDice(id, num, shield) {
+    var el = document.getElementById(id);
+    var newArr = ["Small (" + num + "d4)",
+      "Ranged (" + num + "d6)",
+      "Medium (" + num + "d8)",
+      "Large (" + num + "d10)",
+      "Shield " + shield];
+
+    el.item(0).innerHTML = newArr[0];
+    el.item(1).innerHTML = newArr[1];
+    el.item(2).innerHTML = newArr[2];
+    el.item(3).innerHTML = newArr[3];
+    el.item(4).innerHTML = newArr[4];
+  }
+
+  switch(lvl) {
+    default:
+    case "2":
+      setDamageDice('wpn1type', 1, '(AC +1)');
+      setDamageDice('wpn2type', 1, '(AC +1)');
+      break;
+    case "3":
+    case "4":
+    case "5":
+      setDamageDice('wpn1type', 2, '(AC +1/1d4)');
+      setDamageDice('wpn2type', 2, '(AC +1/1d4)');
+      break;
+    case "6":
+    case "7":
+    case "8":
+      setDamageDice('wpn1type', 3, '(AC +2/1d6)');
+      setDamageDice('wpn2type', 3, '(AC +2/1d6)');
+      break;
+    case "9":
+    case "10":
+    case "11":
+      setDamageDice('wpn1type', 4, '(AC +2/2d4)');
+      setDamageDice('wpn2type', 4, '(AC +2/2d4)');
+      break;
+    case "12":
+    case "13":
+    case "14":
+      setDamageDice('wpn1type', 5, '(AC +3/2d6)');
+      setDamageDice('wpn2type', 5, '(AC +3/2d6)');
+      break;
+    case "15":
+    case "16":
+    case "17":
+      setDamageDice('wpn1type', 6, '(AC +3/3d4)');
+      setDamageDice('wpn2type', 6, '(AC +3/3d4)');
+      break;
+    case "18":
+    case "19":
+    case "20":
+      setDamageDice('wpn1type', 7, '(AC +4/3d6)');
+      setDamageDice('wpn2type', 7, '(AC +4/3d6)');
+      break;
   }
 
   switch(lvl) {
@@ -385,16 +436,14 @@ function Character() {
   this.personality = "";
   this.backstory = "";
 
-  this.wpn1name = "";
   this.wpn1desc = "";
   this.wpn1type = "";
-  this.wpn2name = "";
   this.wpn2desc = "";
   this.wpn2type = "";
-  this.armorName = "";
   this.armorDesc = "";
   this.armorType = "";
   this.gear = "";
+  this.gold = "";
 
   this.perk1name = "";
   this.perk1desc = "";
@@ -420,54 +469,52 @@ function saveCharData() {
 
   character.pin = uniqueNumber();
 
-  character.name = charName.innerHTML;
-  character.title = title.innerHTML;
-  character.level = lvlLabel.innerHTML;
-  character.hp = hpLabel.innerHTML;
+  character.name = charName.value;
+  character.title = title.value;
+  character.level = lvl.value;
+  character.hp = hp.value;
 
-  character.strength = strLabel.innerHTML;
-  character.dexterity = dexLabel.innerHTML;
-  character.vitality = vitLabel.innerHTML;
-  character.intelligence = intLabel.innerHTML;
-  character.wisdom = wisLabel.innerHTML;
-  character.charisma = chaLabel.innerHTML;
-  character.perception = perLabel.innerHTML;
+  character.strength = str_input.value;
+  character.dexterity = dex_input.value;
+  character.vitality = vit_input.value;
+  character.intelligence = int_input.value;
+  character.wisdom = wis_input.value;
+  character.charisma = cha_input.value;
+  character.perception = per_input.value;
 
-  character.appearance = app.innerHTML;
+  character.appearance = app.value;
   character.image = appImg.src;
-  character.personality = pers.innerHTML;
-  character.backstory = bs.innerHTML;
+  character.personality = pers.value;
+  character.backstory = bs.value;
 
-  character.wpn1name = wpn1name.innerHTML;
-  character.wpn1desc = wpn1desc.innerHTML;
+  character.wpn1desc = wpn1desc.value;
   character.wpn1type = wpn1type.value;
 
-  character.wpn2name = wpn2name.innerHTML;
-  character.wpn2desc = wpn2desc.innerHTML;
+  character.wpn2desc = wpn2desc.value;
   character.wpn2type = wpn2type.value;
 
-  character.armorName = armorName.innerHTML;
-  character.armorDesc = armorDesc.innerHTML;
+  character.armorDesc = armorDesc.value;
   character.armorType = armorType.value;
 
-  character.gear = gear.innerHTML;
+  character.gear = gear.value;
+  character.gear = gold.value;
 
-  character.perk1name = perk1name.innerHTML;
-  character.perk1desc = perk1desc.innerHTML;
-  character.perk2name = perk2name.innerHTML;
-  character.perk2desc = perk2desc.innerHTML;
-  character.perk3name = perk3name.innerHTML;
-  character.perk3desc = perk3desc.innerHTML;
-  character.perk4name = perk4name.innerHTML;
-  character.perk4desc = perk4desc.innerHTML;
-  character.perk5name = perk5name.innerHTML;
-  character.perk5desc = perk5desc.innerHTML;
-  character.perk6name = perk6name.innerHTML;
-  character.perk6desc = perk6desc.innerHTML;
-  character.perk7name = perk7name.innerHTML;
-  character.perk7desc = perk7desc.innerHTML;
-  character.perk8name = perk8name.innerHTML;
-  character.perk8desc = perk8desc.innerHTML;
+  character.perk1name = perk1name.value;
+  character.perk1desc = perk1desc.value;
+  character.perk2name = perk2name.value;
+  character.perk2desc = perk2desc.value;
+  character.perk3name = perk3name.value;
+  character.perk3desc = perk3desc.value;
+  character.perk4name = perk4name.value;
+  character.perk4desc = perk4desc.value;
+  character.perk5name = perk5name.value;
+  character.perk5desc = perk5desc.value;
+  character.perk6name = perk6name.value;
+  character.perk6desc = perk6desc.value;
+  character.perk7name = perk7name.value;
+  character.perk7desc = perk7desc.value;
+  character.perk8name = perk8name.value;
+  character.perk8desc = perk8desc.value;
 
   if(lsTest() === true){
     getCharacterList();
@@ -488,78 +535,92 @@ function saveCharData() {
 
 // sets labels on loading of character
 function setCharData(character) {
-  charName.innerHTML = character.name;
-  title.innerHTML = character.title;
+  charName.value = character.name;
+  setLabel(charName, 'nameLabel');
+  title.value = character.title;
+  setLabel(title, 'titleLabel');
   lvl_input.value = Number(character.level);
-  setLabel(lvl_input, "lvlLabel");
   hp_input.value = Number(character.hp);
-  setLabel(hp_input, "hpLabel");
   tempHp.value = Number(character.hp);
 
   str_input.value = Number(character.strength);
-  setLabel(str_input, "strLabel");
   updateMods(str_input, "strMod");
   dex_input.value = Number(character.dexterity);
-  setLabel(dex_input, "dexLabel");
   updateMods(dex_input, "dexMod");
   vit_input.value = Number(character.vitality);
-  setLabel(vit_input, "vitLabel");
   updateMods(vit_input, "vitMod");
   int_input.value = Number(character.intelligence);
-  setLabel(int_input, "intLabel");
   updateMods(int_input, "intMod");
   wis_input.value = Number(character.wisdom);
-  setLabel(wis_input, "wisLabel");
   updateMods(wis_input, "wisMod");
   cha_input.value = Number(character.charisma);
-  setLabel(cha_input, "chaLabel");
   updateMods(cha_input, "chaMod");
   per_input.value = Number(character.perception);
-  setLabel(per_input, "perLabel");
   updateMods(per_input, "perMod");
 
-  wpn1name.innerHTML = character.wpn1name;
-  wpn1desc.innerHTML = character.wpn1desc;
+  wpn1desc.value = character.wpn1desc;
+  setLabel(wpn1desc, "wpn1descLabel");
   wpn1type.value = character.wpn1type;
 
-  wpn2name.innerHTML = character.wpn2name;
-  wpn2desc.innerHTML = character.wpn2desc;
+  wpn2desc.value = character.wpn2desc;
+  setLabel(wpn2desc, "wpn2descLabel");
   wpn2type.value = character.wpn2type;
 
-  armorName.innerHTML = character.armorName;
-  armorDesc.innerHTML = character.armorDesc;
+  armorDesc.value = character.armorDesc;
+  setLabel(armorDesc, "armorDescLabel");
   armorType.value = character.armorType;
+  setInputLabel(armorType, 'acLabel');
 
-  gear.innerHTML = character.gear;
+  gear.value = character.gear;
+  gold.value = character.gold;
 
-  app.innerHTML = character.appearance;
+  app.value = character.appearance;
+  setLabel(app, "appLabel");
   appImg.src = character.image;
   if(appImg.src !== "") {
     appImg.style.display = "block";
   }
-  pers.innerHTML = character.personality;
-  bs.innerHTML = character.backstory;
+  pers.value = character.personality;
+  setLabel(pers, "persLabel");
+  bs.value = character.backstory;
+  setLabel(bs, "bsLabel");
 
-  perk1name.innerHTML = character.perk1name;
-  perk1desc.innerHTML = character.perk1desc;
-  perk2name.innerHTML = character.perk2name;
-  perk2desc.innerHTML = character.perk2desc;
-  perk3name.innerHTML = character.perk3name;
-  perk3desc.innerHTML = character.perk3desc;
-  perk4name.innerHTML = character.perk4name;
-  perk4desc.innerHTML = character.perk4desc;
-  perk5name.innerHTML = character.perk5name;
-  perk5desc.innerHTML = character.perk5desc;
-  perk6name.innerHTML = character.perk6name;
-  perk6desc.innerHTML = character.perk6desc;
-  perk7name.innerHTML = character.perk7name;
-  perk7desc.innerHTML = character.perk7desc;
-  perk8name.innerHTML = character.perk8name;
-  perk8desc.innerHTML = character.perk8desc;
+  perk1name.value = character.perk1name;
+  setLabel(perk1name, "perk1nameLabel");
+  perk1desc.value = character.perk1desc;
+  setLabel(perk1desc, "perk1descLabel");
+  perk2name.value = character.perk2name;
+  setLabel(perk2name, "perk2nameLabel");
+  perk2desc.value = character.perk2desc;
+  setLabel(perk2desc, "perk2descLabel");
+  perk3name.value = character.perk3name;
+  setLabel(perk3name, "perk3nameLabel");
+  perk3desc.value = character.perk3desc;
+  setLabel(perk3desc, "perk3descLabel");
+  perk4name.value = character.perk4name;
+  setLabel(perk4name, "perk4nameLabel");
+  perk4desc.value = character.perk4desc;
+  setLabel(perk4desc, "perk4descLabel");
+  perk5name.value = character.perk5name;
+  setLabel(perk5name, "perk5nameLabel");
+  perk5desc.value = character.perk5desc;
+  setLabel(perk5desc, "perk5descLabel");
+  perk6name.value = character.perk6name;
+  setLabel(perk6name, "perk6nameLabel");
+  perk6desc.value = character.perk6desc;
+  setLabel(perk6desc, "perk6descLabel");
+  perk7name.value = character.perk7name;
+  setLabel(perk7name, "perk7nameLabel");
+  perk7desc.value = character.perk7desc;
+  setLabel(perk7desc, "perk7descLabel");
+  perk8name.value = character.perk8name;
+  setLabel(perk8name, "perk8nameLabel");
+  perk8desc.value = character.perk8desc;
+  setLabel(perk8desc, "perk8descLabel");
 }
 
 function saveCharacter() {
-  if(charName.innerHTML !== "") {
+  if(charName.value !== "") {
     var character = saveCharData();
     addRowToLoadTable(character);
   } else {
@@ -640,17 +701,6 @@ function clearItem(btn,pin) {
   btn.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode.parentNode);
 }
 
-function togglePerDay(chk) {
-  var perDay = document.getElementById("perDay");
-
-  if(chk) {
-    perDay.style.display = "block";
-  } else {
-    perDay.style.display = "none";
-  }
-}
-togglePerDay(false);
-
 function isTargetingEnemy(num) {
   var el = document.getElementById('stLabel' + num);
   var target = document.getElementById('target' + num + 'sel');
@@ -668,31 +718,31 @@ function chgExamples(input, target) {
   var text = "";
 
   switch(val) {
-    case "Small (d4)":
+    case "Small":
       text = "A dagger, a wand, a book, a stick, a flute, a tamborine, knitting needles, a stuffed animal, a spatula, a mouse, a rat, a squirrel, a racoon, a chicken, a cat, a small dog, a bottle, a pipe, etc.";
       break;
-    case "Ranged (d6)":
+    case "Ranged":
       text = "A longbow, a shortbow, a crossbow, blowdarts, poison darts, lawn darts, any gun, throwing knives, throwing stars, throwing rocks, slingshots, killer bees, birds, dragons, griffins, and other flying creatures, etc.";
       break;
-    case "Medium (d8)":
+    case "Medium":
       text = "A sword, a mace, an axe, a rapier, a cane, a rod, a baton, a pickaxe, a large piece of wood, a lyre, a trumpet, a hand scythe, a dog, a small bear, a panther, a cheetah, a monkey, a trashcan, a chair, etc.";
       break;
-    case "Large (d10)":
+    case "Large":
       text = "A warhammer, a two-handed sword, a battleaxe, polearms, a staff, a stopsign, a reaper's scythe, a coatrack, a spear, a lance, a lamp, a bear, a tiger, a horse, an alligator, a shark, a buffalo, an elephant, etc.";
       break;
-    case "Shield (AC +1)":
+    case "Shield":
       text = "A buckler, a kite shield, a tower shield, a trashcan lid, a car door, a riot shield, a thick sheet of wood with a handle glued to the back, a large turtle, an armadillo, a pangolin, etc.";
       break;
-    case "None (AC 10)":
+    case "10":
       text = "Stark naked, civilian clothes, a simple tunic, non-magical robes, a band t-shirt, boxing shorts, a swimsuit, overalls, an fancy suit, an old sweater, etc.";
       break;
-    case "Light (AC 12)":
+    case "12":
       text = "Leather armor, leather jacket, magic robes, plastic pads, bubble wrap, a hazmat suit, extra pants, a thin layer of psychic energy, garments with magical properties, etc.";
       break;
-    case "Medium (AC 14)":
+    case "14":
       text = "Partial iron/steel armor, bulletproof gear, a combat outfit, a thick layer of psychic energy, concealed armor, scale armor, chainmail, etc.";
       break;
-    case "Heavy (AC 16)":
+    case "16":
       text = "Full suit of armor, riot gear, dragon bone armor, cyborg enhancements, beast body, rocks for skin, a mech suit, etc.";
       break;
   }
@@ -935,4 +985,15 @@ function clearImage(mapId) {
   appImg.height = 0;
   appImg.src = "";
   appImg.style.display = "none";
+}
+
+function checkUsesPerDay(input) {
+  var checkbox = input.childNodes[1];
+  var star = input.childNodes[3];
+
+  if(checkbox.checked) {
+    star.className = "glyphicon glyphicon-star";
+  } else {
+    star.className = "glyphicon glyphicon-star-empty";
+  }
 }

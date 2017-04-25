@@ -15,7 +15,7 @@
     <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="lib/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="lib/odometer/odometer-theme-minimal.css">
-    <link rel="stylesheet" href="css/master.css" type="text/css" />
+    <link rel="stylesheet" href="css/master2.css" type="text/css" />
 
     <script src="https://cdn.jsdelivr.net/bootstrap.native/2.0.6/polyfill.min.js"> </script>
     <!--[if lt IE 9]>
@@ -106,13 +106,14 @@
       <button id="backToTop" type="button" class="btn btn-default" onclick="runScroll()"><b>Back to Top</b></button>
 
       <div class="row no-print">
-        <div class="col-xs-9">
+        <div class="col-xs-7">
           <div class="btn-group">
               <button id="modal-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#saveLoadModal" onclick="showModal(saveLoadModal), ifEditClose()">Save/Load</button>
           </div>
         </div>
-        <div class="col-xs-3 text-right">
-          <button id="print-btn" type="button" class="btn btn-default" aria-label="Left Align" onclick="print()">
+        <div class="col-xs-5 text-right">
+          <button type="button" name="button" class="btn btn-default" onclick="toggleEdit(this)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span></button>
+          <button id="print-btn" type="button" class="btn btn-default" aria-label="Print" onclick="print()" disabled>
             <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
           </button>
         </div>
@@ -195,1251 +196,1211 @@
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
 
-      <section>
-        <div class="row">
-          <div class="col-sm-4">
-            <h2 id="charName" class="enter-name n-mb" contenteditable="true"></h2>
-            <h3 id="title" class="enter-title n-mb" contenteditable="true"></h3>
-            <div class="row" style="margin-bottom:18px;">
-              <div class="col-xs-4">
-                <h3 class="view">LVL: <span id="lvlLabel">1</span></h3>
-                <h3 class="edit" style="display:none;">LVL: <input id="lvl" type="number" class="form-control inline" value="1" min="1" max="20" oninput="setLabel(this,'lvlLabel'), setLevel(), setTotal(), updateHP(), needConfirm()"></h3>
+      <div class="row" style="margin-top:15px;">
+        <section class="col-xs-12">
+          <div class="row">
+            <div class="col-sm-4 col-print-4">
+              <div class="view" style="display:none;">
+                <h2 id="nameLabel">Character Name</h2>
+                <h3 id="titleLabel">Title</h3>
               </div>
-              <div class="col-xs-4">
-                <h3 class="view">HP: <span id="hpLabel">10</span></h3>
-                <h3 class="edit" style="display:none;">HP: <input id="hp" type="number" class="form-control inline" value="10" min="1" max="999" onchange="setLabel(this,'hpLabel'), needConfirm(), setTempHp()">
-              </div>
-              <div class="col-xs-4 view">
-                <label>Temp HP:</label>
-                <input id="tempHp" type="number" class="form-control no-print" value="10" min="1" max="999">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <button id="edit-btn" type="button" class="btn btn-default no-print pull-left" onclick="toggleEdit()">Edit Details</button>
-              </div>
-              <div class="col-xs-6">
-                <button id="updateHP" type="button" class="edit btn btn-primary" onclick="addRandomHP(), needConfirm()" disabled="true" style="display:none;width:116px;">Update HP</button></h3>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-sm-8 text-center">
-            <h2>Ability Scores</h2>
-            <div class="view">
-              <table class="table n-mb">
-    						<thead class="center-children">
-    							<th>STR</th>
-    							<th>DEX</th>
-    							<th>VIT</th>
-    							<th>INT</th>
-    							<th>WIS</th>
-    							<th>CHA</th>
-                  <th>PER</th>
-    						</thead>
-    						<tbody>
-    							<tr class="text-center">
-    								<td id="strLabel">10</td>
-    								<td id="dexLabel">10</td>
-    								<td id="vitLabel">10</td>
-    								<td id="intLabel">10</td>
-    								<td id="wisLabel">10</td>
-    								<td id="chaLabel">10</td>
-                    <td id="perLabel">10</td>
-    							</tr>
+              <div class="edit">
+                <h3>Basic Info</h3>
+                <label for="">Character Name</label>
+                <input id="name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'nameLabel')">
 
-    							<tr class="text-center">
-    								<td class="strMod">0</td>
-    								<td class="dexMod">0</td>
-    								<td class="vitMod">0</td>
-    								<td class="intMod">0</td>
-    								<td class="wisMod">0</td>
-    								<td class="chaMod">0</td>
-                    <td class="perMod">0</td>
-    							</tr>
-    						</tbody>
-    					</table>
-  					</div>
+                <label for="">Title</label>
+                <input id="title" type="text" class="form-control" placeholder="Enter title here" oninput="setLabel(this, 'titleLabel')">
+              </div>
 
-  					<div class="edit" style="display:none;">
-  					  <table class="table n-mb">
-    						<thead class="center-children">
-    							<th>STR</th>
-    							<th>DEX</th>
-    							<th>VIT</th>
-    							<th>INT</th>
-    							<th>WIS</th>
-    							<th>CHA</th>
-                  <th>PER</th>
+              <div class="row">
+                <div class="col-xs-6">
+                  <label for="">Level</label>
+                  <input type="number" id="lvl" class="form-control edit-input" value="1" min="1" max="20" oninput="setLevel(), setTotal(), updateHP(), showPerkUsesByLevel(this.value), needConfirm()">
+                </div>
+                <div class="col-xs-6">
+                  <label for="">AC</label>
+                  <input type="number" id="acLabel" class="form-control" value="10" disabled>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <label for="">Max HP</label>
+                  <input type="number" id="hp" class="form-control edit-input" value="10" min="1" max="999">
+                </div>
+                <div class="col-xs-6 view" style="display:none;">
+                  <label for="">Temp HP</label>
+                  <input type="number" id="tempHp" class="form-control" value="10" min="1" max="999">
+                </div>
+                <div class="col-xs-6 edit">
+                  <button type="button" id="updateHP" class="btn btn-primary btn-block" onclick="addRandomHP(), needConfirm()" style="margin-top:25px;" disabled>Update HP</button>
+                </div>
+              </div>
+
+              <hr>
+
+              <h3>Ability Scores</h3>
+              <table class="table center-children">
+    						<thead class="">
+    							<th class="text-left">Ability</th>
+    							<th>Score</th>
+    							<th>Mod</th>
     						</thead>
     						<tbody>
                   <tr>
-    								<td><input id="strength" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'strLabel'), updateMods(this,'strMod'), setTotal(), needConfirm()"></td>
-    								<td><input id="dexterity" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'dexLabel'), updateMods(this,'dexMod'), setTotal(), needConfirm()"></td>
-    								<td><input id="vitality" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'vitLabel'), updateMods(this,'vitMod'), setTotal(), updateHP(), needConfirm()"></td>
-                    <td><input id="intelligence" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'intLabel'), updateMods(this,'intMod'), setTotal(), needConfirm()"></td>
-    								<td><input id="wisdom" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'wisLabel'), updateMods(this,'wisMod'), setTotal(), needConfirm()"></td>
-    								<td><input id="charisma" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'chaLabel'), updateMods(this,'chaMod'), setTotal(), needConfirm()"></td>
-                    <td><input id="perception" type="number" class="form-control n-mb ability" value="10" min="1" max="20" oninput="setLabel(this,'perLabel'), updateMods(this,'perMod'), setTotal(), needConfirm()"></td>
-    							</tr>
-    							<tr class="text-center">
-    								<td class="strMod">0</td>
-    								<td class="dexMod">0</td>
-    								<td class="vitMod">0</td>
-    								<td class="intMod">0</td>
-    								<td class="wisMod">0</td>
-    								<td class="chaMod">0</td>
+                    <th class="text-left">Strength</th>
+                    <td><input id="strength" type="number" class="form-control n-mb ability edit-input" value="10" min="1" max="20" oninput="updateMods(this,'strMod'), setTotal(), needConfirm()"></td>
+                    <td class="strMod">0</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Dexterity</th>
+                    <td><input id="dexterity" type="number" class="form-control n-mb ability edit-input" value="10" min="1" max="20" oninput="updateMods(this,'dexMod'), setTotal(), needConfirm()"></td>
+                    <td class="dexMod">0</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Vitality</th>
+                    <td><input id="vitality" type="number" class="form-control n-mb ability edit-input" value="10" min="1" max="20" oninput="updateMods(this,'vitMod'), setTotal(), updateHP(), needConfirm()"></td>
+                    <td class="vitMod">0</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Intelligence</th>
+                    <td><input id="intelligence" type="number" class="form-control n-mb ability edit-input" value="10" min="1" max="20" oninput="updateMods(this,'intMod'), setTotal(), needConfirm()"></td>
+                    <td class="intMod">0</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Wisdom</th>
+                    <td><input id="wisdom" type="number" class="form-control n-mb ability edit-input" value="10" min="1" max="20" oninput="updateMods(this,'wisMod'), setTotal(), needConfirm()"></td>
+                    <td class="wisMod">0</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Charisma</th>
+                    <td><input id="charisma" type="number" class="form-control n-mb ability edit-input" value="10" min="1" max="20" oninput="updateMods(this,'chaMod'), setTotal(), needConfirm()"></td>
+                    <td class="chaMod">0</td>
+                  </tr>
+
+                  <tr>
+                    <th class="text-left">Perception</th>
+                    <td><input id="perception" type="number" class="form-control n-mb ability edit-input" value="10" min="1" max="20" oninput="updateMods(this,'perMod'), setTotal(), needConfirm()"></td>
                     <td class="perMod">0</td>
-    							</tr>
+                  </tr>
     						</tbody>
     					</table>
-              <div class="row">
-                <div class="col-xs-6 text-left">
+
+              <div class="row edit" style="margin-top:15px;">
+                <div class="col-xs-6">
                   <button id="randomAS" type="button" class="btn btn-default" onclick="randomizeAbilityScores(), setTotal(), needConfirm()">Randomize</button>
                 </div>
                 <div class="col-xs-6">
-                  <div class="pull-right">
-                    <p class="n-mb"><b>Total Points:</b> <span id="totalPoints">70</span></p>
-                    <p><b>Points Left:</b> <span id="pointsLeft">0</span></p>
-                  </div>
+                  <p class="text-right n-mb"><b>Total Points:</b> <span id="totalPoints">70</span></p>
+                  <p class="text-right"><b>Points Left:</b> <span id="pointsLeft">0</span></p>
                 </div>
               </div>
-  					</div>
-          </div>
-        </div>
+            </div><!-- /.col-sm-4 sidebar -->
 
-        <h2 class="n-mb">Equipment</h2>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <h3>Main Weapon</h3>
-            <div class="panel panel-default n-mb">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="wpn1name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a href="#wpn1footer" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
+            <div class="col-sm-8">
+              <div class="row">
+                <div class="col-sm-6 col-print-6">
+                  <div class="text-center">
+                    <img src="" id="imageUpload" height="0" style="margin-bottom:15px;" class="img-responsive">
                   </div>
                 </div>
-              </div>
-              <div class="panel-body">
-                <p id="wpn1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-              <div class="panel-footer">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <select id="wpn1type" class="form-control n-mb pull-right" onchange="needConfirm(), chgExamples(this,'wpn1examplesText')">
-                      <option value="Small (d4)">Small (d4)</option>
-                      <option value="Ranged (d6)">Ranged (d6)</option>
-                      <option value="Medium (d8)" selected>Medium (d8)</option>
-                      <option value="Large (d10)">Large (d10)</option>
-                      <option value="Shield (AC +1)">Shield (AC +1)</option>
-                    </select>
-                  </div>
-                  <div id="wpn1footer" class="col-xs-12 collapse">
-                    <p><b>Examples</b></p>
-                    <p id="wpn1examplesText">A sword, a mace, an axe, a rapier, a cane, a rod, a baton, a pickaxe, a large piece of wood, a lyre, a trumpet, a hand scythe, a dog, a small bear, a panther, a cheetah, a monkey, a trashcan, a chair, etc.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <h3>Sub Weapon</h3>
-            <div class="panel panel-default n-mb">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="wpn2name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a href="#wpn2footer" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <p id="wpn2desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-              <div class="panel-footer">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <select id="wpn2type" class="form-control n-mb pull-right" onchange="needConfirm(), chgExamples(this,'wpn2examplesText')">
-                      <option value="Small (d4)">Small (d4)</option>
-                      <option value="Ranged (d6)" selected>Ranged (d6)</option>
-                      <option value="Medium (d8)">Medium (d8)</option>
-                      <option value="Large (d10)">Large (d10)</option>
-                      <option value="Shield (AC +1)">Shield (AC +1)</option>
-                    </select>
-                  </div>
-                  <div id="wpn2footer" class="col-xs-12 collapse">
-                    <p><b>Examples</b></p>
-                    <p id="wpn2examplesText">A longbow, a shortbow, a crossbow, blowdarts, poison darts, lawn darts, any gun, throwing knives, throwing stars, throwing rocks, slingshots, killer bees, birds, dragons, griffins, and other flying creatures, etc.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                <div class="col-sm-6 col-print-6">
+                  <h3>Appearance</h3>
+                  <p id="appLabel" class="view" style="display:none;"></p>
 
-        <div class="row">
-          <div class="col-sm-6">
-            <h3>Armor</h3>
-            <div class="panel panel-default n-mb">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="armorName" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a href="#armorFooter" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <p id="armorDesc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-              <div class="panel-footer">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <select id="armorType" class="form-control n-mb pull-right" onchange="needConfirm(),chgExamples(this,'armorExamplesText')">
-                      <option value="None (AC 10)">None (AC 10)</option>
-                      <option value="Light (AC 12)">Light (AC 12)</option>
-                      <option value="Medium (AC 14)">Medium (AC 14)</option>
-                      <option value="Heavy (AC 16)">Heavy (AC 16)</option>
-                    </select>
-                  </div>
-                  <div id="armorFooter" class="col-xs-12 collapse">
-                    <p><b>Examples</b></p>
-                    <p id="armorExamplesText">Stark naked, civilian clothes, a simple tunic, non-magical robes, a band t-shirt, boxing shorts, a swimsuit, overalls, an fancy suit, an old sweater, etc.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  <div class="edit no-print">
+                    <textarea id="appearance" class="form-control" rows="5" oninput="setLabel(this, 'appLabel')"></textarea>
 
-            </select>
-          </div>
-          <div class="col-sm-6">
-            <h3>Gear</h3>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="gear" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="n-mb">Details</h2>
-
-        <h3>Appearance</h3>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <p id="appearance" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-            <div class="no-print">
-              <p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p>
-              <input type="file" id="imageLoader" name="imageLoader" onchange="handleImage(event)"/>
-              <div class="input-group" style="margin-top:15px;">
-                <input id="imageURL" type="text" class="form-control" placeholder="Paste URL here">
-                <div class="input-group-btn">
-                  <button type="button" class="btn btn-primary" onclick="addImage()">Upload</button>
-                </div>
-              </div>
-              <div class="text-right">
-                <button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage()">Clear Image</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="text-center">
-              <img src="" id="imageUpload" height="0" style="margin-bottom:15px;" class="img-responsive">
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <h3>Personality</h3>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="personality" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <h3>Backstory</h3>
-            <div class="panel panel-default n-mb">
-              <div class="panel-body">
-                <p id="backstory" class="enter-content n-mb" contenteditable="true" oninput="needConfirm()"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr class="n-mb">
-
-      <section>
-        <div class="row">
-          <div class="col-sm-6">
-            <h2 class="n-mb">Perks</h2>
-          </div>
-
-          <div class="col-sm-6">
-            <div id="includeChart" class="input-group n-mb no-print" style="margin-top:20px;">
-              <span class="input-group-addon">
-                Include moves per day chart?
-              </span>
-              <span class="input-group-addon">
-                <input type="checkbox" class="input-group" onchange="togglePerDay(this.checked)"/>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row pbi" style="margin-top: 15px;">
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk1name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle1" href="#perk1help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <p id="perk1desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <p class="unlocked">Available at Level 1<br>2d12 HP / 3ft / 1 point</p>
-              </div>
-              <div id="perk1help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk1demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target1sel" oninput="isTargetingEnemy(1)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 3ft diameter</option>
-                        <option value="4">all allies in a 3ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc1sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel1">
-                        <label for="">Saving Throw</label>
-                        <select id="st1sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
+                    <p>Upload an Image<br><i>Warning: Uploading images to your map right from your device takes up a lot of space in your localStorage. Upload by URL when you can to save space.</i></p>
+                    <input type="file" id="imageLoader" name="imageLoader" onchange="handleImage(event)"/>
+                    <div class="input-group" style="margin-top:15px;">
+                      <input id="imageURL" type="text" class="form-control" placeholder="Paste URL here">
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary" onclick="addImage()">Upload</button>
                       </div>
                     </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type1sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
+                    <div class="text-right">
+                      <button type="button" class="btn btn-warning" style="margin-top:15px; margin-bottom:15px;" onclick="clearImage()">Clear Image</button>
                     </div>
-                  </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(1)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk1help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
-
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk2name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle2" href="#perk2help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
                   </div>
                 </div>
               </div>
-              <div class="panel-body">
-                <p id="perk2desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <p class="unlocked">Available at Level 1<br>3d8 HP / 5ft / 2 points</p>
-              </div>
-              <div id="perk2help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk2demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target2sel" oninput="isTargetingEnemy(2)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 5ft diameter</option>
-                        <option value="4">all allies in a 5ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc2sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel2">
-                        <label for="">Saving Throw</label>
-                        <select id="st2sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type2sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(2)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk2help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
-        </div>
 
-        <div class="row pbi">
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk3name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+              <hr>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3 style="margin-top:0;">Main Weapon</h3>
+                  <label for="">Description</label>
+                  <p id="wpn1descLabel" class="view" style="display:none;"></p>
+                  <textarea id="wpn1desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn1desc')"></textarea>
+
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <label for="">Weapon Type</label>
+                      <select id="wpn1type" class="form-control edit-input" onchange="chgExamples(this,'wpn1examplesText')">
+                        <option value="Small">Small (1d4)</option>
+                        <option value="Ranged">Ranged (1d6)</option>
+                        <option value="Medium" selected>Medium (1d8)</option>
+                        <option value="Large">Large (1d10)</option>
+                        <option value="Shield">Shield (AC +1)</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-6 text-right edit">
+                      <a href="#wpn1examples" class="btn btn-default" data-toggle="collapse" style="margin-top:25px;">Help</a>
+                    </div>
+                    <div id="wpn1examples" class="col-xs-12 collapse">
+                      <p><b>Examples</b></p>
+                      <p id="wpn1examplesText">A sword, a mace, an axe, a rapier, a cane, a rod, a baton, a pickaxe, a large piece of wood, a lyre, a trumpet, a hand scythe, a dog, a small bear, a panther, a cheetah, a monkey, a trashcan, a chair, etc.</p>
+                    </div>
                   </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle3" href="#perk3help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
+                </div>
+
+                <div class="col-sm-6">
+                  <h3 style="margin-top:0;">Sub Weapon</h3>
+                  <label for="">Description</label>
+                  <p id="wpn2descLabel" class="view" style="display:none;"></p>
+                  <textarea id="wpn2desc" class="form-control edit" rows="5" oninput="setLabel(this, 'wpn2desc')"></textarea>
+
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <label for="">Weapon Type</label>
+                      <select id="wpn2type" class="form-control edit-input" onchange="chgExamples(this,'wpn2examplesText')">
+                        <option value="Small">Small (1d4)</option>
+                        <option value="Ranged" selected>Ranged (1d6)</option>
+                        <option value="Medium">Medium (1d8)</option>
+                        <option value="Large">Large (1d10)</option>
+                        <option value="Shield">Shield (AC +1)</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-6 text-right edit">
+                      <a href="#wpn2examples" class="btn btn-default" data-toggle="collapse" style="margin-top:25px;">Help</a>
+                    </div>
+                    <div id="wpn2examples" class="col-xs-12 collapse">
+                      <p><b>Examples</b></p>
+                      <p id="wpn2examplesText">A longbow, a shortbow, a crossbow, blowdarts, poison darts, lawn darts, any gun, throwing knives, throwing stars, throwing rocks, slingshots, killer bees, birds, dragons, griffins, and other flying creatures, etc.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="panel-body">
-                <p id="perk3desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <p class="unlocked">Unlocked at level 4<br>4d12 HP / 10ft / 3 points</p>
-              </div>
-              <div id="perk3help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk3demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target3sel" oninput="isTargetingEnemy(3)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 10ft diameter</option>
-                        <option value="4">all allies in a 10ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc3sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel3">
-                        <label for="">Saving Throw</label>
-                        <select id="st3sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type3sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(3)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk8help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
 
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk4name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle4" href="#perk4help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
+              <hr style="margin:0;">
+
+              <div class="row n-mb">
+                <div class="col-sm-6">
+                  <h3>Armor</h3>
+                  <label for="">Description</label>
+                  <p id="armorDescLabel" class="view" style="display:none;"></p>
+                  <textarea id="armorDesc" class="form-control edit" rows="5" oninput="setLabel(this, 'armorDesc')"></textarea>
+
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <label for="">Armor Type</label>
+                      <select id="armorType" class="form-control edit-input" onchange="chgExamples(this,'armorExamplesText'), setInputLabel(this, 'acLabel')">
+                        <option value="10">None (AC 10)</option>
+                        <option value="12">Light (AC 12)</option>
+                        <option value="14">Medium (AC 14)</option>
+                        <option value="16">Heavy (AC 16)</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-6 text-right edit">
+                      <a href="#armorExamples" class="btn btn-default" data-toggle="collapse" style="margin-top:25px;">Help</a>
+                    </div>
+                    <div id="armorExamples" class="col-xs-12 collapse">
+                      <p><b>Examples</b></p>
+                      <p id="armorExamplesText">Stark naked, civilian clothes, a simple tunic, non-magical robes, a band t-shirt, boxing shorts, a swimsuit, overalls, an fancy suit, an old sweater, etc.</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel-body">
-                <p id="perk4desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <p class="unlocked">Unlocked at level 7<br>6d12 HP / 20ft / 4 points</p>
-              </div>
-              <div id="perk4help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk4demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target4sel" oninput="isTargetingEnemy(4)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 20ft diameter</option>
-                        <option value="4">all allies in a 20ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc4sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel4">
-                        <label for="">Saving Throw</label>
-                        <select id="st4sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type4sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(4)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk4help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
-        </div>
 
-        <div class="row pbi">
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk5name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle5" href="#perk5help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
+                <div class="col-sm-6">
+                  <h3>Gear</h3>
+                  <label for="">Items</label>
+                  <textarea id="gear" class="form-control" rows="5"></textarea>
+
+                  <div class="row">
+                    <div class="col-xs-5 col-xs-offset-7">
+                      <label for="">Gold/Currency</label>
+                      <input id="gold" type="number" class="form-control text-right" value="0">
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel-body">
-                <p id="perk5desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <p class="unlocked">Unlocked at level 10<br>10d8 HP / 40ft / 5 points</p>
-              </div>
-              <div id="perk5help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk5demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target5sel" oninput="isTargetingEnemy(5)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 40ft diameter</option>
-                        <option value="4">all allies in a 40ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc5sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel5">
-                        <label for="">Saving Throw</label>
-                        <select id="st5sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
+              </div><!-- /.row -->
+
+              <hr style="margin:0;">
+
+              <h2 class="n-mb">Perks</h2>
+
+              <div class="row">
+                <div id="perk1" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk1nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk1descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk1-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk1-use2" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk1-use3" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk1-use4" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk1-use5" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk1-use6" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk1-use7" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk1-use8" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
                       </div>
                     </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type5sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
-                    </div>
                   </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(5)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk5help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
 
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk6name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle6" href="#perk6help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <p id="perk6desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
-                <p class="unlocked">Unlocked at level 13<br>10d10 HP / 60ft / 6 points</p>
-              </div>
-              <div id="perk6help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk6demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target6sel" oninput="isTargetingEnemy(6)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 60ft diameter</option>
-                        <option value="4">all allies in a 60ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc6sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel6">
-                        <label for="">Saving Throw</label>
-                        <select id="st6sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 1</h3>
+                    <label for="">Name</label>
+                    <input id="perk1name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk1nameLabel')">
+
+                    <label for="">Description</label>
+                    <textarea id="perk1desc" class="form-control" rows="3" oninput="setLabel(this, 'perk1descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">2d12 HP / 3ft / 1 point</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle1" href="#perk1help" class="btn btn-default" data-toggle="collapse">Help</a>
                       </div>
                     </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type6sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(6)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk6help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
-        </div>
 
-        <div class="row pbi">
-          <div class="col-sm-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk7name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
+                    <div id="perk1help" class="collapse">
+                      <div class="perk1demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target1sel" oninput="isTargetingEnemy(1)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 3ft diameter</option>
+                            <option value="4">all allies in a 3ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc1sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel1">
+                            <label for="">Saving Throw</label>
+                            <select id="st1sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type1sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(1)">Submit</button>
+                      </div>
+                    </div><!-- /perk1help -->
                   </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle7" href="#perk7help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <p id="perk7desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
 
-                <p class="unlocked n-mb">Unlocked at level 16<br>10d12 HP / 80ft / 7 points</p>
-              </div>
-              <div id="perk7help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk7demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target7sel" oninput="isTargetingEnemy(7)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 80ft diameter</option>
-                        <option value="4">all allies in a 80ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc7sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel7">
-                        <label for="">Saving Throw</label>
-                        <select id="st7sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
+                </div><!-- /.col-sm-6 -->
+
+                <div id="perk2" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk2nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk2descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk2-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk2-use2" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk2-use3" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk2-use4" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk2-use5" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk2-use6" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk2-use7" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk2-use8" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
                       </div>
                     </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type7sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
-                    </div>
                   </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(7)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk7help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
 
-          <div class="col-sm-6">
-            <div class="panel panel-default n-mb">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-8">
-                    <h4 id="perk8name" class="enter-name" contenteditable="true" oninput="needConfirm()"></h4>
-                  </div>
-                  <div class="col-xs-4">
-                    <a id="helpToggle8" href="#perk8help" class="btn btn-default pull-right" data-toggle="collapse">Help</a>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <p id="perk8desc" class="enter-content" contenteditable="true" oninput="needConfirm()"></p>
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 2</h3>
+                    <label for="">Name</label>
+                    <input id="perk2name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk2nameLabel')">
 
-                <p class="unlocked n-mb">Unlocked at level 19<br>12d12 HP / 100ft / 8 points</p>
-              </div>
-              <div id="perk8help" class="collapse">
-                <div class="panel-footer no-print">
-                  <div class="perk8demo text-left row">
-                    <div class="col-sm-12">
-                      <label for="">User targets</label>
-                      <select id="target8sel" oninput="isTargetingEnemy(8)" class="form-control">
-                        <option value="enemy" selected>an enemy</option>
-                        <option value="2">themselves or an ally</option>
-                        <option value="enemy">all enemies in a 100ft diameter</option>
-                        <option value="4">all allies in a 100ft diameter</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label for="">DC Check</label>
-                      <select id="dc8sel" class="form-control">
-                        <option>STR</option>
-                        <option>DEX</option>
-                        <option>VIT</option>
-                        <option>INT</option>
-                        <option>WIS</option>
-                        <option>CHA</option>
-                        <option>PER</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <div id="stLabel8">
-                        <label for="">Saving Throw</label>
-                        <select id="st8sel" class="form-control">
-                          <option>STR</option>
-                          <option selected>DEX</option>
-                          <option>VIT</option>
-                          <option>INT</option>
-                          <option>WIS</option>
-                          <option>CHA</option>
-                          <option>PER</option>
-                        </select>
+                    <label for="">Description</label>
+                    <textarea id="perk2desc" class="form-control" rows="3" oninput="setLabel(this, 'perk2descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">3d8 HP / 5ft / 2 points</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle2" href="#perk2help" class="btn btn-default" data-toggle="collapse">Help</a>
                       </div>
                     </div>
-                    <div class="col-sm-12">
-                      <label for="">Effect</label>
-                      <select id="type8sel" class="form-control">
-                        <option value="0">Physical Strike</option>
-                        <option value="0">Ranged Attack</option>
-                        <option value="1">Heal</option>
-                        <option disabled="true"></option>
-                        <option value="1">Buff AC</option>
-                        <option value="1">Buff STR</option>
-                        <option value="1">Buff DEX</option>
-                        <option value="1">Buff VIT</option>
-                        <option value="1">Buff INT</option>
-                        <option value="1">Buff WIS</option>
-                        <option value="1">Buff CHA</option>
-                        <option value="1">Buff PER</option>
-                        <option disabled="true"></option>
-                        <option value="0">Debuff AC</option>
-                        <option value="0">Debuff STR</option>
-                        <option value="0">Debuff DEX</option>
-                        <option value="0">Debuff VIT</option>
-                        <option value="0">Debuff INT</option>
-                        <option value="0">Debuff WIS</option>
-                        <option value="0">Debuff CHA</option>
-                        <option value="0">Debuff PER</option>
-                      </select>
+
+                    <div id="perk2help" class="collapse">
+                      <div class="perk2demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target2sel" oninput="isTargetingEnemy(2)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 5ft diameter</option>
+                            <option value="4">all allies in a 5ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc2sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel2">
+                            <label for="">Saving Throw</label>
+                            <select id="st2sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type2sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(2)">Submit</button>
+                      </div>
+                    </div><!-- /perk2help -->
+                  </div>
+
+                </div><!-- /.col-sm-6 -->
+              </div>
+
+              <div class="row">
+                <div id="perk3" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk3nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk3descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk3-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk3-use2" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk3-use3" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk3-use4" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk3-use5" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk3-use6" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk3-use7" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk3-use8" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                      </div>
                     </div>
                   </div>
-                  <div class="text-right">
-                    <button type="button" class="btn btn-default" onclick="submitHelp(8)">Submit</button>
-                  </div>
-                </div><!-- /.panel-footer -->
-              </div><!-- /perk8help -->
-            </div><!-- /.panel -->
-          </div><!-- /.col-sm-6 -->
-        </div><!-- /.row -->
-      </section>
 
-      <div id="perDay">
-        <h3>Perks: Uses Per Day / Per Level Chart</h3>
-        <table class="table table-striped">
-          <thead>
-            <th>Level</th>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
-            <th>7</th>
-            <th>8</th>
-            <th>9</th>
-            <th>10</th>
-            <th>11</th>
-            <th>12</th>
-            <th>13</th>
-            <th>14</th>
-            <th>15</th>
-            <th>16</th>
-            <th>17</th>
-            <th>18</th>
-            <th>19</th>
-            <th>20</th>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Perk 1</th>
-              <td>2</td>
-              <td>3</td>
-              <td>3</td>
-              <td>4</td>
-              <td>4</td>
-              <td>5</td>
-              <td>5</td>
-              <td>6</td>
-              <td>6</td>
-              <td>7</td>
-              <td>7</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <th>Perk 2</th>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>3</td>
-              <td>3</td>
-              <td>4</td>
-              <td>4</td>
-              <td>5</td>
-              <td>5</td>
-              <td>6</td>
-              <td>6</td>
-              <td>7</td>
-              <td>7</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <th>Perk 3</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>3</td>
-              <td>3</td>
-              <td>4</td>
-              <td>4</td>
-              <td>5</td>
-              <td>5</td>
-              <td>6</td>
-              <td>6</td>
-              <td>7</td>
-              <td>7</td>
-              <td>8</td>
-              <td>8</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <th>Perk 4</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>3</td>
-              <td>3</td>
-              <td>4</td>
-              <td>4</td>
-              <td>5</td>
-              <td>5</td>
-              <td>6</td>
-              <td>6</td>
-              <td>7</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <th>Perk 5</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>3</td>
-              <td>3</td>
-              <td>4</td>
-              <td>4</td>
-              <td>5</td>
-              <td>5</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <th>Perk 6</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>3</td>
-              <td>3</td>
-              <td>4</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <th>Perk 7</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>2</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <th>Perk 8</th>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-          </tbody>
-        </table>
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 3</h3>
+                    <label for="">Name</label>
+                    <input id="perk3name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk3nameLabel')">
+
+                    <label for="">Description</label>
+                    <textarea id="perk3desc" class="form-control" rows="3" oninput="setLabel(this, 'perk3descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">4d12 HP / 10ft / 3 points</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle3" href="#perk3help" class="btn btn-default" data-toggle="collapse">Help</a>
+                      </div>
+                    </div>
+
+                    <div id="perk3help" class="collapse">
+                      <div class="perk3demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target3sel" oninput="isTargetingEnemy(3)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 10ft diameter</option>
+                            <option value="4">all allies in a 10ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc3sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel3">
+                            <label for="">Saving Throw</label>
+                            <select id="st3sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type3sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(3)">Submit</button>
+                      </div>
+                    </div><!-- /perk3help -->
+                  </div>
+
+                </div><!-- /.col-sm-6 -->
+
+                <div id="perk4" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk4nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk4descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk4-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk4-use2" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk4-use3" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk4-use4" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk4-use5" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk4-use6" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk4-use7" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 4</h3>
+                    <label for="">Name</label>
+                    <input id="perk4name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk4nameLabel')">
+
+                    <label for="">Description</label>
+                    <textarea id="perk4desc" class="form-control" rows="3" oninput="setLabel(this, 'perk4descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">6d12 HP / 20ft / 4 points</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle4" href="#perk4help" class="btn btn-default" data-toggle="collapse">Help</a>
+                      </div>
+                    </div>
+
+                    <div id="perk4help" class="collapse">
+                      <div class="perk4demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target4sel" oninput="isTargetingEnemy(4)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 20ft diameter</option>
+                            <option value="4">all allies in a 20ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc4sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel4">
+                            <label for="">Saving Throw</label>
+                            <select id="st4sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type4sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(4)">Submit</button>
+                      </div>
+                    </div><!-- /perk4help -->
+                  </div>
+
+                </div><!-- /.col-sm-6 -->
+              </div>
+
+              <div class="row">
+                <div id="perk5" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk5nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk5descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk5-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk5-use2" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk5-use3" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk5-use4" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk5-use5" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk5-use6" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 5</h3>
+                    <label for="">Name</label>
+                    <input id="perk5name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk5nameLabel')">
+
+                    <label for="">Description</label>
+                    <textarea id="perk5desc" class="form-control" rows="3" oninput="setLabel(this, 'perk5descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">10d8 HP / 40ft / 5 points</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle5" href="#perk5help" class="btn btn-default" data-toggle="collapse">Help</a>
+                      </div>
+                    </div>
+
+                    <div id="perk5help" class="collapse">
+                      <div class="perk5demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target5sel" oninput="isTargetingEnemy(5)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 40ft diameter</option>
+                            <option value="4">all allies in a 40ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc5sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel5">
+                            <label for="">Saving Throw</label>
+                            <select id="st5sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type5sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(5)">Submit</button>
+                      </div>
+                    </div><!-- /perk5help -->
+                  </div>
+
+                </div><!-- /.col-sm-6 -->
+
+                <div id="perk6" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk6nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk6descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk6-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk6-use2" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk6-use3" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk6-use4" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 6</h3>
+                    <label for="">Name</label>
+                    <input id="perk6name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk6nameLabel')">
+
+                    <label for="">Description</label>
+                    <textarea id="perk6desc" class="form-control" rows="3" oninput="setLabel(this, 'perk6descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">10d10 HP / 60ft / 6 points</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle6" href="#perk6help" class="btn btn-default" data-toggle="collapse">Help</a>
+                      </div>
+                    </div>
+
+                    <div id="perk6help" class="collapse">
+                      <div class="perk6demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target2sel" oninput="isTargetingEnemy(6)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 60ft diameter</option>
+                            <option value="4">all allies in a 60ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc6sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel6">
+                            <label for="">Saving Throw</label>
+                            <select id="st6sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type6sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(6)">Submit</button>
+                      </div>
+                    </div><!-- /perk6help -->
+                  </div>
+
+                </div><!-- /.col-sm-6 -->
+              </div>
+
+              <div class="row">
+                <div id="perk7" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk7nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk7descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk7-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk7-use2" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label id="perk7-use3" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 7</h3>
+                    <label for="">Name</label>
+                    <input id="perk7name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk7nameLabel')">
+
+                    <label for="">Description</label>
+                    <textarea id="perk7desc" class="form-control" rows="3" oninput="setLabel(this, 'perk7descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">10d12 HP / 80ft / 7 points</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle7" href="#perk7help" class="btn btn-default" data-toggle="collapse">Help</a>
+                      </div>
+                    </div>
+
+                    <div id="perk7help" class="collapse">
+                      <div class="perk7demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target7sel" oninput="isTargetingEnemy(7)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 10ft diameter</option>
+                            <option value="4">all allies in a 10ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc7sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel7">
+                            <label for="">Saving Throw</label>
+                            <select id="st7sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type7sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(7)">Submit</button>
+                      </div>
+                    </div><!-- /perk7help -->
+                  </div>
+
+                </div><!-- /.col-sm-6 -->
+
+                <div id="perk8" class="col-sm-6 perkDiv">
+
+                  <div class="view" style="display:none;">
+                    <h3 id="perk8nameLabel" style="margin-top:0;">Name</h3>
+                    <p id="perk8descLabel">Description</p>
+                    <div class="uses">
+                      <h4>Uses per Day</h4>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label id="perk8-use1" class="btn btn-default usePerDay"  onclick="checkUsesPerDay(this)">
+                          <input type="checkbox" autocomplete="off"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="edit">
+                    <h3 style="margin-top:0;">Perk 8</h3>
+                    <label for="">Name</label>
+                    <input id="perk8name" type="text" class="form-control" placeholder="Enter name here" oninput="setLabel(this, 'perk8nameLabel')">
+
+                    <label for="">Description</label>
+                    <textarea id="perk8desc" class="form-control" rows="3" oninput="setLabel(this, 'perk8descLabel')"></textarea>
+
+                    <div class="row">
+                      <div class="col-xs-8">
+                        <p class="unlocked">12d12 HP / 100ft / 8 points</p>
+                      </div>
+                      <div class="col-xs-4 text-right">
+                        <a id="helpToggle8" href="#perk8help" class="btn btn-default" data-toggle="collapse">Help</a>
+                      </div>
+                    </div>
+
+                    <div id="perk8help" class="collapse">
+                      <div class="perk8demo text-left row">
+                        <div class="col-sm-12">
+                          <label for="">User targets</label>
+                          <select id="target8sel" oninput="isTargetingEnemy(8)" class="form-control">
+                            <option value="enemy" selected>an enemy</option>
+                            <option value="2">themselves or an ally</option>
+                            <option value="enemy">all enemies in a 100ft diameter</option>
+                            <option value="4">all allies in a 100ft diameter</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <label for="">DC Check</label>
+                          <select id="dc8sel" class="form-control">
+                            <option>STR</option>
+                            <option>DEX</option>
+                            <option>VIT</option>
+                            <option>INT</option>
+                            <option>WIS</option>
+                            <option>CHA</option>
+                            <option>PER</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-6">
+                          <div id="stLabel8">
+                            <label for="">Saving Throw</label>
+                            <select id="st8sel" class="form-control">
+                              <option>STR</option>
+                              <option selected>DEX</option>
+                              <option>VIT</option>
+                              <option>INT</option>
+                              <option>WIS</option>
+                              <option>CHA</option>
+                              <option>PER</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <label for="">Effect</label>
+                          <select id="type8sel" class="form-control">
+                            <option value="0">Physical Strike</option>
+                            <option value="0">Ranged Attack</option>
+                            <option value="1">Heal</option>
+                            <option disabled="true"></option>
+                            <option value="1">Buff AC</option>
+                            <option value="1">Buff STR</option>
+                            <option value="1">Buff DEX</option>
+                            <option value="1">Buff VIT</option>
+                            <option value="1">Buff INT</option>
+                            <option value="1">Buff WIS</option>
+                            <option value="1">Buff CHA</option>
+                            <option value="1">Buff PER</option>
+                            <option disabled="true"></option>
+                            <option value="0">Debuff AC</option>
+                            <option value="0">Debuff STR</option>
+                            <option value="0">Debuff DEX</option>
+                            <option value="0">Debuff VIT</option>
+                            <option value="0">Debuff INT</option>
+                            <option value="0">Debuff WIS</option>
+                            <option value="0">Debuff CHA</option>
+                            <option value="0">Debuff PER</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-default" onclick="submitHelp(8)">Submit</button>
+                      </div>
+                    </div><!-- /perk8help -->
+                  </div>
+
+                </div><!-- /.col-sm-6 -->
+              </div>
+
+              <h3>Personality</h3>
+              <p id="persLabel" class="view" style="display:none;"></p>
+              <textarea id="personality" class="form-control edit" rows="2" oninput="setLabel(this, 'persLabel')"></textarea>
+
+              <hr>
+
+              <h3>Backstory</h3>
+              <p id="bsLabel" class="view" style="display:none;"></p>
+              <textarea id="backstory" class="form-control edit" rows="6" oninput="setLabel(this, 'bsLabel')"></textarea>
+            </div>
+          </div>
+        </section>
+
       </div>
 
       <button id="modal-btn" type="button" class="btn btn-default pull-right no-print" data-toggle="modal" data-target="#saveLoadModal" onclick="runScroll(), showModal(saveLoadModal)" style="margin-top:15px;">Save Character</button>
@@ -1468,6 +1429,7 @@
     <script src="lib/odometer/odometer.js"></script>
     <script src="js/sharedUtils.js"></script>
     <script src="js/samples.js"></script>
+    <script src="js/usesPerDay.js"></script>
     <script src="js/character.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
