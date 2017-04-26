@@ -535,3 +535,64 @@ function addQuestItem() {
     needConfirm();
   }
 }
+
+function addCharacterToInitiative() {
+  var input = document.getElementById("initCharName");
+
+  if(input.value !== '') {
+    var table = document.getElementById("initTable");
+    var rowText = "";
+    var pin = uniqueNumber();
+
+    rowText = '<tr id="initRoll"><td><button type="button" class="btn btn-sm btn-default" style="margin:0;" onclick="deleteRow(this)" style="margin: 0 auto;"><span class="glyphicon glyphicon-remove"></span></button></td><td style="vertical-align:middle;">' + input.value + '</td><td><input type="number" class="form-control text-center init-roll" value="10" min="1" max="50" style="margin: 0 auto;"></td></tr>';
+
+    table.innerHTML += rowText;
+
+    input.value = '';
+  }
+}
+
+
+document.getElementById("initCharName").onkeypress = function(e){
+  if (!e) e = window.event;
+  var keyCode = e.keyCode || e.which;
+  if (keyCode == '13'){
+    addCharacterToInitiative();
+    return false;
+  }
+};
+
+function sortInitiativeOrder() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("initTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 0; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = Number(rows[i].getElementsByTagName("TD")[2].childNodes[0].value);
+      y = Number(rows[i + 1].getElementsByTagName("TD")[2].childNodes[0].value);
+      //check if the two rows should switch place:
+      if (x < y) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch= true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
