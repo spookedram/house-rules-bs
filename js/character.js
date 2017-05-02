@@ -735,15 +735,19 @@ function chgExamples(input, target) {
       break;
     case "10":
       text = "Stark naked, civilian clothes, a simple tunic, non-magical robes, a band t-shirt, boxing shorts, a swimsuit, overalls, an fancy suit, an old sweater, etc.";
+      setLabel('acExtra', "+2 to initiative rolls");
       break;
     case "12":
       text = "Leather armor, leather jacket, magic robes, plastic pads, bubble wrap, a hazmat suit, extra pants, a thin layer of psychic energy, garments with magical properties, etc.";
+      setLabel('acExtra', "");
       break;
     case "14":
       text = "Partial iron/steel armor, bulletproof gear, a combat outfit, a thick layer of psychic energy, concealed armor, scale armor, chainmail, etc.";
+      setLabel('acExtra', "-2 to initiative rolls");
       break;
     case "16":
       text = "Full suit of armor, riot gear, dragon bone armor, cyborg enhancements, beast body, rocks for skin, a mech suit, etc.";
+      setLabel('acExtra', "-4 to initiative rolls");
       break;
   }
 
