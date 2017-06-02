@@ -143,11 +143,6 @@ function addEnemy() {
   var notes = "";
   var newHTML = "";
 
-  //If more than one enemy, add (x#) to heading
-  if(enemy.amt !== "1") {
-    amt = "(x" + enemy.amt + ")";
-  }
-
   //Add ability modifier to p
   function absTestAndAdd(score, str) {
     var num = Number(score);
@@ -183,11 +178,14 @@ function addEnemy() {
     notes = '<p class="n-mb"><b>Notes</b></p><p class="n-mb" contenteditable="true">' + enemy.notes + '</p>';
   }
 
-  newHTML = '<div id="' + enemy.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + ' ' + amt + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p>' + notes + '</div></div></div>';
+  newHTML = '<div id="' + enemy.pin + '" class="event col-xs-12 col-sm-4 col-print-4"><div class="panel panel-default"><div class="panel-heading"><div class="row"><div class="col-xs-8"><h4 style="margin:8px auto">Level ' + enemy.lvl + ' <span contenteditable="true">' + enemy.name + '</span></h4></div><div class="col-xs-4 text-right no-print"><button type="button" class="btn btn-danger delete-btn" onclick="deleteEvent(' + currentMap + ',' + currentArea + ',' + enemy.pin + ')"><span class="glyphicon glyphicon-remove"></span></button></div></div></div><div class="panel-body"><p contenteditable="true">' + abilitiesText + '<br>' + details + '</p>' + notes + '</div></div></div>';
 
-  enemy.div = newHTML;
-  area.events.push(enemy);
-  addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+  for (var i = 0; i < enemy.amt; i++) {
+    enemy.div = newHTML;
+    area.events.push(enemy);
+    addToInnerHTML(document.getElementById("area" + currentArea + "eventList"), newHTML);
+  }
+  
   hideModal(enemyModal);
   clearEnemyCreator();
 }
